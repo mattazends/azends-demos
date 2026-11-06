@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VALLE · Build your brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Archivo+Black&family=Barlow+Condensed:wght@600;700;800;900&family=Oswald:wght@500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#80603A; --bg:#F3EDE2; --fg:#15120F; --accent:#C65D2E; --on-brand:#F3EDE2;
+  --brand-dark:#5E4428; --brand-deeper:#3A2A18; --brand-light:#E6DCC8;
+  --wm-font:"Inter Tight"; --wm-weight:800; --wm-track:-.05em; --wm-scale:1;
+  --radius:26px;
+  --panel:#FFFFFF; --panel-fg:#15120F; --line:rgba(21,18,15,.1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter Tight",system-ui,sans-serif;background:var(--bg);color:var(--fg);font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.45;transition:background .35s,color .35s}
+b,strong{font-weight:700}
+button,input,select{font:inherit}
+
+/* layout */
+.app{display:grid;grid-template-columns:340px 1fr;min-height:100vh}
+aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);color:var(--panel-fg);padding:26px 24px 60px;border-right:1px solid rgba(0,0,0,.08);z-index:5}
+main{min-width:0}
+section{padding:8vh 5vw;border-bottom:1px solid var(--line);position:relative}
+.kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;opacity:.55;margin-bottom:16px}
+h1{font-size:clamp(40px,6vw,96px);font-weight:300;letter-spacing:-.04em;line-height:.95}
+h1 b{font-weight:800}
+h2{font-size:clamp(30px,3.8vw,54px);font-weight:300;letter-spacing:-.035em;line-height:1;margin-bottom:24px}
+h2 b{font-weight:800}
+p.lead{font-size:clamp(16px,1.3vw,20px);max-width:60ch;opacity:.85}
+.small{font-size:12.5px;opacity:.6}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g6{grid-template-columns:repeat(6,1fr)}
+@media(max-width:1100px){.g3,.g6{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--panel);color:var(--panel-fg);border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:240px;position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.05)}
+.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.55}
+.num{position:absolute;top:18px;right:22px;font-size:11px;font-weight:600;letter-spacing:.14em;opacity:.4}
+svg.mark{display:block}
+
+/* panel controls */
+.ctl{margin-bottom:22px}
+.ctl .t{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.ctl .t span{opacity:.45;font-weight:500;letter-spacing:.04em;text-transform:none}
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.sw{width:30px;height:30px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:transform .15s}
+.sw:hover{transform:scale(1.1)}
+.sw.on{border-color:var(--panel-fg);box-shadow:0 0 0 2px var(--panel),inset 0 0 0 1px rgba(0,0,0,.08)}
+.custom{display:flex;align-items:center;gap:8px;margin-top:10px}
+.custom input[type=color]{width:34px;height:34px;border:none;background:none;padding:0;cursor:pointer;border-radius:8px}
+.custom input[type=text]{flex:1;padding:8px 10px;border:1px solid rgba(0,0,0,.14);border-radius:9px;font-size:13px;font-family:ui-monospace,Menlo,monospace;text-transform:uppercase}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg.c2{grid-template-columns:repeat(2,1fr)}
+.seg button{padding:9px 6px;border:1px solid rgba(0,0,0,.14);background:transparent;border-radius:10px;cursor:pointer;font-size:12.5px;font-weight:500;color:inherit}
+.seg button.on{background:var(--panel-fg);color:var(--panel);border-color:var(--panel-fg)}
+.fonts button{display:flex;align-items:baseline;justify-content:space-between;width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.14);background:transparent;border-radius:10px;cursor:pointer;margin-bottom:6px;color:inherit;text-align:left}
+.fonts button.on{background:var(--panel-fg);color:var(--panel);border-color:var(--panel-fg)}
+.fonts button .sm{font-size:20px;line-height:1}
+.fonts button .nm{font-size:11px;opacity:.6;font-weight:500}
+input.txt,select.sel{width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.14);border-radius:10px;font-size:14px;background:transparent;color:inherit;margin-bottom:6px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:11px 14px;border-radius:999px;border:1px solid var(--panel-fg);background:var(--panel-fg);color:var(--panel);cursor:pointer;font-size:13px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--panel-fg)}
+.panel-head{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.panel-head .t{font-size:13px;font-weight:700;letter-spacing:.02em}
+.panel-head .s{font-size:11px;opacity:.5}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#15120F;color:#fff;padding:12px 18px;border-radius:999px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%)}
+
+/* wordmark */
+.wm{font-family:var(--wm-font),sans-serif;font-weight:var(--wm-weight);letter-spacing:var(--wm-track);line-height:.9;text-transform:uppercase}
+.wm .sub{font-family:"Inter Tight",sans-serif;font-weight:600;letter-spacing:.34em;text-transform:uppercase;font-size:.19em;margin-top:.5em;color:var(--brand)}
+.wm.light{font-weight:300;letter-spacing:-.04em}
+.wm.light .sub{font-weight:500}
+
+/* tiles */
+.tile{border-radius:22px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;padding:22px}
+.tile .meta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.75}
+.swb{border-radius:18px;aspect-ratio:1/1.1;padding:16px;display:flex;flex-direction:column;justify-content:flex-end}
+.swb .n{font-weight:700;font-size:14px}
+.swb .h{font-size:11.5px;opacity:.75;letter-spacing:.06em;font-family:ui-monospace,Menlo,monospace}
+
+/* applications */
+.app-box{border-radius:18px;height:300px;position:relative;overflow:hidden}
+.sign{background:#2A2622;display:flex;align-items:center;justify-content:center}
+.sign:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 2px,transparent 2px 38px)}
+.fascia{background:var(--brand);height:118px;width:86%;display:flex;align-items:center;justify-content:center;gap:26px;color:var(--on-brand);box-shadow:0 20px 50px rgba(0,0,0,.45);position:relative}
+.fascia .wm{font-size:64px}
+.door{background:#EDE8DE;border:1px solid rgba(0,0,0,.06)}
+.door .panel{position:absolute;inset:24px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.door .win{position:absolute;left:44px;right:44px;top:42px;height:68px;background:linear-gradient(180deg,#d9dde0,#b9c0c5);border-radius:8px 8px 4px 4px}
+.door .brand{position:absolute;left:0;right:0;top:146px;display:flex;flex-direction:column;align-items:center;color:var(--brand)}
+.door .brand .wm{font-size:42px;color:#15120F}
+.cap{background:#2A2622;display:flex;align-items:center;justify-content:center}
+.patch{width:150px;height:150px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 7px var(--bg),0 0 0 9px var(--brand),0 25px 50px rgba(0,0,0,.5)}
+.cards{background:var(--brand-light);display:flex;align-items:center;justify-content:center;gap:18px;padding:28px}
+.bc{border-radius:12px;aspect-ratio:1.75/1;padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 20px 40px rgba(0,0,0,.14);width:46%}
+.web{background:#DDD8CE;padding:22px}
+.web .browser{background:var(--bg);color:var(--fg);border-radius:12px;height:100%;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.18);display:flex;flex-direction:column}
+.web .bar{height:30px;background:rgba(0,0,0,.06);display:flex;align-items:center;padding:0 12px;gap:6px}
+.web .bar i{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.18);display:block}
+.web .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.web .nav .cta{background:var(--brand);color:var(--on-brand);padding:6px 11px;border-radius:999px}
+.web .hero{padding:10px 18px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;flex:1;justify-content:center}
+.web .hero .wm{font-size:38px}
+.web .hero .m{font-size:13px;opacity:.8}
+.social{background:#F6F6F6;display:flex;align-items:center;justify-content:center;gap:22px}
+.avatar{width:120px;height:120px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:var(--on-brand);box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.phone{width:120px;height:120px;border-radius:30px;background:var(--brand);display:flex;align-items:center;justify-content:center;color:var(--on-brand);box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.invoice{background:#E9E5DD;padding:26px}
+.invoice .sheet{background:#fff;color:#15120F;border-radius:8px;height:100%;padding:22px 24px;box-shadow:0 20px 40px rgba(0,0,0,.14);display:flex;flex-direction:column;gap:14px;font-size:10px}
+.invoice .top{display:flex;justify-content:space-between;align-items:center}
+.invoice .wm{font-size:26px}
+.invoice .lines div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.08)}
+.invoice .tot{display:flex;justify-content:space-between;font-weight:700;font-size:12px}
+.shirt{background:#EAE6DF;display:flex;align-items:center;justify-content:center}
+.tee{width:200px;height:220px;background:var(--brand-deeper);border-radius:14px 14px 10px 10px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--on-brand)}
+.tee:before,.tee:after{content:"";position:absolute;top:0;width:44px;height:70px;background:inherit;border-radius:10px}
+.tee:before{left:-36px;transform:rotate(18deg)}.tee:after{right:-36px;transform:rotate(-18deg)}
+
+/* motto list */
+.motto{font-size:clamp(26px,3vw,44px);font-weight:300;letter-spacing:-.03em;line-height:1.05;padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:30px;cursor:pointer}
+.motto b{font-weight:800}
+.motto .tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;opacity:.5;white-space:nowrap}
+.motto.on{font-weight:800}
+.motto.on .tag{opacity:1;background:var(--bg);color:var(--brand);padding:6px 10px;border-radius:999px}
+.frame{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-top:40px}
+.frame .step{flex:1;text-align:center}
+.frame .step .label{margin-top:14px}
+.arrow{font-size:36px;opacity:.3;padding-bottom:40px}
+.spec{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:rgba(127,127,127,.12);padding:16px 18px;border-radius:14px;line-height:1.7;white-space:pre-wrap}
+ul.list{list-style:none;font-size:16px}
+ul.list li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px}
+ul.list li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brand);flex:none;margin-top:9px}
+.rule{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cs{position:relative;width:340px;height:326px;margin:auto}
+.summary{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;font-size:14px}
+.summary div{display:flex;justify-content:space-between;padding:10px 14px;background:rgba(127,127,127,.1);border-radius:10px}
+.summary div span:last-child{font-weight:600;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+.mobile-toggle{display:none}
+@media(max-width:900px){
+  .app{grid-template-columns:1fr}
+  aside{position:fixed;left:0;right:0;top:0;height:auto;max-height:80vh;transform:translateY(calc(-100% + 56px));transition:.3s;border-right:none;border-bottom:1px solid rgba(0,0,0,.1);box-shadow:0 10px 40px rgba(0,0,0,.15)}
+  aside.open{transform:none}
+  .mobile-toggle{display:block;position:fixed;bottom:18px;right:18px;z-index:20}
+  main{padding-top:56px}
+  .rule,.summary{grid-template-columns:1fr}
+  .g2{grid-template-columns:1fr}
+  .cs{width:260px;height:250px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="vr-solid" viewBox="0 0 104 100"><path fill="currentColor" fill-rule="evenodd" d="M6 10H24L48 58V10H74A22 22 0 0 1 80.48 53.02L98 90H80L64 56.2V90H46ZM64 26H72A6 6 0 0 1 72 38H64Z"/></symbol>
+    <symbol id="vr-outline" viewBox="0 0 104 100"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter" d="M6 10H24L48 58V10H74A22 22 0 0 1 80.48 53.02L98 90H80L64 56.2V90H46ZM64 26H72A6 6 0 0 1 72 38H64Z"/></symbol>
+    <symbol id="vr-mono" viewBox="0 0 104 100"><path fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" d="M15 10L56 90V18H74A14 14 0 0 1 74 46H56M70 46L89 90"/></symbol>
+    <symbol id="v-only" viewBox="0 0 104 100"><path fill="currentColor" d="M6 10H24L52 66L80 10H98L61 90H43Z"/></symbol>
+    <symbol id="r-only" viewBox="0 0 104 100"><path fill="currentColor" fill-rule="evenodd" d="M30 10H56A22 22 0 0 1 62.48 53.02L80 90H62L46 56.2V90H30ZM46 26H54A6 6 0 0 1 54 38H46Z"/></symbol>
+    <symbol id="az" viewBox="0 0 100 112"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M13 2H97V110H50L6 80L9 72L5 62L10 52L7 42L11 31L6 20L11 10Z"/></symbol>
+  </defs>
+</svg>
+
+<div class="app">
+<!-- ================= PANEL ================= -->
+<aside id="panel">
+  <div class="panel-head">
+    <svg class="mark" width="34" height="33" style="color:var(--brand)"><use href="#vr-solid"/></svg>
+    <div><div class="t">Build your brand</div><div class="s">Change anything. The whole page updates live.</div></div>
+  </div>
+
+  <div class="ctl">
+    <div class="t">Name</div>
+    <input class="txt" id="inName" value="VALLE" maxlength="14" placeholder="Company name">
+    <input class="txt" id="inSub" value="Roofing" maxlength="24" placeholder="Line under the name">
+    <input class="txt" id="inSub2" value="Interiors" maxlength="24" placeholder="Showroom line">
+  </div>
+
+  <div class="ctl">
+    <div class="t">Brand colour <span id="brandHex">#80603A</span></div>
+    <div class="swatches" id="brandSw"></div>
+    <div class="custom"><input type="color" id="brandPick" value="#80603A"><input type="text" id="brandTxt" value="#80603A" maxlength="7"></div>
+  </div>
+
+  <div class="ctl">
+    <div class="t">Background <span id="bgHex">#F3EDE2</span></div>
+    <div class="swatches" id="bgSw"></div>
+    <div class="custom"><input type="color" id="bgPick" value="#F3EDE2"><input type="text" id="bgTxt" value="#F3EDE2" maxlength="7"></div>
+  </div>
+
+  <div class="ctl">
+    <div class="t">Accent <span id="accHex">#C65D2E</span></div>
+    <div class="swatches" id="accSw"></div>
+    <div class="custom"><input type="color" id="accPick" value="#C65D2E"><input type="text" id="accTxt" value="#C65D2E" maxlength="7"></div>
+  </div>
+
+  <div class="ctl">
+    <div class="t">Mark style</div>
+    <div class="seg" id="markSeg">
+      <button data-v="solid" class="on">Solid</button><button data-v="outline">Outline</button><button data-v="mono">Monoline</button>
+    </div>
+  </div>
+
+  <div class="ctl">
+    <div class="t">Wordmark font</div>
+    <div class="fonts" id="fontList"></div>
+  </div>
+
+  <div class="ctl">
+    <div class="t">Motto</div>
+    <select class="sel" id="mottoSel"></select>
+    <input class="txt" id="mottoCustom" placeholder="Or write your own…" maxlength="48">
+  </div>
+
+  <div class="ctl">
+    <div class="t">Corners</div>
+    <div class="seg c2" id="cornerSeg"><button data-v="round" class="on">Rounded</button><button data-v="square">Square</button></div>
+  </div>
+
+  <div class="ctl btnrow">
+    <button class="btn" id="btnShare">Copy my link</button>
+    <button class="btn ghost" id="btnRandom">Surprise me</button>
+    <button class="btn ghost" id="btnReset">Reset</button>
+  </div>
+  <p class="small" style="margin-top:8px">"Copy my link" saves every choice into a link. Send it back to Matt and that is the brand we build.</p>
+</aside>
+
+<button class="btn mobile-toggle" id="mobileToggle">Customise</button>
+
+<!-- ================= PREVIEW ================= -->
+<main>
+
+<section style="min-height:92vh;display:flex;flex-direction:column;justify-content:center">
+  <div class="kicker">Brand identity · Interactive draft · Tucson, AZ</div>
+  <svg class="mark markUse" width="180" height="173" style="color:var(--brand);margin-bottom:34px"><use href="#vr-solid"/></svg>
+  <h1><b class="nm">VALLE</b><br><span class="sb">Roofing</span> &amp; <span class="sb2">Interiors</span><br><span style="opacity:.45">Tucson, Arizona</span></h1>
+  <p class="lead" style="margin-top:30px">This is your brand, live. Use the panel to try colours, fonts and the motto. Everything on this page changes with you: the sign, the truck, the website, the cap, the card. When it feels right, hit <b>Copy my link</b> and send it over.</p>
+</section>
+
+<section>
+  <div class="kicker">01 · The idea</div>
+  <h2>The <b>V</b> becomes the <b>R</b>. One stroke, shared.</h2>
+  <p class="lead">V for <span class="nm">Valle</span>. R for <span class="sb">Roofing</span>. The right arm of the V is the stem of the R, so both letters are built from one shape. Valle also means valley, which is exactly where Tucson sits. A letter, a valley and a roofline at the same time.</p>
+  <div class="frame">
+    <div class="step"><svg class="mark" style="width:100%;max-width:200px;height:auto;margin:auto;opacity:.25"><use href="#v-only"/></svg><div class="label">V · Valle</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><svg class="mark markUse" style="width:100%;max-width:200px;height:auto;margin:auto;color:var(--brand)"><use href="#vr-solid"/></svg><div class="label" style="opacity:1;color:var(--brand)">The mark</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><svg class="mark" style="width:100%;max-width:200px;height:auto;margin:auto;opacity:.25"><use href="#r-only"/></svg><div class="label">R · Roofing</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">02 · Mark system</div>
+  <h2>One mark, <b>six ways.</b></h2>
+  <div class="grid g3">
+    <div class="card"><span class="num">A</span><svg class="mark" width="110" height="106" style="color:var(--brand)"><use href="#vr-solid"/></svg><div><div class="label">Solid</div><p class="small">Signage, trucks, website hero. The roofing voice.</p></div></div>
+    <div class="card"><span class="num">B</span><svg class="mark" width="110" height="106" style="color:var(--panel-fg)"><use href="#vr-outline"/></svg><div><div class="label">Outline</div><p class="small">Embroidery, etched glass, window vinyl, watermark.</p></div></div>
+    <div class="card"><span class="num">C</span><svg class="mark" width="110" height="106" style="color:var(--brand)"><use href="#vr-mono"/></svg><div><div class="label">Monoline</div><p class="small">Same path as one continuous line. The showroom voice: lighter, finer.</p></div></div>
+    <div class="card" style="background:var(--brand);color:var(--on-brand)"><span class="num" style="opacity:.6">D</span><div class="tileicon" style="width:110px;height:110px;border-radius:var(--radius);background:var(--bg);display:flex;align-items:center;justify-content:center;color:var(--brand)"><svg class="mark markUse" width="74" height="71"><use href="#vr-solid"/></svg></div><div><div class="label" style="opacity:.75">Tile</div><p class="small" style="opacity:.85">App icon, social avatar, favicon, hard hat sticker.</p></div></div>
+    <div class="card" style="background:var(--brand-deeper);color:#F3EDE2"><span class="num" style="opacity:.6">E</span><div style="position:relative;width:120px;height:134px;color:var(--brand)"><svg class="mark" width="120" height="134" style="position:absolute;inset:0"><use href="#az"/></svg><svg class="mark markUse" width="58" height="56" style="position:absolute;left:36px;top:38px;color:var(--on-brand)"><use href="#vr-solid"/></svg></div><div><div class="label" style="opacity:.75">AZ badge</div><p class="small" style="opacity:.85">State outline with the mark inside. Caps, patches, yard signs.</p></div></div>
+    <div class="card"><span class="num">F</span><div style="display:flex;align-items:center;gap:14px"><svg class="mark markUse" width="68" height="65" style="color:var(--brand)"><use href="#vr-solid"/></svg><div class="wm nm" style="font-size:calc(50px*var(--wm-scale))">VALLE</div></div><div><div class="label">Horizontal lockup</div><p class="small">Letterheads, website nav, fascia sign.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">03 · Your palette</div>
+  <h2>Built from <b>your colour.</b></h2>
+  <p class="lead">Pick a brand colour and the shades, light surface and accent fall out of it automatically.</p>
+  <div class="grid g6" id="palette" style="margin-top:28px"></div>
+</section>
+
+<section>
+  <div class="kicker">04 · Colour ways</div>
+  <h2>Same logo, <b>six ways.</b></h2>
+  <div class="grid g3" id="ways"></div>
+  <p class="small" style="margin-top:18px">Rule: the mark is always one flat colour. No gradients, no shadows, no two-tone.</p>
+</section>
+
+<section>
+  <div class="kicker">05 · Wordmark</div>
+  <h2>Pick a <b>voice.</b></h2>
+  <div class="grid g3" id="fontCards"></div>
+</section>
+
+<section>
+  <div class="kicker">06 · Lockups</div>
+  <h2><span class="sb">Roofing</span> and <b class="sb2">Interiors</b>, one family.</h2>
+  <div class="grid g2">
+    <div class="card" style="min-height:400px;align-items:center;justify-content:center;text-align:center;gap:20px"><svg class="mark markUse" width="130" height="125" style="color:var(--brand)"><use href="#vr-solid"/></svg><div class="wm" style="font-size:calc(60px*var(--wm-scale))"><span class="nm">VALLE</span><div class="sub sb">Roofing</div></div><div class="label">Stacked · <span class="sb">Roofing</span></div></div>
+    <div class="card" style="min-height:400px;align-items:center;justify-content:center;text-align:center;gap:20px;background:var(--brand-light);color:#15120F"><svg class="mark" width="130" height="125" style="color:var(--brand)"><use href="#vr-mono"/></svg><div class="wm light" style="font-size:60px;font-family:'Inter Tight',sans-serif"><span class="nm">VALLE</span><div class="sub sb2">Interiors</div></div><div class="label">Stacked · <span class="sb2">Interiors</span> (monoline + light)</div></div>
+    <div class="card" style="min-height:200px;justify-content:center"><div style="display:flex;align-items:center;gap:20px"><svg class="mark markUse" width="84" height="81" style="color:var(--brand)"><use href="#vr-solid"/></svg><div class="wm" style="font-size:calc(66px*var(--wm-scale))"><span class="nm">VALLE</span><div class="sub" style="font-size:12px"><span class="sb">Roofing</span> · Tucson, AZ · ROC licensed</div></div></div></div>
+    <div class="card" style="min-height:200px;justify-content:center;background:var(--brand-deeper);color:#F3EDE2"><div style="display:flex;align-items:center;gap:20px"><div style="position:relative;width:80px;height:90px;color:var(--brand)"><svg class="mark" width="80" height="90" style="position:absolute;inset:0"><use href="#az"/></svg><svg class="mark markUse" width="40" height="38" style="position:absolute;left:24px;top:25px;color:var(--on-brand)"><use href="#vr-solid"/></svg></div><div class="wm" style="font-size:calc(66px*var(--wm-scale))"><span class="nm">VALLE</span><div class="sub" style="font-size:12px"><span class="sb">Roofing</span> &amp; <span class="sb2">Interiors</span> · Arizona</div></div></div></div>
+  </div>
+</section>
+
+<section style="background:var(--brand);color:var(--on-brand)">
+  <div class="kicker" style="opacity:.75">07 · Motto</div>
+  <h2>Tap a line to <b>choose it.</b></h2>
+  <div id="mottoList"></div>
+  <p class="small" style="margin-top:24px;opacity:.85">Goes under the stacked lockup, on the back of shirts and as the first line on the website. Never inside the logo itself.</p>
+</section>
+
+<section>
+  <div class="kicker">08 · In the wild</div>
+  <h2>Showroom, truck, website, <b>everything.</b></h2>
+  <div class="grid g2">
+    <div class="app-box sign"><div class="fascia"><svg class="mark markUse" width="70" height="67"><use href="#vr-solid"/></svg><div class="wm nm" style="font-size:calc(64px*var(--wm-scale))">VALLE</div></div></div>
+    <div class="app-box door"><div class="panel"></div><div class="win"></div><div class="brand"><svg class="mark markUse" width="54" height="52"><use href="#vr-solid"/></svg><div class="wm nm" style="font-size:calc(42px*var(--wm-scale))">VALLE</div><div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;margin-top:6px"><span class="sb">Roofing</span> · ROC licensed · Tucson</div></div></div>
+    <div class="app-box web"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="nav"><span style="display:flex;align-items:center;gap:8px"><svg class="mark markUse" width="18" height="17" style="color:var(--brand)"><use href="#vr-solid"/></svg><span class="nm">VALLE</span></span><span>Services · Showroom · Reviews</span><span class="cta">Free estimate</span></div><div class="hero"><svg class="mark markUse" width="52" height="50" style="color:var(--brand)"><use href="#vr-solid"/></svg><div class="wm" style="font-size:calc(38px*var(--wm-scale))"><span class="nm">VALLE</span></div><div class="m motto-txt">From the roof down.</div><div style="display:flex;gap:6px;margin-top:6px"><span style="background:var(--brand);color:var(--on-brand);font-size:9px;font-weight:600;padding:6px 12px;border-radius:999px">Book a free estimate</span><span style="border:1px solid currentColor;font-size:9px;font-weight:600;padding:6px 12px;border-radius:999px;opacity:.7">See the showroom</span></div></div></div></div>
+    <div class="app-box cap"><div class="patch"><svg class="mark markUse" width="82" height="79" style="color:var(--on-brand)"><use href="#vr-solid"/></svg></div></div>
+    <div class="app-box cards"><div class="bc" style="background:var(--brand-deeper);color:#F3EDE2"><svg class="mark markUse" width="38" height="36" style="color:var(--brand)"><use href="#vr-solid"/></svg><div><div class="wm nm" style="font-size:calc(24px*var(--wm-scale))">VALLE</div><div class="motto-txt" style="font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.75">From the roof down.</div></div></div><div class="bc" style="background:#fff;color:#15120F"><div style="font-size:11px;font-weight:700">Salvador<br><span style="font-weight:300;opacity:.7">Owner</span></div><div style="font-size:9px;line-height:1.7;opacity:.8">(520) 000 0000<br>hello@valleroofing.com<br>Tucson, AZ · ROC #000000</div></div></div>
+    <div class="app-box social"><div class="avatar"><svg class="mark markUse" width="66" height="63"><use href="#vr-solid"/></svg></div><div class="phone" style="border-radius:var(--radius)"><svg class="mark markUse" width="66" height="63"><use href="#vr-solid"/></svg></div><div style="font-size:12px;opacity:.6;max-width:110px;color:#15120F">Instagram avatar and app icon</div></div>
+    <div class="app-box invoice"><div class="sheet"><div class="top"><div style="display:flex;align-items:center;gap:10px"><svg class="mark markUse" width="30" height="29" style="color:var(--brand)"><use href="#vr-solid"/></svg><div class="wm nm" style="font-size:calc(26px*var(--wm-scale))">VALLE</div></div><div style="text-align:right;opacity:.6">Estimate #1042<br>Tucson, AZ</div></div><div class="lines"><div><span>Tear-off and re-roof, 2,400 sq ft</span><span>$ 11,800</span></div><div><span>Underlayment and flashing</span><span>$ 1,450</span></div><div><span>Haul away</span><span>$ 350</span></div></div><div class="tot"><span>Total</span><span style="color:var(--brand)">$ 13,600</span></div><div class="motto-txt" style="font-size:9px;opacity:.6;margin-top:auto">From the roof down.</div></div></div>
+    <div class="app-box shirt"><div class="tee"><svg class="mark markUse" width="60" height="58" style="color:var(--brand)"><use href="#vr-solid"/></svg><div class="wm nm" style="font-size:calc(30px*var(--wm-scale))">VALLE</div><div class="motto-txt" style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.7">From the roof down.</div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">09 · Rules</div>
+  <div class="rule">
+    <div>
+      <h2>Keep it <b>clean.</b></h2>
+      <ul class="list">
+        <li><div><b>Clear space</b> = one stem width on every side. Nothing enters that box.</div></li>
+        <li><div><b>Minimum size:</b> mark 24px / 8mm. Lockup 120px / 30mm. Below that, mark alone.</div></li>
+        <li><div><b>One colour only</b> inside the mark. Never two colours, never a gradient.</div></li>
+        <li><div><b>Don't</b> stretch, rotate, add shadows, or put it on a photo without a solid panel behind it.</div></li>
+        <li><div><b>Don't</b> set the name in any other typeface. One font family across roofing and interiors.</div></li>
+      </ul>
+    </div>
+    <div class="cs"><div style="position:absolute;inset:0;border:1px dashed rgba(127,127,127,.5);border-radius:4px"></div><div style="position:absolute;inset:16%;border:1px dashed var(--accent)"></div><svg class="mark markUse" style="position:absolute;inset:16%;width:68%;height:68%;color:var(--brand)"><use href="#vr-solid"/></svg><div style="position:absolute;top:4px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--accent)">clear space = 1 stem</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">10 · Your choices</div>
+  <h2>This is what gets <b>built.</b></h2>
+  <div class="summary" id="summary"></div>
+  <div class="btnrow" style="margin-top:22px"><button class="btn" id="btnShare2">Copy my link</button><button class="btn ghost" id="btnText">Copy as text</button></div>
+  <p class="small" style="margin-top:14px">Send the link or the text to Matt. The final files get hand-finished from exactly these choices.</p>
+</section>
+
+<section style="padding:30px 5vw;border:none"><div class="small" style="display:flex;justify-content:space-between"><span><span class="nm">VALLE</span> · Interactive brand draft</span><span>Prepared by Azends</span></div></section>
+
+</main>
+</div>
+<div class="toast" id="toast">Link copied</div>
+
+<script>
+/* ---------- state ---------- */
+const DEF={name:"VALLE",sub:"Roofing",sub2:"Interiors",brand:"#80603A",bg:"#F3EDE2",acc:"#C65D2E",mark:"solid",font:"c",motto:"From the roof down.",corner:"round"};
+let S={...DEF};
+
+const BRANDS=[["Coyote","#80603A"],["Deep coyote","#5E4428"],["Mesquite","#3A2A18"],["Rust","#9A4A2B"],["Sunset","#C65D2E"],["Saguaro","#5B6B4E"],["Sage","#8A9A7B"],["Clay","#B2714F"],["Sand gold","#B4904A"],["Slate","#4A5560"],["Navy","#1F2B3A"],["Ink","#15120F"],["Copper","#A5623A"],["Ocotillo red","#8E2F2A"]];
+const BGS=[["Bone","#F3EDE2"],["Sand","#E6DCC8"],["Paper","#FAF8F3"],["White","#FFFFFF"],["Stone","#D8D2C6"],["Mesquite","#3A2A18"],["Ink","#15120F"],["Charcoal","#23201C"]];
+const ACCS=[["Sunset","#C65D2E"],["Saguaro","#5B6B4E"],["Sand gold","#B4904A"],["Ocotillo","#8E2F2A"],["Sky","#7FA3B5"],["Copper","#A5623A"],["Sage","#8A9A7B"],["Ink","#15120F"]];
+const FONTS={
+  a:{name:"Heavy · Archivo Black",fam:"Archivo Black",w:400,track:"-.02em",scale:.92,note:"Wide, American, confident. Reads from across a parking lot. Trucks and yard signs."},
+  b:{name:"Condensed · Barlow Condensed",fam:"Barlow Condensed",w:800,track:".01em",scale:1.22,note:"Tall, western, trade. Fits tight spaces. The most Tucson of the set."},
+  c:{name:"Modern · Inter Tight",fam:"Inter Tight",w:800,track:"-.05em",scale:1,note:"Clean, tight, premium. Sits best next to the mark and carries the showroom too."},
+  d:{name:"Industrial · Oswald",fam:"Oswald",w:700,track:".02em",scale:1.12,note:"Narrow and upright. Sign-painter feel with a modern edge."},
+  e:{name:"Solid · Montserrat",fam:"Montserrat",w:900,track:"-.03em",scale:.95,note:"Round, friendly, strong. Good if the showroom should feel softer."}
+};
+const MOTTOS=[["From the roof down.","Covers roofing + interiors"],["Built for the valley.","Valle = valley · Tucson"],["Roof to room.","Short · showroom friendly"],["Done once. Done right.","Trust · trades"],["Covering Tucson, inside and out.","Local · two sides"],["Over your head. On our shoulders.","Roofing only"]];
+
+/* ---------- colour maths ---------- */
+function hex2rgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return [n>>16&255,n>>8&255,n&255]}
+function rgb2hex(r,g,b){return '#'+[r,g,b].map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0')).join('').toUpperCase()}
+function mix(a,b,t){const A=hex2rgb(a),B=hex2rgb(b);return rgb2hex(A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t)}
+function lum(h){const [r,g,b]=hex2rgb(h).map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*r+.7152*g+.0722*b}
+function isDark(h){return lum(h)<.3}
+function validHex(h){return /^#?[0-9a-fA-F]{6}$/.test(h)}
+function norm(h){h=h.trim();if(!h.startsWith('#'))h='#'+h;return h.toUpperCase()}
+
+/* ---------- apply ---------- */
+function apply(){
+  const r=document.documentElement.style;
+  const dark=isDark(S.bg);
+  const fg=dark?'#F3EDE2':'#15120F';
+  r.setProperty('--brand',S.brand);
+  r.setProperty('--bg',S.bg);
+  r.setProperty('--fg',fg);
+  r.setProperty('--accent',S.acc);
+  r.setProperty('--on-brand',isDark(S.brand)?'#F3EDE2':'#15120F');
+  r.setProperty('--brand-dark',mix(S.brand,'#000000',.28));
+  r.setProperty('--brand-deeper',mix(S.brand,'#120D08',.58));
+  r.setProperty('--brand-light',mix(S.brand,'#FFFFFF',.78));
+  r.setProperty('--line',dark?'rgba(255,255,255,.12)':'rgba(21,18,15,.1)');
+  r.setProperty('--panel',dark?'#1F1B16':'#FFFFFF');
+  r.setProperty('--panel-fg',dark?'#F3EDE2':'#15120F');
+  const f=FONTS[S.font];
+  r.setProperty('--wm-font','"'+f.fam+'"');r.setProperty('--wm-weight',f.w);r.setProperty('--wm-track',f.track);r.setProperty('--wm-scale',f.scale);
+  r.setProperty('--radius',S.corner==='round'?'26px':'4px');
+  document.querySelectorAll('.markUse use').forEach(u=>u.setAttribute('href','#vr-'+S.mark));
+  document.querySelectorAll('.nm').forEach(e=>e.textContent=S.name||'VALLE');
+  document.querySelectorAll('.sb').forEach(e=>e.textContent=S.sub||'Roofing');
+  document.querySelectorAll('.sb2').forEach(e=>e.textContent=S.sub2||'Interiors');
+  document.querySelectorAll('.motto-txt').forEach(e=>e.textContent=S.motto);
+  document.getElementById('brandHex').textContent=S.brand;document.getElementById('bgHex').textContent=S.bg;document.getElementById('accHex').textContent=S.acc;
+  ['brand','bg','acc'].forEach(k=>{document.getElementById(k+'Pick').value=S[k];document.getElementById(k+'Txt').value=S[k]});
+  document.querySelectorAll('#brandSw .sw').forEach(s=>s.classList.toggle('on',s.dataset.v.toUpperCase()===S.brand));
+  document.querySelectorAll('#bgSw .sw').forEach(s=>s.classList.toggle('on',s.dataset.v.toUpperCase()===S.bg));
+  document.querySelectorAll('#accSw .sw').forEach(s=>s.classList.toggle('on',s.dataset.v.toUpperCase()===S.acc));
+  document.querySelectorAll('#markSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.mark));
+  document.querySelectorAll('#cornerSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.corner));
+  document.querySelectorAll('#fontList button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.font));
+  document.querySelectorAll('#fontList button .sm').forEach(e=>e.textContent=S.name||'VALLE');
+  const sel=document.getElementById('mottoSel');const idx=MOTTOS.findIndex(m=>m[0]===S.motto);sel.value=idx>=0?idx:'custom';
+  if(idx<0)document.getElementById('mottoCustom').value=S.motto;
+  document.getElementById('inName').value=S.name;document.getElementById('inSub').value=S.sub;document.getElementById('inSub2').value=S.sub2;
+  renderPalette();renderWays();renderFontCards();renderMottos();renderSummary();
+  location.hash=encode();
+}
+
+function renderPalette(){
+  const p=[["Brand",S.brand],["Shade",mix(S.brand,'#000',.28)],["Deep",mix(S.brand,'#120D08',.58)],["Light",S.bg],["Soft surface",mix(S.brand,'#FFFFFF',.78)],["Accent",S.acc]];
+  document.getElementById('palette').innerHTML=p.map(([n,h])=>`<div class="swb" style="background:${h};color:${isDark(h)?'#F3EDE2':'#15120F'}"><div class="n">${n}</div><div class="h">${h}</div></div>`).join('');
+}
+function renderWays(){
+  const deep=mix(S.brand,'#120D08',.58),light=mix(S.brand,'#FFFFFF',.78),onB=isDark(S.brand)?'#F3EDE2':'#15120F';
+  const W=[["Brand on light",S.bg,S.brand,isDark(S.bg)?'#F3EDE2':'#15120F',"Primary · website, print"],["Contrast on brand",S.brand,onB,onB,"Signage, truck wrap"],["Brand on ink",'#15120F',S.brand,'#F3EDE2',"Night, social, apparel"],["Light on deep",deep,"#F3EDE2","#F3EDE2","Premium · showroom"],["Accent on soft",light,S.acc,'#15120F',"Promos, seasonal"],["Light on accent",S.acc,isDark(S.acc)?'#F3EDE2':'#15120F',isDark(S.acc)?'#F3EDE2':'#15120F',"Sub-brand option"]];
+  document.getElementById('ways').innerHTML=W.map((w,i)=>`<div class="tile" style="background:${w[1]};color:${w[2]};border:1px solid rgba(0,0,0,.05)"><div class="meta" style="color:${w[3]}">0${i+1} · ${w[0]}</div><div style="display:flex;align-items:center;gap:14px"><svg class="mark" width="74" height="71"><use href="#vr-${S.mark}"/></svg><div class="wm" style="font-size:calc(46px*var(--wm-scale));color:${w[3]}">${S.name}</div></div><div class="meta" style="color:${w[3]}">${w[4]}</div></div>`).join('');
+}
+function renderFontCards(){
+  document.getElementById('fontCards').innerHTML=Object.entries(FONTS).map(([k,f])=>`<div class="card fc" data-v="${k}" style="min-height:300px;cursor:pointer;${S.font===k?'outline:3px solid var(--brand);outline-offset:-3px':''}"><span class="num">${k.toUpperCase()}${S.font===k?' · chosen':''}</span><div style="font-family:'${f.fam}',sans-serif;font-weight:${f.w};letter-spacing:${f.track};font-size:calc(58px*${f.scale});line-height:.9;text-transform:uppercase">${S.name}<div style="font-family:'Inter Tight',sans-serif;font-weight:600;letter-spacing:.34em;text-transform:uppercase;font-size:11px;margin-top:10px;color:var(--brand)">${S.sub}</div></div><div><div class="label">${f.name}</div><p class="small">${f.note}</p></div></div>`).join('');
+  document.querySelectorAll('.fc').forEach(c=>c.onclick=()=>{S.font=c.dataset.v;apply()});
+}
+function renderMottos(){
+  document.getElementById('mottoList').innerHTML=MOTTOS.map(m=>`<div class="motto ${S.motto===m[0]?'on':''}" data-v="${m[0]}"><span>${m[0]}</span><span class="tag">${S.motto===m[0]?'✓ chosen':m[1]}</span></div>`).join('')+(MOTTOS.some(m=>m[0]===S.motto)?'':`<div class="motto on"><span>${S.motto}</span><span class="tag">✓ your own</span></div>`);
+  document.querySelectorAll('.motto[data-v]').forEach(m=>m.onclick=()=>{S.motto=m.dataset.v;document.getElementById('mottoCustom').value='';apply()});
+}
+function renderSummary(){
+  const f=FONTS[S.font];
+  const rows=[["Name",S.name],["Lines",S.sub+" / "+S.sub2],["Brand colour",S.brand],["Background",S.bg],["Accent",S.acc],["Mark",S.mark],["Font",f.fam+" "+f.w],["Motto",S.motto],["Corners",S.corner]];
+  document.getElementById('summary').innerHTML=rows.map(r=>`<div><span>${r[0]}</span><span>${r[1]}</span></div>`).join('');
+}
+
+/* ---------- url state ---------- */
+function encode(){return btoa(unescape(encodeURIComponent(JSON.stringify(S)))).replace(/=+$/,'')}
+function decode(h){try{const o=JSON.parse(decodeURIComponent(escape(atob(h))));return {...DEF,...o}}catch(e){return null}}
+
+/* ---------- build panel ---------- */
+function sw(id,list,key){document.getElementById(id).innerHTML=list.map(([n,h])=>`<div class="sw" title="${n}" data-v="${h}" style="background:${h}"></div>`).join('');document.querySelectorAll('#'+id+' .sw').forEach(s=>s.onclick=()=>{S[key]=s.dataset.v.toUpperCase();apply()})}
+sw('brandSw',BRANDS,'brand');sw('bgSw',BGS,'bg');sw('accSw',ACCS,'acc');
+['brand','bg','acc'].forEach(k=>{
+  document.getElementById(k+'Pick').oninput=e=>{S[k]=e.target.value.toUpperCase();apply()};
+  document.getElementById(k+'Txt').onchange=e=>{if(validHex(e.target.value)){S[k]=norm(e.target.value);apply()}};
+});
+document.querySelectorAll('#markSeg button').forEach(b=>b.onclick=()=>{S.mark=b.dataset.v;apply()});
+document.querySelectorAll('#cornerSeg button').forEach(b=>b.onclick=()=>{S.corner=b.dataset.v;apply()});
+document.getElementById('fontList').innerHTML=Object.entries(FONTS).map(([k,f])=>`<button data-v="${k}"><span class="sm" style="font-family:'${f.fam}',sans-serif;font-weight:${f.w};letter-spacing:${f.track};text-transform:uppercase">VALLE</span><span class="nm2 nm">${f.name.split(' · ')[1]}</span></button>`).join('').replace(/class="nm2 nm"/g,'class="nm2"');
+document.querySelectorAll('#fontList button').forEach(b=>b.onclick=()=>{S.font=b.dataset.v;apply()});
+const sel=document.getElementById('mottoSel');sel.innerHTML=MOTTOS.map((m,i)=>`<option value="${i}">${m[0]}</option>`).join('')+'<option value="custom">Custom…</option>';
+sel.onchange=e=>{if(e.target.value!=='custom'){S.motto=MOTTOS[e.target.value][0];document.getElementById('mottoCustom').value='';apply()}};
+document.getElementById('mottoCustom').oninput=e=>{if(e.target.value.trim()){S.motto=e.target.value.trim();apply()}};
+document.getElementById('inName').oninput=e=>{S.name=e.target.value.toUpperCase()||'VALLE';applyText()};
+document.getElementById('inSub').oninput=e=>{S.sub=e.target.value||'Roofing';applyText()};
+document.getElementById('inSub2').oninput=e=>{S.sub2=e.target.value||'Interiors';applyText()};
+function applyText(){document.querySelectorAll('.nm').forEach(e=>e.textContent=S.name);document.querySelectorAll('.sb').forEach(e=>e.textContent=S.sub);document.querySelectorAll('.sb2').forEach(e=>e.textContent=S.sub2);renderWays();renderFontCards();renderSummary();location.hash=encode()}
+
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
+function share(){const u=location.origin+location.pathname+'#'+encode();navigator.clipboard.writeText(u).then(()=>toast('Link copied. Send it to Matt.')).catch(()=>{prompt('Copy this link',u)})}
+document.getElementById('btnShare').onclick=share;document.getElementById('btnShare2').onclick=share;
+document.getElementById('btnText').onclick=()=>{const f=FONTS[S.font];const t=`${S.name} brand choices\nLines: ${S.sub} / ${S.sub2}\nBrand colour: ${S.brand}\nBackground: ${S.bg}\nAccent: ${S.acc}\nMark: ${S.mark}\nFont: ${f.fam} ${f.w}\nMotto: ${S.motto}\nCorners: ${S.corner}\nLink: ${location.origin+location.pathname+'#'+encode()}`;navigator.clipboard.writeText(t).then(()=>toast('Copied as text')).catch(()=>prompt('Copy',t))};
+document.getElementById('btnReset').onclick=()=>{S={...DEF};apply();toast('Back to the original')};
+document.getElementById('btnRandom').onclick=()=>{const pick=a=>a[Math.floor(Math.random()*a.length)];S.brand=pick(BRANDS)[1];S.bg=pick(BGS.slice(0,5))[1];S.acc=pick(ACCS)[1];S.font=pick(Object.keys(FONTS));S.motto=pick(MOTTOS)[0];S.mark=pick(['solid','solid','outline','mono']);apply();toast('Try this one')};
+document.getElementById('mobileToggle').onclick=()=>{const p=document.getElementById('panel');p.classList.toggle('open');document.getElementById('mobileToggle').textContent=p.classList.contains('open')?'Close':'Customise'};
+
+/* ---------- init ---------- */
+if(location.hash.length>1){const d=decode(location.hash.slice(1));if(d)S=d}
+apply();
+</script>
+</body>
+</html>

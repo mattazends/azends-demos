@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VALLE · Brand Deck v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Archivo+Black&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coyote:#80603A;
+  --coyote-deep:#5E4428;
+  --mesquite:#3A2A18;
+  --bone:#F3EDE2;
+  --sand:#E6DCC8;
+  --ink:#15120F;
+  --sunset:#C65D2E;
+  --saguaro:#5B6B4E;
+  --stone:#8E8A82;
+  --white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter Tight",system-ui,sans-serif;background:var(--bone);color:var(--ink);font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.45}
+b,strong{font-weight:700}
+section{min-height:100vh;padding:7vh 6vw;display:flex;flex-direction:column;justify-content:center;position:relative;border-bottom:1px solid rgba(21,18,15,.08)}
+.dark{background:var(--ink);color:var(--bone)}
+.coy{background:var(--coyote);color:var(--bone)}
+.sandbg{background:var(--sand)}
+.kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;opacity:.6;margin-bottom:18px}
+h1{font-size:clamp(44px,7vw,110px);font-weight:300;letter-spacing:-.04em;line-height:.95}
+h1 b{font-weight:800}
+h2{font-size:clamp(34px,4.5vw,64px);font-weight:300;letter-spacing:-.035em;line-height:1;margin-bottom:28px}
+h2 b{font-weight:800}
+p.lead{font-size:clamp(17px,1.4vw,22px);max-width:62ch;opacity:.85}
+.small{font-size:13px;opacity:.6}
+.grid{display:grid;gap:24px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g6{grid-template-columns:repeat(6,1fr)}
+@media(max-width:900px){.g2,.g3,.g4,.g6{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--white);border-radius:22px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:260px;position:relative;overflow:hidden}
+.dark .card{background:#1F1B16}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.55}
+.num{position:absolute;top:22px;right:26px;font-size:12px;font-weight:600;letter-spacing:.14em;opacity:.4}
+svg.mark{display:block}
+.fit{width:100%;height:auto}
+.topbar{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:16px 6vw;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;z-index:10;mix-blend-mode:difference;color:#fff}
+.hr{height:1px;background:currentColor;opacity:.12;margin:40px 0}
+
+/* wordmark fonts */
+.wm{line-height:.9;letter-spacing:-.01em}
+.wm-a{font-family:"Archivo Black",sans-serif;letter-spacing:-.02em}
+.wm-b{font-family:"Barlow Condensed",sans-serif;font-weight:800;letter-spacing:.01em}
+.wm-c{font-family:"Inter Tight",sans-serif;font-weight:800;letter-spacing:-.05em}
+.sub{font-family:"Inter Tight",sans-serif;font-weight:600;letter-spacing:.34em;text-transform:uppercase;font-size:.19em;margin-top:.5em}
+.sub.b{font-family:"Barlow Condensed",sans-serif;font-weight:700;letter-spacing:.3em}
+
+/* colour tiles */
+.tile{border-radius:22px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;padding:26px}
+.tile .meta{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.7}
+.sw{border-radius:18px;aspect-ratio:1/1.15;padding:18px;display:flex;flex-direction:column;justify-content:flex-end}
+.sw .n{font-weight:700;font-size:15px}
+.sw .h{font-size:12px;opacity:.75;letter-spacing:.06em}
+
+/* applications */
+.sign{background:var(--mesquite);border-radius:18px;padding:0 0 0 0;height:300px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.sign:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 38px)}
+.sign .fascia{background:var(--coyote);height:120px;width:88%;display:flex;align-items:center;justify-content:center;gap:28px;color:var(--bone);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.sign .fascia .wm{font-size:68px}
+.door{background:var(--bone);border-radius:18px;height:300px;position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+.door .panel{position:absolute;inset:26px 26px 26px 26px;border-radius:12px;background:var(--white);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.door .win{position:absolute;left:46px;right:46px;top:44px;height:70px;background:linear-gradient(180deg,#d9dde0,#b9c0c5);border-radius:8px 8px 4px 4px}
+.door .brand{position:absolute;left:0;right:0;top:150px;display:flex;flex-direction:column;align-items:center;color:var(--coyote)}
+.door .brand .wm{font-size:44px;color:var(--ink)}
+.card-bc{border-radius:12px;aspect-ratio:1.75/1;padding:22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 20px 40px rgba(0,0,0,.14)}
+.cap{background:#2A2622;border-radius:18px;height:300px;display:flex;align-items:center;justify-content:center}
+.patch{width:150px;height:150px;border-radius:50%;background:var(--coyote);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 7px var(--bone),0 0 0 9px var(--coyote),0 25px 50px rgba(0,0,0,.5)}
+
+.rule{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+ul.list{list-style:none;font-size:17px}
+ul.list li{padding:14px 0;border-bottom:1px solid rgba(0,0,0,.08);display:flex;gap:16px}
+.dark ul.list li{border-color:rgba(255,255,255,.1)}
+ul.list li:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--coyote);flex:none;margin-top:9px}
+.motto{font-size:clamp(30px,3.6vw,54px);font-weight:300;letter-spacing:-.03em;line-height:1.05;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:baseline;gap:30px}
+.motto b{font-weight:800}
+.motto .tag{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;opacity:.5;white-space:nowrap}
+.pick{display:inline-block;background:var(--coyote);color:var(--bone);font-size:11px;letter-spacing:.16em;padding:6px 10px;border-radius:999px;font-weight:700;margin-left:12px;vertical-align:middle}
+.frame{display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
+.frame .step{flex:1;text-align:center}
+.frame .step .label{margin-top:16px}
+.arrow{font-size:40px;opacity:.3;padding-bottom:40px}
+.notes{position:absolute;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--sunset)}
+.spec{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:rgba(0,0,0,.05);padding:18px 20px;border-radius:14px;line-height:1.7;white-space:pre-wrap}
+.dark .spec{background:rgba(255,255,255,.06)}
+footer{padding:40px 6vw;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.5;display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- Primary VR mark. One closed path, 16-unit stroke on a 100 grid. -->
+    <symbol id="vr" viewBox="0 0 104 100">
+      <path fill="currentColor" fill-rule="evenodd" d="M6 10H24L48 58V10H74A22 22 0 0 1 80.48 53.02L98 90H80L64 56.2V90H46ZM64 26H72A6 6 0 0 1 72 38H64Z"/>
+    </symbol>
+    <!-- Outline version -->
+    <symbol id="vr-outline" viewBox="0 0 104 100">
+      <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" d="M6 10H24L48 58V10H74A22 22 0 0 1 80.48 53.02L98 90H80L64 56.2V90H46ZM64 26H72A6 6 0 0 1 72 38H64Z"/>
+    </symbol>
+    <!-- Monoline version (Interiors) -->
+    <symbol id="vr-mono" viewBox="0 0 104 100">
+      <path fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" d="M15 10L56 90V18H74A14 14 0 0 1 74 46H56M70 46L89 90"/>
+    </symbol>
+    <!-- Plain V and plain R, for the morph page -->
+    <symbol id="v-only" viewBox="0 0 104 100">
+      <path fill="currentColor" d="M6 10H24L52 66L80 10H98L61 90H43Z"/>
+    </symbol>
+    <symbol id="r-only" viewBox="0 0 104 100">
+      <path fill="currentColor" fill-rule="evenodd" d="M30 10H56A22 22 0 0 1 62.48 53.02L80 90H62L46 56.2V90H30ZM46 26H54A6 6 0 0 1 54 38H46Z"/>
+    </symbol>
+    <!-- Arizona outline, simplified. Tom: retrace from a real state outline for the final. -->
+    <symbol id="az" viewBox="0 0 100 112">
+      <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M13 2H97V110H50L6 80L9 72L5 62L10 52L7 42L11 31L6 20L11 10Z"/>
+    </symbol>
+    <symbol id="az-fill" viewBox="0 0 100 112">
+      <path fill="currentColor" d="M13 2H97V110H50L6 80L9 72L5 62L10 52L7 42L11 31L6 20L11 10Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="topbar"><span>VALLE · Brand Deck v1</span><span>Azends · Nov 2026</span></div>
+
+<!-- 00 COVER -->
+<section class="dark">
+  <div class="kicker">Brand identity · Draft 01 · For Salvador</div>
+  <svg class="mark" width="200" height="192" style="color:var(--coyote);margin-bottom:40px"><use href="#vr"/></svg>
+  <h1><b>VALLE</b><br>Roofing &amp; Interiors<br><span style="opacity:.5">Tucson, Arizona</span></h1>
+  <p class="lead" style="margin-top:36px">One mark for the roofing company and the showroom. Logo concepts, colour ways, type directions, mottos and applications. Everything in here is a starting point for Tom to hand-finish.</p>
+</section>
+
+<!-- 01 THE IDEA -->
+<section>
+  <div class="kicker">01 · The idea</div>
+  <h2>The <b>V</b> becomes the <b>R</b>.<br>One stroke, shared.</h2>
+  <p class="lead">V for Valle. R for Roofing. The right arm of the V is the stem of the R, so the two letters are built from one shape. Valle also means valley, which is exactly where Tucson sits. The mark is a letter, a valley and a roofline at the same time.</p>
+  <div class="frame" style="margin-top:60px;color:var(--ink)">
+    <div class="step"><svg class="mark fit" style="max-width:220px;margin:auto;opacity:.25"><use href="#v-only"/></svg><div class="label">V · Valle</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><svg class="mark fit" style="max-width:220px;margin:auto;color:var(--coyote)"><use href="#vr"/></svg><div class="label" style="opacity:1;color:var(--coyote)">The mark</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><svg class="mark fit" style="max-width:220px;margin:auto;opacity:.25"><use href="#r-only"/></svg><div class="label">R · Roofing</div></div>
+  </div>
+</section>
+
+<!-- 02 PRIMARY MARK + CONSTRUCTION -->
+<section class="sandbg">
+  <div class="kicker">02 · Primary mark · Construction</div>
+  <div class="rule">
+    <div style="position:relative">
+      <svg viewBox="-4 -2 112 104" class="fit" style="max-width:560px;display:block">
+        <defs><pattern id="g" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 0H0V8" fill="none" stroke="rgba(0,0,0,.09)" stroke-width=".4"/></pattern></defs>
+        <rect x="-4" y="-2" width="112" height="104" fill="url(#g)"/>
+        <g color="var(--coyote)"><use href="#vr" width="104" height="100"/></g>
+        <!-- guides -->
+        <g stroke="var(--sunset)" stroke-width=".5" stroke-dasharray="1.5 1.5" fill="none">
+          <line x1="-4" y1="10" x2="108" y2="10"/>
+          <line x1="-4" y1="90" x2="108" y2="90"/>
+          <line x1="48" y1="-2" x2="48" y2="102"/>
+          <line x1="64" y1="-2" x2="64" y2="102"/>
+          <circle cx="74" cy="32" r="22"/>
+          <circle cx="74" cy="32" r=".9" fill="var(--sunset)"/>
+        </g>
+        <g font-family="Inter Tight" font-size="3.2" font-weight="600" fill="var(--sunset)">
+          <text x="49.5" y="7">16</text>
+          <text x="86" y="26">r22</text>
+          <text x="10" y="50">2 : 1</text>
+          <text x="99" y="88">1 : 2</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <ul class="list">
+        <li><div><b>100-unit grid.</b> Cap height 80 (y10 to y90). Everything sits on a 2-unit grid so it redraws cleanly at any size.</div></li>
+        <li><div><b>One stroke weight: 16 units.</b> Stem, arm, bowl and leg are all the same thickness. That is what makes it feel engineered rather than drawn.</div></li>
+        <li><div><b>V arm slope 2:1</b> (40 across, 80 down). The arm lands on the stem's foot so the V has a hard flat base, like a footing.</div></li>
+        <li><div><b>Bowl is a true half circle,</b> radius 22, centred at (74, 32). Counter radius 6.</div></li>
+        <li><div><b>Leg kicks out at 1:2</b> and shares the baseline with the V foot. The gap between stem and leg is the only open space at the bottom.</div></li>
+        <li><div><b>Flat tops, flat feet.</b> No rounding anywhere on the solid mark. Corners stay sharp.</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 MARK VARIATIONS -->
+<section>
+  <div class="kicker">03 · Mark system</div>
+  <h2>Six ways to wear <b>one mark.</b></h2>
+  <div class="grid g3" style="margin-top:20px">
+    <div class="card"><span class="num">A</span>
+      <svg class="mark" width="120" height="116" style="color:var(--coyote)"><use href="#vr"/></svg>
+      <div><div class="label">Solid</div><p class="small">Primary. Signage, trucks, hero of the site. Roofing side of the brand.</p></div>
+    </div>
+    <div class="card"><span class="num">B</span>
+      <svg class="mark" width="120" height="116" style="color:var(--ink)"><use href="#vr-outline"/></svg>
+      <div><div class="label">Outline</div><p class="small">Embroidery, etched glass, window vinyl, watermark.</p></div>
+    </div>
+    <div class="card"><span class="num">C</span>
+      <svg class="mark" width="120" height="116" style="color:var(--coyote)"><use href="#vr-mono"/></svg>
+      <div><div class="label">Monoline</div><p class="small">Same path drawn as one continuous line. This is the <b>Interiors</b> voice: lighter, finer, showroom.</p></div>
+    </div>
+    <div class="card" style="background:var(--coyote);color:var(--bone)"><span class="num" style="opacity:.6">D</span>
+      <div style="width:120px;height:120px;border-radius:26px;background:var(--bone);display:flex;align-items:center;justify-content:center;color:var(--coyote)"><svg class="mark" width="80" height="77"><use href="#vr"/></svg></div>
+      <div><div class="label" style="opacity:.75">Tile</div><p class="small" style="opacity:.8">App icon, social avatar, favicon, hard hat sticker.</p></div>
+    </div>
+    <div class="card" style="background:var(--ink);color:var(--bone)"><span class="num" style="opacity:.6">E</span>
+      <div style="position:relative;width:130px;height:146px;color:var(--coyote)">
+        <svg class="mark" width="130" height="146" style="position:absolute;inset:0"><use href="#az"/></svg>
+        <svg class="mark" width="64" height="62" style="position:absolute;left:38px;top:40px;color:var(--bone)"><use href="#vr"/></svg>
+      </div>
+      <div><div class="label" style="opacity:.75">AZ badge</div><p class="small" style="opacity:.8">State outline, thin line, mark inside. Local pride piece for caps, patches, yard signs.</p></div>
+    </div>
+    <div class="card"><span class="num">F</span>
+      <div style="display:flex;align-items:center;gap:14px;color:var(--ink)">
+        <svg class="mark" width="74" height="71" style="color:var(--coyote)"><use href="#vr"/></svg>
+        <div class="wm wm-c" style="font-size:54px">VALLE</div>
+      </div>
+      <div><div class="label">Horizontal lockup</div><p class="small">Mark + wordmark on one line. Letterheads, website nav, fascia sign.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 COLOUR -->
+<section class="dark">
+  <div class="kicker">04 · Colour</div>
+  <h2>Coyote leads. <b>Everything else is desert.</b></h2>
+  <p class="lead">Coyote is the brand colour. Bone and Ink do the heavy lifting around it. Sunset and Saguaro are accents only, never a background for the logo.</p>
+  <div class="grid g6" style="margin-top:40px">
+    <div class="sw" style="background:#80603A;color:#F3EDE2"><div class="n">Coyote</div><div class="h">#80603A · Primary</div></div>
+    <div class="sw" style="background:#5E4428;color:#F3EDE2"><div class="n">Deep Coyote</div><div class="h">#5E4428 · Shade</div></div>
+    <div class="sw" style="background:#3A2A18;color:#F3EDE2"><div class="n">Mesquite</div><div class="h">#3A2A18 · Dark</div></div>
+    <div class="sw" style="background:#F3EDE2;color:#15120F"><div class="n">Bone</div><div class="h">#F3EDE2 · Light</div></div>
+    <div class="sw" style="background:#C65D2E;color:#F3EDE2"><div class="n">Sunset</div><div class="h">#C65D2E · Accent</div></div>
+    <div class="sw" style="background:#5B6B4E;color:#F3EDE2"><div class="n">Saguaro</div><div class="h">#5B6B4E · Accent</div></div>
+  </div>
+  <p class="small" style="margin-top:22px">Ink #15120F for text and dark backgrounds. Sand #E6DCC8 as a soft secondary surface for the showroom.</p>
+</section>
+
+<!-- 05 COLOUR WAYS -->
+<section>
+  <div class="kicker">05 · Colour ways</div>
+  <h2>Same logo, <b>six ways.</b></h2>
+  <div class="grid g3" style="margin-top:20px">
+    <div class="tile" style="background:#F3EDE2;color:#80603A;border:1px solid rgba(0,0,0,.06)"><div class="meta">01 · Coyote on Bone</div><div style="display:flex;align-items:center;gap:16px"><svg class="mark" width="80" height="77"><use href="#vr"/></svg><div class="wm wm-c" style="font-size:52px;color:#15120F">VALLE</div></div><div class="meta">Primary · website, print</div></div>
+    <div class="tile" style="background:#80603A;color:#F3EDE2"><div class="meta">02 · Bone on Coyote</div><div style="display:flex;align-items:center;gap:16px"><svg class="mark" width="80" height="77"><use href="#vr"/></svg><div class="wm wm-c" style="font-size:52px">VALLE</div></div><div class="meta">Signage, truck wrap</div></div>
+    <div class="tile" style="background:#15120F;color:#80603A"><div class="meta" style="color:#F3EDE2">03 · Coyote on Ink</div><div style="display:flex;align-items:center;gap:16px"><svg class="mark" width="80" height="77"><use href="#vr"/></svg><div class="wm wm-c" style="font-size:52px;color:#F3EDE2">VALLE</div></div><div class="meta" style="color:#F3EDE2">Night, social, apparel</div></div>
+    <div class="tile" style="background:#3A2A18;color:#F3EDE2"><div class="meta">04 · Bone on Mesquite</div><div style="display:flex;align-items:center;gap:16px"><svg class="mark" width="80" height="77"><use href="#vr"/></svg><div class="wm wm-c" style="font-size:52px">VALLE</div></div><div class="meta">Premium · showroom</div></div>
+    <div class="tile" style="background:#E6DCC8;color:#C65D2E"><div class="meta" style="color:#15120F">05 · Sunset on Sand</div><div style="display:flex;align-items:center;gap:16px"><svg class="mark" width="80" height="77"><use href="#vr"/></svg><div class="wm wm-c" style="font-size:52px;color:#15120F">VALLE</div></div><div class="meta" style="color:#15120F">Promos, seasonal</div></div>
+    <div class="tile" style="background:#5B6B4E;color:#F3EDE2"><div class="meta">06 · Bone on Saguaro</div><div style="display:flex;align-items:center;gap:16px"><svg class="mark" width="80" height="77"><use href="#vr"/></svg><div class="wm wm-c" style="font-size:52px">VALLE</div></div><div class="meta">Interiors sub-brand option</div></div>
+  </div>
+  <p class="small" style="margin-top:22px">Rule: the mark is always one flat colour. No gradients, no shadows, no two-tone.</p>
+</section>
+
+<!-- 06 TYPE DIRECTIONS -->
+<section class="sandbg">
+  <div class="kicker">06 · Wordmark · Three type directions</div>
+  <h2>Pick a <b>voice.</b></h2>
+  <div class="grid g3" style="margin-top:20px">
+    <div class="card" style="min-height:360px"><span class="num">A</span>
+      <div class="wm wm-a" style="font-size:clamp(44px,5vw,72px);color:var(--ink)">VALLE<div class="sub" style="color:var(--coyote)">Roofing</div></div>
+      <div><div class="label">Heavy · Archivo Black</div><p class="small">Wide, American, confident. Reads from across a parking lot. Best match for roofing trucks and yard signs.</p></div>
+    </div>
+    <div class="card" style="min-height:360px"><span class="num">B</span>
+      <div class="wm wm-b" style="font-size:clamp(56px,6.4vw,92px);color:var(--ink)">VALLE<div class="sub b" style="color:var(--coyote)">Roofing</div></div>
+      <div><div class="label">Condensed · Barlow Condensed 800</div><p class="small">Tall, western, trade. Fits tight spaces and feels local to the southwest. Most "Tucson" of the three.</p></div>
+    </div>
+    <div class="card" style="min-height:360px;outline:3px solid var(--coyote);outline-offset:-3px"><span class="num">C</span>
+      <div class="wm wm-c" style="font-size:clamp(46px,5.4vw,78px);color:var(--ink)">VALLE<div class="sub" style="color:var(--coyote)">Roofing</div></div>
+      <div><div class="label">Modern · Inter Tight 800 <span class="pick">Recommended</span></div><p class="small">Clean, tight, premium. Sits best next to the geometric mark and carries the showroom without changing fonts. One typeface for everything.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LOCKUPS -->
+<section>
+  <div class="kicker">07 · Lockups</div>
+  <h2>Roofing and <b>Interiors</b>, one family.</h2>
+  <div class="grid g2" style="margin-top:20px">
+    <div class="card" style="min-height:420px;align-items:center;justify-content:center;text-align:center;gap:22px">
+      <svg class="mark" width="140" height="135" style="color:var(--coyote)"><use href="#vr"/></svg>
+      <div class="wm wm-c" style="font-size:64px;color:var(--ink)">VALLE<div class="sub" style="color:var(--coyote)">Roofing</div></div>
+      <div class="label">Stacked · Roofing</div>
+    </div>
+    <div class="card" style="min-height:420px;align-items:center;justify-content:center;text-align:center;gap:22px;background:var(--sand)">
+      <svg class="mark" width="140" height="135" style="color:var(--coyote)"><use href="#vr-mono"/></svg>
+      <div class="wm" style="font-size:64px;font-weight:300;letter-spacing:-.04em;color:var(--ink)">VALLE<div class="sub" style="color:var(--coyote);font-weight:500">Interiors</div></div>
+      <div class="label">Stacked · Interiors (monoline + light weight)</div>
+    </div>
+    <div class="card" style="min-height:220px;justify-content:center">
+      <div style="display:flex;align-items:center;gap:22px;color:var(--ink)">
+        <svg class="mark" width="90" height="87" style="color:var(--coyote)"><use href="#vr"/></svg>
+        <div class="wm wm-c" style="font-size:72px;line-height:.85">VALLE<div class="sub" style="color:var(--coyote);font-size:13px">Roofing · Tucson, AZ · ROC licensed</div></div>
+      </div>
+    </div>
+    <div class="card" style="min-height:220px;justify-content:center;background:var(--ink);color:var(--bone)">
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="position:relative;width:86px;height:96px;color:var(--coyote)">
+          <svg class="mark" width="86" height="96" style="position:absolute;inset:0"><use href="#az"/></svg>
+          <svg class="mark" width="42" height="40" style="position:absolute;left:26px;top:27px;color:var(--bone)"><use href="#vr"/></svg>
+        </div>
+        <div class="wm wm-c" style="font-size:72px;line-height:.85">VALLE<div class="sub" style="color:var(--coyote);font-size:13px">Roofing &amp; Interiors · Arizona</div></div>
+      </div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:22px">How it splits: Roofing = solid mark + bold wordmark. Interiors = monoline mark + light wordmark. Same shape, same colour, different weight. Customers see one company with two sides.</p>
+</section>
+
+<!-- 08 MOTTO -->
+<section class="coy">
+  <div class="kicker" style="opacity:.75">08 · Motto options</div>
+  <h2>Six lines. <b>Pick one.</b></h2>
+  <div class="motto"><span><b>From the roof down.</b></span><span class="tag">Recommended · covers roofing + interiors</span></div>
+  <div class="motto"><span>Built for the <b>valley.</b></span><span class="tag">Valle = valley · Tucson</span></div>
+  <div class="motto"><span>Roof to <b>room.</b></span><span class="tag">Short · showroom friendly</span></div>
+  <div class="motto"><span>Done once. <b>Done right.</b></span><span class="tag">Trust · trades</span></div>
+  <div class="motto"><span>Covering Tucson, <b>inside and out.</b></span><span class="tag">Local · two sides</span></div>
+  <div class="motto" style="border-bottom:none"><span>Over your head. <b>On our shoulders.</b></span><span class="tag">Roofing only</span></div>
+  <p class="small" style="margin-top:30px;opacity:.8">Use the motto under the stacked lockup, on the back of shirts, and as the first line on the website hero. Never inside the logo itself.</p>
+</section>
+
+<!-- 09 APPLICATIONS -->
+<section>
+  <div class="kicker">09 · In the wild</div>
+  <h2>Showroom front, truck, cap, <b>card.</b></h2>
+  <div class="grid g2" style="margin-top:20px">
+    <div class="sign"><div class="fascia"><svg class="mark" width="72" height="69"><use href="#vr"/></svg><div class="wm wm-c">VALLE</div></div></div>
+    <div class="door"><div class="panel"></div><div class="win"></div><div class="brand"><svg class="mark" width="56" height="54"><use href="#vr"/></svg><div class="wm wm-c">VALLE</div><div style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;margin-top:6px">Roofing · ROC licensed · Tucson</div></div></div>
+    <div class="cap"><div class="patch"><svg class="mark" width="84" height="81" style="color:var(--bone)"><use href="#vr"/></svg></div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:var(--sand);border-radius:18px;height:300px;padding:30px;gap:20px">
+      <div class="card-bc" style="background:var(--ink);color:var(--bone);width:46%">
+        <svg class="mark" width="40" height="38" style="color:var(--coyote)"><use href="#vr"/></svg>
+        <div><div class="wm wm-c" style="font-size:26px">VALLE</div><div style="font-size:9px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;opacity:.7">From the roof down.</div></div>
+      </div>
+      <div class="card-bc" style="background:var(--bone);color:var(--ink);width:46%">
+        <div style="font-size:11px;font-weight:700">Salvador<br><span style="font-weight:300;opacity:.7">Owner</span></div>
+        <div style="font-size:9px;line-height:1.7;opacity:.8">(520) 000 0000<br>hello@valleroofing.com<br>Tucson, AZ · ROC #000000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 RULES -->
+<section class="dark">
+  <div class="kicker">10 · Rules</div>
+  <div class="rule">
+    <div>
+      <h2>Keep it <b>clean.</b></h2>
+      <ul class="list">
+        <li><div><b>Clear space</b> = one stem width (16 units) on every side. Nothing enters that box.</div></li>
+        <li><div><b>Minimum size:</b> mark 24px / 8mm. Lockup 120px / 30mm. Below that, use the mark alone.</div></li>
+        <li><div><b>One colour only.</b> Coyote, Bone, Ink or Mesquite. Never two colours inside the mark.</div></li>
+        <li><div><b>Don't</b> stretch, rotate, outline the solid version, add shadows, add gradients, or put it on a photo without a solid panel behind it.</div></li>
+        <li><div><b>Don't</b> set VALLE in any other typeface. One font family across roofing and interiors.</div></li>
+        <li><div><b>Don't</b> use the AZ badge as the primary logo. It is a supporting piece.</div></li>
+      </ul>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center">
+      <div style="position:relative;width:360px;height:346px">
+        <div style="position:absolute;inset:0;border:1px dashed rgba(243,237,226,.35);border-radius:4px"></div>
+        <div style="position:absolute;inset:16%;border:1px dashed rgba(198,93,46,.8)"></div>
+        <svg class="mark" style="position:absolute;inset:16%;width:68%;height:68%;color:var(--coyote)"><use href="#vr"/></svg>
+        <div class="notes" style="top:4px;left:50%;transform:translateX(-50%)">clear space = 1 stem</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 FOR TOM -->
+<section class="sandbg">
+  <div class="kicker">11 · Hand-finish spec · For Tom</div>
+  <h2>What to <b>draw.</b></h2>
+  <div class="grid g2">
+    <div>
+      <ul class="list">
+        <li><div><b>Redraw the mark by hand</b> on the 100 grid using the construction on page 02. Keep stroke 16, bowl r22, arm 2:1, leg 1:2. Then export SVG, PDF, PNG (transparent) in Coyote, Bone, Ink and Mesquite.</div></li>
+        <li><div><b>Outline + monoline versions</b> from the same centreline. Monoline stroke 5 units, round caps and joins.</div></li>
+        <li><div><b>Arizona outline:</b> trace a real state outline, 2.2-unit stroke, round joins. Mine on page 03 is a placeholder shape.</div></li>
+        <li><div><b>Wordmark:</b> set VALLE in the chosen font, then convert to outlines and tighten the LL and LE pairs by hand so the gaps match the V-A gap.</div></li>
+        <li><div><b>Lockups:</b> stacked (mark above wordmark, gap = 1 stem), horizontal (mark left, gap = 1 stem, mark height = cap height of VALLE), badge.</div></li>
+        <li><div><b>Explore 2 or 3 of your own takes</b> on the V to R idea too. Bring them to the review next to these.</div></li>
+      </ul>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:12px">Primary mark · SVG path (100 grid, evenodd)</div>
+      <div class="spec">M6 10H24L48 58V10H74
+A22 22 0 0 1 80.48 53.02
+L98 90H80L64 56.2V90H46Z
+M64 26H72A6 6 0 0 1 72 38H64Z
+
+Monoline centreline
+M15 10L56 90V18H74
+A14 14 0 0 1 74 46H56
+M70 46L89 90
+
+Colours
+Coyote #80603A · Deep #5E4428 · Mesquite #3A2A18
+Bone #F3EDE2 · Sand #E6DCC8 · Ink #15120F
+Sunset #C65D2E · Saguaro #5B6B4E
+
+Fonts
+A Archivo Black · B Barlow Condensed 800 · C Inter Tight 800</div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 NEXT -->
+<section>
+  <div class="kicker">12 · Next</div>
+  <h2>What I need from <b>you.</b></h2>
+  <ul class="list" style="max-width:720px">
+    <li><div>Pick a type direction: A, B or C.</div></li>
+    <li><div>Pick a motto, or tell me the feeling you want and I'll write another round.</div></li>
+    <li><div>Confirm the colour: Coyote as shown, or warmer / darker.</div></li>
+    <li><div>Confirm the legal line for the lockup: ROC number and the exact trading names for roofing and interiors.</div></li>
+    <li><div>Then Tom hand-finishes the final files and I carry the brand straight into the roofing site and the showroom site.</div></li>
+  </ul>
+</section>
+
+<footer><span>VALLE · Brand Deck v1 · Draft for review</span><span>Prepared by Azends</span></footer>
+</body>
+</html>
