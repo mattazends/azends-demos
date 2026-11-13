@@ -1,0 +1,1 @@
+import{V as e}from"./Shell-DlAd4MCJ.js";import{n as t}from"./index-CrVCS5xJ.js";var n=e(),r=()=>(0,n.jsx)(t,{slug:`compliance`});export{r as component};
