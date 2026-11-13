@@ -516,7 +516,7 @@ footer .mot{margin-top:18px;color:var(--mute);max-width:34ch}
       <div class="sh"><small>Step 04</small><h2>We clean up <b>and walk it.</b></h2></div>
     </div>
     <div class="smedia">
-      <div class="fr"><img class="on" src="img/tilebefore.webp" alt="Tile roof opened up to find the damage" loading="lazy"><img src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3ENLM0AKeKmvf4tDqddMsnHGEvu%2Fhf_20261113_003220_a7284fd5-c9d2-49eb-85e9-2cd017c9e303.png&amp;w=1200&amp;output=webp&amp;q=78" alt="Tile roof detail" loading="lazy"><img src="img/crewroof.webp" alt="Crew re-laying a tile roof" loading="lazy"><img src="img/tileafter.webp" alt="Finished tile roof repair" loading="lazy"></div>
+      <div class="fr"><img class="on" src="/valle-roofing/img/tilebefore.webp" alt="Tile roof opened up to find the damage" loading="lazy"><img src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3ENLM0AKeKmvf4tDqddMsnHGEvu%2Fhf_20261113_003220_a7284fd5-c9d2-49eb-85e9-2cd017c9e303.png&amp;w=1200&amp;output=webp&amp;q=78" alt="Tile roof detail" loading="lazy"><img src="/valle-roofing/img/crewroof.webp" alt="Crew re-laying a tile roof" loading="lazy"><img src="/valle-roofing/img/tileafter.webp" alt="Finished tile roof repair" loading="lazy"></div>
       <div class="pills on"><span>On the roof, not the driveway</span><span>Leak traced to its source</span><span>Photos taken</span></div>
       <div class="pills"><span>What's wrong</span><span>What we'd do</span><span>What it costs</span></div>
       <div class="pills"><span>Our own crew</span><span>Rot and framing fixed too</span><span>Start to finish</span></div>
@@ -555,15 +555,15 @@ footer .mot{margin-top:18px;color:var(--mute);max-width:34ch}
   <h2 class="rv">Real roofs. <b>Real Tucson jobs.</b></h2>
   <div class="wgrid">
     <div class="ba rv" id="ba">
-      <img src="img/tileafter.webp" alt="Finished tile roof repair in Tucson" loading="lazy">
-      <img class="bf" src="img/tilebefore.webp" alt="Tile roof opened up showing damage underneath" loading="lazy">
+      <img src="/valle-roofing/img/tileafter.webp" alt="Finished tile roof repair in Tucson" loading="lazy">
+      <img class="bf" src="/valle-roofing/img/tilebefore.webp" alt="Tile roof opened up showing damage underneath" loading="lazy">
       <span class="lab l">Before</span><span class="lab r">After</span>
       <div class="bar"></div><div class="knob"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></div>
       <input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
     </div>
     <div class="wside">
-      <figure class="ph rv d1"><img src="img/crewroof.webp" alt="Tile re-lay in progress with new underlayment down" loading="lazy"><figcaption>Tile re-lay in progress. New underlayment down, tiles ready to go back.</figcaption></figure>
-      <figure class="ph rv d2"><img src="img/shinglebefore.webp" alt="Failed shingles and rotted decking before tear-off" loading="lazy"><figcaption>Failed shingles and rotted decking, before the tear-off.</figcaption></figure>
+      <figure class="ph rv d1"><img src="/valle-roofing/img/crewroof.webp" alt="Tile re-lay in progress with new underlayment down" loading="lazy"><figcaption>Tile re-lay in progress. New underlayment down, tiles ready to go back.</figcaption></figure>
+      <figure class="ph rv d2"><img src="/valle-roofing/img/shinglebefore.webp" alt="Failed shingles and rotted decking before tear-off" loading="lazy"><figcaption>Failed shingles and rotted decking, before the tear-off.</figcaption></figure>
     </div>
   </div>
   <p class="wnote rv">These are real jobs by our family's crew, working as AZ Atlas Builder Group. Drag the handle to compare.</p>
@@ -641,9 +641,11 @@ hv.addEventListener('canplay',()=>{vready=true;hv.classList.add('on');hv.play().
 hv.addEventListener('error',()=>{vready=true},true);
 let fading=false;hv.addEventListener('timeupdate',()=>{if(!fading&&hv.duration&&hv.currentTime>hv.duration-.9){fading=true;hv.classList.remove('on');setTimeout(()=>{hv.currentTime=0;hv.play().catch(()=>{});hv.classList.add('on');fading=false},1250)}});
 const st=performance.now(),ldn=$('#ldn'),ldbar=$('#ldbar');
+function finish(){if(done)return;done=true;ldn.textContent=100;ldbar.style.transform='scaleX(1)';setTimeout(()=>{document.body.classList.add('ready');document.body.classList.remove('lock');setTimeout(()=>{count($('#hcn'),mTarget,1500);$('#hcb').style.width=Math.round(clamp(mPct)*100)+'%'},900);setTimeout(()=>{const l=$('#ld');l&&l.remove()},1400)},180)}
+setTimeout(finish,4200);
 (function tick(n){const el=n-st;let q=clamp(el/1700);const cap=(vready||el>3200)?1:.86;q=Math.min(q,cap);const e=1-Math.pow(1-q,2.2);
   ldn.textContent=Math.round(e*100);ldbar.style.transform='scaleX('+e+')';
-  if(q>=1&&!done){done=true;setTimeout(()=>{document.body.classList.add('ready');document.body.classList.remove('lock');setTimeout(()=>{count($('#hcn'),mTarget,1500);$('#hcb').style.width=Math.round(clamp(mPct)*100)+'%'},900);setTimeout(()=>$('#ld').remove(),1400)},180);return}
+  if(q>=1){finish();return}
   requestAnimationFrame(tick)})(st);
 
 /* nav + menu */
