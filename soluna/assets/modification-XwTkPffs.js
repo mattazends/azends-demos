@@ -1,0 +1,1 @@
+import{W as e}from"./Shell-COaxAsfP.js";import{n as t}from"./index-BT2TjO9L.js";var n=e(),r=()=>(0,n.jsx)(t,{slug:`modification`});export{r as component};
