@@ -659,7 +659,7 @@ stage.addEventListener('pointermove',e=>{if(!drag)return;rzT-=(e.clientX-lx)*.5;
 let vis=true;new IntersectionObserver(es=>vis=es[0].isIntersecting).observe(stage);
 const base=()=>mode==='flat'?52:mode==='line'?22:mode==='repair'?16:34;
 (function spin(t){if(vis){if(!drag&&t>idle&&!RM)rzT+=.05*Math.sin(t/2600)+(base()-rzT)*.004;rz+=(rzT-rz)*.08;world.style.setProperty('--rz',rz.toFixed(2)+'deg')}requestAnimationFrame(spin)})(0);
-const TAG={repair:'Found it. That's the bit we fix.',new:'Old roof off, new roof on',flat:'Flat roof, sealed properly',line:'Fascias, soffits and gutters'};
+const TAG={repair:"Found it. That's the bit we fix.",new:'Old roof off, new roof on',flat:'Flat roof, sealed properly',line:'Fascias, soffits and gutters'};
 function cls(){world.className='world '+mat+' '+({repair:'repair',flat:'fl',line:'line'}[mode]||'')}
 function swapRoof(){grow(rf,1,90);rf.classList.add('off');setTimeout(()=>{cls();rf.classList.remove('off');grow(rf,1,0)},700)}
 function setMode(m){mode=m;if(m==='new'){mat=mat==='slate'?'':'slate';swapRoof()}else cls();rzT=base();idle=performance.now()+1800;$('#tag3').textContent=TAG[m]||'Your roof';
