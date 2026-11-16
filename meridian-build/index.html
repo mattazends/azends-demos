@@ -76,6 +76,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .eyebrow:before{content:"";width:22px;height:1px;background:currentColor;opacity:.7}
 .h1{font-size:clamp(38px,11.4vw,52px);line-height:1.02;letter-spacing:-.035em;margin:16px 0 16px;font-weight:200}
 .h1 b{font-weight:700}
+.h1>span,.h1>b{display:block}
 .hero-p{font-size:15px;line-height:1.6;color:var(--mute);max-width:34ch;font-weight:300}
 .cta-row{display:flex;gap:10px;margin-top:24px}
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 22px;border-radius:999px;
@@ -146,7 +147,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .st .on{clip-path:inset(0 100% 0 0);transition:clip-path .7s var(--ease);transition-delay:calc(var(--i)*120ms + 300ms)}
 .in .st .on{clip-path:inset(0 0 0 0)}
 .rv-meta p{font-size:12px;color:var(--mute)}
-.rv-meta .gl{display:flex;align-items:center;gap:6px;justify-content:flex-end;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.rv-meta .glab{display:flex;align-items:center;gap:6px;justify-content:flex-end;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
 .rv-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 22px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .rv-track::-webkit-scrollbar{display:none}
 .rv{flex:0 0 84%;scroll-snap-align:center;border-radius:var(--r);padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
@@ -175,9 +176,9 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
   -webkit-mask-image:radial-gradient(80% 50% at 50% 18%,#000,transparent);mask-image:radial-gradient(80% 50% at 50% 18%,#000,transparent)}
 
 /* 3D house */
-.stage{height:210px;position:relative;perspective:900px;perspective-origin:50% 40%;touch-action:pan-y;cursor:grab;margin-top:6px}
+.stage{height:224px;position:relative;perspective:900px;perspective-origin:50% 40%;touch-action:pan-y;cursor:grab;margin-top:6px}
 .stage-hint{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
-.world{position:absolute;left:50%;top:62%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-24deg) rotateY(-32deg)}
+.world{position:absolute;left:50%;top:66%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-24deg) rotateY(-32deg)}
 .f{position:absolute;left:0;top:0;transform-style:preserve-3d;backface-visibility:visible}
 .ground{width:300px;height:300px;margin:-150px 0 0 -150px;transform:rotateX(90deg);border-radius:50%;
   background:radial-gradient(circle,rgba(210,176,124,.16),transparent 62%),repeating-linear-gradient(0deg,rgba(242,238,231,.07) 0 1px,transparent 1px 20px),repeating-linear-gradient(90deg,rgba(242,238,231,.07) 0 1px,transparent 1px 20px);
@@ -444,7 +445,6 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
         <span><b>4.9</b> from 212 Google reviews</span>
       </div>
     </div>
-    <div class="scroll-cue fade" style="--d:2400ms"><i></i></div>
   </div>
 </header>
 
@@ -471,7 +471,7 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
         <div class="rv-score"><span data-count="4.9" data-dec="1">0</span></div>
       </div>
       <div class="rv-meta">
-        <div class="gl"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.5z"/></svg>Google</div>
+        <div class="glab"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.5z"/></svg>Google</div>
         <div class="rv-stars" id="bigStars"></div>
         <p>Based on 212 reviews</p>
       </div>
@@ -742,20 +742,20 @@ rvUpdate();
 /* --- budget brick icons --- */
 [[2,'b1'],[4,'b2'],[7,'b3'],[10,'b4']].forEach(([n,id])=>{
   let s='<path class="ln" d="M14 58h92"/>';const per=4;
-  for(let i=0;i<n;i++){const row=Math.floor(i/per),col=i%per,off=row%2?9:0;
-    s+=`<rect class="a-brick" style="--i:${i}" x="${24+off+col*18}" y="${48-row*10}" width="16" height="8" rx="1.5" fill="${i===n-1?'#d2b07c':'rgba(242,238,231,.18)'}" stroke="rgba(242,238,231,.55)" stroke-width="1"/>`}
+  for(let i=0;i<n;i++){const row=Math.floor(i/per),col=i%per,off=row%2?12:0;
+    s+=`<rect class="a-brick" style="--i:${i}" x="${14+off+col*24}" y="${45-row*13}" width="22" height="11" rx="2" fill="${i===n-1?'#d2b07c':'rgba(242,238,231,.18)'}" stroke="rgba(242,238,231,.55)" stroke-width="1"/>`}
   $('#'+id).innerHTML=s;
 });
 
 /* --- projects --- */
 const PJ=[
- {t:['The','Glasshouse'],loc:'New build · Radlett, Herts',tag:'14 months',img:[7031407,323780,1571460],spec:[['Duration','14 months'],['Investment','£1.2m'],['Size','5 bed · 410 m²'],['Scope','Design, planning, build']],
+ {g:[323780,1571460,1571459],t:['The','Glasshouse'],loc:'New build · Radlett, Herts',tag:'14 months',img:[7031407,323780,1571460],spec:[['Duration','14 months'],['Investment','£1.2m'],['Size','5 bed · 410 m²'],['Scope','Design, planning, build']],
   story:'A tired 1960s bungalow replaced with a light-filled contemporary home. Floor-to-ceiling glazing frames the garden, with a heated pool, smart lighting and underfloor heating throughout.',q:['"They turned a sketch on a napkin into the house we always pictured."','Mark & Helen B.'],type:'New build'},
- {t:['Highgate','Kitchen Extension'],loc:'Rear extension · Highgate N6',tag:'16 weeks',img:[1080721,3214064,2635038],spec:[['Duration','16 weeks'],['Investment','£145k'],['Added','38 m²'],['Scope','Extension + kitchen']],
+ {g:[3214064,2635038,3935350],t:['Highgate','Kitchen Extension'],loc:'Rear extension · Highgate N6',tag:'16 weeks',img:[1080721,3214064,2635038],spec:[['Duration','16 weeks'],['Investment','£145k'],['Added','38 m²'],['Scope','Extension + kitchen']],
   story:'A dark galley kitchen opened into a 38 m² rear extension with a full-width roof light, quartz island and crittall-style doors onto the garden.',q:['"Exactly as quoted, finished a week early. The roof light changed everything."','Sarah W.'],type:'Extension'},
- {t:['Belsize Park','Townhouse'],loc:'Full renovation · NW3',tag:'9 months',img:[2121121,6585757,5998138],spec:[['Duration','9 months'],['Investment','£420k'],['Floors','4 storeys'],['Scope','Strip back + rebuild']],
+ {g:[6585757,5998138,1918291],t:['Belsize Park','Townhouse'],loc:'Full renovation · NW3',tag:'9 months',img:[2121121,6585757,5998138],spec:[['Duration','9 months'],['Investment','£420k'],['Floors','4 storeys'],['Scope','Strip back + rebuild']],
   story:'A Victorian townhouse stripped back to brick. New structure, new services, a feature staircase and a calm, pared-back finish on every floor.',q:['"Calm, organised and lovely to have in our home for nine months."','Priya D.'],type:'Full renovation'},
- {t:['Muswell Hill','Loft Suite'],loc:'Loft conversion · N10',tag:'10 weeks',img:[6782567,1457842,6492403],spec:[['Duration','10 weeks'],['Investment','£78k'],['Added','1 bed + en suite'],['Scope','Dormer loft']],
+ {g:[1457842,6492403,7546293],t:['Muswell Hill','Loft Suite'],loc:'Loft conversion · N10',tag:'10 weeks',img:[6782567,1457842,6492403],spec:[['Duration','10 weeks'],['Investment','£78k'],['Added','1 bed + en suite'],['Scope','Dormer loft']],
   story:'A full-width rear dormer creating a principal suite with en suite and built-in joinery, finished without the family ever moving out.',q:['"Our loft is now the best room in the house."','James O.'],type:'Loft conversion'}
 ];
 $('#projects').innerHTML=PJ.map((p,i)=>`<article class="proj" data-r style="--d:${i*60}ms">
@@ -764,7 +764,7 @@ $('#projects').innerHTML=PJ.map((p,i)=>`<article class="proj" data-r style="--d:
   <span class="pmeta"><span class="tx"><h3><span class="thin">${p.t[0]}</span><br><b>${p.t[1]}</b></h3><p>${p.loc}</p></span>
   <span class="plus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></span></button>
  <div class="pb"><div><div class="pin">
-  <div class="gal">${p.img.map(id=>`<img src="${IMG(id,700)}" alt="" loading="lazy">`).join('')}</div>
+  <div class="gal">${p.g.map(id=>`<img src="${IMG(id,700)}" alt="" loading="lazy">`).join('')}</div>
   <div class="specs">${p.spec.map(([a,b])=>`<div><small>${a}</small><b>${b}</b></div>`).join('')}</div>
   <p class="pstory">${p.story}</p>
   <div class="pq">${p.q[0]}<span>${small(5)} ${p.q[1]} · Google review</span></div>
@@ -788,7 +788,7 @@ $$('[data-r],[data-split],.rv-top').forEach(el=>{if(!el.closest('.hero'))io.obse
 function countUp(root){
   const els=root.matches('[data-count]')?[root]:$$('[data-count]',root);
   els.forEach(el=>{if(el._done)return;el._done=1;const to=+el.dataset.count,dec=+(el.dataset.dec||0),t0=performance.now(),D=1600;
-    (function f(t){const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,4);el.textContent=(to*e).toFixed(dec);if(k<1)requestAnimationFrame(f)})(t0)});
+    (function f(t){const k=Math.max(0,Math.min(1,(t-t0)/D)),e=1-Math.pow(1-k,4);el.textContent=(to*e).toFixed(dec);if(k<1)requestAnimationFrame(f)})(t0)});
 }
 
 /* --- scroll engine --- */
