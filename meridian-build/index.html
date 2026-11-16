@@ -12,9 +12,9 @@
 <link rel="preload" as="image" href="https://images.pexels.com/photos/7031407/pexels-photo-7031407.jpeg?auto=compress&cs=tinysrgb&w=900">
 <style>
 :root{
-  --bg:#0a0a09;--bg2:#100f0d;--ink:#f2eee7;--mute:rgba(242,238,231,.58);--dim:rgba(242,238,231,.34);
+  --bg:#0a0a0a;--bg2:#101010;--ink:#f4f4f2;--mute:rgba(242,238,231,.58);--dim:rgba(242,238,231,.34);
   --line:rgba(242,238,231,.09);--line2:rgba(242,238,231,.16);
-  --acc:#d2b07c;--acc2:#f0d7ae;--glass:rgba(255,255,255,.045);
+  --acc:#a9bccb;--acc2:#dfe7ee;--glass:rgba(255,255,255,.045);
   --ease:cubic-bezier(.22,1,.36,1);--r:24px;
   --sab:env(safe-area-inset-bottom,0px);
 }
@@ -37,22 +37,19 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 
 /* progress */
 .prog{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;height:2px;z-index:80;pointer-events:none}
-.prog i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));transform-origin:0 50%;transform:scaleX(0)}
+.prog i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#cfd9e2,#ffffff);transform-origin:0 50%;transform:scaleX(0)}
 
 /* ============ HERO ============ */
 .hero{height:100svh;min-height:620px;padding:10px 10px 0;position:relative}
-.hero-frame{position:relative;height:100%;border-radius:32px;overflow:hidden;background:#000;will-change:transform;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%),linear-gradient(180deg,transparent 0,#000 5%,#000 92%,transparent 100%);
-  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%),linear-gradient(180deg,transparent 0,#000 5%,#000 92%,transparent 100%);mask-composite:intersect}
+.hero-frame{position:relative;height:100%;border-radius:32px;overflow:hidden;background:#000;will-change:transform;isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(white,black)}
 .hero-media{position:absolute;inset:-4% -4%;will-change:transform}
 .hero-media video,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;
-  filter:brightness(.52) contrast(1.12) saturate(.72) sepia(.12);transform:scale(1.14);animation:kb 14s var(--ease) forwards}
+  filter:brightness(.5) contrast(1.12) saturate(.55);transform:scale(1.14);animation:kb 14s var(--ease) forwards}
 @keyframes kb{to{transform:scale(1)}}
 .hero-shade{position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(120% 80% at 50% 35%,transparent 30%,rgba(0,0,0,.55) 100%),
   linear-gradient(180deg,rgba(10,10,9,.55) 0%,rgba(10,10,9,0) 22%,rgba(10,10,9,0) 40%,rgba(10,10,9,.82) 78%,#0a0a09 100%)}
-.hero-glow{position:absolute;width:420px;height:420px;left:-140px;bottom:-120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(210,176,124,.22),transparent 65%);pointer-events:none;filter:blur(10px)}
+.hero-glow{display:none}
 /* cinematic letterbox */
 .lb{position:absolute;left:0;right:0;height:50%;background:#050505;z-index:6;transition:transform 1.6s var(--ease) .15s}
 .lb.t{top:0;transform-origin:top}.lb.b{bottom:0;transform-origin:bottom}
@@ -82,8 +79,8 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 22px;border-radius:999px;
   font-weight:600;font-size:14.5px;letter-spacing:-.005em;transition:transform .35s var(--ease),box-shadow .35s;overflow:hidden;white-space:nowrap}
 .btn:active{transform:scale(.96)}
-.btn-p{background:linear-gradient(135deg,#e9cf9f,#c9a46c);color:#17130c;box-shadow:0 10px 34px -8px rgba(210,176,124,.55),inset 0 1px 0 rgba(255,255,255,.5);flex:1}
-.btn-p:after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 4.5s 2.5s infinite}
+.btn-p{background:#f5f5f3;color:#0b0b0b;box-shadow:0 10px 34px -10px rgba(255,255,255,.28),inset 0 1px 0 #fff;flex:1}
+.btn-p:after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);transform:skewX(-20deg);animation:shine 4.5s 2.5s infinite}
 @keyframes shine{0%{left:-60%}22%,100%{left:130%}}
 .btn-g{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .btn svg{flex:none}
@@ -116,7 +113,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 @keyframes mq{to{transform:translateX(-50%)}}
 .badge{display:flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 8px;border-radius:999px;
   background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line);white-space:nowrap;font-size:13px;font-weight:500}
-.badge .bi{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(210,176,124,.12);color:var(--acc)}
+.badge .bi{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(169,188,203,.12);color:var(--acc)}
 .badge small{color:var(--dim);font-weight:400;margin-left:2px}
 
 /* ============ STATS ============ */
@@ -138,7 +135,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 
 /* ============ REVIEWS ============ */
 .rv-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:28px;padding:22px;border-radius:var(--r);
-  background:radial-gradient(120% 140% at 0% 0%,rgba(210,176,124,.14),transparent 55%),var(--glass);border:1px solid var(--line)}
+  background:radial-gradient(120% 140% at 0% 0%,rgba(169,188,203,.14),transparent 55%),var(--glass);border:1px solid var(--line)}
 .rv-score{font-size:64px;font-weight:200;letter-spacing:-.05em;line-height:.9}
 .rv-meta{text-align:right}
 .rv-stars{display:flex;gap:3px;justify-content:flex-end;margin-bottom:8px}
@@ -169,10 +166,10 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 /* ============ QUOTE FORM ============ */
 .quote{padding-top:96px}
 .qbox{margin:28px 12px 0;border-radius:30px;position:relative;overflow:hidden;
-  background:radial-gradient(90% 60% at 50% 0%,rgba(210,176,124,.16),transparent 70%),linear-gradient(180deg,#14130f,#0d0c0b);
+  background:radial-gradient(90% 60% at 50% 0%,rgba(169,188,203,.16),transparent 70%),linear-gradient(180deg,#141414,#0c0c0c);
   border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
 .qbox:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
-  background-image:linear-gradient(rgba(210,176,124,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(210,176,124,.06) 1px,transparent 1px);background-size:28px 28px;
+  background-image:linear-gradient(rgba(169,188,203,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(169,188,203,.06) 1px,transparent 1px);background-size:28px 28px;
   -webkit-mask-image:radial-gradient(80% 50% at 50% 18%,#000,transparent);mask-image:radial-gradient(80% 50% at 50% 18%,#000,transparent)}
 
 /* 3D house */
@@ -181,9 +178,9 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .world{position:absolute;left:50%;top:66%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-24deg) rotateY(-32deg)}
 .f{position:absolute;left:0;top:0;transform-style:preserve-3d;backface-visibility:visible}
 .ground{width:300px;height:300px;margin:-150px 0 0 -150px;transform:rotateX(90deg);border-radius:50%;
-  background:radial-gradient(circle,rgba(210,176,124,.16),transparent 62%),repeating-linear-gradient(0deg,rgba(242,238,231,.07) 0 1px,transparent 1px 20px),repeating-linear-gradient(90deg,rgba(242,238,231,.07) 0 1px,transparent 1px 20px);
+  background:radial-gradient(circle,rgba(169,188,203,.16),transparent 62%),repeating-linear-gradient(0deg,rgba(242,238,231,.07) 0 1px,transparent 1px 20px),repeating-linear-gradient(90deg,rgba(242,238,231,.07) 0 1px,transparent 1px 20px);
   -webkit-mask-image:radial-gradient(circle,#000 30%,transparent 68%);mask-image:radial-gradient(circle,#000 30%,transparent 68%)}
-.slab{width:164px;height:124px;margin:-62px 0 0 -82px;transform:translateY(-1px) rotateX(90deg);background:#2a2722;border:1px solid rgba(210,176,124,.5);
+.slab{width:164px;height:124px;margin:-62px 0 0 -82px;transform:translateY(-1px) rotateX(90deg);background:#2a2722;border:1px solid rgba(169,188,203,.5);
   transition:opacity .6s,transform .9s var(--ease);opacity:.18}
 .slab-e{width:164px;height:7px;margin:-3.5px 0 0 -82px;transform:translateY(2.5px) translateZ(62px);background:#3a362f;transition:opacity .6s;opacity:.18}
 .wall{margin:0}
@@ -207,7 +204,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .gr{transform:translateY(-90px) rotateY(90deg) translateZ(70px)}
 .chim{width:12px;height:26px;margin:-13px 0 0 -6px;transform:translate3d(40px,-100px,-14px);background:#8c8273}
 .scaff{width:150px;height:84px;margin:-42px 0 0 -75px;transform:translateY(-42px) translateZ(60px);opacity:0;transition:opacity .6s;
-  background:repeating-linear-gradient(90deg,transparent 0 36px,rgba(210,176,124,.7) 36px 38px),repeating-linear-gradient(180deg,transparent 0 26px,rgba(210,176,124,.6) 26px 28px)}
+  background:repeating-linear-gradient(90deg,transparent 0 36px,rgba(169,188,203,.7) 36px 38px),repeating-linear-gradient(180deg,transparent 0 26px,rgba(169,188,203,.6) 26px 28px)}
 .world.s1 .slab,.world.s1 .slab-e{opacity:1}
 .world.s2 .wall .fill{transform:scaleY(1)}
 .world.s2 .scaff{opacity:1}
@@ -224,7 +221,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .qhead{padding:4px 22px 0;text-align:center;position:relative}
 .steps-bar{display:flex;gap:6px;padding:0 22px;margin:18px 0 0}
 .steps-bar i{flex:1;height:3px;border-radius:3px;background:var(--line);overflow:hidden;position:relative}
-.steps-bar i:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--acc),var(--acc2));transform:scaleX(0);transform-origin:0 50%;transition:transform .7s var(--ease)}
+.steps-bar i:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#cfd9e2,#ffffff);transform:scaleX(0);transform-origin:0 50%;transition:transform .7s var(--ease)}
 .steps-bar i.on:after{transform:scaleX(1)}
 .qstep-meta{display:flex;justify-content:space-between;align-items:center;padding:16px 22px 0;font-size:11.5px;color:var(--dim);letter-spacing:.06em}
 .back{display:inline-flex;align-items:center;gap:6px;color:var(--mute);opacity:0;pointer-events:none;transition:opacity .3s}
@@ -245,7 +242,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .tile .s{font-size:11.5px;color:var(--dim);margin-top:3px;transform:translateZ(8px)}
 .tile .ck{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;transition:all .4s var(--ease)}
 .tile .ck svg{opacity:0;transform:scale(.4);transition:all .4s var(--ease)}
-.tile.sel{border-color:rgba(210,176,124,.7);background:linear-gradient(160deg,rgba(210,176,124,.2),rgba(210,176,124,.04));box-shadow:0 0 0 1px rgba(210,176,124,.25),0 18px 40px -18px rgba(210,176,124,.5)}
+.tile.sel{border-color:rgba(169,188,203,.7);background:linear-gradient(160deg,rgba(169,188,203,.2),rgba(169,188,203,.04));box-shadow:0 0 0 1px rgba(169,188,203,.25),0 18px 40px -18px rgba(169,188,203,.5)}
 .tile.sel .ck{background:var(--acc);border-color:var(--acc)}
 .tile.sel .ck svg{opacity:1;transform:none}
 .tile:active{transition:transform .1s}
@@ -291,20 +288,20 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
   background:rgba(255,255,255,.045);border:1px solid var(--line);outline:none;transition:border-color .3s,background .3s}
 .fld textarea{height:96px;resize:none;padding-top:26px}
 .fld label{position:absolute;left:17px;top:19px;font-size:15px;color:var(--dim);pointer-events:none;transition:all .3s var(--ease)}
-.fld input:focus,.fld textarea:focus{border-color:rgba(210,176,124,.6);background:rgba(210,176,124,.06)}
+.fld input:focus,.fld textarea:focus{border-color:rgba(169,188,203,.6);background:rgba(169,188,203,.06)}
 .fld input:focus+label,.fld input:not(:placeholder-shown)+label,.fld textarea:focus+label,.fld textarea:not(:placeholder-shown)+label{top:9px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
 .fld.err input{border-color:#d9776a}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .upload{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1px dashed var(--line2);color:var(--mute);font-size:13.5px}
-.upload .uic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(210,176,124,.12);color:var(--acc);flex:none}
+.upload .uic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(169,188,203,.12);color:var(--acc);flex:none}
 .upload b{display:block;color:var(--ink);font-weight:600;font-size:14px}
 .upload input{display:none}
 .summary{display:flex;flex-wrap:wrap;gap:6px;margin:0 6px 14px}
-.summary span{font-size:11.5px;padding:6px 10px;border-radius:999px;background:rgba(210,176,124,.12);color:var(--acc2)}
+.summary span{font-size:11.5px;padding:6px 10px;border-radius:999px;background:rgba(169,188,203,.12);color:var(--acc2)}
 .submit{width:100%;margin-top:6px}
 .fine{font-size:11.5px;color:var(--dim);text-align:center;margin-top:12px;line-height:1.5}
 .done{text-align:center;padding:10px 10px 6px}
-.done .ok{width:74px;height:74px;margin:6px auto 18px;border-radius:50%;display:grid;place-items:center;background:rgba(210,176,124,.14);border:1px solid rgba(210,176,124,.45)}
+.done .ok{width:74px;height:74px;margin:6px auto 18px;border-radius:50%;display:grid;place-items:center;background:rgba(169,188,203,.14);border:1px solid rgba(169,188,203,.45)}
 .done .ok path{stroke-dasharray:40;stroke-dashoffset:40;transition:stroke-dashoffset .9s var(--ease) .3s}
 .done.show .ok path{stroke-dashoffset:0}
 .done h3{padding:0 0 8px}
@@ -313,7 +310,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 /* ============ PROJECTS ============ */
 .projects{display:grid;gap:14px;margin-top:30px;padding:0 12px}
 .proj{border-radius:28px;overflow:hidden;background:var(--bg2);border:1px solid var(--line);transition:border-color .5s,box-shadow .6s}
-.proj.open{border-color:rgba(210,176,124,.35);box-shadow:0 30px 70px -30px rgba(210,176,124,.35)}
+.proj.open{border-color:rgba(169,188,203,.35);box-shadow:0 30px 70px -30px rgba(169,188,203,.35)}
 .ph{position:relative;display:block;width:100%;text-align:left;height:430px;overflow:hidden;transition:height .8s var(--ease)}
 .proj.open .ph{height:340px}
 .ph .pimg{position:absolute;left:0;right:0;top:-12%;height:124%;will-change:transform}
@@ -330,7 +327,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .plus{width:48px;height:48px;border-radius:50%;flex:none;display:grid;place-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .7s var(--ease),background .5s}
 .plus svg{transition:transform .7s var(--ease)}
-.proj.open .plus{background:var(--acc);color:#17130c;border-color:var(--acc)}
+.proj.open .plus{background:var(--acc);color:#0b0b0b;border-color:var(--acc)}
 .proj.open .plus svg{transform:rotate(135deg)}
 .pb{display:grid;grid-template-rows:0fr;transition:grid-template-rows .8s var(--ease)}
 .proj.open .pb{grid-template-rows:1fr}
@@ -354,12 +351,12 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 /* ============ PROCESS ============ */
 .proc{position:relative;margin:34px 22px 0;padding-left:34px}
 .proc-line{position:absolute;left:9px;top:8px;bottom:8px;width:1px;background:var(--line)}
-.proc-line i{position:absolute;inset:0;background:linear-gradient(180deg,var(--acc),var(--acc2));transform-origin:0 0;transform:scaleY(0)}
+.proc-line i{position:absolute;inset:0;background:linear-gradient(180deg,#cfd9e2,#ffffff);transform-origin:0 0;transform:scaleY(0)}
 .pstep{position:relative;padding:0 0 38px}
 .pstep:last-child{padding-bottom:0}
 .pdot{position:absolute;left:-34px;top:2px;width:19px;height:19px;border-radius:50%;background:var(--bg);border:1px solid var(--line2);display:grid;place-items:center;transition:all .5s var(--ease)}
 .pdot:after{content:"";width:7px;height:7px;border-radius:50%;background:var(--line2);transition:all .5s var(--ease)}
-.pstep.lit .pdot{border-color:var(--acc);box-shadow:0 0 0 6px rgba(210,176,124,.1)}
+.pstep.lit .pdot{border-color:var(--acc);box-shadow:0 0 0 6px rgba(169,188,203,.1)}
 .pstep.lit .pdot:after{background:var(--acc)}
 .pstep small{font-size:10.5px;letter-spacing:.24em;color:var(--acc);font-weight:600}
 .pstep h4{font-size:21px;font-weight:600;letter-spacing:-.02em;margin:6px 0 8px}
@@ -422,7 +419,7 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
 
     <nav class="nav fade" style="--d:900ms">
       <a href="#top" class="logo" aria-label="Meridian Design and Build">
-        <svg class="logo-mk" viewBox="0 0 26 26" fill="none"><rect x=".75" y=".75" width="24.5" height="24.5" rx="7" stroke="#d2b07c" stroke-width="1.5"/><path d="M6 19V8l7 7 7-7v11" stroke="#f2eee7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="logo-mk" viewBox="0 0 26 26" fill="none"><rect x=".75" y=".75" width="24.5" height="24.5" rx="7" stroke="#a9bccb" stroke-width="1.5"/><path d="M6 19V8l7 7 7-7v11" stroke="#f2eee7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>MERIDIAN<small>DESIGN &amp; BUILD</small></span>
       </a>
       <div class="nav-r">
@@ -524,22 +521,22 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
       <div class="qstep on" data-step="1">
         <h3><span class="thin">What are you</span> <b>planning?</b></h3>
         <div class="tiles" data-key="type">
-          <button class="tile" data-v="Extension"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <button class="tile" data-v="Extension"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
             <span class="ic"><svg viewBox="0 0 120 66"><path class="ln" d="M14 58V30l22-16 22 16v28z"/><path class="ln" d="M30 58V44h12v14"/><g class="tb a-ext"><path class="la" d="M58 58V36h40v22" stroke-dasharray="4 3"/><path class="la" d="M58 36l40 0"/><rect class="la" x="70" y="42" width="16" height="10"/></g><path class="ln" d="M6 58h108"/></svg></span>
             <span class="t">Extension</span><span class="s">Rear, side or wraparound</span></button>
-          <button class="tile" data-v="Loft conversion"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <button class="tile" data-v="Loft conversion"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
             <span class="ic"><svg viewBox="0 0 120 66"><path class="ln" d="M24 58V34l36-24 36 24v24z"/><g class="a-dorm"><path class="la" d="M52 30h28v-12H58z"/><rect class="fa" x="64" y="21" width="9" height="7" rx="1" opacity=".6"/></g><rect class="ln" x="40" y="42" width="12" height="10"/><rect class="ln" x="68" y="42" width="12" height="10"/><path class="ln" d="M6 58h108"/></svg></span>
             <span class="t">Loft conversion</span><span class="s">Dormer, mansard, hip</span></button>
-          <button class="tile" data-v="Full renovation"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
-            <span class="ic"><svg viewBox="0 0 120 66"><rect class="ln" x="30" y="8" width="60" height="50" rx="2"/><rect class="tb a-paint" x="46" y="10" width="20" height="46" fill="rgba(210,176,124,.28)"/><g class="a-roll"><rect class="la" x="44" y="6" width="24" height="9" rx="3"/><path class="la" d="M68 10h6v10H56v8"/></g><path class="ln" d="M6 58h108"/></svg></span>
+          <button class="tile" data-v="Full renovation"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+            <span class="ic"><svg viewBox="0 0 120 66"><rect class="ln" x="30" y="8" width="60" height="50" rx="2"/><rect class="tb a-paint" x="46" y="10" width="20" height="46" fill="rgba(169,188,203,.28)"/><g class="a-roll"><rect class="la" x="44" y="6" width="24" height="9" rx="3"/><path class="la" d="M68 10h6v10H56v8"/></g><path class="ln" d="M6 58h108"/></svg></span>
             <span class="t">Full renovation</span><span class="s">Strip back and rebuild</span></button>
-          <button class="tile" data-v="New build"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <button class="tile" data-v="New build"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
             <span class="ic"><svg viewBox="0 0 120 66"><path class="ln" d="M28 58V8M28 8h70M28 16l10-8M98 8v4"/><path class="ln" d="M22 58h12"/><g class="a-hook" style="transform-origin:86px 8px"><path class="la" d="M86 8v22"/><rect class="la" x="78" y="30" width="16" height="11" rx="1"/></g><path class="ln" d="M60 58V46h22v12"/><path class="ln" d="M6 58h108"/></svg></span>
             <span class="t">New build</span><span class="s">Plot to keys</span></button>
-          <button class="tile" data-v="Kitchen or bathroom"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <button class="tile" data-v="Kitchen or bathroom"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
             <span class="ic"><svg viewBox="0 0 120 66"><path class="ln" d="M40 22V12a8 8 0 0 1 8-8h14a6 6 0 0 1 6 6v6"/><path class="ln" d="M34 22h12M68 16v4"/><circle class="fa a-drop" cx="68" cy="26" r="2.4"/><circle class="fa a-drop d2" cx="68" cy="26" r="2.4"/><path class="ln" d="M22 48h76M28 48l4 10h56l4-10"/></svg></span>
             <span class="t">Kitchen or bath</span><span class="s">Design and fit</span></button>
-          <button class="tile" data-v="Basement"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <button class="tile" data-v="Basement"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
             <span class="ic"><svg viewBox="0 0 120 66"><path class="ln" d="M6 14h108"/><path class="ln" d="M34 14v8h10v8h10v8h10v8h10v8h12"/><circle class="fa a-step" cx="38" cy="12" r="3.2"/><path class="ln" d="M22 14v44h82" stroke-dasharray="3 3" opacity=".5"/></svg></span>
             <span class="t">Basement</span><span class="s">Dig out and convert</span></button>
         </div>
@@ -549,10 +546,10 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
       <div class="qstep" data-step="2">
         <h3><span class="thin">Rough</span> <b>budget?</b></h3>
         <div class="tiles" data-key="budget">
-          <button class="tile" data-v="Under £50k"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic"><svg viewBox="0 0 120 66" id="b1"></svg></span><span class="t">Under £50k</span><span class="s">Smaller works</span></button>
-          <button class="tile" data-v="£50k to £100k"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic"><svg viewBox="0 0 120 66" id="b2"></svg></span><span class="t">£50k to £100k</span><span class="s">Most extensions</span></button>
-          <button class="tile" data-v="£100k to £250k"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic"><svg viewBox="0 0 120 66" id="b3"></svg></span><span class="t">£100k to £250k</span><span class="s">Large projects</span></button>
-          <button class="tile" data-v="£250k+"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic"><svg viewBox="0 0 120 66" id="b4"></svg></span><span class="t">£250k+</span><span class="s">Whole home, new build</span></button>
+          <button class="tile" data-v="Under £50k"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic"><svg viewBox="0 0 120 66" id="b1"></svg></span><span class="t">Under £50k</span><span class="s">Smaller works</span></button>
+          <button class="tile" data-v="£50k to £100k"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic"><svg viewBox="0 0 120 66" id="b2"></svg></span><span class="t">£50k to £100k</span><span class="s">Most extensions</span></button>
+          <button class="tile" data-v="£100k to £250k"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic"><svg viewBox="0 0 120 66" id="b3"></svg></span><span class="t">£100k to £250k</span><span class="s">Large projects</span></button>
+          <button class="tile" data-v="£250k+"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><span class="ic"><svg viewBox="0 0 120 66" id="b4"></svg></span><span class="t">£250k+</span><span class="s">Whole home, new build</span></button>
         </div>
       </div>
 
@@ -560,16 +557,16 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
       <div class="qstep" data-step="3">
         <h3><span class="thin">When would you</span> <b>like to start?</b></h3>
         <div class="tiles" data-key="when">
-          <button class="tile" data-v="As soon as possible"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <button class="tile" data-v="As soon as possible"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
             <span class="ic"><svg viewBox="0 0 120 66"><circle class="ln" cx="60" cy="34" r="24"/><path class="ln" d="M56 6h8M60 6v4"/><g class="a-spin" style="transform-origin:60px 34px"><path class="la" d="M60 34V16"/></g><circle class="fa" cx="60" cy="34" r="2.6"/></svg></span>
             <span class="t">ASAP</span><span class="s">Ready to go</span></button>
-          <button class="tile" data-v="In 1 to 3 months"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
-            <span class="ic"><svg viewBox="0 0 120 66"><rect class="ln" x="36" y="12" width="48" height="46" rx="5"/><path class="ln" d="M46 6v10M74 6v10"/><g class="tb a-flip"><rect x="38" y="20" width="44" height="14" fill="rgba(210,176,124,.25)"/><path class="la" d="M38 20h44"/></g><path class="ln" d="M46 44h8M58 44h8M70 44h4"/></svg></span>
+          <button class="tile" data-v="In 1 to 3 months"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+            <span class="ic"><svg viewBox="0 0 120 66"><rect class="ln" x="36" y="12" width="48" height="46" rx="5"/><path class="ln" d="M46 6v10M74 6v10"/><g class="tb a-flip"><rect x="38" y="20" width="44" height="14" fill="rgba(169,188,203,.25)"/><path class="la" d="M38 20h44"/></g><path class="ln" d="M46 44h8M58 44h8M70 44h4"/></svg></span>
             <span class="t">1 to 3 months</span><span class="s">Booking soon</span></button>
-          <button class="tile" data-v="In 3 to 6 months"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <button class="tile" data-v="In 3 to 6 months"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
             <span class="ic"><svg viewBox="0 0 120 66"><path class="ln" d="M30 58h60"/><g class="tb a-grow"><path class="la" d="M60 58V30"/><path class="la" d="M60 40c-12 0-16-8-16-14 10 0 16 6 16 14zM60 34c0-10 6-16 16-16 0 8-6 16-16 16z"/></g></svg></span>
             <span class="t">3 to 6 months</span><span class="s">Planning ahead</span></button>
-          <button class="tile" data-v="Just exploring"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#17130c" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
+          <button class="tile" data-v="Just exploring"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span>
             <span class="ic"><svg viewBox="0 0 120 66"><path class="ln" d="M24 54h72" opacity=".35"/><path class="la a-draw" d="M34 46c8-14 14 4 22-8s14 6 22-6"/><g class="a-pen"><path class="ln" d="M34 46l-6 -18 6-4 6 18z"/><path class="ln" d="M28 28l6-4"/></g></svg></span>
             <span class="t">Just exploring</span><span class="s">Ideas and costs</span></button>
         </div>
@@ -596,7 +593,7 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
       <!-- DONE -->
       <div class="qstep" data-step="5">
         <div class="done" id="done">
-          <div class="ok"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#d2b07c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="ok"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#a9bccb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3><span class="thin">Lights on.</span> <b>You're booked in.</b></h3>
           <p id="doneTxt">Thanks. A project lead will call you within 2 working hours to talk through your plans and book a free site visit.</p>
           <a href="#work" class="btn btn-g" style="margin-top:20px">See our projects</a>
@@ -643,7 +640,7 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
 
 <footer>
   <a href="#top" class="logo">
-    <svg class="logo-mk" viewBox="0 0 26 26" fill="none"><rect x=".75" y=".75" width="24.5" height="24.5" rx="7" stroke="#d2b07c" stroke-width="1.5"/><path d="M6 19V8l7 7 7-7v11" stroke="#f2eee7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="logo-mk" viewBox="0 0 26 26" fill="none"><rect x=".75" y=".75" width="24.5" height="24.5" rx="7" stroke="#a9bccb" stroke-width="1.5"/><path d="M6 19V8l7 7 7-7v11" stroke="#f2eee7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <span>MERIDIAN<small>DESIGN &amp; BUILD</small></span>
   </a>
   <p style="margin-top:16px;max-width:32ch">Architect-led design and build across North &amp; West London and Hertfordshire.</p>
@@ -743,7 +740,7 @@ rvUpdate();
 [[2,'b1'],[4,'b2'],[7,'b3'],[10,'b4']].forEach(([n,id])=>{
   let s='<path class="ln" d="M14 58h92"/>';const per=4;
   for(let i=0;i<n;i++){const row=Math.floor(i/per),col=i%per,off=row%2?12:0;
-    s+=`<rect class="a-brick" style="--i:${i}" x="${14+off+col*24}" y="${45-row*13}" width="22" height="11" rx="2" fill="${i===n-1?'#d2b07c':'rgba(242,238,231,.18)'}" stroke="rgba(242,238,231,.55)" stroke-width="1"/>`}
+    s+=`<rect class="a-brick" style="--i:${i}" x="${14+off+col*24}" y="${45-row*13}" width="22" height="11" rx="2" fill="${i===n-1?'#a9bccb':'rgba(242,238,231,.18)'}" stroke="rgba(242,238,231,.55)" stroke-width="1"/>`}
   $('#'+id).innerHTML=s;
 });
 
