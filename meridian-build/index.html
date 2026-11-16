@@ -190,7 +190,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opac
 .wall .fill{position:absolute;inset:0;transform-origin:50% 100%;transform:scaleY(0);transition:transform 1s var(--ease);
   background:linear-gradient(180deg,#e9e3d8,#cdc5b7);border:1px solid rgba(0,0,0,.25)}
 .wall.side .fill{background:linear-gradient(180deg,#d9d2c4,#b8af9f)}
-.wall.back .fill{background:#bdb4a4}
+.wall.wb .fill{background:#bdb4a4}
 .wf{width:140px;height:70px;margin:-35px 0 0 -70px;transform:translateY(-35px) translateZ(50px)}
 .wb{width:140px;height:70px;margin:-35px 0 0 -70px;transform:translateY(-35px) rotateY(180deg) translateZ(50px)}
 .wl{width:100px;height:70px;margin:-35px 0 0 -50px;transform:translateY(-35px) rotateY(-90deg) translateZ(70px)}
@@ -497,7 +497,7 @@ footer{padding:56px 22px calc(110px + var(--sab));color:var(--mute);font-size:13
         <div class="f lightpool"></div>
         <div class="f slab"></div>
         <div class="f slab-e"></div>
-        <div class="f wall wb back"><div class="fill"></div></div>
+        <div class="f wall wb"><div class="fill"></div></div>
         <div class="f wall wl side"><div class="fill"><span class="win" style="left:36px;top:18px;width:26px;height:22px;--d:.2s"></span></div></div>
         <div class="f wall wr side"><div class="fill"><span class="win" style="left:36px;top:18px;width:26px;height:22px;--d:.35s"></span></div></div>
         <div class="f wall wf"><div class="fill">
@@ -871,6 +871,7 @@ $('#qForm').addEventListener('submit',e=>{
   $('#doneTxt').textContent=`Thanks ${nm}. A project lead will call you within 2 working hours to talk through your ${(state.type||'project').toLowerCase()} and book a free site visit.`;
   // TODO on import: send {state, name, phone, email, postcode, note, files} to the CRM / webhook here
   goStep(5);
+  setTimeout(()=>{const b=$('.qbox');scrollTo({top:b.getBoundingClientRect().top+scrollY-20,behavior:'smooth'})},320);
   if(navigator.vibrate)navigator.vibrate([12,40,12]);
 });
 })();
