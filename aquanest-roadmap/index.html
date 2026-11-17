@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aquanest · Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f7f8;--ink:#0f1d33;--s:rgba(15,29,51,.55);--f:rgba(15,29,51,.3);--line:rgba(15,29,51,.08);--blue:#2b5ea7;--sky:#8fb6ec;--hl:#dfeaf8;--acc:#c4552f;--green:#34C759;--deep:#0b1729;
+--e:cubic-bezier(.16,1,.3,1);--snap:cubic-bezier(.2,1.3,.4,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{font-family:'Inter Tight',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.track{display:flex;height:100vh;width:100vw;transition:transform 1.1s cubic-bezier(.77,0,.18,1);will-change:transform}
+.slide{flex:none;width:100vw;height:100vh;position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:5vw;padding:0 7vw 9vh;overflow:hidden}
+.slide.dark{background:var(--deep);color:#eaf1f8}
+.slide.center{grid-template-columns:1fr;text-align:center;justify-items:center}
+/* text */
+.k{font-size:13px;letter-spacing:.24em;color:var(--f);display:flex;align-items:center;gap:14px;font-weight:500}
+.dark .k{color:rgba(234,241,248,.4)}
+.k i{font-style:normal;font-weight:600;color:var(--blue)}
+.dark .k i{color:var(--sky)}
+.t{font-size:clamp(46px,6.4vw,104px);font-weight:200;letter-spacing:-.05em;line-height:.98;margin-top:22px}
+.t b{font-weight:650}
+.t .bl{color:var(--blue)}.dark .t .bl{color:var(--sky)}
+.p{font-size:clamp(16px,1.4vw,20px);font-weight:300;color:var(--s);margin-top:26px;max-width:460px;line-height:1.55}
+.dark .p{color:rgba(234,241,248,.6)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:30px}
+.chips span{font-size:13.5px;padding:9px 15px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px var(--line);font-weight:400}
+.dark .chips span{background:rgba(255,255,255,.06);box-shadow:0 0 0 1px rgba(255,255,255,.1)}
+/* enter animation for text */
+.rv{opacity:0;transform:translateY(34px);filter:blur(8px);transition:opacity .9s var(--e),transform 1.1s var(--e),filter .9s var(--e)}
+.slide.on .rv{opacity:1;transform:none;filter:none}
+.slide.on .rv.d1{transition-delay:.25s}.slide.on .rv.d2{transition-delay:.38s}.slide.on .rv.d3{transition-delay:.52s}.slide.on .rv.d4{transition-delay:.66s}
+.vis{position:relative;height:min(68vh,620px);display:grid;place-items:center}
+.vis .rv{transition-delay:.35s}
+/* glass card */
+.glass{background:rgba(255,255,255,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;box-shadow:0 30px 80px -30px rgba(15,29,51,.35),0 0 0 1px rgba(255,255,255,.9)}
+.dark .glass{background:rgba(255,255,255,.05);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 30px 80px -30px rgba(0,0,0,.6)}
+
+/* ===== cover ===== */
+#waves{position:absolute;inset:0;width:100%;height:100%}
+.cover-in{position:relative;z-index:2}
+.cover .t{font-size:clamp(64px,10vw,170px)}
+.logo{display:inline-flex;align-items:center;gap:12px;margin-bottom:30px}
+.logo b{font-size:22px;font-weight:500;letter-spacing:-.03em;display:block;line-height:1}
+.logo small{display:block;font-size:9px;letter-spacing:.34em;color:rgba(234,241,248,.45);margin-top:5px}
+.hint{position:absolute;bottom:13vh;left:50%;transform:translateX(-50%);font-size:13px;color:rgba(234,241,248,.45);display:flex;align-items:center;gap:10px;z-index:2}
+.hint i{width:34px;height:1px;background:currentColor;position:relative;overflow:hidden}
+.hint i::after{content:'';position:absolute;inset:0;background:#fff;animation:hint 1.8s var(--e) infinite}
+@keyframes hint{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+
+/* ===== 1 system ===== */
+.sys{width:100%;max-width:640px}
+.sys svg{width:100%;overflow:visible}
+.sys .pth{stroke-dasharray:1400;stroke-dashoffset:1400}
+.on .sys .pth{transition:stroke-dashoffset 2.4s cubic-bezier(.65,0,.2,1) .4s;stroke-dashoffset:0}
+.node{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:center;transition:all .7s var(--snap)}
+.on .node{opacity:1;transform:none}
+.on .node.n1{transition-delay:.5s}.on .node.n2{transition-delay:.9s}.on .node.n3{transition-delay:1.3s}.on .node.n4{transition-delay:1.7s}.on .node.n5{transition-delay:2.1s}
+.drop{offset-path:path('M60 210 C 160 210, 160 90, 250 90 S 340 210, 430 210 S 520 90, 600 90');offset-rotate:0deg;animation:travel 5s cubic-bezier(.65,0,.35,1) infinite 2.6s;opacity:0}
+.on .drop{opacity:1}
+@keyframes travel{0%{offset-distance:0%}85%,100%{offset-distance:100%}}
+
+/* ===== 2 website ===== */
+.browser{width:min(640px,100%);aspect-ratio:16/10.6;overflow:hidden;position:relative}
+.bbar{height:38px;display:flex;align-items:center;gap:7px;padding:0 16px;border-bottom:1px solid var(--line)}
+.bbar i{width:10px;height:10px;border-radius:50%;background:#e3e7ec}
+.bbar span{margin-left:14px;height:20px;flex:1;max-width:260px;border-radius:7px;background:#eef1f4;font-size:11px;color:var(--f);display:flex;align-items:center;padding-left:10px}
+.site{position:absolute;inset:38px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:24px 26px}
+.sk{height:10px;border-radius:6px;background:#e6eaef;transform-origin:left;transform:scaleX(0);transition:transform .8s var(--e)}
+.on .sk{transform:none}
+.big1,.big2{height:26px;border-radius:8px;background:var(--ink);margin-top:10px;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--e)}
+.big2{background:var(--blue);width:70%}
+.on .big1{transform:none;transition-delay:.55s}.on .big2{transform:none;transition-delay:.7s}
+.on .sk.s1{transition-delay:.85s}.on .sk.s2{transition-delay:.95s}
+.cta{margin-top:18px;height:30px;width:58%;border-radius:999px;background:var(--acc);transform:scale(0);transform-origin:left;transition:transform .7s var(--snap) 1.1s}
+.on .cta{transform:none}
+.hero-img{border-radius:18px;background:linear-gradient(160deg,#cfe0f5,#eef3f9) center/cover;position:relative;overflow:hidden;opacity:0;transform:scale(.94);transition:all 1.2s var(--e) .5s}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.95}
+.on .hero-img{opacity:1;transform:none}
+.tiles{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-self:end}
+.tl{height:62px;border-radius:14px;background:#f2f5f8;box-shadow:0 0 0 1px var(--line);display:grid;place-items:center;opacity:0;transform:translateY(16px);transition:all .6s var(--snap)}
+.tl svg{width:22px;height:22px;color:var(--blue)}
+.on .tl{opacity:1;transform:none}
+.on .tl:nth-child(1){transition-delay:1.3s}.on .tl:nth-child(2){transition-delay:1.4s}.on .tl:nth-child(3){transition-delay:1.5s}.on .tl:nth-child(4){transition-delay:1.6s}
+.on .tl.pick{animation:pick 5s ease 2.2s infinite}
+@keyframes pick{0%,12%{box-shadow:0 0 0 1px var(--line);background:#f2f5f8}18%,70%{box-shadow:0 0 0 2px var(--blue);background:#fff}80%,100%{box-shadow:0 0 0 1px var(--line);background:#f2f5f8}}
+.cursor{position:absolute;width:18px;height:18px;left:60%;top:110%;opacity:0;z-index:3}
+.on .cursor{animation:cur 5s cubic-bezier(.65,0,.35,1) 2s infinite}
+@keyframes cur{0%{left:75%;top:60%;opacity:0}8%{opacity:1}16%{left:31%;top:82%;opacity:1}20%{transform:scale(.8)}24%{transform:none}70%{opacity:1}80%,100%{opacity:0;left:31%;top:82%}}
+.toast{position:absolute;right:-20px;top:22%;padding:14px 18px;display:flex;gap:12px;align-items:center;opacity:0;transform:translateX(30px)}
+.on .toast{animation:toast 5s var(--e) 2.6s infinite}
+@keyframes toast{0%{opacity:0;transform:translateX(30px)}10%,60%{opacity:1;transform:none}75%,100%{opacity:0;transform:translateX(30px)}}
+.toast b{font-size:14px;font-weight:600;display:block}.toast small{font-size:12px;color:var(--s)}
+.live{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,199,89,.18);flex:none}
+
+/* ===== 3 crm ===== */
+.crm{width:min(660px,100%);padding:22px}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;position:relative}
+.col{background:rgba(15,29,51,.035);border-radius:16px;padding:10px;min-height:250px}
+.col h6{font-size:11.5px;font-weight:500;color:var(--s);display:flex;align-items:center;gap:6px;padding:2px 4px 10px}
+.col h6 i{width:6px;height:6px;border-radius:50%}
+.ghost{height:46px;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(15,29,51,.05);margin-bottom:7px;opacity:.75}
+.mover{position:absolute;top:34px;left:10px;width:calc(25% - 27.5px);height:56px;border-radius:13px;background:#fff;box-shadow:0 14px 30px -12px rgba(43,94,167,.5),0 0 0 2px var(--blue);padding:9px 11px;font-size:12px;opacity:0}
+.mover b{display:block;font-weight:600;font-size:12.5px}
+.mover small{color:var(--s)}
+.on .mover{animation:move 7s cubic-bezier(.7,0,.2,1) .8s infinite}
+@keyframes move{0%{opacity:0;transform:translate(0,10px)}5%,18%{opacity:1;transform:translate(0,0)}26%,40%{transform:translate(calc(100% + 37px),0)}48%,62%{transform:translate(calc(200% + 74px),0)}70%,90%{opacity:1;transform:translate(calc(300% + 111px),0)}100%{opacity:0;transform:translate(calc(300% + 111px),0)}}
+.notes{position:absolute;right:-34px;bottom:-30px;width:250px;height:62px}
+.nt{position:absolute;inset:0;padding:12px 14px;display:flex;gap:11px;align-items:center;opacity:0;transform:translateY(16px);font-size:13px;background:rgba(255,255,255,.96)!important}
+.nt svg{width:16px;height:16px;color:var(--blue);flex:none}
+.nt b{font-weight:600;display:block;font-size:13px}.nt small{color:var(--s);font-size:11.5px}
+.on .nt{animation:nt 7s var(--e) infinite}
+.on .nt:nth-child(1){animation-delay:.9s}.on .nt:nth-child(2){animation-delay:2.65s}.on .nt:nth-child(3){animation-delay:4.4s}.on .nt:nth-child(4){animation-delay:6.15s}
+@keyframes nt{0%{opacity:0;transform:translateY(16px)}4%,20%{opacity:1;transform:none}25%,100%{opacity:0;transform:translateY(-10px)}}
+
+/* ===== 4 search ===== */
+.search{width:min(600px,100%);display:flex;flex-direction:column;gap:16px}
+.sbar{padding:14px 20px;display:flex;align-items:center;gap:12px;font-size:15px}
+.sbar svg{width:18px;height:18px;color:var(--s)}
+.type{border-right:1.5px solid var(--blue);white-space:nowrap;overflow:hidden;width:0}
+.on .type{animation:type 2s steps(30) .7s forwards,blinkc .8s step-end infinite}
+@keyframes type{to{width:30ch}}@keyframes blinkc{50%{border-color:transparent}}
+.results{position:relative;height:250px}
+.res{position:absolute;left:0;right:0;height:52px;padding:0 18px;display:flex;align-items:center;gap:12px;transition:top 1.2s cubic-bezier(.7,0,.2,1)}
+.res i{width:24px;height:24px;border-radius:8px;background:#e8ecf1;flex:none}
+.res span{height:9px;border-radius:5px;background:#e3e8ee;flex:1}
+.res span.w{flex:.6}
+.res.aq{box-shadow:0 0 0 2px var(--blue),0 20px 40px -20px rgba(43,94,167,.6);font-weight:600;font-size:14px;gap:10px}
+.res.aq i{background:linear-gradient(160deg,#3f74c4,#1b4380)}
+.res.aq em{font-style:normal;margin-left:auto;font-size:12px;font-weight:600;color:var(--blue);background:var(--hl);padding:4px 10px;border-radius:999px}
+.ai{padding:16px 18px;font-size:14px;line-height:1.5;display:flex;gap:12px;align-items:flex-start;opacity:0;transform:translateY(16px);transition:all .8s var(--e) 3.4s}
+.on .ai{opacity:1;transform:none}
+.ai .orb{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 0deg,#8fb6ec,#2b5ea7,#c4552f,#8fb6ec);animation:spin 4s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai b{font-weight:600;color:var(--blue)}
+
+/* ===== 5 content ===== */
+.phones{display:flex;gap:18px;align-items:center}
+.ph{width:min(150px,22vw);aspect-ratio:9/19;border-radius:28px;background:#fff;box-shadow:0 30px 60px -28px rgba(15,29,51,.45),0 0 0 6px #fff,0 0 0 7px var(--line);overflow:hidden;position:relative;opacity:0;transform:translateY(60px) rotate(var(--r,0deg))}
+.on .ph{opacity:1;transform:rotate(var(--r,0deg));transition:all 1.1s var(--e)}
+.on .ph:nth-child(1){transition-delay:.4s}.on .ph:nth-child(2){transition-delay:.55s}.on .ph:nth-child(3){transition-delay:.7s}
+.ph:nth-child(2){width:min(176px,26vw)}
+.ph .fill{position:absolute;inset:0;background:linear-gradient(170deg,var(--c1),var(--c2))}
+.ph .fill img{width:100%;height:100%;object-fit:cover;mix-blend-mode:luminosity;opacity:.55}
+.ph .play{position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(255,255,255,.85);display:grid;place-items:center}
+.ph .play::after{content:'';border-left:12px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.ph .bar{position:absolute;left:12px;right:12px;bottom:16px;height:3px;border-radius:3px;background:rgba(255,255,255,.35);overflow:hidden}
+.ph .bar::after{content:'';position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0)}
+.on .ph .bar::after{animation:prog 4s linear 1.4s infinite}
+@keyframes prog{to{transform:scaleX(1)}}
+.ph .cap{position:absolute;left:12px;right:12px;bottom:28px;height:7px;border-radius:4px;background:rgba(255,255,255,.7)}
+.ph .cap.c2{bottom:40px;right:40px}
+.stars{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);padding:12px 18px;display:flex;align-items:center;gap:12px;opacity:0;transition:opacity .8s ease 1.4s}
+.on .stars{opacity:1}
+.stars .st{display:flex;gap:3px}
+.stars .st i{width:16px;height:16px;background:#e3e7ec;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);transition:background .3s}
+.on .stars .st i{animation:star .4s ease forwards}
+.on .stars .st i:nth-child(1){animation-delay:1.7s}.on .stars .st i:nth-child(2){animation-delay:1.85s}.on .stars .st i:nth-child(3){animation-delay:2s}.on .stars .st i:nth-child(4){animation-delay:2.15s}.on .stars .st i:nth-child(5){animation-delay:2.3s}
+@keyframes star{to{background:#f2b33d}}
+.stars b{font-size:14px;font-weight:600}
+
+/* ===== 6 installs ===== */
+.flow{width:min(640px,100%);display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.flow svg.ln{position:absolute;top:44px;left:12%;width:76%;height:4px;overflow:visible}
+.flow .ln path{stroke-dasharray:600;stroke-dashoffset:600}
+.on .flow .ln path{transition:stroke-dashoffset 2.2s cubic-bezier(.65,0,.2,1) .5s;stroke-dashoffset:0}
+.fs{text-align:center;position:relative;z-index:1;opacity:0;transform:translateY(20px);transition:all .8s var(--snap)}
+.on .fs{opacity:1;transform:none}
+.on .fs:nth-of-type(1){transition-delay:.5s}.on .fs:nth-of-type(2){transition-delay:1s}.on .fs:nth-of-type(3){transition-delay:1.5s}.on .fs:nth-of-type(4){transition-delay:2s}
+.fs .c{width:88px;height:88px;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:#fff;box-shadow:0 20px 40px -20px rgba(15,29,51,.4),0 0 0 1px var(--line)}
+.fs .c svg{width:34px;height:34px;color:var(--blue)}
+.fs b{display:block;font-size:17px;font-weight:600;letter-spacing:-.02em;margin-top:18px}
+.fs small{display:block;font-size:13px;color:var(--s);margin-top:4px}
+.loopnote{grid-column:1/-1;margin:46px auto 0;font-size:14px;color:var(--blue);display:flex;align-items:center;gap:10px;opacity:0;transition:opacity .8s ease 2.6s}
+.on .loopnote{opacity:1}
+.loopnote svg{width:18px;height:18px;animation:spin 6s linear infinite}
+
+/* ===== 7 ads ===== */
+.radar{width:min(560px,100%);aspect-ratio:1;position:relative;display:grid;place-items:center}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(143,182,236,.25)}
+.ring.r1{width:30%;height:30%}.ring.r2{width:58%;height:58%}.ring.r3{width:86%;height:86%}
+.pulse{position:absolute;width:30%;height:30%;border-radius:50%;border:1.5px solid var(--sky);opacity:0}
+.on .pulse{animation:pulseR 3.6s var(--e) infinite}
+.on .pulse.p2{animation-delay:1.2s}.on .pulse.p3{animation-delay:2.4s}
+@keyframes pulseR{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.9);opacity:0}}
+.pin{width:58px;height:58px;border-radius:50%;background:linear-gradient(160deg,#3f74c4,#1b4380);display:grid;place-items:center;box-shadow:0 0 60px rgba(63,116,196,.6);z-index:2}
+.pin svg{width:22px;height:26px}
+.area{position:absolute;font-size:13px;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.06);box-shadow:0 0 0 1px rgba(255,255,255,.12);color:rgba(234,241,248,.5);transition:all .6s var(--e)}
+.area.lit{color:#fff;background:rgba(63,116,196,.35);box-shadow:0 0 0 1px var(--sky),0 0 30px rgba(63,116,196,.5)}
+.adcard{position:absolute;left:-12%;bottom:0;padding:14px 16px;width:230px;opacity:0;transform:translateY(20px);transition:all .9s var(--e) 1s}
+.on .adcard{opacity:1;transform:none}
+.adcard small{font-size:11px;color:rgba(234,241,248,.5)}
+.adcard b{display:block;font-size:15px;font-weight:600;color:#8fb6ec;margin-top:3px}
+.adcard p{font-size:12px;color:rgba(234,241,248,.6);margin-top:4px}
+
+/* ===== 8 loop ===== */
+.wheel{width:min(500px,90%);aspect-ratio:1;position:relative}
+.wheel svg{width:100%;height:100%;overflow:visible}
+.wheel .arc{stroke-dasharray:1300;stroke-dashoffset:1300}
+.on .wheel .arc{transition:stroke-dashoffset 2.4s cubic-bezier(.65,0,.2,1) .4s;stroke-dashoffset:0}
+.orbit{transform-origin:250px 250px;animation:orb 8s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+.wl{position:absolute;transform:translate(-50%,-50%);text-align:center;opacity:0;transition:opacity .7s ease}
+.on .wl{opacity:1}
+.on .wl:nth-of-type(1){transition-delay:.6s}.on .wl:nth-of-type(2){transition-delay:1.1s}.on .wl:nth-of-type(3){transition-delay:1.6s}.on .wl:nth-of-type(4){transition-delay:2.1s}
+.wl b{display:block;font-size:clamp(18px,1.7vw,24px);font-weight:600;letter-spacing:-.02em}
+.wl small{font-size:13px;color:var(--s)}
+.wcenter{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
+.wcenter .n{font-size:clamp(40px,4.6vw,70px);font-weight:100;letter-spacing:-.05em;line-height:1}
+.wcenter .n b{font-weight:650}
+.wcenter small{font-size:13px;color:var(--s)}
+
+/* ===== end ===== */
+.end .t{font-size:clamp(56px,8.4vw,140px)}
+.steps{display:flex;gap:14px;margin-top:54px;justify-content:center;flex-wrap:wrap}
+.stp{padding:18px 22px;min-width:200px;text-align:left;display:flex;gap:14px;align-items:center}
+.stp .n{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:600;flex:none}
+.stp b{font-size:15px;font-weight:600;display:block}
+.stp small{font-size:12.5px;color:var(--s)}
+
+/* ===== chrome: progress + nav ===== */
+.ui{position:fixed;left:7vw;right:7vw;bottom:4.2vh;z-index:20;display:flex;align-items:center;gap:22px;transition:color .6s}
+.ui.light{color:#eaf1f8}
+.prog{flex:1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
+.prog button{height:30px;border:0;background:none;cursor:pointer;position:relative;text-align:left;font:inherit;color:inherit}
+.prog button::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;border-radius:2px;background:currentColor;opacity:.14}
+.prog button::after{content:'';position:absolute;left:0;top:0;height:2px;border-radius:2px;background:currentColor;width:0;transition:width .9s var(--e)}
+.prog button.done::after{width:100%;opacity:.45}
+.prog button.cur::after{width:100%;opacity:1}
+.prog button span{position:absolute;top:10px;left:0;font-size:11.5px;opacity:.4;white-space:nowrap;transition:opacity .4s}
+.prog button.cur span{opacity:1;font-weight:500}
+.arrows{display:flex;gap:8px}
+.arrows button{width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;background:rgba(15,29,51,.06);color:inherit;display:grid;place-items:center;transition:transform .4s var(--snap),background .3s}
+.ui.light .arrows button{background:rgba(255,255,255,.1)}
+.arrows button:hover{transform:scale(1.08)}
+.arrows svg{width:18px;height:18px}
+.count{font-size:13px;font-variant-numeric:tabular-nums;opacity:.5;min-width:46px}
+.brandtag{position:fixed;top:4vh;left:7vw;z-index:20;display:flex;align-items:center;gap:9px;font-size:15px;font-weight:500;letter-spacing:-.02em;transition:color .6s,opacity .6s}
+.brandtag.light{color:#eaf1f8}
+.brandtag.hide{opacity:0}
+
+@media (max-width:900px){
+  .slide{grid-template-columns:1fr;align-content:center;gap:4vh;padding:9vh 7vw 14vh}
+  .vis{height:42vh}
+  .t{font-size:clamp(40px,11vw,64px)}
+  .p{margin-top:16px}
+  .chips{display:none}
+  .prog button span{display:none}
+  .notes{display:none}
+  .toast{right:0}
+  .adcard{display:none}
+  .phones .ph:nth-child(3){display:none}
+  .count{display:none}
+  .vis{height:auto;min-height:38vh}
+  .wheel{width:62%}
+  .wl b{font-size:15px}.wl small{font-size:11px}
+  .wl[style*="110%"]{left:108%!important}.wl[style*="-10%"]{left:-8%!important}
+  .browser{aspect-ratio:auto;height:300px}
+  .results{height:236px}
+  .flow .c{width:60px;height:60px}.flow .c svg{width:24px;height:24px}.flow svg.ln{top:30px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.node,.tl,.ph,.fs,.wl,.ai,.hero-img,.adcard,.stars,.loopnote{opacity:1!important;transform:none!important;filter:none!important}.sk,.big1,.big2,.cta{transform:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="dg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fb6ec"/><stop offset="1" stop-color="#3f74c4"/></linearGradient>
+<linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#8fb6ec"/><stop offset="1" stop-color="#2b5ea7"/></linearGradient>
+</defs></svg>
+
+<div class="brandtag hide" id="brand"><svg viewBox="0 0 24 32" width="15" height="20"><path d="M12 1.5S22.5 13 22.5 20.2A10.5 10.5 0 0 1 1.5 20.2C1.5 13 12 1.5 12 1.5z" fill="url(#dg)"/></svg>Aquanest</div>
+
+<div class="track" id="track">
+
+  <!-- 0 cover -->
+  <section class="slide dark center cover" data-l="Start">
+    <canvas id="waves"></canvas>
+    <div class="cover-in">
+      <div class="logo rv"><svg viewBox="0 0 24 32" width="24" height="32"><path d="M12 1.5S22.5 13 22.5 20.2A10.5 10.5 0 0 1 1.5 20.2C1.5 13 12 1.5 12 1.5z" fill="url(#dg)"/></svg><span style="text-align:left"><b>Aquanest</b><small>WATER SYSTEMS</small></span></div>
+      <h1 class="t rv d1">The <b>road</b><span class="bl">map.</span></h1>
+      <p class="p rv d2" style="margin:26px auto 0">From launch to a steady stream of booked installs across the GTA.</p>
+    </div>
+    <div class="hint">Use the arrows or swipe<i></i></div>
+  </section>
+
+  <!-- 1 system -->
+  <section class="slide" data-l="The system">
+    <div>
+      <div class="k rv"><i>00</i>The system</div>
+      <h2 class="t rv d1">One <b>machine.</b><br><span class="bl">Five parts.</span></h2>
+      <p class="p rv d2">Each part feeds the next, so every homeowner who finds you has a clear path to booked.</p>
+    </div>
+    <div class="vis"><div class="sys">
+      <svg viewBox="0 0 660 300">
+        <path class="pth" d="M60 210 C 160 210, 160 90, 250 90 S 340 210, 430 210 S 520 90, 600 90" fill="none" stroke="url(#lg)" stroke-width="2.4" stroke-linecap="round"/>
+        <g class="node n1"><circle cx="60" cy="210" r="34" fill="#fff" stroke="rgba(15,29,51,.08)"/><text x="60" y="215" text-anchor="middle" font-size="13" font-weight="600" fill="#0f1d33" font-family="Inter Tight">Found</text><text x="60" y="272" text-anchor="middle" font-size="12" fill="rgba(15,29,51,.5)" font-family="Inter Tight">search + AI</text></g>
+        <g class="node n2"><circle cx="250" cy="90" r="34" fill="#fff" stroke="rgba(15,29,51,.08)"/><text x="250" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f1d33" font-family="Inter Tight">Trust</text><text x="250" y="35" text-anchor="middle" font-size="12" fill="rgba(15,29,51,.5)" font-family="Inter Tight">site + content</text></g>
+        <g class="node n3"><circle cx="430" cy="210" r="34" fill="#fff" stroke="rgba(15,29,51,.08)"/><text x="430" y="215" text-anchor="middle" font-size="13" font-weight="600" fill="#0f1d33" font-family="Inter Tight">Reply</text><text x="430" y="272" text-anchor="middle" font-size="12" fill="rgba(15,29,51,.5)" font-family="Inter Tight">in seconds</text></g>
+        <g class="node n4"><circle cx="600" cy="90" r="34" fill="#2b5ea7"/><text x="600" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#fff" font-family="Inter Tight">Booked</text><text x="600" y="35" text-anchor="middle" font-size="12" fill="rgba(15,29,51,.5)" font-family="Inter Tight">install</text></g>
+        <g class="node n5"><g><circle r="7" fill="#c4552f"/><circle r="14" fill="#c4552f" opacity=".15"/><animateMotion dur="4.5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines=".65 0 .35 1" path="M60 210 C 160 210, 160 90, 250 90 S 340 210, 430 210 S 520 90, 600 90"/></g><text x="330" y="292" text-anchor="middle" font-size="12.5" fill="#2b5ea7" font-family="Inter Tight" font-weight="500">↺  every install becomes the next enquiry</text></g>
+      </svg>
+      
+    </div></div>
+  </section>
+
+  <!-- 2 website -->
+  <section class="slide" data-l="Website">
+    <div>
+      <div class="k rv"><i>01</i>Week one</div>
+      <h2 class="t rv d1">The <b>website</b><br><span class="bl">goes live.</span></h2>
+      <p class="p rv d2">Phone first, no sales visit, and a free test kit that turns curious visitors into real enquiries.</p>
+      <div class="chips rv d3"><span>Free test kit</span><span>Four-tap form</span><span>Tracking from day one</span></div>
+    </div>
+    <div class="vis"><div class="browser glass rv">
+      <div class="bbar"><i></i><i></i><i></i><span>aquanest.ca</span></div>
+      <div class="site">
+        <div><div class="sk" style="width:40%"></div><div class="big1"></div><div class="big2"></div><div class="sk s1" style="width:86%;margin-top:16px"></div><div class="sk s2" style="width:64%;margin-top:8px"></div><div class="cta"></div></div>
+        <div class="hero-img"><img src="https://images.pexels.com/photos/3794165/pexels-photo-3794165.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" onerror="this.remove()"></div>
+        <div class="tiles">
+          <div class="tl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M7 8h10l-1 13H8z"/><path d="M10 6c-.7-1 .7-2 0-3M14 6c-.7-1 .7-2 0-3"/></svg></div>
+          <div class="tl pick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6.5 7 6.5 11.3A6.5 6.5 0 0 1 5.5 14.3C5.5 10 12 3 12 3z"/></svg></div>
+          <div class="tl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6v9H4z"/></svg></div>
+          <div class="tl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z M3.5 7.5L12 12l8.5-4.5 M12 12v9"/></svg></div>
+        </div>
+      </div>
+      <svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l16 10-7 1.5L9 21z" fill="#0f1d33" stroke="#fff" stroke-width="1.5"/></svg>
+    </div>
+    <div class="toast glass"><span class="live"></span><div><b>New enquiry</b><small>Free test kit requested</small></div></div>
+    </div>
+  </section>
+
+  <!-- 3 crm -->
+  <section class="slide" data-l="CRM">
+    <div>
+      <div class="k rv"><i>02</i>Week two</div>
+      <h2 class="t rv d1">Every lead,<br><b>handled.</b></h2>
+      <p class="p rv d2">A CRM built around how Aquanest sells. Replies, test kits, follow-ups and reviews run on their own.</p>
+      <div class="chips rv d3"><span>Instant replies</span><span>Kit tracking</span><span>Follow-ups</span><span>Reviews</span></div>
+    </div>
+    <div class="vis"><div class="crm glass rv" style="position:relative">
+      <div class="cols">
+        <div class="col"><h6><i style="background:#3f74c4"></i>New</h6><div class="ghost"></div><div class="ghost"></div><div class="ghost"></div></div>
+        <div class="col"><h6><i style="background:#e8a33a"></i>Test kit</h6><div class="ghost"></div><div class="ghost"></div></div>
+        <div class="col"><h6><i style="background:#c4552f"></i>Quote</h6><div class="ghost"></div><div class="ghost"></div><div class="ghost"></div></div>
+        <div class="col"><h6><i style="background:#34C759"></i>Won</h6><div class="ghost"></div></div>
+        <div class="mover"><b>New homeowner</b><small>Oakville · city water</small></div>
+      </div>
+      <div class="notes">
+        <div class="nt glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg><div><b>Reply sent</b><small>4 seconds after enquiry</small></div></div>
+        <div class="nt glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z M3.5 7.5L12 12l8.5-4.5 M12 12v9"/></svg><div><b>Test kit shipped</b><small>Tracking texted</small></div></div>
+        <div class="nt glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z M14 3v5h5"/></svg><div><b>Quote followed up</b><small>Automatically</small></div></div>
+        <div class="nt glass"><span class="live" style="margin:0 3px"></span><div><b>Install booked</b><small>Review request scheduled</small></div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- 4 search -->
+  <section class="slide" data-l="Search">
+    <div>
+      <div class="k rv"><i>03</i>Months one to two</div>
+      <h2 class="t rv d1">Found on <b>Google.</b><br><span class="bl">Named by AI.</span></h2>
+      <p class="p rv d2">Area by area across the GTA, built to show up when homeowners search, and when they ask AI what to do about their water.</p>
+      <div class="chips rv d3"><span>Area research</span><span>Local pages</span><span>AI search</span><span>Weekly improvements</span></div>
+    </div>
+    <div class="vis"><div class="search rv">
+      <div class="sbar glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="type">water softener oakville</span></div>
+      <div class="results" id="results">
+        <div class="res glass" style="top:0"><i></i><span></span><span class="w"></span></div>
+        <div class="res glass" style="top:64px"><i></i><span></span><span class="w"></span></div>
+        <div class="res glass" style="top:128px"><i></i><span></span><span class="w"></span></div>
+        <div class="res glass aq" id="aqRes" style="top:192px"><i></i>Aquanest Water Systems<em id="rank">#4</em></div>
+      </div>
+      <div class="ai glass"><span class="orb"></span><div>For hard water in Oakville, homeowners often go with <b>Aquanest Water Systems</b>. They test your water first and quote by email.</div></div>
+    </div></div>
+  </section>
+
+  <!-- 5 content -->
+  <section class="slide" data-l="Content">
+    <div>
+      <div class="k rv"><i>04</i>Ongoing</div>
+      <h2 class="t rv d1">Faces, <b>trust</b><br><span class="bl">and proof.</span></h2>
+      <p class="p rv d2">A steady stream of short videos and photos that show the people behind Aquanest, before the first review lands.</p>
+      <div class="chips rv d3"><span>Intro video</span><span>Weekly posts</span><span>Editing done for you</span></div>
+    </div>
+    <div class="vis"><div style="position:relative;padding-bottom:60px">
+      <div class="phones">
+        <div class="ph" style="--r:-6deg;--c1:#cfe0f5;--c2:#2b5ea7"><div class="fill"><img src="https://images.pexels.com/photos/5502219/pexels-photo-5502219.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" onerror="this.remove()"></div><div class="cap c2"></div><div class="cap"></div><div class="bar"></div></div>
+        <div class="ph" style="--c1:#8fb6ec;--c2:#0f1d33"><div class="fill"><img src="https://images.pexels.com/photos/3500006/pexels-photo-3500006.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" onerror="this.remove()"></div><div class="play"></div><div class="cap c2"></div><div class="cap"></div><div class="bar"></div></div>
+        <div class="ph" style="--r:6deg;--c1:#f1d4c6;--c2:#c4552f"><div class="fill"><img src="https://images.pexels.com/photos/8657206/pexels-photo-8657206.jpeg?auto=compress&cs=tinysrgb&w=400" alt="" onerror="this.remove()"></div><div class="cap c2"></div><div class="cap"></div><div class="bar"></div></div>
+      </div>
+      <div class="stars glass"><div class="st"><i></i><i></i><i></i><i></i><i></i></div><b>Google reviews</b></div>
+    </div></div>
+  </section>
+
+  <!-- 6 founding installs -->
+  <section class="slide" data-l="First installs">
+    <div>
+      <div class="k rv"><i>05</i>New year</div>
+      <h2 class="t rv d1">The first <b>installs</b><br><span class="bl">become proof.</span></h2>
+      <p class="p rv d2">Every early install is filmed, reviewed and shared, so each one helps win the next.</p>
+    </div>
+    <div class="vis"><div class="flow rv">
+      <svg class="ln" viewBox="0 0 600 4" preserveAspectRatio="none"><path d="M0 2 H600" stroke="#8fb6ec" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+      <div class="fs"><div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6v9H4z M10 20v-5h4v5"/></svg></div><b>Install</b><small>done properly</small></div>
+      <div class="fs"><div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10l5-3v10l-5-3"/></svg></div><b>Film</b><small>on any phone</small></div>
+      <div class="fs"><div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></div><b>Review</b><small>asked for automatically</small></div>
+      <div class="fs"><div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3L20 9 M20 4v5h-5 M20 12a8 8 0 0 1-14 5.3L4 15 M4 20v-5h5"/></svg></div><b>Share</b><small>site, socials, ads</small></div>
+      <div class="loopnote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12a8 8 0 0 1 14-5.3L20 9 M20 4v5h-5"/></svg>Every job feeds the next one</div>
+    </div></div>
+  </section>
+
+  <!-- 7 ads -->
+  <section class="slide dark" data-l="Ads">
+    <div>
+      <div class="k rv"><i>06</i>Once the foundation is in</div>
+      <h2 class="t rv d1">Then we <b>turn up</b><br><span class="bl">the volume.</span></h2>
+      <p class="p rv d2">Google ads plug into a system that already converts. One area at a time, scaled carefully.</p>
+      <div class="chips rv d3"><span>Search ads first</span><span>Area by area</span><span>Results in the CRM</span></div>
+    </div>
+    <div class="vis"><div class="radar rv">
+      <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+      <div class="pulse"></div><div class="pulse p2"></div><div class="pulse p3"></div>
+      <div class="pin"><svg viewBox="0 0 24 32"><path d="M12 1.5S22.5 13 22.5 20.2A10.5 10.5 0 0 1 1.5 20.2C1.5 13 12 1.5 12 1.5z" fill="#fff"/></svg></div>
+      <span class="area" style="left:58%;top:30%">Burlington</span>
+      <span class="area" style="left:20%;top:26%">Milton</span>
+      <span class="area" style="left:66%;top:56%">Mississauga</span>
+      <span class="area" style="left:10%;top:52%">Halton Hills</span>
+      <span class="area" style="left:44%;top:9%">Caledon</span>
+      <span class="area" style="left:72%;top:80%">Toronto</span>
+      <span class="area" style="left:42%;top:88%">Brampton</span>
+      <span class="area" style="left:78%;top:14%">Vaughan</span>
+      <div class="adcard glass"><small>Sponsored</small><b>Aquanest Water Systems</b><p>Free water test kit. Quotes by email.</p></div>
+    </div></div>
+  </section>
+
+  <!-- 8 loop -->
+  <section class="slide" data-l="Growth">
+    <div>
+      <div class="k rv"><i>07</i>The result</div>
+      <h2 class="t rv d1">A business that<br><b>feeds</b> <span class="bl">itself.</span></h2>
+      <p class="p rv d2">Search brings them in, the system follows up, every install adds proof, and proof brings the next homeowner.</p>
+    </div>
+    <div class="vis"><div class="wheel rv">
+      <svg viewBox="0 0 500 500">
+        <circle cx="250" cy="250" r="200" fill="none" stroke="rgba(15,29,51,.07)" stroke-width="2"/>
+        <circle class="arc" cx="250" cy="250" r="200" fill="none" stroke="url(#lg)" stroke-width="2.6" stroke-linecap="round" transform="rotate(-90 250 250)"/>
+        <g class="orbit"><circle cx="250" cy="50" r="9" fill="#c4552f"/><circle cx="250" cy="50" r="18" fill="#c4552f" opacity=".15"/></g>
+      </svg>
+      <div class="wl" style="left:50%;top:-2%"><b>Found</b><small>search + AI</small></div>
+      <div class="wl" style="left:110%;top:50%"><b>Booked</b><small>by the system</small></div>
+      <div class="wl" style="left:50%;top:102%"><b>Installed</b><small>and filmed</small></div>
+      <div class="wl" style="left:-10%;top:50%"><b>Reviewed</b><small>and shared</small></div>
+      <div class="wcenter"><div class="n">∞</div><small>compounding</small></div>
+    </div></div>
+  </section>
+
+  <!-- 9 end -->
+  <section class="slide dark center end" data-l="Next">
+    <div>
+      <div class="k rv" style="justify-content:center">Next</div>
+      <h2 class="t rv d1">Foundation <b>first.</b><br><span class="bl">Then scale.</span></h2>
+      <div class="steps rv d2">
+        <div class="stp glass"><span class="n" style="background:#c4552f">1</span><div><b>Kickoff</b><small>Onboarding + your areas</small></div></div>
+        <div class="stp glass"><span class="n" style="background:#2b5ea7">2</span><div><b>Build</b><small>Website, then CRM</small></div></div>
+        <div class="stp glass"><span class="n" style="background:#3f74c4">3</span><div><b>Grow</b><small>Search, content, then ads</small></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="ui" id="ui">
+  <span class="count" id="count">01 / 10</span>
+  <div class="prog" id="prog"></div>
+  <div class="arrows"><button id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><button id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+</div>
+
+<script>
+(function(){
+  const track=document.getElementById('track'),slides=[...document.querySelectorAll('.slide')],prog=document.getElementById('prog'),ui=document.getElementById('ui'),brand=document.getElementById('brand'),count=document.getElementById('count');
+  let cur=0,lock=false,timers=[];
+  prog.innerHTML=slides.map((s,i)=>`<button data-i="${i}"><span>${s.dataset.l}</span></button>`).join('');
+  const btns=[...prog.children];
+  btns.forEach(b=>b.onclick=()=>go(+b.dataset.i));
+  function clear(){timers.forEach(clearTimeout);timers=[];}
+  function go(i){
+    i=Math.max(0,Math.min(slides.length-1,i));
+    if(i===cur&&slides[i].classList.contains('on'))return;
+    clear();
+    slides[cur].classList.remove('on');
+    cur=i;
+    track.style.transform=`translateX(${-100*i}vw)`;
+    setTimeout(()=>{slides.forEach(s=>s.classList.remove('on'));void slides[i].offsetWidth;slides[i].classList.add('on');enter(i);},380);
+    const dark=slides[i].classList.contains('dark');
+    ui.classList.toggle('light',dark);brand.classList.toggle('light',dark);brand.classList.toggle('hide',i===0);
+    btns.forEach((b,j)=>{b.classList.toggle('done',j<i);b.classList.toggle('cur',j===i);});
+    count.textContent=String(i+1).padStart(2,'0')+' / '+slides.length;
+    lock=true;setTimeout(()=>lock=false,900);
+  }
+  // per-slide scripted bits
+  function enter(i){
+    const s=slides[i];
+    if(s.querySelector('#results')){
+      const aq=document.getElementById('aqRes'),rank=document.getElementById('rank'),others=[...s.querySelectorAll('.res:not(.aq)')];
+      aq.style.top='192px';others.forEach((o,k)=>o.style.top=(k*64)+'px');rank.textContent='#4';
+      timers.push(setTimeout(()=>{aq.style.top='0px';others.forEach((o,k)=>o.style.top=((k+1)*64)+'px');let n=4;const t=setInterval(()=>{n--;rank.textContent='#'+Math.max(n,1);if(n<=1)clearInterval(t);},300);timers.push(t);},2600));
+    }
+    if(s.querySelector('.radar')){
+      const as=[...s.querySelectorAll('.area')];as.forEach(a=>a.classList.remove('lit'));
+      as.forEach((a,k)=>timers.push(setTimeout(()=>a.classList.add('lit'),900+k*450)));
+    }
+  }
+  document.getElementById('next').onclick=()=>go(cur+1);
+  document.getElementById('prev').onclick=()=>go(cur-1);
+  addEventListener('keydown',e=>{if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1);}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(cur-1);}});
+  addEventListener('wheel',e=>{if(lock)return;const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;if(Math.abs(d)<12)return;go(cur+(d>0?1:-1));},{passive:true});
+  let sx=0,sy=0;addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+  addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))go(cur+(dx<0?1:-1));},{passive:true});
+  addEventListener('resize',()=>{track.style.transition='none';track.style.transform=`translateX(${-100*cur}vw)`;requestAnimationFrame(()=>track.style.transition='');});
+  // cover waves
+  const cv=document.getElementById('waves'),ctx=cv.getContext('2d');let w,h;const dpr=Math.min(devicePixelRatio||1,2);
+  const size=()=>{w=innerWidth;h=innerHeight;cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);};size();addEventListener('resize',size);
+  const red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  (function draw(t){if(cur===0||red){ctx.clearRect(0,0,w,h);for(let k=0;k<18;k++){ctx.beginPath();const base=h*.6+k*h*.022;for(let x=0;x<=w;x+=10){const y=base+Math.sin(x/260+t/2200+k*.42)*20*(1+k*.05)+Math.sin(x/90-t/1500+k)*4;x?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.strokeStyle=`rgba(143,182,236,${.035+k*.011})`;ctx.lineWidth=1.1;ctx.stroke();}}if(!red)requestAnimationFrame(draw);})(0);
+  // start
+  btns[0].classList.add('cur');ui.classList.add('light');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{slides[0].classList.add('on');}));
+})();
+</script>
+</body>
+</html>
