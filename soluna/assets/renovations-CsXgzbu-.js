@@ -1,1 +1,0 @@
-import{J as e}from"./Shell-CL8B-KYQ.js";import{i as t}from"./index-DZP6iOkL.js";var n=e(),r=()=>(0,n.jsx)(t,{slug:`renovations`});export{r as component};
