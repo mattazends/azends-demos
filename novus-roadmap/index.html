@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novus · SEO research &amp; roadmap</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A0F1C;--paper:#F5F7FA;--white:#fff;--line:#E2E7EF;--mute:#5E6878;--mute2:#8A93A3;--ice:#1F5EFF;--ice2:#4C82FF;--soft:#EAF0FF;--red:#E5484D;--amber:#F5A524;--green:#16A34A;--pad:clamp(20px,5vw,72px);--ease:cubic-bezier(.2,.7,.1,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Geist',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;color:var(--mute)}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--ice);box-shadow:0 0 0 4px rgba(31,94,255,.15)}
+.dark .eyebrow{color:rgba(255,255,255,.6)}
+h2{font-size:clamp(32px,4.4vw,58px);line-height:1.03;letter-spacing:-.045em;font-weight:300;margin-top:16px}
+h2 b,h1 b,h3 b{font-weight:600}
+.lead{font-size:clamp(16px,1.3vw,19px);color:var(--mute);font-weight:300;max-width:620px;margin-top:18px}
+.dark .lead{color:rgba(255,255,255,.65)}
+section{padding:clamp(80px,10vw,140px) 0;position:relative}
+.dark{background:var(--ink);color:#fff}
+.white{background:#fff}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* top bar */
+.bar{position:fixed;top:0;left:0;right:0;z-index:30;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(245,247,250,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(10,15,28,.05);transform:translateY(-100%);transition:transform .5s var(--ease)}
+.bar.show{transform:none}
+.logo{display:flex;align-items:center;gap:9px;font-weight:600;letter-spacing:-.03em;font-size:17px}
+.logo svg{width:22px;height:22px}
+.bar nav{display:flex;gap:22px;font-size:13.5px}
+.bar nav a{text-decoration:none;color:var(--mute)}
+.bar nav a.on{color:var(--ink);font-weight:500}
+.prog{position:fixed;top:0;left:0;height:2px;background:var(--ice);z-index:31;width:0}
+.prog svg{position:absolute;right:-8px;top:-7px;width:16px;height:16px;color:var(--ice)}
+
+/* cover */
+.cover{min-height:100svh;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(120% 80% at 80% 0%,#DCE7FF 0%,rgba(220,231,255,0) 55%),var(--paper);padding-top:90px;overflow:hidden}
+.cover .meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13px;color:var(--mute)}
+.pill b{color:var(--ink);font-weight:500}
+.cover h1{font-size:clamp(46px,8vw,112px);line-height:.95;letter-spacing:-.06em;font-weight:300}
+.cover p{font-size:clamp(17px,1.5vw,21px);color:var(--mute);max-width:640px;margin-top:26px;font-weight:300}
+.cover .go{display:inline-flex;align-items:center;gap:10px;margin-top:36px;height:54px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:500;font-size:15px}
+.toc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:clamp(50px,8vh,90px);border-top:1px solid var(--line)}
+.toc a{text-decoration:none;padding:18px 16px 0 0;font-size:14px;color:var(--mute);transition:color .2s}
+.toc a:hover{color:var(--ink)}
+.toc a span{display:block;font-size:12px;color:var(--mute2);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.flake-bg{position:absolute;right:-120px;top:120px;width:560px;height:560px;color:rgba(31,94,255,.07);pointer-events:none;animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* summary */
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:56px}
+.big3 div{border-top:1px solid var(--ink);padding-top:22px}
+.big3 .n{font-size:13px;color:var(--ice);font-weight:500}
+.big3 h3{font-size:clamp(22px,2vw,28px);font-weight:400;letter-spacing:-.03em;line-height:1.15;margin-top:10px}
+.big3 p{color:var(--mute);font-size:15.5px;margin-top:10px;font-weight:300}
+
+/* audit */
+.audit{margin-top:50px;border-top:1px solid var(--line)}
+.arow{display:grid;grid-template-columns:28px 1.1fr 1.6fr auto;gap:18px;align-items:start;padding:22px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.dot{width:12px;height:12px;border-radius:50%;margin-top:8px}
+.dot.r{background:var(--red);box-shadow:0 0 0 5px rgba(229,72,77,.14)}
+.dot.a{background:var(--amber);box-shadow:0 0 0 5px rgba(245,165,36,.16)}
+.dot.g{background:var(--green);box-shadow:0 0 0 5px rgba(22,163,74,.14)}
+.arow h4{font-size:clamp(18px,1.6vw,22px);font-weight:500;letter-spacing:-.025em}
+.arow .what{color:var(--mute);font-size:15.5px;font-weight:300}
+.arow .fix{grid-column:2/-1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.arow .fix>div{overflow:hidden}
+.arow .fix p{margin-top:12px;padding:14px 16px;border-radius:14px;background:var(--soft);color:#1E3A8A;font-size:14.5px}
+.arow.open .fix{grid-template-rows:1fr}
+.arow .tg{font-size:12.5px;color:var(--mute2);white-space:nowrap;margin-top:6px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--mute);margin-top:22px}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend .dot{margin:0;width:9px;height:9px;box-shadow:none}
+
+/* serp */
+.serp-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:start;margin-top:50px}
+.serp{background:#fff;border-radius:24px;padding:22px;color:var(--ink);box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.sbox{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:12px 16px;font-size:15px}
+.sbox svg{width:16px;height:16px;color:var(--mute2)}
+.sres{padding:16px 2px;border-bottom:1px solid var(--line)}
+.sres:last-child{border-bottom:0}
+.sres .u{font-size:12.5px;color:var(--mute)}
+.sres .t{font-size:16.5px;color:#1a0dab;margin-top:2px;letter-spacing:-.01em}
+.sres .tag{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:500;padding:4px 9px;border-radius:999px}
+.tag.nat{background:#EEF2F8;color:var(--mute)}
+.tag.spam{background:#FDECEC;color:#B42318}
+.tag.you{background:var(--soft);color:var(--ice)}
+.sres.ghost{opacity:.55}
+.comp{display:grid;gap:0;border-top:1px solid rgba(255,255,255,.12)}
+.comp div{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.comp h4{font-size:19px;font-weight:500;letter-spacing:-.02em}
+.comp p{color:rgba(255,255,255,.62);font-size:15px;margin-top:6px;font-weight:300}
+.comp .k{font-size:12.5px;color:#8FB0FF;font-weight:500}
+.callout{margin-top:28px;padding:20px 22px;border-radius:18px;background:rgba(143,176,255,.1);border:1px solid rgba(143,176,255,.25);font-size:15.5px;color:#DCE6FF}
+.callout b{color:#fff;font-weight:600}
+
+/* keywords */
+.ktabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:44px}
+.ktab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:11px 18px;font-size:14.5px;cursor:pointer;transition:all .25s}
+.ktab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.kpanel{display:none;margin-top:26px;animation:fade .5s var(--ease)}
+.kpanel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.kpanel .why{color:var(--mute);font-size:15.5px;max-width:640px;font-weight:300}
+.klist{margin-top:22px;border-top:1px solid var(--line)}
+.kw{display:grid;grid-template-columns:1fr 150px 130px;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.kw q{quotes:none;font-size:clamp(16px,1.4vw,19px);letter-spacing:-.02em}
+.kw .page{font-size:13px;color:var(--mute)}
+.pri{display:flex;gap:4px;align-items:center;font-size:12.5px;color:var(--mute)}
+.pri i{width:18px;height:5px;border-radius:9px;background:var(--line)}
+.pri i.f{background:var(--ice)}
+.knote{font-size:13px;color:var(--mute2);margin-top:16px}
+
+/* seasons */
+.seasons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:50px}
+.season{border-radius:26px;padding:clamp(24px,3vw,36px);position:relative;overflow:hidden}
+.season.now{background:var(--ink);color:#fff}
+.season.later{background:#fff;border:1px solid var(--line)}
+.season .when{font-size:13px;font-weight:500;color:#8FB0FF}
+.season.later .when{color:var(--ice)}
+.season h3{font-size:clamp(24px,2.4vw,32px);font-weight:300;letter-spacing:-.035em;line-height:1.1;margin-top:10px}
+.season ul{list-style:none;margin-top:20px;display:grid;gap:12px}
+.season li{display:flex;gap:12px;font-size:15.5px;font-weight:300}
+.season li:before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:#8FB0FF;margin-top:9px}
+.season.later li:before{background:var(--ice)}
+.season.now li{color:rgba(255,255,255,.82)}
+.season.later li{color:var(--mute)}
+
+/* roadmap */
+.road{margin-top:56px;position:relative;padding-left:46px}
+.road:before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:1px;background:repeating-linear-gradient(180deg,#C8D2E2 0 3px,transparent 3px 9px)}
+.road .fill{position:absolute;left:11px;top:6px;width:1px;height:0;background:var(--ice)}
+.road .fl{position:absolute;left:0;top:0;width:23px;height:23px;color:var(--ice);transition:transform .1s linear}
+.phase{position:relative;padding:0 0 clamp(36px,5vw,56px)}
+.phase:before{content:"";position:absolute;left:-40px;top:9px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:1px solid #AEB9CB;transition:all .4s}
+.phase.on:before{background:var(--ice);border-color:var(--ice);box-shadow:0 0 0 6px rgba(31,94,255,.14)}
+.phase .when{font-size:13px;font-weight:500;color:var(--ice)}
+.phase h3{font-size:clamp(26px,3vw,40px);font-weight:300;letter-spacing:-.04em;line-height:1.08;margin-top:8px}
+.phase>p{color:var(--mute);font-size:16.5px;font-weight:300;max-width:620px;margin-top:12px}
+.tasks{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tasks span{font-size:13.5px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+.vis{margin-top:22px;max-width:560px}
+/* small visuals */
+.mini{background:#fff;border-radius:20px;border:1px solid var(--line);padding:18px;box-shadow:0 30px 60px -45px rgba(10,15,28,.35)}
+.gbp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.gbp-top h5{font-size:18px;font-weight:600;letter-spacing:-.02em}
+.stars{color:#F5A524;font-size:14px;letter-spacing:1px}
+.gbp-top small{display:block;font-size:13px;color:var(--mute);margin-top:3px}
+.gbp-btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.gbp-btns span{font-size:13px;padding:8px 14px;border-radius:999px;background:var(--soft);color:var(--ice);font-weight:500}
+.gbp-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.gbp-tags span{font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--mute)}
+.msg{display:grid;gap:8px}
+.bub{max-width:85%;padding:11px 14px;border-radius:18px;font-size:14px;line-height:1.4}
+.bub.out{background:var(--ice);color:#fff;justify-self:end;border-bottom-right-radius:6px}
+.bub.in{background:#EEF2F8;justify-self:start;border-bottom-left-radius:6px}
+.bub small{display:block;font-size:11.5px;opacity:.7;margin-top:4px}
+.pages{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pages div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12.5px;background:#fff}
+.pages div b{display:block;font-size:11px;color:var(--ice);font-weight:500;margin-bottom:2px}
+.cit{display:flex;flex-wrap:wrap;gap:8px}
+.cit span{display:flex;align-items:center;gap:7px;font-size:13px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+.cit span:before{content:"✓";color:var(--green);font-weight:700;font-size:12px}
+.rep{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.rep div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
+.rep .n{font-size:26px;font-weight:300;letter-spacing:-.04em}
+.rep .n b{font-weight:600}
+.rep small{display:block;font-size:12px;color:var(--mute);margin-top:2px}
+.bars{display:flex;align-items:flex-end;gap:6px;height:56px;margin-top:10px}
+.bars i{flex:1;background:var(--soft);border-radius:4px 4px 0 0}
+.bars i.h{background:var(--ice)}
+
+/* ads */
+.ads{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:50px}
+.ad{border-top:1px solid rgba(255,255,255,.25);padding-top:22px}
+.ad .k{font-size:12.5px;color:#8FB0FF;font-weight:500}
+.ad h4{font-size:21px;font-weight:500;letter-spacing:-.025em;margin-top:8px}
+.ad p{color:rgba(255,255,255,.62);font-size:15px;margin-top:8px;font-weight:300}
+.admock{margin-top:16px;background:#fff;color:var(--ink);border-radius:16px;padding:14px 16px;font-size:13px}
+.admock .sp{font-size:11.5px;font-weight:600}
+.admock .ht{color:#1a0dab;font-size:15px;margin-top:3px;line-height:1.3}
+.admock p{color:var(--mute);font-size:12.5px;margin-top:4px}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:50px}
+.kpis div{border-top:1px solid var(--ink);padding-top:20px}
+.kpis h4{font-size:19px;font-weight:500;letter-spacing:-.02em}
+.kpis p{font-size:14.5px;color:var(--mute);margin-top:6px;font-weight:300}
+
+/* next */
+.next{text-align:center}
+.next h2{font-size:clamp(40px,6vw,84px);letter-spacing:-.055em}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:50px;text-align:left}
+.steps3 div{border-radius:22px;padding:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.steps3 .n{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px}
+.steps3 h4{font-size:19px;font-weight:500;margin-top:16px;letter-spacing:-.02em}
+.steps3 p{font-size:14.5px;color:rgba(255,255,255,.62);margin-top:6px;font-weight:300}
+.src{margin-top:70px;text-align:left;font-size:12.5px;color:rgba(255,255,255,.45);border-top:1px solid rgba(255,255,255,.1);padding-top:20px}
+.src a{color:rgba(255,255,255,.6)}
+.src li{margin-top:4px;list-style:none}
+
+@media (max-width:900px){
+  .bar nav{display:none}
+  .toc{grid-template-columns:repeat(2,1fr)}
+  .big3,.serp-grid,.seasons,.ads,.steps3{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .arow{grid-template-columns:24px 1fr;gap:6px 14px}
+  .arow .what{grid-column:2}
+  .arow .tg{display:none}
+  .kw{grid-template-columns:1fr auto}
+  .kw .page{grid-column:1;grid-row:2;margin-top:-8px}
+  .pages{grid-template-columns:repeat(2,1fr)}
+  .flake-bg{width:340px;height:340px;right:-140px;top:80px}
+}
+@media (max-width:560px){
+  .road{padding-left:34px}
+  .phase:before{left:-28px}
+  .road:before,.road .fill{left:5px}
+  .road .fl{left:-6px}
+  .kpis{grid-template-columns:1fr}
+  .rep{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .rep .n{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13"/></svg></div>
+<header class="bar" id="bar">
+  <div class="logo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13"/><path d="M12.5 5.5 16 9l3.5-3.5M12.5 26.5 16 23l3.5 3.5" stroke-width="1.8"/></svg>Novus</div>
+  <nav id="nav">
+    <a href="#today">Today</a><a href="#competition">Competition</a><a href="#keywords">Keywords</a><a href="#roadmap">Roadmap</a><a href="#next">Next</a>
+  </nav>
+</header>
+
+<!-- COVER -->
+<section class="cover">
+  <svg class="flake-bg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width=".6" stroke-linecap="round"><path d="M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13"/><path d="M12.5 5.5 16 9l3.5-3.5M12.5 26.5 16 23l3.5 3.5M5 14.5l4.4 1.5-.9 4.5M27 17.5l-4.4-1.5.9-4.5"/></svg>
+  <div class="wrap">
+    <div class="meta rv"><span class="pill"><b>Novus Maintenance</b> · SEO research</span><span class="pill">Prepared Nov 2026</span></div>
+    <h1 class="rv d1">How Novus becomes<br><b>the name NYC finds.</b></h1>
+    <p class="rv d2">Where you stand on Google today, who's in your way, what your buyers actually search, and the step-by-step plan to rank first for commercial snow removal in New York.</p>
+    <a class="go rv d3" href="#summary">Start reading <span>↓</span></a>
+    <div class="toc rv d3">
+      <a href="#today"><span>01</span>Where you stand</a>
+      <a href="#competition"><span>02</span>Who's ranking</a>
+      <a href="#keywords"><span>03</span>What buyers search</a>
+      <a href="#roadmap"><span>04</span>The roadmap</a>
+      <a href="#next"><span>05</span>Next steps</a>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="white" id="summary">
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>The short version</span>
+    <h2 class="rv d1">Your business is strong. <b>Google just can't see it yet.</b></h2>
+    <p class="lead rv d2">You already have what most competitors fake: real crews in every borough, real offices, clients like Target and Verizon. The problem is your online footprint doesn't show any of it.</p>
+    <div class="big3">
+      <div class="rv"><span class="n">01</span><h3>Too few pages for Google to rank</h3><p>One services page can't rank for five boroughs and five services. Competitors give each area and service its own page.</p></div>
+      <div class="rv d1"><span class="n">02</span><h3>Very few public reviews</h3><p>Reviews are one of the biggest local ranking signals, and the public listing we found shows just one.</p></div>
+      <div class="rv d2"><span class="n">03</span><h3>A crowded page of fakes</h3><p>Template sites with made-up reviews are filling the results. A real company with real proof can push past them.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TODAY -->
+<section id="today">
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>01 · Where you stand</span>
+    <h2 class="rv d1">A quick health check <b>of novusmaintenance.com</b></h2>
+    <p class="lead rv d2">Tap any row to see the fix.</p>
+    <div class="legend rv d2"><span><i class="dot r"></i>Holding you back</span><span><i class="dot a"></i>Needs work</span><span><i class="dot g"></i>Working for you</span></div>
+    <div class="audit">
+      <div class="arow rv"><i class="dot r"></i><h4>Pages Google can rank</h4><span class="what">6 main pages. Every service sits on one page, and only snow plowing has its own.</span><span class="tg">Tap for fix</span><div class="fix"><div><p>Give every service and every borough its own page, written for that search. That's how competitors like U.S. Lawns show up area by area.</p></div></div></div>
+      <div class="arow rv"><i class="dot r"></i><h4>Borough pages</h4><span class="what">None. Manhattan, Brooklyn, Queens, the Bronx and Staten Island have no page of their own.</span><span class="tg">Tap for fix</span><div class="fix"><div><p>5 borough pages with the offices, crews and real jobs in each area, so "snow removal Brooklyn" lands on a Brooklyn page.</p></div></div></div>
+      <div class="arow rv"><i class="dot r"></i><h4>Public reviews</h4><span class="what">The public listing we found (Yelp, via MapQuest) shows 1 review. Google count to confirm at kickoff.</span><span class="tg">Tap for fix</span><div class="fix"><div><p>A simple review ask after every storm, sent to your property contacts. Google says more reviews and good ratings help local ranking.</p></div></div></div>
+      <div class="arow rv"><i class="dot a"></i><h4>One main address everywhere</h4><span class="what">Directories list 222 Broadway. The website leads with 434 W 33rd St.</span><span class="tg">Tap for fix</span><div class="fix"><div><p>Pick one main address for Google and use it on every listing. Keep the other offices as locations on the site.</p></div></div></div>
+      <div class="arow rv"><i class="dot a"></i><h4>Page names and links</h4><span class="what">The About page lives at "/snow-removal-in-brooklyn-new-york-city/", which confuses what the page is about.</span><span class="tg">Tap for fix</span><div class="fix"><div><p>Clean, descriptive page addresses on the new site, with redirects from the old ones so nothing already indexed is lost.</p></div></div></div>
+      <div class="arow rv"><i class="dot a"></i><h4>Tracking</h4><span class="what">Two Google Tag Manager containers are installed on the same site.</span><span class="tg">Tap for fix</span><div class="fix"><div><p>One clean setup that tracks calls, quote requests and form fills, so we can report exactly what SEO brings in.</p></div></div></div>
+      <div class="arow rv"><i class="dot a"></i><h4>Answers buyers look for</h4><span class="what">No content on the NYC sidewalk rule, contract types or pricing, the questions facility managers ask before hiring.</span><span class="tg">Tap for fix</span><div class="fix"><div><p>Answer-first guides that Google and AI tools can quote, starting with the NYC sidewalk deadline guide.</p></div></div></div>
+      <div class="arow rv"><i class="dot g"></i><h4>Real proof</h4><span class="what">Big-name clients, 6 offices and yards, 24/7 crews and a commercial-only focus.</span><span class="tg">Tap for more</span><div class="fix"><div><p>This is your edge. The new site puts it front and centre, and the plan below gets it onto Google.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION -->
+<section class="dark" id="competition">
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>02 · Who's ranking</span>
+    <h2 class="rv d1">What shows up when NYC <b>searches for you.</b></h2>
+    <p class="lead rv d2">We searched the terms your buyers use. Three kinds of results came back again and again.</p>
+    <div class="serp-grid">
+      <div class="serp rv">
+        <div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>commercial snow removal nyc</div>
+        <div class="sres"><div class="u">brightview.com › local › new-york-ny</div><div class="t">Snow &amp; Ice Removal in the New York, NY Area</div><span class="tag nat">National brand</span></div>
+        <div class="sres"><div class="u">uslawns.com › locations › ny</div><div class="t">Commercial Snow Removal in Nassau County, NY</div><span class="tag nat">Page per area</span></div>
+        <div class="sres"><div class="u">ironsnowremoval.netlify.app › manhattan</div><div class="t">Snow Removal Manhattan, NY</div><span class="tag spam">Template site, made-up reviews</span></div>
+        <div class="sres"><div class="u">prosnowremoval.netlify.app › brooklyn</div><div class="t">Snow Removal Brooklyn, NY</div><span class="tag spam">Template site, made-up reviews</span></div>
+        <div class="sres ghost"><div class="u">novusmaintenance.com</div><div class="t">Novus Maintenance · Commercial Snow Removal NYC</div><span class="tag you">Where you need to be</span></div>
+      </div>
+      <div>
+        <div class="comp">
+          <div class="rv"><span class="k">The big national player</span><h4>BrightView</h4><p>One New York page that names all five boroughs and sells planning and 24/7 storm monitoring. Strong brand, but one generic page for the whole city.</p></div>
+          <div class="rv d1"><span class="k">The area-by-area player</span><h4>U.S. Lawns</h4><p>A separate commercial snow page for Westchester, Nassau and Suffolk. This is the structure that wins local searches, and they don't do it for the five boroughs.</p></div>
+          <div class="rv d2"><span class="k">The fakes</span><h4>Template snow sites</h4><p>Near-identical sites on free hosting with one page per borough, invented reviews and fake business addresses. They rank because the space is thin, not because they're good.</p></div>
+        </div>
+        <div class="callout rv"><b>The gap:</b> nobody real owns "commercial snow removal" for each NYC borough. Novus has the offices, crews and clients to take it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEYWORDS -->
+<section class="white" id="keywords">
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>03 · What buyers search</span>
+    <h2 class="rv d1">The searches worth <b>winning first.</b></h2>
+    <p class="lead rv d2">Three kinds of search, each with its own page on the new site. Exact monthly volumes get confirmed in Google's Keyword Planner at kickoff.</p>
+    <div class="ktabs rv d2" id="ktabs">
+      <button class="ktab on" type="button" data-k="0">Ready to hire</button>
+      <button class="ktab" type="button" data-k="1">Borough + service</button>
+      <button class="ktab" type="button" data-k="2">Questions &amp; AI answers</button>
+    </div>
+    <div class="kpanel on" data-k="0">
+      <p class="why">People who need a snow company now or for the season. Highest value, so these go on the homepage and service pages.</p>
+      <div class="klist">
+        <div class="kw"><q>commercial snow removal nyc</q><span class="page">Homepage</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>snow removal company new york city</q><span class="page">Homepage</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>commercial snow plowing nyc</q><span class="page">Snow plowing page</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>sidewalk snow removal service nyc</q><span class="page">Sidewalk clearing page</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>emergency snow removal nyc</q><span class="page">24/7 emergency page</span><span class="pri"><i class="f"></i><i class="f"></i><i></i> High</span></div>
+        <div class="kw"><q>snow hauling nyc</q><span class="page">Snow hauling page</span><span class="pri"><i class="f"></i><i class="f"></i><i></i> High</span></div>
+        <div class="kw"><q>de-icing services nyc</q><span class="page">De-icing page</span><span class="pri"><i class="f"></i><i class="f"></i><i></i> High</span></div>
+      </div>
+    </div>
+    <div class="kpanel" data-k="1">
+      <p class="why">The same buyer, searching their own borough. One page per borough is how you show up for every one of these.</p>
+      <div class="klist">
+        <div class="kw"><q>snow removal manhattan commercial</q><span class="page">Manhattan page</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>snow removal brooklyn</q><span class="page">Brooklyn page</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>snow removal queens / long island city</q><span class="page">Queens page</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>snow removal bronx</q><span class="page">Bronx page</span><span class="pri"><i class="f"></i><i class="f"></i><i></i> High</span></div>
+        <div class="kw"><q>snow removal staten island</q><span class="page">Staten Island page</span><span class="pri"><i class="f"></i><i class="f"></i><i></i> High</span></div>
+        <div class="kw"><q>parking lot snow plowing [borough]</q><span class="page">Borough + plowing</span><span class="pri"><i class="f"></i><i class="f"></i><i></i> High</span></div>
+      </div>
+    </div>
+    <div class="kpanel" data-k="2">
+      <p class="why">What facility and property managers ask before they hire. These pages get quoted by Google's AI answers and ChatGPT, and they build trust before the first call.</p>
+      <div class="klist">
+        <div class="kw"><q>how long do businesses have to clear sidewalks nyc</q><span class="page">NYC sidewalk law guide</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>nyc sidewalk snow fine</q><span class="page">NYC sidewalk law guide</span><span class="pri"><i class="f"></i><i class="f"></i><i></i> High</span></div>
+        <div class="kw"><q>commercial snow removal contract cost nyc</q><span class="page">Pricing &amp; contracts guide</span><span class="pri"><i class="f"></i><i class="f"></i><i class="f"></i> Top</span></div>
+        <div class="kw"><q>seasonal vs per push snow contract</q><span class="page">Pricing &amp; contracts guide</span><span class="pri"><i class="f"></i><i class="f"></i><i></i> High</span></div>
+        <div class="kw"><q>who is responsible for snow removal commercial property nyc</q><span class="page">Property manager guide</span><span class="pri"><i class="f"></i><i></i><i></i> Medium</span></div>
+      </div>
+    </div>
+    <p class="knote">Priority is our call based on buyer intent and how weak the current results are.</p>
+  </div>
+</section>
+
+<!-- SEASONS -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>Timing matters</span>
+    <h2 class="rv d1">Win this winter. <b>Own the next one.</b></h2>
+    <p class="lead rv d2">Seasonal contracts are usually agreed before the first storm, and SEO takes months to build. So the plan runs on two clocks.</p>
+    <div class="seasons">
+      <div class="season now rv"><span class="when">This winter · Nov to Mar</span><h3>Get found by people who <b>need help now.</b></h3><ul><li>Google Maps profile fully set up and posting after every storm</li><li>Reviews collected from every client after each storm</li><li>A 24/7 emergency page for "need it now" searches</li><li>Google Ads layered on top once the base is in</li></ul></div>
+      <div class="season later rv d1"><span class="when">Next season · ranked by August 2027</span><h3>Own the searches where <b>contracts get signed.</b></h3><ul><li>Borough and service pages ranking before buyers shop</li><li>Guides that Google's AI answers quote</li><li>A full season of reviews and storm photos as proof</li><li>Pre-season campaign to property and facility managers</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="white" id="roadmap">
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>04 · The roadmap</span>
+    <h2 class="rv d1">Step by step, <b>from launch to #1.</b></h2>
+    <p class="lead rv d2">Each step builds on the one before it. It's the same structure the strongest results already use, done properly with real proof.</p>
+    <div class="road" id="road">
+      <i class="fill" id="rfill"></i>
+      <svg class="fl" id="rflake" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13"/><path d="M12.5 5.5 16 9l3.5-3.5M12.5 26.5 16 23l3.5 3.5M5 14.5l4.4 1.5-.9 4.5M27 17.5l-4.4-1.5.9-4.5" stroke-width="1.8"/></svg>
+
+      <div class="phase rv"><span class="when">Week 1</span><h3>The new website <b>goes live.</b></h3><p>Built to convert facility managers and built for Google from the first day, with the old pages redirected so nothing is lost.</p>
+        <div class="tasks"><span>New site live</span><span>Redirects from old pages</span><span>Business schema</span><span>One tracking setup</span><span>Call + form tracking</span><span>Search Console</span></div></div>
+
+      <div class="phase rv"><span class="when">Weeks 1 to 2</span><h3>Your Google Maps profile, <b>done properly.</b></h3><p>The profile that shows up in the map results. Right category, every service, all five boroughs, real photos and weekly posts.</p>
+        <div class="vis"><div class="mini"><div class="gbp-top"><div><h5>Novus Maintenance</h5><small>Snow removal service · Open 24 hours</small></div><span class="stars">★★★★★</span></div><div class="gbp-btns"><span>Call</span><span>Website</span><span>Directions</span><span>Request quote</span></div><div class="gbp-tags"><span>Manhattan</span><span>Brooklyn</span><span>Queens</span><span>The Bronx</span><span>Staten Island</span><span>Commercial only</span></div></div></div></div>
+
+      <div class="phase rv"><span class="when">From the first storm</span><h3>Reviews on <b>autopilot.</b></h3><p>After every storm, each client contact gets a short text asking for a Google review. Every review gets a reply that names the service and borough.</p>
+        <div class="vis"><div class="mini msg"><div class="bub out">Morning! Your sites were cleared and treated overnight. If we kept things running, would you leave us a quick Google review? It really helps.<small>Sent automatically after each storm</small></div><div class="bub in">Done! Sidewalks were clear before we opened 👍</div></div></div></div>
+
+      <div class="phase rv"><span class="when">Weeks 2 to 6</span><h3>The pages <b>that rank.</b></h3><p>One page for every borough, service and type of property, plus guides that answer the questions buyers ask first. Written with real local detail, not copy-paste.</p>
+        <div class="vis"><div class="pages"><div><b>Borough</b>Manhattan</div><div><b>Borough</b>Brooklyn</div><div><b>Borough</b>Queens + LIC</div><div><b>Borough</b>The Bronx</div><div><b>Borough</b>Staten Island</div><div><b>Service</b>Plowing</div><div><b>Service</b>De-icing</div><div><b>Service</b>Sidewalks</div><div><b>Service</b>Hauling</div><div><b>Industry</b>Retail chains</div><div><b>Industry</b>Property managers</div><div><b>Guide</b>NYC sidewalk law</div></div></div></div>
+
+      <div class="phase rv"><span class="when">Months 2 to 3</span><h3>Authority <b>Google trusts.</b></h3><p>The same name, address and phone on every major listing, plus profiles on industry and business directories that point back to you.</p>
+        <div class="vis"><div class="cit"><span>Google</span><span>Apple Maps</span><span>Bing Places</span><span>Yelp</span><span>BBB</span><span>MapQuest</span><span>SIMA</span><span>HomeAdvisor</span><span>Local business groups</span></div></div></div>
+
+      <div class="phase rv"><span class="when">Every month</span><h3>A simple report <b>you can read in 2 minutes.</b></h3><p>Calls, quote requests, rankings for the searches above and new reviews. What moved, what we're doing next.</p>
+        <div class="vis"><div class="rep"><div><span class="n"><b>Calls</b></span><small>from Google</small><div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:60%"></i><i class="h" style="height:85%"></i></div></div><div><span class="n"><b>Quotes</b></span><small>from the site</small><div class="bars"><i style="height:25%"></i><i style="height:40%"></i><i style="height:55%"></i><i class="h" style="height:75%"></i></div></div><div><span class="n"><b>Reviews</b></span><small>on Google</small><div class="bars"><i style="height:15%"></i><i style="height:35%"></i><i style="height:60%"></i><i class="h" style="height:90%"></i></div></div></div><p style="font-size:12px;color:var(--mute2);margin-top:8px">Example layout only. Real numbers come from your tracking.</p></div></div>
+
+      <div class="phase rv"><span class="when">August to October 2027</span><h3>Contract season, <b>already ranked.</b></h3><p>By the time property managers shop for next winter, your borough and service pages are in place with a full season of reviews behind them. Then ads turn up the volume.</p>
+        <div class="tasks"><span>Pre-season content push</span><span>Refresh pages with this winter's jobs</span><span>Ads switched on</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADS -->
+<section class="dark">
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>Later · Ads on top</span>
+    <h2 class="rv d1">Once the base is in, <b>ads multiply it.</b></h2>
+    <p class="lead rv d2">Ads work best when they land on a site that converts and a profile full of reviews. Three we'd start with.</p>
+    <div class="ads">
+      <div class="ad rv"><span class="k">Google Search · in season</span><h4>Storm-day searches</h4><p>Show up for "emergency" and borough snow removal searches when storms hit, sending people straight to a call.</p><div class="admock"><span class="sp">Sponsored</span><div class="ht">Commercial Snow Removal NYC · Crews On Standby 24/7</div><p>All 5 boroughs. Plowing, sidewalks, de-icing. Commercial only. Call now.</p></div></div>
+      <div class="ad rv d1"><span class="k">Google Search · pre-season</span><h4>Contract shoppers</h4><p>Target "snow removal contract" searches from August, pointing to the quote form and sidewalk deadline calculator.</p><div class="admock"><span class="sp">Sponsored</span><div class="ht">Get Your Snow Plan Before The First Storm</div><p>Seasonal contracts for NYC businesses. Price your site in 60 seconds.</p></div></div>
+      <div class="ad rv d2"><span class="k">Retargeting</span><h4>Bring visitors back</h4><p>Facility managers rarely buy on the first visit. Follow up with proof: client logos, reviews and storm footage.</p><div class="admock"><span class="sp">Sponsored</span><div class="ht">Trusted by Target, Verizon and Schwab</div><p>See how Novus keeps NYC sites open every storm.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIS -->
+<section class="white">
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>How we'll measure it</span>
+    <h2 class="rv d1">Success means <b>more calls, not just rankings.</b></h2>
+    <div class="kpis">
+      <div class="rv"><h4>Calls &amp; quote requests</h4><p>Tracked from Google, the website and the Maps profile, every month.</p></div>
+      <div class="rv d1"><h4>Rankings</h4><p>Your position for every search on this page, checked monthly.</p></div>
+      <div class="rv d2"><h4>Google reviews</h4><p>New reviews each month and your average rating.</p></div>
+      <div class="rv d3"><h4>Map views &amp; actions</h4><p>Calls, website visits and direction requests from your Maps profile.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="dark next" id="next">
+  <div class="wrap">
+    <span class="eyebrow rv"><i></i>05 · Next steps</span>
+    <h2 class="rv d1">Three steps <b>to start.</b></h2>
+    <div class="steps3">
+      <div class="rv"><span class="n">1</span><h4>Approve the new site</h4><p>Final tweaks to the design, then it goes live in week one.</p></div>
+      <div class="rv d1"><span class="n">2</span><h4>Share access</h4><p>Google Business Profile, domain and any existing Google accounts.</p></div>
+      <div class="rv d2"><span class="n">3</span><h4>Kickoff call</h4><p>Confirm your main address, priority boroughs and client list for reviews.</p></div>
+    </div>
+    <ul class="src rv">
+      <li>Sources: search results reviewed Nov 2026 for NYC commercial snow removal terms;
+        <a href="https://www.brightview.com/local/new-york-ny/snow-ice" target="_blank" rel="noopener">BrightView NYC</a>;
+        <a href="https://uslawns.com/locations/ny/nassau-county/services/snow-ice-management/snow-removal/" target="_blank" rel="noopener">U.S. Lawns Nassau</a>;
+        <a href="https://mapquest.com/us/new-york/novus-maintenance-snow-removal-378922531" target="_blank" rel="noopener">Novus on MapQuest/Yelp</a>;
+        <a href="https://www.nyc.gov/assets/mopd/downloads/pdf/Snow-Removal-2020.pdf" target="_blank" rel="noopener">NYC snow removal rules</a>;
+        Google's local ranking guidance on reviews and complete business info.</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  // audit rows
+  document.querySelectorAll('.arow').forEach(function(r){r.addEventListener('click',function(){r.classList.toggle('open')})});
+  // keyword tabs
+  var tabs=document.querySelectorAll('.ktab'),panels=document.querySelectorAll('.kpanel');
+  tabs.forEach(function(t){t.addEventListener('click',function(){var k=t.dataset.k;tabs.forEach(function(x){x.classList.toggle('on',x===t)});panels.forEach(function(p){p.classList.toggle('on',p.dataset.k===k)})})});
+  // progress + bar + nav
+  var prog=document.getElementById('prog'),bar=document.getElementById('bar'),links=document.querySelectorAll('#nav a');
+  var road=document.getElementById('road'),fill=document.getElementById('rfill'),fl=document.getElementById('rflake'),phases=document.querySelectorAll('.phase');
+  function onScroll(){
+    var y=window.scrollY,max=document.body.scrollHeight-innerHeight;
+    prog.style.width=(y/max*100)+'%';
+    bar.classList.toggle('show',y>innerHeight*.6);
+    var cur='';links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s&&s.getBoundingClientRect().top<innerHeight*.4)cur=a.getAttribute('href')});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===cur)});
+    var r=road.getBoundingClientRect(),mid=innerHeight*.55,p=Math.max(0,Math.min(1,(mid-r.top)/(r.height-30)));
+    fill.style.height=(p*(r.height-12))+'px';
+    fl.style.transform='translateY('+(p*(r.height-30))+'px) rotate('+(y*.3)+'deg)';
+    phases.forEach(function(ph){ph.classList.toggle('on',ph.getBoundingClientRect().top<mid)});
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+</body>
+</html>
