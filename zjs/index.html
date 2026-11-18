@@ -6,13 +6,13 @@
 <title>ZJS Architectural Design | New homes, extensions and country houses · Odiham, Hampshire</title>
 <meta name="description" content="Award-winning architectural design studio near Odiham, Hampshire. Bespoke new builds, extensions, renovations and country houses across Hampshire, Surrey, Berkshire and beyond.">
 <meta name="theme-color" content="#13201A">
-<link rel="icon" href="img/zjs-mark.svg">
+<link rel="icon" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c8443a52-e27e-41d3-aa02-652ece223dc8.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<script type="importmap">{"imports":{"three":"./js/three.module.min.js"}}</script>
+<script type="importmap">{"imports":{"three":"/zjs/js/three.module.min.js"}}</script>
 <style>
 :root{
-  --forest:#13201A; --forest2:#1A2B22; --moss:#2C4234; --sage:#7D8F74; --sage2:#A8B59C;
+  --stone:#E9E3D6; --forest:#13201A; --forest2:#1A2B22; --moss:#2C4234; --sage:#7D8F74; --sage2:#A8B59C;
   --oak:#B98A55; --oak2:#D9B98C; --cream:#EFE9DC; --paper:#F5F1E8; --card:#FBF9F4;
   --ink:#16201A; --ink2:#46504A; --mute:#87907F; --line:rgba(22,32,26,.12); --lineL:rgba(239,233,220,.14);
   --r:26px; --ease:cubic-bezier(.22,.8,.2,1);
@@ -464,48 +464,181 @@ footer a:hover{color:#fff}
   .views button{padding:7px 10px;font-size:12px}
   .hint{display:none}
 }
+
+/* ===== v3 additions ===== */
+.ldlogo{width:min(220px,46vw);height:auto;clip-path:inset(0 100% 0 0);animation:ldwipe 1.3s .15s var(--ease) forwards,ldfade .8s .1s both}
+@keyframes ldwipe{to{clip-path:inset(0 0 0 0)}}
+@keyframes ldfade{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.nav .brand img{height:46px;width:auto;display:block}
+.nav{padding:5px 6px 5px 12px}
+.dd{position:relative}
+.dd>a{display:flex;align-items:center;gap:4px}
+.car{font-size:10px;opacity:.7}
+.ddm{position:absolute;top:calc(100% + 10px);left:-10px;min-width:260px;background:rgba(19,32,26,.96);backdrop-filter:blur(18px);border:1px solid var(--lineL);border-radius:18px;padding:8px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .35s var(--ease)}
+.dd:hover .ddm{opacity:1;visibility:visible;transform:none}
+.ddm a{padding:11px 14px!important;border-radius:12px;font-size:14px;color:#D8D5C8}
+.ddm a:hover{background:rgba(239,233,220,.08)}
+.mnav a.oakc{color:var(--oak2)}
+.flogo{width:clamp(150px,18vw,250px);height:auto}
+.hv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02)}
+.hero .copy{bottom:clamp(80px,12vh,120px)}
+.hmeta{position:absolute;left:clamp(22px,4vw,64px);right:clamp(22px,4vw,64px);bottom:26px;display:flex;justify-content:space-between;color:#C9C9BB;font-size:13px}
+.hmeta i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--oak2);margin-right:10px;animation:live 2.4s infinite}
+.hmeta .sc{letter-spacing:.2em;text-transform:uppercase;font-size:11px}
+/* practice cards */
+a.pc{color:inherit}
+.pc .im img{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;animation:none}
+.pc .im img.a{animation:kbA 16s ease-in-out infinite alternate}
+.pc .im img.b{opacity:0;animation:kbB 16s ease-in-out infinite alternate,xf 16s ease-in-out infinite}
+.pc:nth-child(2) .im img{animation-delay:-5s}.pc:nth-child(3) .im img{animation-delay:-10s}
+@keyframes kbA{from{transform:scale(1) translate3d(-1.5%,0,0)}to{transform:scale(1.07) translate3d(1.5%,-1.5%,0)}}
+@keyframes kbB{from{transform:scale(1.07) translate3d(1.5%,1%,0)}to{transform:scale(1) translate3d(-1.5%,0,0)}}
+@keyframes xf{0%,38%{opacity:0}50%,88%{opacity:1}100%{opacity:0}}
+.pc .sheen{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,244,220,.16) 50%,transparent 60%);background-size:250% 100%;animation:sheen 7s ease-in-out infinite;pointer-events:none;mix-blend-mode:screen}
+@keyframes sheen{0%{background-position:150% 0}60%,100%{background-position:-60% 0}}
+.pc .im:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,22,17,.25),transparent 30%)}
+.pc .lk{margin-top:auto;padding-top:12px;font-size:14px;font-weight:500;color:var(--moss);display:inline-flex;gap:6px;transition:gap .3s}
+.pc:hover .lk{gap:12px}
+/* split / pillars / contact */
+.split{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;align-items:start}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);margin-top:80px;border-top:1px solid var(--line)}
+.pillars div{padding:26px 24px 0 0}
+.pillars div+div{padding-left:24px;border-left:1px solid var(--line)}
+.pillars small{font-size:12px;color:var(--oak);letter-spacing:.12em}
+.pillars h4{font-size:23px;font-weight:300;letter-spacing:-.025em;margin:10px 0 8px}
+.pillars p{font-size:15px;color:var(--ink2)}
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:40px}
+.cc{background:rgba(239,233,220,.06);border:1px solid var(--lineL);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:8px;transition:background .3s}
+.cc:hover{background:rgba(239,233,220,.12)}
+.cc small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--oak2)}
+.cc b{font-weight:400;font-size:17px;color:#fff;word-break:break-word}
+.oakcc{background:var(--oak);border-color:var(--oak)}.oakcc small,.oakcc b{color:#1a130b}
+/* service detail */
+.sv-hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;padding:140px 0 70px;color:var(--cream);overflow:hidden;background:var(--forest)}
+.sv-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kbA 24s ease-in-out infinite alternate}
+.sv-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,22,17,.92),rgba(13,22,17,.2) 60%,rgba(13,22,17,.45))}
+.sv-hero .wrap{position:relative;z-index:2}
+.sv-hero .p{color:#D6D6C9;margin-top:20px}
+.sv-body{padding:110px 0}
+.inc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.inc div{background:var(--card);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.inc b{font-weight:500;font-size:17px}
+.inc span{font-size:15px;color:var(--ink2)}
+.inc i{width:34px;height:34px;border-radius:50%;background:var(--forest);color:var(--oak2);display:grid;place-items:center;font-style:normal;font-size:13px}
+.sv-gal{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-top:60px;height:420px}
+.sv-gal img{width:100%;height:100%;object-fit:cover;border-radius:20px}
+.sv-next{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:30px}
+.sv-next a{border:1px solid var(--line);border-radius:16px;padding:16px;font-size:14px;background:rgba(255,255,255,.4);transition:background .3s}
+.sv-next a:hover{background:#fff}
+/* ===== Lakeview-style form ===== */
+.hstart{padding:110px 0;background:var(--stone,#E9E3D6)}
+.hstart.dkf{background:var(--forest);color:var(--cream)}
+.fhead{text-align:center;max-width:760px;margin:0 auto 40px}
+.fhead .lbl{justify-content:center}
+.zf{max-width:980px;margin:0 auto;background:var(--card);color:var(--ink);border-radius:30px;box-shadow:0 40px 90px -40px rgba(19,32,26,.45);overflow:hidden;border:1px solid rgba(19,32,26,.06)}
+.zf .bar{display:flex;align-items:center;gap:18px;padding:18px 26px;border-bottom:1px solid var(--line)}
+.zf .cnt{font-size:14px;color:var(--mute);min-width:44px}.zf .cnt b{color:var(--forest)}
+.zf .trk{flex:1;height:5px;border-radius:5px;background:#ECE7DC;overflow:hidden}
+.zf .trk i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,var(--moss),var(--oak));transition:width .6s var(--ease)}
+.zf .bar a{font-size:14px;font-weight:500;color:var(--forest)}
+.zf .bd{padding:34px 28px 30px;min-height:420px}
+.zf .q{font-size:clamp(26px,3vw,40px);font-weight:300;letter-spacing:-.04em;text-align:center;margin-bottom:26px}
+.zf .q b{font-weight:500}
+.zf .stp{animation:stin .55s var(--ease)}
+@keyframes stin{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border:1px solid var(--line);border-radius:22px;padding:10px;background:#F4F1EA;text-align:left;transition:transform .4s var(--ease),border-color .3s,box-shadow .4s;position:relative}
+.card:hover{transform:translateY(-4px);border-color:rgba(19,32,26,.25);box-shadow:0 18px 40px -24px rgba(19,32,26,.4)}
+.card .ill{background:#fff;border-radius:16px;height:170px;display:grid;place-items:center;overflow:hidden}
+.card .ill svg{width:86%;height:86%}
+.card .tx{padding:12px 8px 4px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card .tx b{display:block;font-weight:500;font-size:17px}
+.card .tx small{font-size:13px;color:var(--mute)}
+.card .rd{width:24px;height:24px;border-radius:50%;border:1px solid var(--line);flex-shrink:0;transition:all .3s;display:grid;place-items:center;font-size:12px;color:#fff}
+.card.on{border-color:var(--forest);background:#EFEBE1}
+.card.on .rd{background:var(--forest);border-color:var(--forest)}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:720px;margin:0 auto}
+.tile{border:1px solid var(--line);border-radius:18px;padding:20px 22px;font-size:17px;text-align:left;background:#F4F1EA;display:flex;justify-content:space-between;align-items:center;transition:all .3s var(--ease)}
+.tile:hover{border-color:rgba(19,32,26,.3);transform:translateY(-2px)}
+.tile.on{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.tile .rd{width:22px;height:22px;border-radius:50%;border:1px solid currentColor;opacity:.4}
+.tile.on .rd{opacity:1;background:var(--oak);border-color:var(--oak)}
+.ff{max-width:640px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ff .full{grid-column:1/-1}
+.ff input,.ff textarea{width:100%;border:1px solid var(--line);background:#F4F1EA;border-radius:14px;padding:16px;font-size:16px;outline:none;transition:border-color .3s,background .3s}
+.ff input:focus,.ff textarea:focus{border-color:var(--forest);background:#fff}
+.ff textarea{min-height:100px;resize:vertical}
+.ff button{grid-column:1/-1;height:58px;border-radius:99px;background:var(--forest);color:var(--cream);font-size:16px;font-weight:500}
+.zf .back{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14px;color:var(--mute)}
+.zf .back[hidden]{display:none}
+.zf .ok{text-align:center;padding:40px 10px}
+.zf .ok .tk{width:74px;height:74px;border-radius:50%;background:var(--forest);color:var(--oak2);display:grid;place-items:center;margin:0 auto 20px;font-size:30px;animation:pop .6s var(--ease)}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.zf .sum{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:16px}
+.zf .sum span{font-size:13px;padding:7px 12px;border-radius:99px;background:#F0ECE3}
+/* illustration animations */
+.ill .ln{fill:none;stroke:#1A2B22;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ill .oakf{fill:#D9B98C}.ill .sage{fill:#A8B59C}.ill .forf{fill:#2C4234}
+.a-draw{stroke-dasharray:420;stroke-dashoffset:420;animation:adraw 5s var(--ease) infinite}
+@keyframes adraw{0%{stroke-dashoffset:420}45%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:-420}}
+.a-door{animation:adoor 5s ease infinite;transform-origin:bottom}
+@keyframes adoor{0%,40%{transform:scaleY(0)}55%,92%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+.a-slide{animation:aslide 4s var(--ease) infinite}
+@keyframes aslide{0%,15%{transform:translateX(-46px)}45%,85%{transform:none}100%{transform:translateX(-46px)}}
+.a-pop{transform-box:fill-box;transform-origin:bottom;animation:apop 4.2s var(--ease) infinite}
+@keyframes apop{0%,10%{transform:scaleY(0)}30%,85%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+.a-ants{stroke-dasharray:7 6;animation:ants 1.2s linear infinite}
+@keyframes ants{to{stroke-dashoffset:-26}}
+.a-pin{animation:pin 2s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom}
+@keyframes pin{50%{transform:translateY(-8px)}}
+.a-win{animation:awin 3.6s ease infinite}
+@keyframes awin{0%,20%{fill:#fff}35%,85%{fill:#D9B98C}100%{fill:#fff}}
+.a-hook{animation:ahook 4s ease-in-out infinite}
+@keyframes ahook{0%,15%{transform:translateY(0)}55%,80%{transform:translateY(34px)}100%{transform:translateY(0)}}
+.a-sun{animation:asun 8s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes asun{to{transform:rotate(360deg)}}
+@media (max-width:820px){
+  .cards{grid-template-columns:1fr 1fr}.card .ill{height:120px}.card .tx b{font-size:15px}.card .tx small{display:none}
+  .tiles,.ff{grid-template-columns:1fr}
+  .zf .bd{padding:26px 16px}
+  .split{grid-template-columns:1fr;gap:20px}.pillars{grid-template-columns:1fr 1fr}.pillars div:nth-child(3){padding-left:0;border-left:0}.pillars div{padding-bottom:22px}
+  .cgrid{grid-template-columns:1fr}
+  .inc{grid-template-columns:1fr}.sv-gal{grid-template-columns:1fr;height:auto}.sv-gal img{height:260px}.sv-next{grid-template-columns:1fr 1fr}
+  .nav .brand img{height:40px}
+  .hmeta .sc{display:none}
+}
+@media (max-width:1180px){.ddm{display:none}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body data-route="home">
 
-<div id="ld"><svg class="mark" viewBox="0 0 160 160"><path transform="matrix(1,0,0,-1,60.33,20.41)" d="M0 0 6.28-.285C6.28-.285 8.93-.382 9.64-.713 11.94-1.78 11.99-3.87 11.99-3.87 11.99-3.87 11.99-22.70 11.96-44.90H25.69C25.67-24.4 25.65-4.77 25.65-4.31 25.65-3.33 25.73-2.22 25.73-2.22 25.73-2.22 26.04-1.27 26.46-.916 26.87-.555 28.19-.542 28.19-.542 28.19-.542 34.47-.425 34.99-.263 35.50-.101 36.67 .077 36.63 1.18 36.60 2.3 34.21 2.47 34.21 2.47 34.21 2.47 4.16 2.67 .538 2.41-.688 2.32-1.05 2.13-1.19 1.64-1.6 .269 0 0 0 0"/>
-<path transform="matrix(1,0,0,-1,129.76,65.32)" d="M0 0-13.62 28.98H4.31C8.17 28.98 10.69 28.75 11.86 28.29 13.04 27.84 14.39 26.19 15.92 23.36 17.45 20.53 18.62 16.89 19.41 12.47H21.28L19.41 31.83H-23.44V28.98L-9.84 0Z"/>
-<path transform="matrix(1,0,0,-1,12.97,41.96)" d="M0 0C1.64 2.83 3.10 4.47 4.37 4.93 5.63 5.38 8.34 5.61 12.49 5.61H31.81L17.14-23.36H27.74L42.38 5.61V8.47H-3.75L-5.76-10.89H-3.75C-2.890-6.46-1.64-2.83 0 0"/>
-<path transform="matrix(1,0,0,-1,129.83,86.45)" d="M0 0 13.30-28.34H-4.29C-10.28-28.34-14.07-27.66-15.69-26.29-17.31-24.93-18.77-22.57-20.09-19.22-21.41-15.87-22.41-12.60-23.09-9.41H-25.04L-23.09-31.20H23.51V-29.02L9.86 0Z"/>
-<path transform="matrix(1,0,0,-1,86.04,86.45)" d="M0 0H-13.77C-13.82-25.20-13.90-48.7-14.05-49.63-14.38-51.67-14.89-56.00-16.71-57.38-18.54-58.77-18.54-58.78-20.63-59.12-22.71-59.46-22.93-57.68-22.930-57.68-22.93-57.68-23.13-57.00-21.80-55.21-20.48-53.42-18.09-47.73-22.02-43.82-25.95-39.91-30.61-41.86-32.12-43.08-33.63-44.3-34.84-46.48-34.84-50.30-34.84-54.98-34.12-55.78-33.34-57.41-33.33-57.44-33.31-57.47-33.29-57.50-31.97-59.43-28.80-61.83-25.60-62.21-22.36-62.59-20.35-62.96-16.27-61.11-12.19-59.26-10.82-57.81-8.46-55.72-6.10-53.63-2.89-48.17-1.38-42.74 .114-37.31-.14-30.44-.14-30.44L.027-25.43C.027-25.43 .015-14.30 0 0"/>
-<path transform="matrix(1,0,0,-1,57.01,95.86)" d="M0 0H-2.10C-2.83-3.18-3.91-6.45-5.33-9.80-6.75-13.15-8.33-15.51-10.06-16.88-11.80-18.24-15.89-18.93-22.33-18.93H-41.28L-26.96 9.41H-37.57L-52.26-19.61V-21.78H-2.10Z"/></svg><i></i></div>
+<div id="ld"><img class="ldlogo" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/65d1dd8b-4b4f-403e-a396-1751ae45762b.png" alt="ZJS Architectural Design"><i></i></div>
 
 <nav class="nav">
-  <a href="#/" class="brand" aria-label="ZJS home"><svg class="mark" viewBox="0 0 160 160"><path transform="matrix(1,0,0,-1,60.33,20.41)" d="M0 0 6.28-.285C6.28-.285 8.93-.382 9.64-.713 11.94-1.78 11.99-3.87 11.99-3.87 11.99-3.87 11.99-22.70 11.96-44.90H25.69C25.67-24.4 25.65-4.77 25.65-4.31 25.65-3.33 25.73-2.22 25.73-2.22 25.73-2.22 26.04-1.27 26.46-.916 26.87-.555 28.19-.542 28.19-.542 28.19-.542 34.47-.425 34.99-.263 35.50-.101 36.67 .077 36.63 1.18 36.60 2.3 34.21 2.47 34.21 2.47 34.21 2.47 4.16 2.67 .538 2.41-.688 2.32-1.05 2.13-1.19 1.64-1.6 .269 0 0 0 0"/>
-<path transform="matrix(1,0,0,-1,129.76,65.32)" d="M0 0-13.62 28.98H4.31C8.17 28.98 10.69 28.75 11.86 28.29 13.04 27.84 14.39 26.19 15.92 23.36 17.45 20.53 18.62 16.89 19.41 12.47H21.28L19.41 31.83H-23.44V28.98L-9.84 0Z"/>
-<path transform="matrix(1,0,0,-1,12.97,41.96)" d="M0 0C1.64 2.83 3.10 4.47 4.37 4.93 5.63 5.38 8.34 5.61 12.49 5.61H31.81L17.14-23.36H27.74L42.38 5.61V8.47H-3.75L-5.76-10.89H-3.75C-2.890-6.46-1.64-2.83 0 0"/>
-<path transform="matrix(1,0,0,-1,129.83,86.45)" d="M0 0 13.30-28.34H-4.29C-10.28-28.34-14.07-27.66-15.69-26.29-17.31-24.93-18.77-22.57-20.09-19.22-21.41-15.87-22.41-12.60-23.09-9.41H-25.04L-23.09-31.20H23.51V-29.02L9.86 0Z"/>
-<path transform="matrix(1,0,0,-1,86.04,86.45)" d="M0 0H-13.77C-13.82-25.20-13.90-48.7-14.05-49.63-14.38-51.67-14.89-56.00-16.71-57.38-18.54-58.77-18.54-58.78-20.63-59.12-22.71-59.46-22.93-57.68-22.930-57.68-22.93-57.68-23.13-57.00-21.80-55.21-20.48-53.42-18.09-47.73-22.02-43.82-25.95-39.91-30.61-41.86-32.12-43.08-33.63-44.3-34.84-46.48-34.84-50.30-34.84-54.98-34.12-55.78-33.34-57.41-33.33-57.44-33.31-57.47-33.29-57.50-31.97-59.43-28.80-61.83-25.60-62.21-22.36-62.59-20.35-62.96-16.27-61.11-12.19-59.26-10.82-57.81-8.46-55.72-6.10-53.63-2.89-48.17-1.38-42.74 .114-37.31-.14-30.44-.14-30.44L.027-25.43C.027-25.43 .015-14.30 0 0"/>
-<path transform="matrix(1,0,0,-1,57.01,95.86)" d="M0 0H-2.10C-2.83-3.18-3.91-6.45-5.33-9.80-6.75-13.15-8.33-15.51-10.06-16.88-11.80-18.24-15.89-18.93-22.33-18.93H-41.28L-26.96 9.41H-37.57L-52.26-19.61V-21.78H-2.10Z"/></svg></a>
+  <a href="#/" class="brand" aria-label="ZJS Architectural Design home"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/65d1dd8b-4b4f-403e-a396-1751ae45762b.png" alt="ZJS Architectural Design"></a>
   <div class="links">
-    <a href="#/services" data-nav="services">New builds &amp; services</a>
+    <div class="dd"><a href="#/services" data-nav="services">Services <span class="car">▾</span></a>
+      <div class="ddm"><a href="#/services/new-builds">New builds &amp; country houses</a><a href="#/services/extensions">Extensions</a><a href="#/services/renovations">Renovations</a><a href="#/services/development">Development</a><a href="#/services/land-promotion">Land promotion</a><a href="#/services/design-and-build">Design &amp; build</a></div></div>
     <a href="#/design" data-nav="design">3D designer</a>
     <a href="#/projects" data-nav="projects">Projects</a>
     <a href="#/workshop" data-nav="workshop">Design workshop</a>
     <a href="#/where" data-nav="where">Where we work</a>
+    <a href="#/studio" data-nav="studio">Studio</a>
   </div>
-  <a href="#/where/start" class="cta">Start a project <span>→</span></a>
+  <a href="#/start" class="cta">Start a project <span>→</span></a>
   <button class="burger" id="burger" aria-label="Menu"><i></i></button>
 </nav>
 <div class="mnav" id="mnav">
-  <a href="#/">Home</a><a href="#/services">New builds &amp; services</a><a href="#/design">3D designer</a><a href="#/projects">Projects</a><a href="#/workshop">Design workshop</a><a href="#/where">Where we work</a><a href="#/where/start">Start a project</a>
+  <a href="#/">Home</a><a href="#/services">Services</a><a href="#/design">3D designer</a><a href="#/projects">Projects</a><a href="#/workshop">Design workshop</a><a href="#/where">Where we work</a><a href="#/studio">Studio</a><a href="#/contact">Contact</a><a href="#/start" class="oakc">Start a project</a>
 </div>
 
 <!-- ============ HOME ============ -->
 <main class="page" data-page="home">
   <section class="hero">
     <div class="frame" id="hero">
-      <div class="stg on"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/baaa6b3b-5bdc-456e-b758-921a3bda94af.jpg" alt="An empty plot marked out for a new home"></div>
-      <div class="stg"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/2c5cf7df-5cb9-4ece-8a52-87999a86137f.jpg" alt="Foundations and brickwork rising"></div>
-      <div class="stg"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg" alt="The structure and roof going on"></div>
-      <div class="stg"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/bbdc49c7-0d70-47e8-98fb-2cfd543e5103.jpg" alt="The home nearly complete"></div>
-      <div class="stg"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt="The finished country home"></div>
+      <video id="hv" class="hv" muted playsinline autoplay loop preload="auto" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/2fa70f7d-6357-42a9-afed-296922d51069.jpg"></video>
       <div class="shade"></div>
       <div class="copy">
         <div class="lbl l">Countryside design studio · Odiham, Hampshire</div>
@@ -516,13 +649,7 @@ footer a:hover{color:#fff}
           <a href="#/workshop" class="pill ghost">Book a design workshop</a>
         </div>
       </div>
-      <div class="tl" id="tl">
-        <button><small>01</small>The plot</button>
-        <button><small>02</small>Foundations</button>
-        <button><small>03</small>Structure</button>
-        <button><small>04</small>Envelope</button>
-        <button><small>05</small>Home</button>
-      </div>
+      <div class="hmeta"><span><i></i>Plot to home · a ZJS new build</span><span class="sc">Scroll</span></div>
     </div>
   </section>
 
@@ -534,9 +661,9 @@ footer a:hover{color:#fff}
       </div>
       <div class="eg">
         <a href="#/services" class="ec big rv"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt=""><span class="tag">Our focus</span><span class="go">↗</span><div class="in"><div class="t">Bespoke <b>new builds</b> &amp; country houses</div><p>From the first site appraisal to a finished home, with one joined-up team.</p></div></a>
-        <a href="#/design" class="ec rv d1"><img src="img/render.jpg" alt=""><span class="tag">Interactive</span><span class="go">↗</span><div class="in"><div class="t">Design it <b>in 3D</b></div><p>Shape a new build or extension and send us the brief.</p></div></a>
-        <a href="#/workshop" class="ec rv d2"><img src="img/sketch.jpg" alt=""><span class="tag">Mondays &amp; Tuesdays</span><span class="go">↗</span><div class="in"><div class="t">The <b>design workshop</b></div><p>Two hours at the studio, sketching your project with us.</p></div></a>
-        <a href="#/projects" class="ec rv d1"><img src="img/oak-entrance.jpg" alt=""><span class="go">↗</span><div class="in"><div class="t">Selected <b>projects</b></div><p>Oak, glass, stone and brick, done properly.</p></div></a>
+        <a href="#/design" class="ec rv d1"><img src="/zjs/img/render.jpg" alt=""><span class="tag">Interactive</span><span class="go">↗</span><div class="in"><div class="t">Design it <b>in 3D</b></div><p>Shape a new build or extension and send us the brief.</p></div></a>
+        <a href="#/workshop" class="ec rv d2"><img src="/zjs/img/sketch.jpg" alt=""><span class="tag">Mondays &amp; Tuesdays</span><span class="go">↗</span><div class="in"><div class="t">The <b>design workshop</b></div><p>Two hours at the studio, sketching your project with us.</p></div></a>
+        <a href="#/projects" class="ec rv d1"><img src="/zjs/img/oak-entrance.jpg" alt=""><span class="go">↗</span><div class="in"><div class="t">Selected <b>projects</b></div><p>Oak, glass, stone and brick, done properly.</p></div></a>
         <a href="#/where" class="ec rv d2"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c537bc9d-c277-451b-9476-dd712d663fe2.jpg" alt=""><span class="tag">UK &amp; international</span><span class="go">↗</span><div class="in"><div class="t">Where <b>we work</b></div><p>Hampshire, Surrey, Berkshire, Cornwall and the Alps.</p></div></a>
       </div>
       <div class="stats rv">
@@ -556,25 +683,26 @@ footer a:hover{color:#fff}
         <p class="p rv d2">ZJS Architectural Design is where it starts. Two new branches are on the way for clients who want one team from concept to completion, and for landowners.</p>
       </div>
       <div class="pgrid">
-        <div class="pc rv">
-          <div class="im"><img src="img/terrace.jpg" alt=""><span class="badge">Now</span>
-            <div class="fx fx-draw"><svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice"><path d="M60 250 L60 150 L150 95 L240 150 L240 250 Z M240 250 L340 250 L340 175 L240 175 M95 250 L95 195 L125 195 L125 250 M170 175 L210 175 L210 215 L170 215 Z M270 195 L310 195 L310 230 L270 230 Z M30 250 L370 250"/></svg></div>
-          </div>
-          <div class="bd"><h3>ZJS <b>Architectural Design</b></h3><p>New builds, country houses, extensions and renovations, with planning, building control and structural calculations handled for you.</p><a href="#/services">See what we design →</a></div>
-        </div>
-        <div class="pc rv d1">
-          <div class="im"><img src="img/site-front.jpg" alt=""><span class="badge soon">Introducing</span>
-            <div class="fx fx-crane"><svg viewBox="0 0 220 200"><g stroke="#F5EEDC" stroke-width="1.6" fill="none"><path d="M62 200 L62 24 M70 200 L70 24 M62 40 L70 52 M70 52 L62 64 M62 64 L70 76 M70 76 L62 88 M62 88 L70 100 M70 100 L62 112 M62 112 L70 124 M70 124 L62 136 M62 136 L70 148 M70 148 L62 160 M62 160 L70 172 M70 172 L62 184"/><g class="jib"><path d="M20 24 L210 24 M20 32 L210 32 M66 8 L66 24 M66 8 L20 24 M66 8 L210 24"/><rect x="22" y="32" width="18" height="12" fill="#F5EEDC" fill-opacity=".25"/><g class="hook"><path d="M170 32 L170 92"/><path d="M164 92 L176 92 L176 100 L164 100 Z" fill="#D9B98C" stroke="none"/></g></g></g></svg></div>
-          </div>
-          <div class="bd"><h3>ZJS <b>Design &amp; Build</b></h3><p>A more joined-up service, taking projects from design and planning through to construction with our build partners.</p><a href="#/where/start?type=dnb">Register interest →</a></div>
-        </div>
-        <div class="pc rv d2">
-          <div class="im"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_d9875554-4b87-4179-af63-154b9817ddb4.png" alt=""><span class="badge soon">Introducing</span>
-            <div class="fx fx-plot"><svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice"><polygon points="150,160 260,140 300,210 175,235"/><circle cx="225" cy="188" r="5"/></svg></div>
-          </div>
-          <div class="bd"><h3>ZJS <b>Land &amp; Property</b></h3><p>For landowners: finding development opportunities and promoting land through the planning process to unlock its value.</p><a href="#/where/start?type=promo">Talk to us about land →</a></div>
-        </div>
+        <a href="#/services" class="pc rv">
+          <div class="im"><img class="a" src="/zjs/img/terrace.jpg" alt=""><img class="b" src="/zjs/img/oak-entrance.jpg" alt=""><span class="badge">Now</span><span class="sheen"></span></div>
+          <div class="bd"><h3>ZJS <b>Architectural Design</b></h3><p>New builds, country houses, extensions and renovations, with planning, building control and structural calculations handled for you.</p><span class="lk">See what we design →</span></div>
+        </a>
+        <a href="#/services/design-and-build" class="pc rv d1">
+          <div class="im"><img class="a" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg" alt=""><img class="b" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/bbdc49c7-0d70-47e8-98fb-2cfd543e5103.jpg" alt=""><span class="badge soon">Introducing</span><span class="sheen"></span></div>
+          <div class="bd"><h3>ZJS <b>Design &amp; Build</b></h3><p>A more joined-up service, taking projects from design and planning through to construction with our build partners.</p><span class="lk">Register interest →</span></div>
+        </a>
+        <a href="#/services/land-promotion" class="pc rv d2">
+          <div class="im"><img class="a" src="https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_d9875554-4b87-4179-af63-154b9817ddb4.png" alt=""><img class="b" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/baaa6b3b-5bdc-456e-b758-921a3bda94af.jpg" alt=""><span class="badge soon">Introducing</span><span class="sheen"></span></div>
+          <div class="bd"><h3>ZJS <b>Land &amp; Property</b></h3><p>For landowners: finding development opportunities and promoting land through the planning process to unlock its value.</p><span class="lk">Talk to us about land →</span></div>
+        </a>
       </div>
+    </div>
+  </section>
+
+  <section class="hstart" id="hstart">
+    <div class="wrap">
+      <div class="fhead"><div class="lbl rv">Start a project</div><h2 class="h2 rv d1" style="margin-top:16px">Tell us about your project <b>in two minutes.</b></h2><p class="p rv d2" style="margin:16px auto 0">A few quick taps and we'll come back to arrange a free initial consultation.</p></div>
+      <div data-slot="form"></div>
     </div>
   </section>
 
@@ -598,24 +726,24 @@ footer a:hover{color:#fff}
     <div class="lbl l">New builds &amp; services</div>
     <h1 class="h1">Bespoke homes, <b>designed around how you live.</b></h1>
     <p class="p">Our focus is new homes and country houses, and we still love a well-designed extension. Every project gets the same design quality and attention. Only the scale of the service changes.</p>
-    <div class="crumbs"><a href="#/where/start?type=newbuild" class="pill oak">Start a new build <span class="ar">→</span></a><a href="#/design" class="pill ghost">Try the 3D designer</a></div>
+    <div class="crumbs"><a href="#/start?type=newbuild" class="pill oak">Start a new build <span class="ar">→</span></a><a href="#/design" class="pill ghost">Try the 3D designer</a></div>
   </div></header>
   <section class="doors"><div class="wrap">
     <div class="lbl rv">Where are you starting from?</div>
     <h2 class="h2 rv d1" style="margin:18px 0 40px;max-width:20ch">Two kinds of project. <b>The same attention.</b></h2>
     <div class="door-grid">
-      <a href="#/where/start?type=newbuild" class="door rv"><span class="tag">Our focus</span><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt=""><div class="in"><div class="lbl l">New builds &amp; country houses</div><div class="h3">From a plot of land <b>to a bespoke home.</b></div><p>Contemporary rural homes, replacement dwellings and country houses, from the first site appraisal through planning, technical design and onto site.</p><ul><li>Bespoke new homes</li><li>Replacement dwellings</li><li>Country houses</li><li>Design &amp; build</li></ul></div></a>
-      <a href="#/where/start?type=extension" class="door rv d1"><img src="img/kitchen.jpg" alt=""><div class="in"><div class="lbl l">Extensions &amp; renovations</div><div class="h3">Make the home you have <b>work for how you live now.</b></div><p>Rear, side and wraparound extensions, glazed links and whole-house remodels, designed around light, flow and value.</p><ul><li>Rear &amp; side extensions</li><li>Remodels</li><li>Planning &amp; building control</li></ul></div></a>
+      <a href="#/start?type=newbuild" class="door rv"><span class="tag">Our focus</span><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt=""><div class="in"><div class="lbl l">New builds &amp; country houses</div><div class="h3">From a plot of land <b>to a bespoke home.</b></div><p>Contemporary rural homes, replacement dwellings and country houses, from the first site appraisal through planning, technical design and onto site.</p><ul><li>Bespoke new homes</li><li>Replacement dwellings</li><li>Country houses</li><li>Design &amp; build</li></ul></div></a>
+      <a href="#/start?type=extension" class="door rv d1"><img src="/zjs/img/kitchen.jpg" alt=""><div class="in"><div class="lbl l">Extensions &amp; renovations</div><div class="h3">Make the home you have <b>work for how you live now.</b></div><p>Rear, side and wraparound extensions, glazed links and whole-house remodels, designed around light, flow and value.</p><ul><li>Rear &amp; side extensions</li><li>Remodels</li><li>Planning &amp; building control</li></ul></div></a>
     </div>
     <div class="svc">
-      <a href="#/where/start?type=newbuild" class="rv">New builds<span>01</span></a>
-      <a href="#/where/start?type=newbuild" class="rv d1">Country houses<span>02</span></a>
-      <a href="#/where/start?type=extension" class="rv d2">Extensions<span>03</span></a>
-      <a href="#/where/start?type=reno" class="rv d3">Renovations<span>04</span></a>
-      <a href="#/where/start?type=dev" class="rv">Development<span>05</span></a>
-      <a href="#/where/start?type=promo" class="rv d1">Land promotion<span>06</span></a>
-      <a href="#/where/start?type=dnb" class="rv d2">Design &amp; build<span>07</span></a>
-      <a href="#/where/start" class="rv d3">Planning, building control &amp; structural calcs<span>08</span></a>
+      <a href="#/start?type=newbuild" class="rv">New builds<span>01</span></a>
+      <a href="#/start?type=newbuild" class="rv d1">Country houses<span>02</span></a>
+      <a href="#/start?type=extension" class="rv d2">Extensions<span>03</span></a>
+      <a href="#/start?type=reno" class="rv d3">Renovations<span>04</span></a>
+      <a href="#/start?type=dev" class="rv">Development<span>05</span></a>
+      <a href="#/start?type=promo" class="rv d1">Land promotion<span>06</span></a>
+      <a href="#/start?type=dnb" class="rv d2">Design &amp; build<span>07</span></a>
+      <a href="#/start" class="rv d3">Planning, building control &amp; structural calcs<span>08</span></a>
     </div>
   </div></section>
   <section class="faq"><div class="wrap grid">
@@ -720,26 +848,26 @@ footer a:hover{color:#fff}
 
 <!-- ============ PROJECTS ============ -->
 <main class="page" data-page="projects">
-  <header class="phead"><div class="bg" style="background-image:url('img/rear.jpg')"></div><div class="wrap">
+  <header class="phead"><div class="bg" style="background-image:url('/zjs/img/rear.jpg')"></div><div class="wrap">
     <div class="lbl l">Selected work</div>
     <h1 class="h1">Projects, <b>centre stage.</b></h1>
     <p class="p">New homes on site, glazed links, oak-framed entrances and contemporary extensions. Tap a project to see more.</p>
   </div></header>
   <section class="work"><div class="wrap">
     <div class="acc rv" id="acc">
-      <div class="it on" data-g="0"><img src="img/site-front.jpg" alt=""><span class="n">01</span><span class="vt">Country house · new build</span><div class="tx"><h3>Country house, <b>new build</b></h3><p>Handmade clay tiles, cedar-clad dormers and brick, currently on site behind an old walled garden.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="1"><img src="img/rear.jpg" alt=""><span class="n">02</span><span class="vt">Contemporary home</span><div class="tx"><h3>Contemporary home &amp; <b>garden studio</b></h3><p>Stone cladding, slim black frames and sedum roofs stepping down a wooded garden.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="2"><img src="img/oak-entrance.jpg" alt=""><span class="n">03</span><span class="vt">Oak &amp; glass entrance</span><div class="tx"><h3>Oak-framed <b>glazed entrance</b></h3><p>A full-height oak and glass gable pulling light and the trees right through the house.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="3"><img src="img/kitchen.jpg" alt=""><span class="n">04</span><span class="vt">Kitchen extension</span><div class="tx"><h3>Open-plan <b>kitchen extension</b></h3><p>Lantern roof lights over a kitchen, dining and living space opening onto the terrace.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="4"><img src="img/link-dusk.jpg" alt=""><span class="n">05</span><span class="vt">Glazed link</span><div class="tx"><h3>Glazed <b>link extension</b></h3><p>A tight gap between two brick buildings turned into a warm, light-filled entrance.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="5"><img src="img/landing.jpg" alt=""><span class="n">06</span><span class="vt">Interiors &amp; detail</span><div class="tx"><h3>Interiors &amp; <b>detailing</b></h3><p>Reclaimed brick, steel balustrades, oak and stone, chosen with the same care as the architecture.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it on" data-g="0"><img src="/zjs/img/site-front.jpg" alt=""><span class="n">01</span><span class="vt">Country house · new build</span><div class="tx"><h3>Country house, <b>new build</b></h3><p>Handmade clay tiles, cedar-clad dormers and brick, currently on site behind an old walled garden.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="1"><img src="/zjs/img/rear.jpg" alt=""><span class="n">02</span><span class="vt">Contemporary home</span><div class="tx"><h3>Contemporary home &amp; <b>garden studio</b></h3><p>Stone cladding, slim black frames and sedum roofs stepping down a wooded garden.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="2"><img src="/zjs/img/oak-entrance.jpg" alt=""><span class="n">03</span><span class="vt">Oak &amp; glass entrance</span><div class="tx"><h3>Oak-framed <b>glazed entrance</b></h3><p>A full-height oak and glass gable pulling light and the trees right through the house.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="3"><img src="/zjs/img/kitchen.jpg" alt=""><span class="n">04</span><span class="vt">Kitchen extension</span><div class="tx"><h3>Open-plan <b>kitchen extension</b></h3><p>Lantern roof lights over a kitchen, dining and living space opening onto the terrace.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="4"><img src="/zjs/img/link-dusk.jpg" alt=""><span class="n">05</span><span class="vt">Glazed link</span><div class="tx"><h3>Glazed <b>link extension</b></h3><p>A tight gap between two brick buildings turned into a warm, light-filled entrance.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="5"><img src="/zjs/img/landing.jpg" alt=""><span class="n">06</span><span class="vt">Interiors &amp; detail</span><div class="tx"><h3>Interiors &amp; <b>detailing</b></h3><p>Reclaimed brick, steel balustrades, oak and stone, chosen with the same care as the architecture.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
     </div>
   </div></section>
   <section class="proc"><div class="wrap">
     <div class="lbl l">How a project comes together</div>
     <h2 class="h2" style="margin-top:18px;max-width:18ch">From a survey <b>to the day you move in.</b></h2>
     <div class="grid">
-      <div class="pics" id="pics"><img src="img/drone-roof.jpg" class="on" alt=""><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_c6c5f8be-99f1-4185-b0e7-a59d0dc40888.png" alt=""><img src="img/render.jpg" alt=""><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg" alt=""><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt=""></div>
+      <div class="pics" id="pics"><img src="/zjs/img/drone-roof.jpg" class="on" alt=""><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_c6c5f8be-99f1-4185-b0e7-a59d0dc40888.png" alt=""><img src="/zjs/img/render.jpg" alt=""><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg" alt=""><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt=""></div>
       <div id="steps">
         <div class="s on"><small>01 · SURVEY</small><h3>We start with what's already there.</h3><p>Measured surveys, drone photography and home scanning, so design starts from accurate drawings, not guesswork.</p></div>
         <div class="s"><small>02 · DESIGN WORKSHOP</small><h3>Ideas, shaped with you in the studio.</h3><p>Two-hour design workshops at our countryside studio, sketching and modelling options together in real time.</p></div>
@@ -801,11 +929,11 @@ footer a:hover{color:#fff}
     <div class="lbl l">Where we work</div>
     <h1 class="h1">Rooted in Hampshire. <b>Designing further afield.</b></h1>
     <p class="p">From villages around Odiham to the Cornish coast and alpine ski resorts, wherever the site, the same countryside studio designs it.</p>
-    <div class="crumbs"><a href="#/where/start" class="pill oak">Start a project <span class="ar">↓</span></a></div>
+    <div class="crumbs"><a href="#/start" class="pill oak">Start a project <span class="ar">↓</span></a></div>
   </div></header>
   <section class="where"><div class="wrap">
     <div class="regions">
-      <div class="rg rv"><img src="img/garden-high.jpg" alt=""><div class="in"><div class="lbl l">Home counties</div><h3>Hampshire, Surrey <b>&amp; Berkshire</b></h3><p>Our home patch, centred on the studio near Odiham.</p><div class="pl"><span>Odiham</span><span>Fleet</span><span>Hook</span><span>Hartley Wintney</span><span>Farnham</span><span>Basingstoke</span></div></div></div>
+      <div class="rg rv"><img src="/zjs/img/garden-high.jpg" alt=""><div class="in"><div class="lbl l">Home counties</div><h3>Hampshire, Surrey <b>&amp; Berkshire</b></h3><p>Our home patch, centred on the studio near Odiham.</p><div class="pl"><span>Odiham</span><span>Fleet</span><span>Hook</span><span>Hartley Wintney</span><span>Farnham</span><span>Basingstoke</span></div></div></div>
       <div class="rg rv d1"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/f63b6d8d-1dac-43b7-a30a-203b1193dfd6.jpg" alt=""><div class="in"><div class="lbl l">Coastal</div><h3><b>Cornwall</b></h3><p>Coastal homes and second homes on the north and south coasts.</p><div class="pl"><span>Rock</span><span>Polzeath</span><span>Mevagissey</span><span>Portmellon</span></div></div></div>
       <div class="rg rv d2"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c537bc9d-c277-451b-9476-dd712d663fe2.jpg" alt=""><div class="in"><div class="lbl l">International</div><h3>Ski chalets <b>&amp; the Alps</b></h3><p>Chalets and mountain homes in Europe's best-known resorts.</p><div class="pl"><span>Verbier</span><span>Méribel</span><span>Courchevel</span><span>Val d'Isère</span><span>Chamonix</span><span>Zermatt</span></div></div></div>
     </div>
@@ -823,37 +951,64 @@ footer a:hover{color:#fff}
     <div class="vill"><div class="track" id="v1"></div></div>
     <div class="vill r"><div class="track" id="v2"></div></div>
   </div></section>
-  <section class="pform" id="start"><div class="wrap">
-    <div class="lbl l">Start a project</div>
-    <h2 class="h2" style="margin-top:18px;max-width:20ch">What are you <b>planning?</b></h2>
-    <div class="pf">
-      <div>
-        <div class="pt" id="pt">
-          <button data-t="newbuild"><svg viewBox="0 0 34 34"><path d="M4 30V15L17 5l13 10v15zM13 30v-8h8v8"/></svg><b>New build</b><small>A bespoke home</small></button>
-          <button data-t="extension"><svg viewBox="0 0 34 34"><path d="M3 30V14L13 7l10 7v16M23 30V20h9v10"/></svg><b>Extension</b><small>Rear, side or wraparound</small></button>
-          <button data-t="dev"><svg viewBox="0 0 34 34"><path d="M3 30V18l6-4 6 4v12M15 30V18l6-4 6 4v12M27 30V20h4v10"/></svg><b>Development</b><small>Multiple homes</small></button>
-          <button data-t="promo"><svg viewBox="0 0 34 34"><path d="M4 26l10-14 8 6 8-8M4 30h26M22 10h8v8"/></svg><b>Land promotion</b><small>Unlock your land</small></button>
-          <button data-t="reno"><svg viewBox="0 0 34 34"><path d="M4 30V15L17 5l13 10v15zM10 18h14M10 23h14"/></svg><b>Renovation</b><small>Remodel the house</small></button>
-          <button data-t="dnb"><svg viewBox="0 0 34 34"><path d="M6 30V8M6 8h22M20 8v8M18 16h4v3h-4zM3 30h28"/></svg><b>Design &amp; build</b><small>Concept to completion</small></button>
-        </div>
-        <p class="note" style="margin-top:18px">Every option has its own short questions. Takes about two minutes.</p>
-      </div>
-      <div class="qs" id="qs">
-        <form id="pForm">
-          <div class="qt" id="qT"></div>
-          <h3 id="qH"></h3>
-          <div id="qBody"></div>
-          <div class="q"><label>Your details</label>
-            <div class="qgrid">
-              <input class="fld" required name="name" placeholder="Name">
-              <input class="fld" required name="phone" placeholder="Phone">
-              <input class="fld full" type="email" name="email" placeholder="Email">
-            </div></div>
-          <button class="sub" style="width:100%" type="submit">Send to the studio →</button>
-        </form>
-        <div class="sent"><div class="wsdone on"><div class="ok">✓</div><h3 class="h3">Thank you</h3><p class="p" style="margin:10px auto 0;color:#BFC4B5">Your email app has opened with everything filled in. Hit send and we'll be in touch to arrange a free initial consultation.</p></div></div>
-      </div>
+  <section class="hstart dkf" id="wstart"><div class="wrap">
+    <div class="fhead"><div class="lbl l">Start a project</div><h2 class="h2" style="margin-top:16px">Wherever it is, <b>tell us about it.</b></h2></div>
+    <div data-slot="form"></div>
+  </div></section>
+</main>
+
+<!-- ============ SERVICE DETAIL (template) ============ -->
+<main class="page" data-page="svc" id="svcPage"></main>
+
+<!-- ============ START ============ -->
+<main class="page" data-page="start">
+  <section class="hstart" style="padding-top:140px;min-height:100vh"><div class="wrap">
+    <div class="fhead"><div class="lbl">Start a project</div><h1 class="h2" style="margin-top:16px">Tell us about your project <b>in two minutes.</b></h1><p class="p" style="margin:16px auto 0">A few quick taps. We'll come back to you to arrange a free initial consultation.</p></div>
+    <div data-slot="form"></div>
+  </div></section>
+</main>
+
+<!-- ============ STUDIO ============ -->
+<main class="page" data-page="studio">
+  <header class="phead"><div class="bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_c6c5f8be-99f1-4185-b0e7-a59d0dc40888.png')"></div><div class="wrap">
+    <div class="lbl l">The studio</div>
+    <h1 class="h1">A countryside studio, <b>near Odiham.</b></h1>
+    <p class="p">We're an award-winning practice with a personal, hands-on approach to every project. Our countryside setting reflects our passion for country homes, rural properties and design that responds to its surroundings.</p>
+    <div class="crumbs"><a href="#/workshop/book" class="pill oak">Visit for a workshop <span class="ar">→</span></a><a href="#/contact" class="pill ghost">Contact us</a></div>
+  </div></header>
+  <section style="padding:110px 0"><div class="wrap">
+    <div class="split">
+      <div><div class="lbl rv">Our approach</div><h2 class="h2 rv d1" style="margin-top:18px">More than <b>a good set of drawings.</b></h2></div>
+      <div class="rv d2"><p class="p">We look beyond simply designing buildings. We combine creativity, practical construction knowledge, planning expertise and commercial awareness, and consider budgets, buildability and the long-term value of the property from the outset.</p><p class="p" style="margin-top:18px">For homeowners, we're big believers in rethinking your space and realising its potential, whether that's an extension, a substantial renovation or a completely new home.</p></div>
     </div>
+    <div class="pillars">
+      <div class="rv"><small>01</small><h4>Creativity</h4><p>Design that responds to the house, the plot and the countryside around it.</p></div>
+      <div class="rv d1"><small>02</small><h4>Buildability</h4><p>Practical construction knowledge, so what we draw can be built well.</p></div>
+      <div class="rv d2"><small>03</small><h4>Planning</h4><p>Applications, building control and structural calculations handled for you.</p></div>
+      <div class="rv d3"><small>04</small><h4>Value</h4><p>Budgets and long-term value considered from day one.</p></div>
+    </div>
+  </div></section>
+  <section class="band"><div class="fr">
+    <div class="l"><div class="lbl l">Three branches</div><h2 class="h2">One practice, <b>growing with you.</b></h2><p class="p">ZJS Architectural Design today, with ZJS Design &amp; Build and ZJS Land &amp; Property being introduced for clients who want one team from concept to completion, and for landowners.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a href="#/services/design-and-build" class="pill cream">Design &amp; build <span class="ar">→</span></a><a href="#/services/land-promotion" class="pill ghost">Land &amp; property</a></div></div>
+    <div class="r"><img src="/zjs/img/studio-room.jpg" alt=""></div>
+  </div></section>
+</main>
+
+<!-- ============ CONTACT ============ -->
+<main class="page" data-page="contact">
+  <header class="phead"><div class="wrap">
+    <div class="lbl l">Contact</div>
+    <h1 class="h1">Let's talk about <b>your project.</b></h1>
+    <div class="cgrid">
+      <a href="tel:+447533625173" class="cc"><small>Call</small><b>07533 625173</b></a>
+      <a href="mailto:zjsarchitecturaldesign@gmail.com" class="cc"><small>Email</small><b>zjsarchitecturaldesign@gmail.com</b></a>
+      <a href="https://maps.google.com/?q=Varndell+House+Farnham+Road+Odiham+RG29+1HS" target="_blank" rel="noopener" class="cc"><small>Studio</small><b>Varndell House, Farnham Road, Odiham RG29 1HS</b></a>
+      <a href="#/workshop/book" class="cc oakcc"><small>Visit</small><b>Book a design workshop →</b></a>
+    </div>
+  </div></header>
+  <section class="hstart"><div class="wrap">
+    <div class="fhead"><div class="lbl">Start a project</div><h2 class="h2" style="margin-top:16px">Or tell us about it <b>here.</b></h2></div>
+    <div data-slot="form"></div>
   </div></section>
 </main>
 
@@ -861,16 +1016,11 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="row">
       <div><b>ZJS Architectural Design</b>Award-winning countryside design studio near Odiham, Hampshire.<a href="#/workshop/book" style="color:var(--oak2);margin-top:6px">Book a design workshop →</a></div>
-      <div><b>Explore</b><a href="#/services">New builds &amp; services</a><a href="#/design">3D designer</a><a href="#/projects">Projects</a><a href="#/where">Where we work</a></div>
+      <div><b>Explore</b><a href="#/services/new-builds">New builds</a><a href="#/services/extensions">Extensions</a><a href="#/studio">The studio</a><a href="#/contact">Contact</a><a href="#/design">3D designer</a><a href="#/projects">Projects</a><a href="#/where">Where we work</a></div>
       <div><b>Studio</b>Varndell House, Farnham Road<br>Odiham, Hampshire RG29 1HS</div>
       <div><b>Contact</b><a href="mailto:zjsarchitecturaldesign@gmail.com">zjsarchitecturaldesign@gmail.com</a><a href="tel:+447533625173">07533 625173</a></div>
     </div>
-    <div class="mega"><svg class="mark" viewBox="0 0 160 160"><path transform="matrix(1,0,0,-1,60.33,20.41)" d="M0 0 6.28-.285C6.28-.285 8.93-.382 9.64-.713 11.94-1.78 11.99-3.87 11.99-3.87 11.99-3.87 11.99-22.70 11.96-44.90H25.69C25.67-24.4 25.65-4.77 25.65-4.31 25.65-3.33 25.73-2.22 25.73-2.22 25.73-2.22 26.04-1.27 26.46-.916 26.87-.555 28.19-.542 28.19-.542 28.19-.542 34.47-.425 34.99-.263 35.50-.101 36.67 .077 36.63 1.18 36.60 2.3 34.21 2.47 34.21 2.47 34.21 2.47 4.16 2.67 .538 2.41-.688 2.32-1.05 2.13-1.19 1.64-1.6 .269 0 0 0 0"/>
-<path transform="matrix(1,0,0,-1,129.76,65.32)" d="M0 0-13.62 28.98H4.31C8.17 28.98 10.69 28.75 11.86 28.29 13.04 27.84 14.39 26.19 15.92 23.36 17.45 20.53 18.62 16.89 19.41 12.47H21.28L19.41 31.83H-23.44V28.98L-9.84 0Z"/>
-<path transform="matrix(1,0,0,-1,12.97,41.96)" d="M0 0C1.64 2.83 3.10 4.47 4.37 4.93 5.63 5.38 8.34 5.61 12.49 5.61H31.81L17.14-23.36H27.74L42.38 5.61V8.47H-3.75L-5.76-10.89H-3.75C-2.890-6.46-1.64-2.83 0 0"/>
-<path transform="matrix(1,0,0,-1,129.83,86.45)" d="M0 0 13.30-28.34H-4.29C-10.28-28.34-14.07-27.66-15.69-26.29-17.31-24.93-18.77-22.57-20.09-19.22-21.41-15.87-22.41-12.60-23.09-9.41H-25.04L-23.09-31.20H23.51V-29.02L9.86 0Z"/>
-<path transform="matrix(1,0,0,-1,86.04,86.45)" d="M0 0H-13.77C-13.82-25.20-13.90-48.7-14.05-49.63-14.38-51.67-14.89-56.00-16.71-57.38-18.54-58.77-18.54-58.78-20.63-59.12-22.71-59.46-22.93-57.68-22.930-57.68-22.93-57.68-23.13-57.00-21.80-55.21-20.48-53.42-18.09-47.73-22.02-43.82-25.95-39.91-30.61-41.86-32.12-43.08-33.63-44.3-34.84-46.48-34.84-50.30-34.84-54.98-34.12-55.78-33.34-57.41-33.33-57.44-33.31-57.47-33.29-57.50-31.97-59.43-28.80-61.83-25.60-62.21-22.36-62.59-20.35-62.96-16.27-61.11-12.19-59.26-10.82-57.81-8.46-55.72-6.10-53.63-2.89-48.17-1.38-42.74 .114-37.31-.14-30.44-.14-30.44L.027-25.43C.027-25.43 .015-14.30 0 0"/>
-<path transform="matrix(1,0,0,-1,57.01,95.86)" d="M0 0H-2.10C-2.83-3.18-3.91-6.45-5.33-9.80-6.75-13.15-8.33-15.51-10.06-16.88-11.80-18.24-15.89-18.93-22.33-18.93H-41.28L-26.96 9.41H-37.57L-52.26-19.61V-21.78H-2.10Z"/></svg><div class="tag">Rethink your space. <b>Realise its potential.</b></div></div>
+    <div class="mega"><img class="flogo" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/65d1dd8b-4b4f-403e-a396-1751ae45762b.png" alt="ZJS Architectural Design"><div class="tag">Rethink your space. <b>Realise its potential.</b></div></div>
     <div class="legal"><span>© <span id="yr"></span> ZJS Architectural Design</span><span>Hampshire · Surrey · Berkshire · Cornwall · The Alps</span></div>
   </div>
 </footer>
@@ -885,32 +1035,29 @@ const WORKSHOP={days:[1,2],start:'10:00',end:'12:00',weeksAhead:10,blocked:[]};
 $('#yr').textContent=new Date().getFullYear();
 
 /* loader */
-addEventListener('load',()=>setTimeout(()=>{$('#ld').classList.add('out');document.body.classList.add('ready');startHero()},1700));
+const LDT=(location.hash.replace(/^#\/?/,'')?900:1500);addEventListener('load',()=>setTimeout(()=>{$('#ld').classList.add('out');document.body.classList.add('ready');startHero()},LDT));
 setTimeout(()=>{if(!document.body.classList.contains('ready')){$('#ld').classList.add('out');document.body.classList.add('ready');startHero()}},5000);
 (function(){const h=$('#heroH');h.innerHTML=h.innerHTML.replace(/(<b>|<\/b>)|([^\s<>]+)/g,(m,t,w)=>t?t:`<span class="w"><span>${w}</span></span>`);$$('#heroH .w span').forEach((s,i)=>s.style.transitionDelay=(.1+i*.07)+'s')})();
 
-/* hero build sequence */
-let heroT,heroI=0,heroOn=false;
-function heroGo(n){const st=$$('#hero .stg'),bt=$$('#tl button');heroI=n;st.forEach((s,k)=>s.classList.toggle('on',k===n));bt.forEach((b,k)=>{b.classList.remove('on');b.classList.toggle('done',k<n)});void bt[n].offsetWidth;bt[n].classList.add('on');
-  clearTimeout(heroT);const dur=n===4?7000:3600;bt[n].style.setProperty('--dur',dur+'ms');heroT=setTimeout(()=>heroGo((n+1)%5),dur)}
-function startHero(){if(heroOn)return;heroOn=true;heroGo(0)}
-$$('#tl button').forEach((b,i)=>b.onclick=()=>heroGo(i));
+/* hero video */
+function startHero(){const v=$('#hv');if(!v||v.dataset.on)return;v.dataset.on=1;const sq=matchMedia('(max-aspect-ratio: 1/1)').matches;v.src=sq?'https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/011b2519-45d9-4d03-b931-ca623ed5fc9a.mp4':'https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/006ae536-8375-41a3-9ee0-d633becede4a.mp4';v.playbackRate=.85;const p=v.play();if(p)p.catch(()=>{});v.addEventListener('loadeddata',()=>v.playbackRate=.85)}
 
 /* nav + router */
 $('#burger').onclick=()=>$('#mnav').classList.toggle('open');
 $$('#mnav a').forEach(a=>a.onclick=()=>$('#mnav').classList.remove('open'));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
 function route(){
-  const h=location.hash.replace(/^#\/?/,'');const [path,qs]=h.split('?');const parts=path.split('/');const pg=parts[0]||'home';
+  const h=location.hash.replace(/^#\/?/,'');const [path,qs]=h.split('?');const parts=path.split('/');let pg=parts[0]||'home';
+  if(pg==='services'&&parts[1]&&SVC[parts[1]]){renderSvc(parts[1]);pg='svc'}
   const page=$(`.page[data-page="${pg}"]`)?pg:'home';
   $$('.page').forEach(p=>p.classList.toggle('on',p.dataset.page===page));
   document.body.dataset.route=page;
-  $$('[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===page));
+  $$('[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===(page==='svc'?'services':page)));
   $$(`.page.on .rv`).forEach(el=>io.observe(el));
   if(page==='design'){if(window.ZJS3D)ZJS3D.show();else addEventListener('zjs3d-ready',()=>ZJS3D.show(),{once:true})}
-  const params=new URLSearchParams(qs||'');
-  if(page==='where'&&params.get('type'))pickType(params.get('type'));
-  const anchor=parts[1]==='start'?'#start':parts[1]==='book'?'#book':null;
+  const slot=$(`.page.on [data-slot="form"]`);if(slot&&ZF.el.parentNode!==slot){slot.appendChild(ZF.el)}
+  const params=new URLSearchParams(qs||'');if(params.get('type'))ZF.start(params.get('type'));
+  const anchor=parts[1]==='book'?'#book':(page==='where'&&parts[1]==='start')?'#wstart':null;
   requestAnimationFrame(()=>{if(anchor)$(anchor).scrollIntoView({behavior:'smooth'});else scrollTo({top:0,behavior:'instant'})});
 }
 addEventListener('hashchange',route);
@@ -928,7 +1075,7 @@ $$('.qa button').forEach(b=>b.onclick=()=>{const q=b.parentElement,o=q.classList
 
 /* projects accordion + lightbox */
 const GAL=[{t:'Country house, new build (on site)',i:['site-front','gate']},{t:'Contemporary home & garden studio',i:['rear','terrace','garden-high','studio-room','window']},{t:'Oak-framed glazed entrance',i:['oak-entrance','oak-interior']},{t:'Open-plan kitchen extension',i:['kitchen']},{t:'Glazed link extension',i:['link-dusk']},{t:'Interiors & detailing',i:['landing','balcony','bathroom']}];
-let lg=0,li=0;const lbShow=()=>{const g=GAL[lg];$('#lbi').src='img/'+g.i[li]+'.jpg';$('#lbt').textContent=g.t+'  ·  '+(li+1)+' / '+g.i.length};
+let lg=0,li=0;const lbShow=()=>{const g=GAL[lg];$('#lbi').src='/zjs/img/'+g.i[li]+'.jpg';$('#lbt').textContent=g.t+'  ·  '+(li+1)+' / '+g.i.length};
 $$('#acc .it').forEach(it=>it.addEventListener('click',()=>{if(!it.classList.contains('on')&&innerWidth>820){$$('#acc .it').forEach(x=>x.classList.remove('on'));it.classList.add('on');return}lg=+it.dataset.g;li=0;lbShow();$('#lb').classList.add('open')}));
 $('#lbx').onclick=()=>$('#lb').classList.remove('open');
 $('#lbn').onclick=()=>{li=(li+1)%GAL[lg].i.length;lbShow()};$('#lbp').onclick=()=>{li=(li-1+GAL[lg].i.length)%GAL[lg].i.length;lbShow()};
@@ -969,63 +1116,84 @@ addEventListener('keydown',e=>{if(!$('#lb').classList.contains('open'))return;if
   draw();
 })();
 
-/* project start form (6 options) */
-const PT={
- newbuild:{n:'New build',h:'Your <b>new home</b>',q:[
-   {l:'Do you have a site yet?',c:['Yes, I own it','Under offer','Still looking']},
-   {l:'What kind of home?',c:['Contemporary','Traditional','Country house','Ski chalet','Not sure yet']},
-   {l:'Rough size',c:['Under 200 m²','200–350 m²','350–600 m²','600 m²+']},
-   {l:'Budget for the build',c:['Under £750k','£750k–£1.5m','£1.5m–£3m','£3m+']},
-   {l:'Site location',f:'text',p:'Postcode, village or resort'}]},
- extension:{n:'Extension',h:'Your <b>extension</b>',q:[
-   {l:'Type of extension',c:['Rear','Side','Wraparound','Two-storey','Garden room']},
-   {l:'Rough size',c:['Under 20 m²','20–40 m²','40–70 m²','70 m²+']},
-   {l:'Roof you have in mind',c:['Flat with lantern','Pitched','Crown','Not sure']},
-   {l:'Budget',c:['Under £100k','£100k–£200k','£200k–£400k','£400k+']},
-   {l:'Property postcode',f:'text',p:'e.g. RG29 1HS'}]},
- dev:{n:'Development',h:'Your <b>development</b>',q:[
-   {l:'Number of homes',c:['2–4','5–9','10–25','25+']},
-   {l:'Site status',c:['Owned','Under option','Looking for a site']},
-   {l:'Planning status',c:['None yet','Pre-app done','Allocated','Consented']},
-   {l:'Site size (acres)',f:'text',p:'Approximate'},
-   {l:'Site location',f:'text',p:'Postcode or village'}]},
- promo:{n:'Land promotion',h:'Your <b>land</b>',q:[
-   {l:'How much land?',c:['Under 1 acre','1–5 acres','5–20 acres','20+ acres']},
-   {l:'Current use',c:['Agricultural','Paddock / garden','Brownfield','Woodland','Other']},
-   {l:'What would you like to do?',c:['Sell with planning','Develop myself','Joint venture','Just exploring']},
-   {l:'Any planning history?',c:['None','Refused before','In local plan','Not sure']},
-   {l:'Where is it?',f:'text',p:'Postcode, village or grid ref'}]},
- reno:{n:'Renovation',h:'Your <b>renovation</b>',q:[
-   {l:'Type of property',c:['Period home','Listed building','Barn / rural','Modern house']},
-   {l:'Scope',c:['Remodel inside','Whole-house refurb','Renovate + extend','Conversion']},
-   {l:'Is it listed or in a conservation area?',c:['Listed','Conservation area','Neither','Not sure']},
-   {l:'Budget',c:['Under £150k','£150k–£400k','£400k–£1m','£1m+']},
-   {l:'Property postcode',f:'text',p:'e.g. GU51'}]},
- dnb:{n:'Design & build',h:'Design <b>&amp; build</b>',q:[
-   {l:'What would we design and build?',c:['New home','Country house','Extension','Renovation']},
-   {l:'Where are you now?',c:['Just an idea','Have drawings','Have planning','Ready to build']},
-   {l:'Ideal start',c:['Within 6 months','6–12 months','12 months+']},
-   {l:'Budget',c:['Under £500k','£500k–£1.5m','£1.5m–£3m','£3m+']},
-   {l:'Site location',f:'text',p:'Postcode or village'}]},
+/* services pages */
+const SVC={
+ 'new-builds':{t:'New builds',h:'Bespoke new homes <b>&amp; country houses.</b>',img:'https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg',type:'newbuild',
+   p:'Contemporary rural homes, replacement dwellings and country houses, designed around how you live and the land they sit in. We take you from the first site appraisal through planning, technical design and onto site.',
+   inc:[['Site appraisal','We look at the plot, its constraints and its potential before anything is drawn.'],['Design workshops','Ideas sketched and modelled with you at our countryside studio.'],['3D visuals','See light, scale and views before you commit.'],['Planning application','Prepared and managed for you, with pre-application advice where it helps.'],['Technical design','Building regulations, structural calculations and drawings to build from.'],['Build partners','The option to go on to construction through ZJS Design & Build.']],
+   gal:['https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg','/zjs/img/site-front.jpg','/zjs/img/gate.jpg']},
+ 'extensions':{t:'Extensions',h:'Extensions that <b>change how a home works.</b>',img:'/zjs/img/kitchen.jpg',type:'extension',
+   p:'Rear, side and wraparound extensions, glazed links and garden rooms, designed around light, flow and long-term value. Extensions are the bread and butter of the practice, and get the same design care as a new home.',
+   inc:[['Measured survey','Accurate drawings of the house as it is today.'],['Options in a workshop','Layouts and massing tested with you around the table.'],['Planning or PD check','Householder planning, or confirming permitted development.'],['Building regulations','Technical drawings and building control approval.'],['Structural calculations','Steels, beams and foundations specified properly.'],['Roof lights & glazing','Lanterns, glazed gables, bifolds and Crittall-style doors.']],
+   gal:['/zjs/img/kitchen.jpg','/zjs/img/link-dusk.jpg','/zjs/img/oak-entrance.jpg']},
+ 'renovations':{t:'Renovations',h:'Renovations that <b>unlock what you own.</b>',img:'/zjs/img/landing.jpg',type:'reno',
+   p:'Whole-house remodels, period and rural properties and substantial renovations. We explore how an existing property can be transformed to better suit modern life while adding long-term value.',
+   inc:[['Survey & home scanning','A clear picture of the building before design starts.'],['Remodel options','New layouts, light and flow worked through with you.'],['Period & rural homes','Character properties treated with care.'],['Planning where needed','Applications when the outside of the building changes.'],['Building regulations','Technical design and approvals.'],['Interiors & detail','Stone, oak, brick and steel chosen with the architecture.']],
+   gal:['/zjs/img/landing.jpg','/zjs/img/balcony.jpg','/zjs/img/bathroom.jpg']},
+ 'development':{t:'Development',h:'Small developments, <b>designed properly.</b>',img:'https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/2c5cf7df-5cb9-4ece-8a52-87999a86137f.jpg',type:'dev',
+   p:'Design and planning for small residential schemes, from a pair of homes to a handful on a rural site. Thoughtful design that responds to its surroundings tends to make planning, and selling, easier.',
+   inc:[['Site appraisal','Capacity, access and constraints looked at early.'],['Scheme design','Layouts and house types that suit the location.'],['Pre-application advice','Testing the scheme with the planners first.'],['Planning application','Prepared and managed through to a decision.'],['Technical design','Drawings and approvals ready for the build.'],['Build partners','Construction through ZJS Design & Build, being introduced.']],
+   gal:['https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/2c5cf7df-5cb9-4ece-8a52-87999a86137f.jpg','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/bbdc49c7-0d70-47e8-98fb-2cfd543e5103.jpg']},
+ 'land-promotion':{t:'Land promotion',h:'Unlock the value <b>in your land.</b>',img:'https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_d9875554-4b87-4179-af63-154b9817ddb4.png',type:'promo',soon:1,
+   p:'ZJS Land & Property is being introduced for landowners: identifying development opportunities and promoting land through the planning process to help unlock and maximise its value.',
+   inc:[['Opportunity review','An honest look at what your land could become.'],['Planning strategy','The right route through the local plan and planning system.'],['Design-led proposals','Schemes designed to win support.'],['Planning applications','Prepared and managed for you.'],['Commercial awareness','Value and deliverability considered throughout.'],['Next steps','Sell with consent, develop, or partner.']],
+   gal:['https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_d9875554-4b87-4179-af63-154b9817ddb4.png','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/baaa6b3b-5bdc-456e-b758-921a3bda94af.jpg','/zjs/img/drone-roof.jpg']},
+ 'design-and-build':{t:'Design & build',h:'One team, <b>concept to completion.</b>',img:'https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg',type:'dnb',soon:1,
+   p:'Through ZJS Design & Build we are introducing a more joined-up service, taking projects from initial concept through planning, technical design and construction with our build partners.',
+   inc:[['One point of contact','The team that designed it stays with it on site.'],['Design & planning','Everything from the first sketch to consent.'],['Technical design','Drawn to be built, with buildability in mind.'],['Build partners','Construction through trusted partners.'],['Budget & programme','Costs and timings considered from the outset.'],['Handover','A finished home, done properly.']],
+   gal:['https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/bbdc49c7-0d70-47e8-98fb-2cfd543e5103.jpg','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg']},
 };
-let curT='newbuild';const ans={};
-function pickType(t){if(!PT[t])return;curT=t;$$('#pt button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
-  const d=PT[t];$('#qT').textContent=d.n;$('#qH').innerHTML=d.h;$('#qs').classList.remove('is-sent');
-  $('#qBody').innerHTML=d.q.map((q,i)=>q.c?`<div class="q"><label>${q.l}</label><div class="chips" data-q="${i}">${q.c.map(c=>`<button type="button">${c}</button>`).join('')}</div></div>`:`<div class="q"><label>${q.l}</label><input class="fld" data-qi="${i}" placeholder="${q.p}"></div>`).join('')
-   +'<div class="q"><label>Anything else?</label><textarea class="fld" data-qi="x" placeholder="Tell us a little about the project"></textarea></div>';
-  $$('#qBody .chips button').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on')});
+function renderSvc(k){const d=SVC[k];const others=Object.entries(SVC).filter(([x])=>x!==k);
+  $('#svcPage').innerHTML=`<header class="sv-hero"><img src="${d.img}" alt=""><div class="wrap"><div class="lbl l">${d.soon?'Introducing · ':''}${d.t}</div><h1 class="h1" style="margin-top:18px;max-width:16ch">${d.h}</h1><p class="p">${d.p}</p><div class="crumbs"><a href="#/start?type=${d.type}" class="pill oak">Start your ${d.t.toLowerCase()} project <span class="ar">→</span></a><a href="#/workshop/book" class="pill ghost">Book a design workshop</a></div></div></header>
+  <section class="sv-body"><div class="wrap"><div class="lbl rv">What's included</div><h2 class="h2 rv d1" style="margin-top:16px;max-width:20ch">How we take it <b>from idea to reality.</b></h2>
+  <div class="inc">${d.inc.map((x,i)=>`<div class="rv ${['','d1','d2'][i%3]}"><i>${String(i+1).padStart(2,'0')}</i><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div>
+  <div class="sv-gal rv">${d.gal.map(g=>`<img src="${g}" alt="" loading="lazy">`).join('')}</div>
+  <div class="lbl rv" style="margin-top:70px">More services</div><div class="sv-next">${others.map(([x,o])=>`<a href="#/services/${x}">${o.t} →</a>`).join('')}</div></div></section>
+  <section class="hstart"><div class="wrap"><div class="fhead"><div class="lbl">Start a project</div><h2 class="h2" style="margin-top:16px">Tell us about your <b>${d.t.toLowerCase()}.</b></h2></div><div data-slot="form"></div></div></section>`;
 }
-$$('#pt button').forEach(b=>b.onclick=()=>pickType(b.dataset.t));
-pickType('newbuild');
-$('#pForm').onsubmit=e=>{e.preventDefault();const d=PT[curT],f=new FormData(e.target);
-  const lines=d.q.map((q,i)=>{const v=q.c?($(`#qBody [data-q="${i}"] .on`)||{}).textContent:$(`#qBody [data-qi="${i}"]`).value;return q.l+': '+(v||'-')});
-  const extra=$('#qBody [data-qi="x"]').value;
-  const body=`New enquiry: ${d.n}\n\n${lines.join('\n')}\n\n${extra}\n\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\nEmail: ${f.get('email')}`;
-  location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('New enquiry: '+d.n)+'&body='+encodeURIComponent(body);
-  $('#qs').classList.add('is-sent')};
+
+/* ===== Lakeview-style step form ===== */
+const ILL={
+ newbuild:`<svg viewBox="0 0 200 140"><line class="ln" x1="20" y1="118" x2="180" y2="118"/><path class="ln a-draw" d="M50 118V68L100 36l50 32v50Z"/><rect class="oakf a-door" x="90" y="88" width="20" height="30" rx="1"/><rect class="ln" x="62" y="76" width="16" height="16"/><rect class="ln" x="122" y="76" width="16" height="16"/><circle class="oakf a-sun" cx="160" cy="28" r="9"/></svg>`,
+ extension:`<svg viewBox="0 0 200 140"><line class="ln" x1="20" y1="118" x2="180" y2="118"/><g class="a-slide"><rect class="sage" x="104" y="80" width="56" height="38"/><rect class="ln" x="104" y="80" width="56" height="38"/><line class="ln" x1="112" y1="96" x2="152" y2="96"/><rect x="126" y="74" width="22" height="6" class="oakf"/></g><path class="ln" d="M36 118V64L72 40l36 24v54Z" fill="#fff"/><rect class="ln" x="56" y="78" width="14" height="14"/><rect class="ln" x="78" y="96" width="14" height="22"/></svg>`,
+ dev:`<svg viewBox="0 0 200 140"><line class="ln" x1="14" y1="118" x2="186" y2="118"/><g class="a-pop"><path class="ln" d="M24 118V84l22-16 22 16v34Z" fill="#fff"/><rect class="oakf" x="40" y="100" width="12" height="18"/></g><g class="a-pop" style="animation-delay:.25s"><path class="ln" d="M78 118V76l22-18 22 18v42Z" fill="#fff"/><rect class="oakf" x="94" y="98" width="12" height="20"/></g><g class="a-pop" style="animation-delay:.5s"><path class="ln" d="M132 118V84l22-16 22 16v34Z" fill="#fff"/><rect class="oakf" x="148" y="100" width="12" height="18"/></g></svg>`,
+ promo:`<svg viewBox="0 0 200 140"><path d="M10 120 Q60 96 100 106 T190 96 V140 H10Z" class="sage" opacity=".55"/><polygon class="ln a-ants" points="52,98 124,82 156,108 70,124" fill="rgba(217,185,140,.25)"/><g class="a-pin"><path d="M104 64c-9 0-15 7-15 15 0 11 15 23 15 23s15-12 15-23c0-8-6-15-15-15z" class="forf"/><circle cx="104" cy="79" r="5" fill="#D9B98C"/></g><circle class="ln" cx="40" cy="44" r="10"/><path class="ln" d="M28 58c4-4 20-4 24 0"/></svg>`,
+ reno:`<svg viewBox="0 0 200 140"><line class="ln" x1="20" y1="118" x2="180" y2="118"/><path class="ln" d="M44 118V58l56-30 56 30v60Z" fill="#fff"/><rect class="ln a-win" x="62" y="70" width="22" height="18" fill="#fff"/><rect class="ln a-win" style="animation-delay:.4s" x="116" y="70" width="22" height="18" fill="#fff"/><rect class="ln a-win" style="animation-delay:.8s" x="62" y="96" width="22" height="18" fill="#fff"/><rect class="ln a-win" style="animation-delay:1.2s" x="116" y="96" width="22" height="18" fill="#fff"/><rect class="oakf" x="92" y="94" width="16" height="24"/></svg>`,
+ dnb:`<svg viewBox="0 0 200 140"><line class="ln" x1="14" y1="118" x2="186" y2="118"/><path class="ln" d="M40 118V22M48 118V22M40 34l8 10M48 44l-8 10M40 54l8 10M48 64l-8 10M40 74l8 10M48 84l-8 10M40 94l8 10M20 22h150M44 10v12M44 10L20 22M44 10l126 12"/><g class="a-hook"><line class="ln" x1="140" y1="22" x2="140" y2="52"/><rect class="oakf" x="128" y="52" width="24" height="12"/></g><path class="ln" d="M110 118V96l22-14 22 14v22Z" fill="#fff"/></svg>`};
+const FT={
+ newbuild:{n:'New build',s:'A bespoke home',steps:[['Do you have a site yet?',['Yes, I own it','Under offer','Still looking','Replacing an existing house']],['What kind of home?',['Contemporary','Traditional','Country house','Ski chalet']],['Roughly how big?',['Under 200 m²','200–350 m²','350–600 m²','600 m² +']],['Budget for the build',['Under £750k','£750k–£1.5m','£1.5m–£3m','£3m +']]]},
+ extension:{n:'Extension',s:'Rear, side or wraparound',steps:[['What kind of extension?',['Rear','Side','Wraparound','Two-storey']],['Roughly how big?',['Under 20 m²','20–40 m²','40–70 m²','70 m² +']],['Roof you have in mind',['Flat with lantern','Pitched','Crown','Not sure yet']],['Budget',['Under £100k','£100k–£200k','£200k–£400k','£400k +']]]},
+ dev:{n:'Development',s:'A few homes',steps:[['How many homes?',['2–4','5–9','10–25','25 +']],['Where is the site at?',['I own it','Under option','Looking for one','Not sure']],['Planning so far',['Nothing yet','Pre-app done','Allocated','Consented']]]},
+ promo:{n:'Land promotion',s:'Unlock your land',steps:[['How much land?',['Under 1 acre','1–5 acres','5–20 acres','20 acres +']],['What is it used for now?',['Agricultural','Paddock or garden','Brownfield','Woodland']],['What would you like to do?',['Sell with planning','Develop it myself','Joint venture','Just exploring']]]},
+ reno:{n:'Renovation',s:'Remodel the house',steps:[['What kind of property?',['Period home','Listed building','Barn or rural','Modern house']],['What is the scope?',['Remodel inside','Whole-house refurb','Renovate and extend','Conversion']],['Budget',['Under £150k','£150k–£400k','£400k–£1m','£1m +']]]},
+ dnb:{n:'Design & build',s:'Concept to completion',steps:[['What would we design and build?',['New home','Country house','Extension','Renovation']],['Where are you now?',['Just an idea','Have drawings','Have planning','Ready to build']],['When would you like to start?',['Within 6 months','6–12 months','12 months +','Not sure']]]}};
+const ZF=(function(){
+  const el=document.createElement('div');el.className='zf';
+  el.innerHTML=`<div class="bar"><span class="cnt"></span><span class="trk"><i></i></span><a href="tel:+447533625173">07533 625173</a></div><div class="bd"></div>`;
+  let type=null,step=0,ans=[];const bd=el.querySelector('.bd');
+  const total=()=>type?FT[type].steps.length+2:5;
+  function prog(){const t=total(),c=Math.min(step+1,t);el.querySelector('.cnt').innerHTML=`<b>${c}</b> / ${t}`;el.querySelector('.trk i').style.width=(c/t*100)+'%'}
+  function back(){return `<button type="button" class="back" ${step===0?'hidden':''}>← Back</button>`}
+  function draw(){prog();let h='';
+    if(step===0){h=`<div class="stp"><h3 class="q">What are you <b>planning?</b></h3><div class="cards">${Object.entries(FT).map(([k,v])=>`<button type="button" class="card ${type===k?'on':''}" data-t="${k}"><div class="ill">${ILL[k]}</div><div class="tx"><span><b>${v.n}</b><small>${v.s}</small></span><span class="rd">${type===k?'✓':''}</span></div></button>`).join('')}</div></div>`}
+    else if(step<=FT[type].steps.length){const [q,o]=FT[type].steps[step-1];h=`<div class="stp"><h3 class="q">${q}</h3><div class="tiles">${o.map(x=>`<button type="button" class="tile ${ans[step-1]===x?'on':''}">${x}<span class="rd"></span></button>`).join('')}</div>${back()}</div>`}
+    else if(step===FT[type].steps.length+1){h=`<div class="stp"><h3 class="q">Where should we <b>send your ideas?</b></h3><form class="ff"><input class="full" name="site" placeholder="Site postcode, village or resort"><input required name="name" placeholder="Your name"><input required name="phone" type="tel" placeholder="Phone"><input class="full" name="email" type="email" placeholder="Email"><textarea class="full" name="msg" placeholder="Anything else we should know? (optional)"></textarea><button type="submit">Send to the studio →</button></form>${back()}</div>`}
+    else{h=`<div class="ok stp"><div class="tk">✓</div><h3 class="q" style="margin-bottom:8px">Thank you, <b>it's on its way.</b></h3><p class="p" style="margin:0 auto">Your email app has opened with everything filled in. Press send and we'll be in touch to arrange a free initial consultation.</p><div class="sum">${[FT[type].n,...ans].map(a=>`<span>${a}</span>`).join('')}</div><button type="button" class="back" data-reset>Start again</button></div>`}
+    bd.innerHTML=h;if(el.isConnected&&ZF_READY){const r=el.getBoundingClientRect();if(r.top<80||r.top>innerHeight*.6)scrollTo({top:scrollY+r.top-100,behavior:'smooth'})}
+    bd.querySelectorAll('.card').forEach(b=>b.onclick=()=>{if(type!==b.dataset.t){type=b.dataset.t;ans=[]}b.classList.add('on');setTimeout(()=>{step=1;draw()},260)});
+    bd.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{ans[step-1]=b.textContent.trim();b.classList.add('on');setTimeout(()=>{step++;draw()},240)});
+    const bk=bd.querySelector('.back:not([data-reset])');if(bk)bk.onclick=()=>{step=Math.max(0,step-1);draw()};
+    const rs=bd.querySelector('[data-reset]');if(rs)rs.onclick=()=>{type=null;ans=[];step=0;draw()};
+    const f=bd.querySelector('form');if(f)f.onsubmit=e=>{e.preventDefault();const d=new FormData(f);const qs=FT[type].steps.map((s,i)=>s[0]+': '+(ans[i]||'-')).join('\n');
+      const body=`New enquiry: ${FT[type].n}\n\n${qs}\nSite: ${d.get('site')}\n\n${d.get('msg')}\n\nName: ${d.get('name')}\nPhone: ${d.get('phone')}\nEmail: ${d.get('email')}`;
+      location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('New enquiry: '+FT[type].n)+'&body='+encodeURIComponent(body);step++;draw()};
+  }
+  let ZF_READY=false;draw();ZF_READY=true;
+  return {el,start(t){if(!FT[t])return;type=t;ans=[];step=1;draw()}};
+})();
 
 route();
 </script>
-<script type="module" src="designer.js"></script>
+<script type="module" src="/zjs/designer.js"></script>
 </body>
 </html>
