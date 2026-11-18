@@ -330,9 +330,9 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .slot.on small{color:#5b655d}
 .slot b{font-size:20px;font-weight:400;letter-spacing:-.02em}
 .empty{color:#9AA093;font-size:15px;padding:30px 0;text-align:center;border:1px dashed var(--lineL);border-radius:16px}
-.done{display:none;text-align:center;padding:30px 10px}
-.done.on{display:block}
-.done .ok{width:64px;height:64px;border-radius:50%;background:var(--oak);color:#1a130b;display:grid;place-items:center;margin:0 auto 18px;font-size:28px}
+.wsdone{display:none;text-align:center;padding:30px 10px}
+.wsdone.on{display:block}
+.wsdone .ok{width:64px;height:64px;border-radius:50%;background:var(--oak);color:#1a130b;display:grid;place-items:center;margin:0 auto 18px;font-size:28px}
 
 /* where */
 .where{padding:100px 0 60px}
@@ -789,7 +789,7 @@ footer a:hover{color:#fff}
           <input class="fld full" name="site" placeholder="Site address or postcode">
           <button class="sub" type="submit">Request this session →</button>
         </form>
-        <div class="done" id="wsDone"><div class="ok">✓</div><h3 class="h3">Request sent</h3><p class="p" style="margin:10px auto 18px;color:#BFC4B5" id="wsDoneTxt"></p><a class="pill ghost" id="wsCal" target="_blank" rel="noopener">Add to Google Calendar</a></div>
+        <div class="wsdone" id="wsDone"><div class="ok">✓</div><h3 class="h3">Request sent</h3><p class="p" style="margin:10px auto 18px;color:#BFC4B5" id="wsDoneTxt"></p><a class="pill ghost" id="wsCal" target="_blank" rel="noopener">Add to Google Calendar</a></div>
       </div>
     </div>
   </div></section>
@@ -851,7 +851,7 @@ footer a:hover{color:#fff}
             </div></div>
           <button class="sub" style="width:100%" type="submit">Send to the studio →</button>
         </form>
-        <div class="sent"><div class="done on"><div class="ok">✓</div><h3 class="h3">Thank you</h3><p class="p" style="margin:10px auto 0;color:#BFC4B5">Your email app has opened with everything filled in. Hit send and we'll be in touch to arrange a free initial consultation.</p></div></div>
+        <div class="sent"><div class="wsdone on"><div class="ok">✓</div><h3 class="h3">Thank you</h3><p class="p" style="margin:10px auto 0;color:#BFC4B5">Your email app has opened with everything filled in. Hit send and we'll be in touch to arrange a free initial consultation.</p></div></div>
       </div>
     </div>
   </div></section>
