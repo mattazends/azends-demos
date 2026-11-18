@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EcoBuild Living · Prefab eco-homes, built in 14 weeks</title>
+<meta name="description" content="Made-to-measure prefab eco-homes for the Benelux. 85% biobased, energy label A++++, an average of 14 weeks from first call to keys.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBFAF6;--ink:#1C2218;--sage:#5A6E4D;--sage2:#7E9270;--soft:#ECF0E5;--mute:#767D6F;--grey:#ABAFA5;--line:#E6E6DE;--pad:clamp(20px,4.6vw,72px);--ease:cubic-bezier(.2,.75,.1,1);--r:28px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Figtree',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+.h{font-weight:500;letter-spacing:-.035em;line-height:1.02}
+.s{color:var(--sage)}.g{color:var(--grey)}
+.eyebrow{font-size:14px;font-weight:500;color:var(--sage);letter-spacing:.01em}
+.lead{font-size:clamp(16px,1.25vw,19px);color:var(--mute);max-width:560px}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 8px 0 22px;border-radius:999px;font-weight:500;font-size:15px;border:0;cursor:pointer;transition:transform .4s var(--ease),background .3s}
+.btn i{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .4s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn:hover i{transform:rotate(-45deg)}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark i{background:var(--sage);color:#fff}
+.btn-light{background:#fff;color:var(--ink);box-shadow:0 1px 0 rgba(0,0,0,.04),0 10px 30px -18px rgba(28,34,24,.4)}.btn-light i{background:var(--soft);color:var(--sage)}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+.ln{display:block;overflow:hidden;padding-bottom:.06em}
+.ln>span{display:inline-block;transform:translateY(110%);transition:transform 1.1s var(--ease)}
+.in .ln>span,.ln.in>span{transform:none}
+
+/* LOADER (Myxa style) */
+.loader{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:radial-gradient(70rem 70rem at 50% 50%,#46573B 0%,#56694A 22%,#6C8160 44%,#8FA383 66%,#B9C8AE 86%,rgba(201,213,190,0) 100%),#C9D5BE;transition:opacity .6s ease}
+.loader.gone{opacity:0;pointer-events:none}
+.ld-stage{position:relative;width:min(560px,70vw);height:min(700px,calc(100svh - 300px))}
+.ld-outline{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ld-outline rect{fill:none;stroke:#fff;stroke-opacity:.55;stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1}
+.ld-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;display:flex;align-items:center;gap:10px;font-size:26px;font-weight:500;letter-spacing:-.03em;opacity:0;transition:opacity .8s ease}
+.ld-logo svg{width:30px;height:30px}
+.ld-frame{position:absolute;inset:0;background:var(--bg);border-radius:var(--r);opacity:0;transition:opacity .45s ease}
+.ld-count{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:#fff;font-size:clamp(13px,1.2vw,18px);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+@media (orientation:portrait){.ld-stage{width:68vw;height:min(56vh,480px)}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px var(--pad);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;transition:transform .5s var(--ease),background .4s,padding .4s}
+.nav.up{transform:translateY(-110%)}
+.nav.solid{background:rgba(251,250,246,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding-top:12px;padding-bottom:12px}
+.logo{display:flex;align-items:center;gap:9px;font-size:21px;font-weight:600;letter-spacing:-.03em}
+.logo svg{width:26px;height:26px;color:var(--sage)}
+.logo em{font-style:normal;font-weight:400;color:var(--mute)}
+.links{display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(28,34,24,.06);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.links a{padding:8px 16px;border-radius:999px;font-size:14.5px;color:var(--mute);transition:all .25s}
+.links a:hover,.links a.on{background:#fff;color:var(--ink);box-shadow:0 2px 10px -4px rgba(0,0,0,.12)}
+.nav-r{display:flex;justify-content:flex-end;align-items:center;gap:16px}
+.lang{font-size:13.5px;color:var(--mute)}
+.lang b{color:var(--ink);font-weight:500}
+.nav .btn{height:46px;font-size:14.5px}
+.nav .btn i{width:34px;height:34px}
+.burger{display:none;width:46px;height:46px;border-radius:50%;border:0;background:#fff;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 14px -6px rgba(0,0,0,.2)}
+.burger span,.burger span:before,.burger span:after{display:block;width:18px;height:1.5px;background:var(--ink);position:relative}
+.burger span:before,.burger span:after{content:"";position:absolute}
+.burger span:before{top:-6px}.burger span:after{top:6px}
+.mm{position:fixed;inset:0;z-index:49;background:var(--bg);padding:110px var(--pad) 40px;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .4s}
+.mm.open{opacity:1;pointer-events:auto}
+.mm a{font-size:36px;font-weight:500;letter-spacing:-.035em;padding:8px 0;border-bottom:1px solid var(--line)}
+.mm .btn{margin-top:28px;align-self:flex-start}
+
+/* HERO */
+.hero{position:relative;padding-top:clamp(130px,17vh,170px);text-align:center;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:.75}
+.b1{width:560px;height:420px;background:#DCE5D0;top:-120px;left:-120px}
+.b2{width:520px;height:380px;background:#F1E7D6;top:-80px;right:-140px}
+.b3{width:700px;height:420px;background:#E6EDDF;bottom:120px;left:30%}
+.hero .eyebrow{display:inline-block;margin-bottom:22px}
+.hero h1{font-size:clamp(48px,7.4vw,122px)}
+.hero .lead{margin:24px auto 0;text-align:center}
+.hero-ctas{display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.hero-media{position:relative;margin-top:clamp(50px,7vh,80px);padding:0 var(--pad)}
+.hm{position:relative;max-width:1360px;margin:0 auto;border-radius:var(--r);overflow:hidden;height:min(78svh,760px);transform-origin:50% 0;will-change:transform;background:#C9D5BE}
+.hm img{position:absolute;inset:0;width:100%;height:110%;object-fit:cover;will-change:transform}
+.hm:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,26,16,.62),rgba(20,26,16,.08) 55%),linear-gradient(0deg,rgba(20,26,16,.35),transparent 40%)}
+.hm-in{position:absolute;z-index:2;left:clamp(22px,4vw,56px);bottom:clamp(22px,4vw,52px);right:clamp(22px,4vw,56px);color:#fff;text-align:left;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.hm-in h2{font-size:clamp(30px,3.6vw,54px);max-width:560px}
+.hm-in p{color:rgba(255,255,255,.8);margin-top:12px;max-width:420px}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{padding:14px 18px;border-radius:18px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);min-width:120px}
+.chip b{display:block;font-size:26px;font-weight:500;letter-spacing:-.03em;line-height:1.05}
+.chip small{font-size:12.5px;color:rgba(255,255,255,.78)}
+
+/* TRUST */
+.trust{padding:56px 0 0}
+.trust .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;color:var(--mute);font-size:14px}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust span:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sage2)}
+
+section{position:relative}
+.sec{padding:clamp(100px,12vw,170px) 0}
+.sec-h{text-align:center;max-width:900px;margin:0 auto}
+.sec-h h2{font-size:clamp(38px,5vw,78px);margin-top:16px}
+.sec-h .lead{margin:20px auto 0}
+
+/* HOMES */
+.homes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(50px,6vw,80px)}
+.home{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:3/4.2;background:#D8DECF;cursor:pointer}
+.home img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.home:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,22,14,.78),rgba(18,22,14,0) 55%);transition:opacity .5s}
+.home:hover img{transform:scale(1.06)}
+.home-t{position:absolute;z-index:2;left:20px;right:20px;bottom:20px;color:#fff}
+.home-t small{font-size:12.5px;color:rgba(255,255,255,.75)}
+.home-t h3{font-size:26px;font-weight:500;letter-spacing:-.03em;margin-top:2px}
+.home-t p{font-size:14.5px;color:rgba(255,255,255,.82);margin-top:6px;max-height:0;opacity:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .5s}
+.home:hover .home-t p{max-height:90px;opacity:1}
+.home .arr{position:absolute;z-index:2;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;transition:transform .5s var(--ease)}
+.home:hover .arr{transform:rotate(-45deg)}
+
+/* NUMBERS */
+.nums{background:var(--ink);color:#fff;border-radius:clamp(28px,4vw,48px);margin:0 clamp(8px,1.4vw,20px);overflow:hidden}
+.nums .eyebrow{color:#A9BC9A}
+.nums .sec-h .lead{color:rgba(255,255,255,.62)}
+.nums-grid{display:grid;grid-template-columns:repeat(5,1fr);margin-top:clamp(50px,6vw,90px);border-top:1px solid rgba(255,255,255,.12)}
+.num{padding:30px 22px 0 0}
+.num+.num{padding-left:22px;border-left:1px solid rgba(255,255,255,.12)}
+.num b{display:block;font-size:clamp(40px,4.4vw,70px);font-weight:500;letter-spacing:-.05em;line-height:1}
+.num b small{font-size:.45em;letter-spacing:-.02em;color:#A9BC9A;margin-left:4px}
+.num .cap{display:block;font-size:14.5px;color:rgba(255,255,255,.62);margin-top:12px;max-width:190px}
+
+/* PROCESS */
+.proc{margin-top:clamp(50px,6vw,90px)}
+.ruler{position:relative;height:56px}
+.ruler .base{position:absolute;left:0;right:0;top:26px;height:2px;background:var(--line);border-radius:2px}
+.ruler .fill{position:absolute;left:0;top:26px;height:2px;width:0;background:var(--sage);border-radius:2px}
+.ruler .tick{position:absolute;top:0;font-size:12.5px;color:var(--grey);transform:translateX(-50%);font-variant-numeric:tabular-nums}
+.ruler .house{position:absolute;top:13px;left:0;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(90,110,77,.15)}
+.ruler .house svg{width:14px;height:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.step{border-radius:22px;padding:24px;background:#fff;border:1px solid var(--line);transition:background .5s,border-color .5s,color .5s}
+.step.on{background:var(--soft);border-color:#D3DCC8}
+.step .wk{font-size:13px;font-weight:500;color:var(--sage)}
+.step h3{font-size:clamp(20px,1.7vw,24px);font-weight:500;letter-spacing:-.03em;margin-top:8px}
+.step p{font-size:14.5px;color:var(--mute);margin-top:8px}
+.guar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:34px}
+.guar span{font-size:14px;padding:10px 16px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+
+/* SUSTAIN */
+.sus{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.sus-img{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/4.6;background:#E6DED0}
+.sus-img img{position:absolute;inset:0;width:100%;height:115%;object-fit:cover}
+.sus-tag{position:absolute;left:20px;bottom:20px;z-index:2;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:18px;padding:16px 18px;display:flex;gap:14px;align-items:center}
+.sus-tag b{font-size:30px;font-weight:500;letter-spacing:-.04em;color:var(--sage)}
+.sus-tag span{font-size:13px;color:var(--mute);max-width:150px;line-height:1.35}
+.sus h2{font-size:clamp(36px,4.2vw,64px);margin-top:16px}
+.feat{margin-top:34px;border-top:1px solid var(--line)}
+.feat>div{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.feat i{width:44px;height:44px;border-radius:14px;background:var(--soft);color:var(--sage);display:flex;align-items:center;justify-content:center}
+.feat i svg{width:20px;height:20px}
+.feat h4{font-size:17px;font-weight:500;letter-spacing:-.02em}
+.feat p{font-size:14px;color:var(--mute)}
+.feat em{font-style:normal;font-size:20px;font-weight:500;letter-spacing:-.03em;color:var(--sage)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.badges span{font-size:12.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--mute);background:#fff}
+
+/* STORIES */
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(50px,6vw,80px)}
+.story{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;min-height:300px;transition:transform .5s var(--ease),box-shadow .5s}
+.story:hover{transform:translateY(-6px);box-shadow:0 30px 60px -40px rgba(28,34,24,.4)}
+.story .wk{display:inline-flex;align-self:flex-start;font-size:13px;font-weight:500;color:var(--sage);background:var(--soft);padding:6px 12px;border-radius:999px}
+.story q{quotes:none;font-size:clamp(20px,1.7vw,24px);font-weight:400;letter-spacing:-.025em;line-height:1.3;margin-top:20px}
+.story .who{margin-top:auto;padding-top:24px;display:flex;justify-content:space-between;align-items:flex-end;font-size:14px}
+.story .who b{font-weight:500}
+.story .who small{display:block;color:var(--mute)}
+.story .model{font-size:13px;color:var(--grey)}
+
+/* PROS */
+.pros{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.pros h2{font-size:clamp(36px,4.2vw,64px);margin-top:16px}
+.pros-img{border-radius:var(--r);overflow:hidden;aspect-ratio:16/12;margin-top:36px;position:relative;background:#D9D4C8}
+.pros-img img{width:100%;height:100%;object-fit:cover}
+.pros-img .note{position:absolute;left:18px;bottom:18px;background:rgba(28,34,24,.75);color:#fff;backdrop-filter:blur(10px);border-radius:16px;padding:12px 16px;font-size:13.5px;max-width:280px}
+.offers{border-top:1px solid var(--line)}
+.offer{border-bottom:1px solid var(--line);padding:26px 0;cursor:pointer}
+.offer-top{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.offer .no{font-size:13px;color:var(--grey);margin-right:16px;font-variant-numeric:tabular-nums}
+.offer h3{font-size:clamp(22px,2vw,30px);font-weight:500;letter-spacing:-.035em;display:flex;align-items:baseline}
+.offer .pl{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center;transition:all .45s var(--ease)}
+.offer .pl svg{width:13px;height:13px;transition:transform .45s var(--ease)}
+.offer .body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.offer .body>div{overflow:hidden}
+.offer .body p{color:var(--mute);padding:12px 0 0 34px;max-width:520px}
+.offer.on .pl{background:var(--ink);border-color:var(--ink);color:#fff}
+.offer.on .pl svg{transform:rotate(45deg)}
+.offer.on .body{grid-template-rows:1fr}
+
+/* FINANCE */
+.fin{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(50px,6vw,80px)}
+.fc{border-radius:24px;padding:28px;background:var(--soft);min-height:220px;display:flex;flex-direction:column}
+.fc:nth-child(2){background:#F2EBDD}
+.fc:nth-child(3){background:#fff;border:1px solid var(--line)}
+.fc b{font-size:clamp(34px,3.2vw,48px);font-weight:500;letter-spacing:-.045em;line-height:1}
+.fc h4{font-size:18px;font-weight:500;letter-spacing:-.02em;margin-top:auto;padding-top:30px}
+.fc p{font-size:14.5px;color:var(--mute);margin-top:6px}
+
+/* CTA */
+.cta{margin:0 clamp(8px,1.4vw,20px) clamp(8px,1.4vw,20px);border-radius:clamp(28px,4vw,48px);overflow:hidden;position:relative;min-height:min(86svh,780px);display:flex;align-items:center;color:#fff;background:#3D4A33}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,26,16,.25),rgba(20,26,16,.7))}
+.cta .wrap{position:relative;z-index:2;text-align:center;width:100%}
+.cta h2{font-size:clamp(44px,7vw,112px)}
+.cta p{color:rgba(255,255,255,.82);max-width:520px;margin:22px auto 0;font-size:clamp(16px,1.3vw,19px)}
+.cta .hero-ctas .btn-light i{background:var(--sage);color:#fff}
+.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px)}
+.ghost i{background:rgba(255,255,255,.2)}
+
+/* FOOTER */
+footer{padding:70px 0 40px}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer h5{font-size:14px;font-weight:500;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:9px;font-size:14.5px;color:var(--mute)}
+footer p{font-size:14.5px;color:var(--mute);margin-top:14px;max-width:300px}
+.f-big{font-size:clamp(60px,15vw,240px);font-weight:500;letter-spacing:-.07em;line-height:.8;color:var(--soft);margin-top:60px;white-space:nowrap;overflow:hidden}
+.f-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--grey);margin-top:24px}
+
+@media (max-width:1100px){
+  .homes{grid-template-columns:repeat(2,1fr)}
+  .nums-grid{grid-template-columns:repeat(3,1fr)}
+  .num:nth-child(4){padding-left:0;border-left:0}
+  .steps{grid-template-columns:1fr 1fr}
+  .f-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .nav{grid-template-columns:1fr auto}
+  .links,.nav-r .btn,.lang{display:none}
+  .burger{display:flex}
+  .sus,.pros{grid-template-columns:1fr}
+  .stories,.fin{grid-template-columns:1fr}
+  .story{min-height:0}
+  .ruler{display:none}
+  .hm{height:min(70svh,620px)}
+}
+@media (max-width:600px){
+  .homes{grid-template-columns:1fr 1fr;gap:10px}
+  .home{aspect-ratio:3/4.4;border-radius:18px}
+  .home-t{left:14px;right:14px;bottom:14px}
+  .home-t h3{font-size:19px}
+  .home-t p{display:none}
+  .home .arr{width:34px;height:34px;top:10px;right:10px}
+  .nums-grid{grid-template-columns:1fr 1fr}
+  .num,.num+.num{padding:24px 0 0;border-left:0}
+  .num:nth-child(odd){padding-right:14px}
+  .num:nth-child(even){padding-left:14px;border-left:1px solid rgba(255,255,255,.12)}
+  .num:last-child{grid-column:1/-1;padding-left:0;border-left:0}
+  .steps{grid-template-columns:1fr}
+  .hm-in{flex-direction:column;align-items:flex-start}
+  .chip{min-width:0;padding:10px 14px}
+  .chip b{font-size:20px}
+  .hero-ctas{flex-direction:column;align-items:stretch;max-width:330px;margin-left:auto;margin-right:auto}
+  .hero-ctas .btn{justify-content:space-between}
+  .f-grid{grid-template-columns:1fr}
+  .feat>div{grid-template-columns:44px 1fr}
+  .feat em{grid-column:2;font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}.ln>span{transform:none}}
+</style>
+</head>
+<body class="lock">
+
+<!-- LOADER -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ld-stage" id="ldStage">
+    <svg class="ld-outline"><rect id="ldRect" x="0.5" y="0.5" rx="28" pathLength="1" style="width:calc(100% - 1px);height:calc(100% - 1px)"/></svg>
+    <div class="ld-frame" id="ldFrame"></div>
+    <div class="ld-logo" id="ldLogo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>EcoBuild</div>
+  </div>
+  <p class="ld-count" id="ldCount">0%</p>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="logo" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>EcoBuild<em>Living</em></a>
+  <nav class="links" aria-label="Main">
+    <a href="#homes">Homes</a><a href="#process">Process</a><a href="#sustainability">Sustainability</a><a href="#professionals">Professionals</a><a href="#financing">Financing</a>
+  </nav>
+  <div class="nav-r">
+    <span class="lang"><b>EN</b> · NL · DE · FR</span>
+    <a class="btn btn-dark" href="#contact">Plan a call <i><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></i></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+  </div>
+</header>
+<div class="mm" id="mm">
+  <a href="#homes">Homes</a><a href="#process">Process</a><a href="#sustainability">Sustainability</a><a href="#professionals">Professionals</a><a href="#financing">Financing</a>
+  <a class="btn btn-dark" href="#contact">Plan a call <i><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></i></a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+  <div class="wrap" style="position:relative">
+    <span class="eyebrow rv">Prefab eco-homes · Netherlands, Belgium &amp; beyond</span>
+    <h1 class="h" id="heroH"><span class="ln"><span>Sustainable living.</span></span><span class="ln"><span><span class="s">Tomorrow,</span> <span class="g">today.</span></span></span></h1>
+    <p class="lead rv d2">Made-to-measure eco-homes for families, carers and developers. Fixed price, energy label A++++, and keys in an average of 14 weeks.</p>
+    <div class="hero-ctas rv d3">
+      <a class="btn btn-dark" href="#homes">Explore our homes <i><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></i></a>
+      <a class="btn btn-light" href="#contact">Download price guide <i><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 2v9M3 7l4 4 4-4M2 13h10"/></svg></i></a>
+    </div>
+  </div>
+  <div class="hero-media">
+    <div class="hm" id="hm">
+      <img id="hmImg" src="https://www.ecobuildliving.nl/__l5e/assets-v1/8cdbe233-ce97-4940-80cf-8d0c75fde8f3/hero-building.webp" alt="EcoBuild timber-frame eco-homes surrounded by greenery">
+      <div class="hm-in">
+        <div><h2 class="h">Designed with you. Built in our factory. Placed in days.</h2><p>Timber frame, wood-fibre insulation and 85% biobased materials, made to measure for your plot.</p></div>
+        <div class="chips"><div class="chip"><b>14 wks</b><small>average lead time</small></div><div class="chip"><b>A++++</b><small>standard energy label</small></div><div class="chip"><b>5 days</b><small>average placement</small></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="trust wrap">
+    <div class="row rv"><span>300+ homes delivered in the Benelux</span><span>BENG certified</span><span>FSC timber</span><span>BREEAM-NL ready</span><span>10-year build guarantee</span></div>
+  </div>
+</section>
+
+<!-- HOMES -->
+<section class="sec" id="homes">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow rv">Our homes</span>
+      <h2 class="h"><span class="ln"><span>A home for every</span></span><span class="ln"><span><span class="s">chapter</span> <span class="g">of life.</span></span></span></h2>
+      <p class="lead rv d2">Four types, each made to measure. Start from a model, then shape it around how you live.</p>
+    </div>
+    <div class="homes">
+      <a class="home rv" href="#contact"><img src="https://www.ecobuildliving.nl/__l5e/assets-v1/1a7764f0-53fe-47e7-a2eb-b96b152a1499/house-gezin.webp" alt="EcoBuild family home" loading="lazy"><span class="arr"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span><div class="home-t"><small>Gezinswoning</small><h3>Family home</h3><p>Room for life, today and tomorrow. Space that grows with your family.</p></div></a>
+      <a class="home rv d1" href="#contact"><img src="https://www.ecobuildliving.nl/__l5e/assets-v1/0f3d1ae9-8433-405d-b170-f36506c41ff8/house-mantelzorg.webp" alt="EcoBuild care annex in a garden" loading="lazy"><span class="arr"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span><div class="home-t"><small>Mantelzorgwoning</small><h3>Care annex</h3><p>Care close by, with privacy kept. A home in the garden for someone you love.</p></div></a>
+      <a class="home rv d2" href="#contact"><img src="https://www.ecobuildliving.nl/__l5e/assets-v1/3f93652c-4c8a-4ad9-bb9b-bdcddb0dbd0c/house-tiny.webp" alt="EcoBuild tiny house at sunset" loading="lazy"><span class="arr"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span><div class="home-t"><small>Tiny House</small><h3>Tiny house</h3><p>Small in size, big in freedom. Everything you need, nothing you don't.</p></div></a>
+      <a class="home rv d3" href="#contact"><img src="https://www.ecobuildliving.nl/assets/house-tuinstudio-B8iTwoEt.webp" alt="EcoBuild garden studio" loading="lazy"><span class="arr"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span><div class="home-t"><small>Tuinstudio</small><h3>Garden studio</h3><p>A quiet place to rest, work or create, a few steps from your back door.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="sec nums">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow rv">Why EcoBuild</span>
+      <h2 class="h"><span class="ln"><span>Faster to build.</span></span><span class="ln"><span><span style="color:#A9BC9A">Cheaper</span> <span style="color:rgba(255,255,255,.45)">to live in.</span></span></span></h2>
+      <p class="lead rv d2">Built in a controlled factory instead of on a muddy site. That's how we keep the price fixed and the timeline short.</p>
+    </div>
+    <div class="nums-grid">
+      <div class="num rv"><b data-count="70">0<small>%</small></b><span class="cap">faster than traditional construction</span></div>
+      <div class="num rv d1"><b data-count="14">0<small>wks</small></b><span class="cap">average from first call to keys</span></div>
+      <div class="num rv d2"><b data-count="85">0<small>%</small></b><span class="cap">biobased building materials</span></div>
+      <div class="num rv d3"><b>€<span data-count="47">0</span><small>/mo</small></b><span class="cap">average energy bill</span></div>
+      <div class="num rv d4"><b data-count="300">0<small>+</small></b><span class="cap">homes delivered across the Benelux</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow rv">Our process</span>
+      <h2 class="h"><span class="ln"><span>From first call to keys</span></span><span class="ln"><span><span class="s">in 14 weeks.</span> <span class="g">On average.</span></span></span></h2>
+      <p class="lead rv d2">One team handles everything: design, permit, production and placement. You always know which week you're in.</p>
+    </div>
+    <div class="proc" id="proc">
+      <div class="ruler">
+        <span class="base"></span><span class="fill" id="rFill"></span>
+        <span class="tick" style="left:0">Week 0</span><span class="tick" style="left:7.14%">1</span><span class="tick" style="left:28.57%">4</span><span class="tick" style="left:57.14%">8</span><span class="tick" style="left:85.71%">12</span><span class="tick" style="left:100%">14</span>
+        <span class="house" id="rHouse"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 7.5 8 2.5l6 5V14H2z"/></svg></span>
+      </div>
+      <div class="steps">
+        <div class="step rv"><span class="wk">Week 1</span><h3>Orientation</h3><p>An honest assessment of your plot and plans within 48 hours.</p></div>
+        <div class="step rv d1"><span class="wk">Weeks 2 to 4</span><h3>Design &amp; fixed quote</h3><p>Your personal design and a fixed price. Then two weeks to decide, no pressure.</p></div>
+        <div class="step rv d2"><span class="wk">Weeks 4 to 12</span><h3>Permit &amp; production</h3><p>We handle the permit while your home is built in our factory, in parallel, not one after the other.</p></div>
+        <div class="step rv d3"><span class="wk">Weeks 12 to 14</span><h3>Delivery &amp; placement</h3><p>Modules arrive by low-loader and are placed in about 5 working days.</p></div>
+      </div>
+      <div class="guar rv"><span>Fixed contract price</span><span>No extra work without your agreement</span><span>Two-week cooling-off period</span><span>10-year construction guarantee</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section class="sec" id="sustainability" style="padding-top:0">
+  <div class="wrap sus">
+    <div class="sus-img rv"><img id="susImg" src="https://www.ecobuildliving.nl/assets/hero-interior-Dw1GQNkA.webp" alt="Bright timber interior of an EcoBuild eco-home" loading="lazy"><div class="sus-tag"><b>230 kg</b><span>CO₂ stored per m² in the structure</span></div></div>
+    <div>
+      <span class="eyebrow rv">Sustainability</span>
+      <h2 class="h"><span class="ln"><span>A home that stores carbon</span></span><span class="ln"><span><span class="g">instead of costing it.</span></span></span></h2>
+      <div class="feat">
+        <div class="rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M5 8l7-6 7 6M5 14l7-6 7 6"/></svg></i><div><h4>Timber frame, FSC wood</h4><p>Wood-fibre insulation throughout</p></div><em>85% bio</em></div>
+        <div class="rv d1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></i><div><h4>Energy label A++++</h4><p>BENG certified as standard</p></div><em>€47/mo</em></div>
+        <div class="rv d2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></i><div><h4>Built to be taken apart</h4><p>Building Circularity Index</p></div><em>≥ 70%</em></div>
+        <div class="rv d3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/></svg></i><div><h4>Built to last</h4><p>Construction guarantee · facade system</p></div><em>10 · 30 yrs</em></div>
+      </div>
+      <div class="badges rv"><span>BENG</span><span>KOMO trajectory</span><span>BREEAM-NL ready</span><span>EPD</span><span>EU Taxonomy</span><span>CE</span><span>FSC</span><span>Bouwgarant</span><span>MPG ≤ 0.40</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow rv">Stories</span>
+      <h2 class="h"><span class="ln"><span>Families who moved in</span></span><span class="ln"><span><span class="s">faster</span> <span class="g">than they expected.</span></span></span></h2>
+    </div>
+    <div class="stories">
+      <div class="story rv"><span class="wk">13 weeks</span><q>From our first conversation to getting the keys took 13 weeks. Our energy bill is now under €50 a month.</q><div class="who"><div><b>Mark &amp; Simone de Vries</b><small>Wageningen</small></div><span class="model">Living 120</span></div></div>
+      <div class="story rv d1"><span class="wk">9 weeks</span><q>Nine weeks from design to placement. Faster than we ever thought possible.</q><div class="who"><div><b>Lien Janssen</b><small>Merksem</small></div><span class="model">Care annex 55</span></div></div>
+      <div class="story rv d2"><span class="wk">First home</span><q>As a first-time buyer, the Starter 45 fit my budget. A brand new eco-home of my own.</q><div class="who"><div><b>Remi Dubois</b><small>Utrecht</small></div><span class="model">Starter 45</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSIONALS -->
+<section class="sec" id="professionals" style="background:#fff">
+  <div class="wrap pros">
+    <div>
+      <span class="eyebrow rv">For professionals</span>
+      <h2 class="h"><span class="ln"><span>Homes at scale,</span></span><span class="ln"><span><span class="s">for developers</span> <span class="g">and partners.</span></span></span></h2>
+      <p class="lead rv d2" style="margin-top:20px">The Benelux is short of around 300,000 homes. Our building system helps you deliver them faster, at a fixed price.</p>
+      <div class="pros-img rv"><img src="https://www.ecobuildliving.nl/__l5e/assets-v1/77e9f6c6-6770-4711-a171-e3cef248fdfb/card-professionals.webp" alt="EcoBuild multi-storey timber residential building" loading="lazy"><div class="note">BIM-integrated workflow · EPD available · EU Taxonomy aligned</div></div>
+    </div>
+    <div class="offers rv d1" id="offers">
+      <div class="offer on"><div class="offer-top"><h3><span class="no">01</span>Direct project delivery</h3><span class="pl"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span></div><div class="body"><div><p>You bring a permitted site. We design, produce, deliver and place the homes.</p></div></div></div>
+      <div class="offer"><div class="offer-top"><h3><span class="no">02</span>Master Developer</h3><span class="pl"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span></div><div class="body"><div><p>A volume agreement with reserved factory capacity and tiered pricing.</p></div></div></div>
+      <div class="offer"><div class="offer-top"><h3><span class="no">03</span>White-label licence</h3><span class="pl"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span></div><div class="body"><div><p>Use the EcoBuild building system under your own brand.</p></div></div></div>
+      <div class="offer"><div class="offer-top"><h3><span class="no">04</span>Joint venture</h3><span class="pl"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span></div><div class="body"><div><p>For large projects of 200 units or more, built together from day one.</p></div></div></div>
+      <a class="btn btn-dark" href="#contact" style="margin-top:30px">Request a project briefing <i><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCING -->
+<section class="sec" id="financing">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow rv">Financing</span>
+      <h2 class="h"><span class="ln"><span>An eco-home is easier</span></span><span class="ln"><span><span class="s">to finance</span> <span class="g">than you think.</span></span></span></h2>
+    </div>
+    <div class="fin">
+      <div class="fc rv"><b>+€50k</b><h4>Green mortgage</h4><p>Energy-efficient homes can unlock up to €50,000 extra borrowing capacity.</p></div>
+      <div class="fc rv d1"><b>Fixed</b><h4>Contract price</h4><p>The price you sign is the price you pay. No extra work without your agreement.</p></div>
+      <div class="fc rv d2"><b>2 wks</b><h4>To decide</h4><p>Every fixed quote comes with a two-week cooling-off period.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <img src="https://www.ecobuildliving.nl/__l5e/assets-v1/3f93652c-4c8a-4ad9-bb9b-bdcddb0dbd0c/house-tiny.webp" alt="EcoBuild home at dusk" loading="lazy">
+  <div class="wrap">
+    <h2 class="h"><span class="ln"><span>Your eco-home</span></span><span class="ln"><span><span style="color:#C9D8BC">starts with</span> <span style="color:rgba(255,255,255,.6)">one call.</span></span></span></h2>
+    <p class="rv d2">Tell us about your plot and plans. You'll get an honest assessment within 48 hours.</p>
+    <div class="hero-ctas rv d3">
+      <a class="btn btn-light" href="mailto:info@ecobuildliving.nl">Plan an introduction <i><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg></i></a>
+      <a class="btn ghost" href="mailto:info@ecobuildliving.nl?subject=Price%20guide">Get the price guide <i><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 2v9M3 7l4 4 4-4M2 13h10"/></svg></i></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><a class="logo" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>EcoBuild<em>Living</em></a><p>Prefab eco-homes, made to measure. Built in our own factory, delivered across the Benelux and Europe.</p></div>
+      <div><h5>Homes</h5><ul><li>Family home</li><li>Care annex</li><li>Tiny house</li><li>Garden studio</li></ul></div>
+      <div><h5>Company</h5><ul><li>Our process</li><li>Sustainability</li><li>Certifications</li><li>For professionals</li></ul></div>
+      <div><h5>Contact</h5><ul><li><a href="mailto:info@ecobuildliving.nl">info@ecobuildliving.nl</a></li><li>Netherlands · Belgium</li><li>Germany · France · Switzerland</li></ul></div>
+    </div>
+    <div class="f-big">EcoBuild Living</div>
+    <div class="f-bot"><span>© 2026 EcoBuild Living. All rights reserved.</span><span>Privacy · Terms · Cookies</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* reveal */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  function arm(){document.querySelectorAll('.rv,.h').forEach(function(el){if(el.id!=='heroH')io.observe(el)})}
+
+  /* LOADER */
+  var L=document.getElementById('loader'),rect=document.getElementById('ldRect'),cnt=document.getElementById('ldCount'),logo=document.getElementById('ldLogo'),frame=document.getElementById('ldFrame'),stage=document.getElementById('ldStage');
+  var t0=performance.now(),DUR=reduce?10:2100,loaded=false;
+  addEventListener('load',function(){loaded=true});setTimeout(function(){loaded=true},4500);
+  function ease(x){return 1-Math.pow(1-x,3)}
+  function tick(now){
+    var p=Math.min(1,(now-t0)/DUR);if(!loaded&&p>.9)p=.9;
+    var e=ease(p);cnt.textContent=Math.round(e*100)+'%';rect.style.strokeDashoffset=1-e;
+    if(e>.25)logo.style.opacity=1;
+    if(p<1)requestAnimationFrame(tick);else finish();
+  }
+  function finish(){
+    logo.style.opacity=0;cnt.style.opacity=0;frame.style.opacity=1;
+    setTimeout(function(){
+      var r=stage.getBoundingClientRect();
+      frame.style.cssText='position:fixed;left:'+r.left+'px;top:'+r.top+'px;width:'+r.width+'px;height:'+r.height+'px;opacity:1;transition:all .9s cubic-bezier(.7,0,.2,1)';
+      requestAnimationFrame(function(){requestAnimationFrame(function(){frame.style.left='0px';frame.style.top='0px';frame.style.width='100vw';frame.style.height='100vh';frame.style.borderRadius='0px'})});
+      setTimeout(function(){L.classList.add('gone');document.body.classList.remove('lock');document.getElementById('heroH').classList.add('in');arm();setTimeout(function(){L.remove()},700)},950);
+    },420);
+  }
+  requestAnimationFrame(tick);
+
+  /* nav */
+  var nav=document.getElementById('nav'),lastY=0;
+  addEventListener('scroll',function(){var y=scrollY;nav.classList.toggle('solid',y>40);nav.classList.toggle('up',y>lastY&&y>400);lastY=y},{passive:true});
+  var mm=document.getElementById('mm');document.getElementById('burger').addEventListener('click',function(){mm.classList.toggle('open')});
+  mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open')})});
+  var navLinks=document.querySelectorAll('.links a');
+
+  /* hero card scale + parallax, process ruler, sus parallax */
+  var hm=document.getElementById('hm'),hmImg=document.getElementById('hmImg'),proc=document.getElementById('proc'),rFill=document.getElementById('rFill'),rHouse=document.getElementById('rHouse'),steps=document.querySelectorAll('.step'),susImg=document.getElementById('susImg');
+  var bounds=[0,1/14,4/14,12/14,1];
+  function onScroll(){
+    var vh=innerHeight;
+    if(!reduce){
+      var r=hm.getBoundingClientRect(),p=Math.max(0,Math.min(1,1-(r.top/vh)));
+      hm.style.transform='scale('+(0.92+0.08*p)+')';hmImg.style.transform='translateY('+(-p*6)+'%)';
+      var s=susImg.getBoundingClientRect();susImg.style.transform='translateY('+(((s.top/vh)-.5)*-8)+'%)';
+    }
+    var pr=proc.getBoundingClientRect(),q=Math.max(0,Math.min(1,(vh*.8-pr.top)/(pr.height+vh*.2)));
+    rFill.style.width=(q*100)+'%';rHouse.style.left=(q*100)+'%';
+    steps.forEach(function(st,i){st.classList.toggle('on',q>=bounds[i]+.001)});
+    var cur='';navLinks.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t&&t.getBoundingClientRect().top<vh*.4)cur=a.getAttribute('href')});
+    navLinks.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===cur)});
+  }
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+
+  /* counters */
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);
+    var el=e.target,to=+el.dataset.count,small=el.querySelector('small'),t1=performance.now();
+    (function step(n){var k=Math.min(1,(n-t1)/1600),v=Math.round(to*(1-Math.pow(1-k,3)));el.firstChild.nodeValue=v;if(k<1)requestAnimationFrame(step)})(t1);
+  })},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){if(el.firstChild&&el.firstChild.nodeType===3)cio.observe(el)});
+
+  /* offers accordion */
+  var offers=document.querySelectorAll('.offer');
+  offers.forEach(function(o){o.addEventListener('click',function(){offers.forEach(function(x){x.classList.toggle('on',x===o)})})});
+})();
+</script>
+</body>
+</html>
