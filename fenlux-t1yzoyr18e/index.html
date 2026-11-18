@@ -7,12 +7,12 @@
 <meta name="theme-color" content="#F6F1EA">
 <meta property="og:title" content="Fenlux Design | Enjoy the views"><meta property="og:description" content="A luxury design studio for sliding doors, windows, rooflights and entrances, across Essex and London.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B0B0A'/%3E%3Crect x='9' y='8' width='14' height='16' fill='none' stroke='%23D6C2AC' stroke-width='1.6'/%3E%3Cpath d='M16 8v16' stroke='%23D6C2AC' stroke-width='1.6'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;250;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://d2ol7oe51mr4n9.cloudfront.net">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Fenlux Design","telephone":"+441277402469","areaServed":["Brentwood","Shenfield","Hutton Mount","Ingatestone","Billericay","Chelmsford","Rayleigh","Leigh-on-Sea","Hornchurch","Emerson Park","Upminster","Chigwell","London"],"sameAs":["https://instagram.com/fenluxdesign","https://facebook.com/fenluxdesign"]}</script>
 <style>:root{--k:#0B0B0A;--k2:#141311;--k3:#1E1C19;--s:#D6C2AC;--s2:#E8DDCF;--s3:#F6F1EA;--w:#FBF8F3;--m:#6E6558;--md:rgba(246,241,234,.62);--l:rgba(11,11,10,.13);--ld:rgba(246,241,234,.15);--e:cubic-bezier(.22,.8,.24,1);--o:cubic-bezier(.16,1,.3,1);--g:clamp(20px,4vw,84px);--max:1880px;--hh:clamp(68px,5vw,94px)}
 *{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
-body{background:var(--k);color:var(--s3);font-family:'Inter Tight',system-ui,sans-serif;font-weight:300;font-size:clamp(16px,.95vw,20px);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--k);color:var(--s3);font-family:'Geist',system-ui,sans-serif;font-weight:300;font-size:clamp(16px,.95vw,20px);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}input{font:inherit;color:inherit}
 ::selection{background:var(--s);color:var(--k)}
 .w{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--g)}
@@ -210,7 +210,7 @@ main,header,footer{position:relative;z-index:1}
 .map .th2{fill:none;stroke:rgba(214,194,172,.1);stroke-width:16;stroke-linecap:round}
 .map .gr line{stroke:rgba(246,241,234,.05)}
 .map .p circle.d{fill:var(--s3)}.map .p circle.r{fill:none;stroke:var(--s);opacity:0;transform-box:fill-box;transform-origin:center}
-.map .p text{fill:var(--md);font-size:9px;font-family:'Inter Tight';letter-spacing:.02em;transition:fill .3s}
+.map .p text{fill:var(--md);font-size:9px;font-family:'Geist';letter-spacing:.02em;transition:fill .3s}
 .map .p.on circle.d{fill:var(--s)}.map .p.on text{fill:var(--s3)}.map .p.on circle.r{animation:ring 1.8s var(--e) infinite}
 @keyframes ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(5)}}
 .map .ldn text{fill:var(--s);font-size:13px;letter-spacing:.2em}
@@ -549,6 +549,151 @@ body{background:var(--s3);color:var(--k)}
  .pt button{padding:8px 0}.fnote{display:none}.fins button{width:32px;height:32px}
  .ex .tx h2{font-size:clamp(36px,3.6vw,64px)}.xl{gap:4px}.xl li:before{width:24px;height:24px}
 }
+/* ===== v5: the lid, the travelling door, the experience ===== */
+main{background:var(--s3)}
+.lid,.story,.hc,.nx{background:var(--s3);color:var(--k)}
+
+/* --- hero: rounded card that lifts like a box lid --- */
+.lid{position:relative;height:260vh}
+.lid .pin{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;perspective:1800px;perspective-origin:50% 0%}
+.box,.lc{position:absolute;inset:clamp(8px,.8vw,14px);border-radius:clamp(22px,2vw,36px)}
+.box{background:radial-gradient(120% 80% at 50% 0%,#FFFDF9 0%,#F3EDE4 52%,#E6DCCF 100%);box-shadow:inset 0 0 0 1px rgba(60,40,20,.07),inset 0 30px 60px -30px rgba(60,40,20,.18),inset 0 -40px 80px -40px rgba(60,40,20,.14);display:flex;justify-content:center;text-align:center;--k:0}
+.boxin{margin-top:calc(var(--hh) + clamp(10px,4vh,60px));opacity:var(--k);transform:translateY(calc((1 - var(--k)) * 30px))}
+.bxh{font-size:clamp(44px,5.6vw,124px);line-height:.98;letter-spacing:-.05em;margin:.22em 0 .18em}
+.bxp{color:var(--m);font-size:clamp(15px,1vw,19px)}
+.lc{overflow:hidden;transform-origin:50% 0;will-change:transform,opacity;background:#14110e;color:#fff;
+ box-shadow:0 calc(var(--sh,0) * 90px + 30px) calc(var(--sh,0) * 120px + 60px) calc(-30px + var(--sh,0) * -10px) rgba(28,18,8,calc(.35 + var(--sh,0) * .25));backface-visibility:hidden}
+.lc:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.25)}
+.lcm{position:absolute;inset:0}
+.lcm img,.lcm video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 56%}
+.lcm video{opacity:0;transition:opacity .6s}.lc.vid .lcm video{opacity:1}
+.lcm:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,7,6,.5),rgba(8,7,6,0) 26%),linear-gradient(0deg,rgba(8,7,6,.82),rgba(8,7,6,.3) 36%,rgba(8,7,6,0) 62%),linear-gradient(90deg,rgba(8,7,6,.32),rgba(8,7,6,0) 52%)}
+.lct{position:absolute;left:clamp(22px,3.4vw,72px);right:clamp(22px,3.4vw,72px);bottom:clamp(26px,5.5vh,80px);z-index:3}
+.lct .lab{color:var(--s)}
+.lct h1{font-size:clamp(62px,10vw,240px);line-height:.92;letter-spacing:-.06em;margin:.12em 0 .16em;color:#fff;font-weight:200}
+.lct h1 b{font-weight:600}
+.lct h1 span{display:inline-block;overflow:hidden;padding-bottom:.08em;vertical-align:top}
+.lct h1 i{display:inline-block;font-style:normal;transform:translateY(105%);transition:transform 1.6s var(--o)}
+.go .lct h1 i{transform:none}.go .lct h1 span+span i{transition-delay:.12s}
+.lcb{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(24px,4vw,80px)}
+.lcb .lead{color:rgba(246,241,234,.84);max-width:28em;margin:0}
+.lid .ha{margin:0;display:flex;gap:10px;flex-wrap:nowrap}
+.btn.hb1{background:var(--s3);color:var(--k)}.btn.hb1:before{background:#fff}
+.btn.hb2{background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.07));color:#fff;backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3),inset 0 1px 0 rgba(255,255,255,.5),0 18px 40px -20px rgba(0,0,0,.6)}
+.btn.hb2:before{background:rgba(255,255,255,.16)}
+.lcs{position:absolute;z-index:3;right:clamp(22px,3.4vw,72px);top:calc(var(--hh) + 6px);display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,241,234,.8)}
+.lcs i{width:22px;height:34px;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(246,241,234,.55);position:relative}
+.lcs i:after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:#fff;animation:wheel 1.8s var(--o) infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}70%{transform:translateY(11px);opacity:0}100%{opacity:0}}
+
+/* --- the travelling door --- */
+.guide{position:fixed;inset:0;z-index:40;pointer-events:none;perspective:1600px;perspective-origin:50% 45%}
+.gw{position:absolute;left:0;top:0;transform-style:preserve-3d;will-change:transform,opacity;visibility:hidden;--op:0}
+.gv{position:absolute;left:5%;right:5%;top:2.4%;bottom:1.4%;overflow:hidden;opacity:0;border-radius:2px;transform:translateZ(-6px);background:#cfc6bb}
+.gv img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform:scale(1.15)}
+.gv:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 calc(var(--op) * 6px) #3A3D41,inset 0 0 40px rgba(0,0,0,.25)}
+.gdl{position:absolute;inset:0;transform-origin:96% 50%;transform-style:preserve-3d;will-change:transform}
+.gdl img{position:absolute;inset:0;width:100%;height:100%;display:block;filter:drop-shadow(0 18px 24px rgba(30,24,16,.18))}
+.ge{position:absolute;left:0;top:.6%;bottom:.6%;width:9%;transform-origin:0 50%;transform:rotateY(90deg);background:linear-gradient(90deg,#2C2F33,#4B4F55 45%,#2A2D31)}
+.gs{position:absolute;left:-14%;right:-14%;bottom:-3.2%;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(40,30,20,.32),rgba(40,30,20,0));transform:translateZ(-1px)}
+.gt{position:absolute;inset:0;opacity:0;transform:translateZ(8px)}
+.gt span{position:absolute;left:var(--x);top:var(--y);white-space:nowrap;display:flex;align-items:center;gap:10px;padding:9px 15px 9px 11px;border-radius:999px;font-size:clamp(11px,.72vw,14px);font-weight:500;color:var(--k);
+ background:rgba(255,255,255,.7);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),0 14px 30px -14px rgba(40,28,14,.35);transform:translateY(10px) scale(.96);opacity:0;transition:transform .8s var(--o),opacity .6s}
+.gt span i{width:8px;height:8px;border-radius:50%;background:#8a7560;box-shadow:0 0 0 4px rgba(138,117,96,.18)}
+.gt.on span{opacity:1;transform:none}.gt.on span:nth-child(2){transition-delay:.12s}.gt.on span:nth-child(3){transition-delay:.24s}
+
+/* --- chapters --- */
+.story{position:relative;z-index:1}
+.ch{position:relative;min-height:150vh;display:flex;align-items:center;padding:0 var(--g)}
+.ch:before{content:attr(data-ch);position:absolute;top:50%;transform:translateY(-50%);font-size:clamp(220px,34vw,640px);line-height:1;font-weight:100;letter-spacing:-.08em;color:rgba(138,117,96,.07);pointer-events:none}
+.ch:nth-child(odd):before{right:4vw}.ch:nth-child(even):before{left:4vw}
+.cht{position:sticky;top:calc(50vh - 220px);max-width:min(34vw,720px);opacity:.15;transform:translateY(30px);transition:opacity .9s var(--o),transform 1.1s var(--o)}
+.cht.r{margin-left:auto}
+.ch.on .cht{opacity:1;transform:none}
+.cht small{display:block;font-size:clamp(11px,.62vw,13px);letter-spacing:.24em;text-transform:uppercase;font-weight:500;color:#8a7560}
+.cht h2{font-size:clamp(40px,4.4vw,96px);line-height:.98;letter-spacing:-.05em;margin:.35em 0 .4em}
+.cht p{color:var(--m);font-size:clamp(16px,1.05vw,20px);max-width:28em}
+.chl{list-style:none;padding:0;margin:clamp(22px,3vh,40px) 0 0;display:grid;grid-template-columns:repeat(3,auto);gap:clamp(18px,2vw,40px);justify-content:start}
+.chl li{border-top:1px solid var(--l);padding-top:12px}
+.chl b{display:block;font-weight:500;font-size:clamp(16px,1.05vw,20px)}
+.chl span{font-size:13px;color:var(--m)}
+.cht .btn{margin-top:clamp(22px,3vh,40px)}
+
+/* --- explode section gets the same rounded language --- */
+.ex{background:var(--s3)}
+.ex .tx h2{font-size:clamp(36px,3.8vw,84px)}
+
+/* --- collections: horizontal --- */
+.cl5{position:relative;height:420vh}
+.cl5 .pin{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hch{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:clamp(20px,3vh,40px);width:100%}
+.hch .lab{position:absolute;margin-top:-2.2em}
+.hch h2{font-size:clamp(36px,3.8vw,84px);letter-spacing:-.05em;line-height:1}
+.hcn{display:flex;align-items:baseline;gap:8px;font-size:14px;color:var(--m)}.hcn b{font-size:clamp(28px,2.4vw,48px);font-weight:300;color:var(--k);letter-spacing:-.04em}
+.hct{display:flex;gap:clamp(18px,2.2vw,44px);padding:0 calc(50vw - min(31vw,59vh));will-change:transform}
+.hk{flex:0 0 auto;width:min(62vw,118vh);height:min(64vh,40vw);border-radius:clamp(22px,2vw,34px);overflow:hidden;position:relative;color:#fff;transform-origin:50% 50%;will-change:transform,opacity}
+.hk figure{position:absolute;inset:0;margin:0;overflow:hidden}
+.hk img{width:100%;height:100%;object-fit:cover;transform:scale(1.14)}
+.hk:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,7,6,.72),rgba(8,7,6,0) 55%)}
+.hkt{position:absolute;left:clamp(20px,2.4vw,44px);right:clamp(20px,2.4vw,44px);bottom:clamp(20px,2.6vw,44px);z-index:2;max-width:34em}
+.hkt small{font-size:12px;letter-spacing:.2em;color:var(--s)}
+.hkt h3{font-size:clamp(28px,2.6vw,56px);line-height:1;letter-spacing:-.04em;font-weight:300;margin:.25em 0 .3em}
+.hkt p{color:rgba(246,241,234,.82);margin:0}
+.hcb{margin-top:clamp(18px,3vh,36px);width:100%}.hcb i{display:block;height:1px;background:var(--l);position:relative;overflow:hidden}.hcb b{position:absolute;inset:0;background:var(--k);transform-origin:left;transform:scaleX(0)}
+
+/* --- finishes --- */
+.fn{background:var(--s3);color:var(--k);padding:clamp(80px,10vw,180px) 0 clamp(60px,8vw,140px)}
+.fnh h2{font-size:clamp(36px,3.8vw,84px);letter-spacing:-.05em;line-height:1;margin-top:.35em}
+.fnl{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.4vw,28px);margin-top:clamp(30px,4vw,70px)}
+.fnl figure{margin:0}
+.fnl img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:clamp(18px,1.6vw,30px);transition:transform 1s var(--o),border-radius 1s var(--o)}
+.fnl figure:hover img{transform:scale(1.04);border-radius:50%}
+.fnl figcaption{margin-top:14px;font-weight:500}
+
+/* --- your opening is next --- */
+.nx{position:relative;min-height:150vh;display:flex;align-items:center;padding:0 var(--g)}
+.nxw{max-width:min(40vw,640px)}
+.nx h2{font-size:clamp(46px,5.4vw,120px);letter-spacing:-.055em;line-height:.96;margin:.3em 0 .35em}
+.nx .lead{color:var(--m)}
+.nx .ha{display:flex;gap:10px;flex-wrap:wrap;margin-top:clamp(24px,3vh,40px)}
+.btn.ln{background:transparent;color:var(--k);box-shadow:inset 0 0 0 1px var(--l)}
+
+/* --- phone --- */
+@media (max-width:760px){
+ .lid{height:220vh}
+ .lcm img,.lcm video{object-position:34% 50%}
+ .lcm:after{background:linear-gradient(180deg,rgba(8,7,6,.55),rgba(8,7,6,0) 22%),linear-gradient(0deg,rgba(8,7,6,.92),rgba(8,7,6,.55) 44%,rgba(8,7,6,0) 68%)}
+ .lct{left:20px;right:20px;bottom:22px}
+ .lct h1{font-size:clamp(58px,17vw,84px)}
+ .lct h1 span{display:block}
+ .lcb{flex-direction:column;align-items:stretch;gap:18px}.lcb .lead{font-size:15px}
+ .lid .ha{flex-direction:column;gap:8px}.lid .ha .btn{width:100%;justify-content:center;height:54px}
+ .lcs{right:20px;left:auto;top:calc(var(--hh) + 4px);font-size:10px}
+ .boxin{padding:0 22px}.bxh{font-size:44px}
+ .ch{min-height:130vh;display:block;padding:72vh 16px 0}
+ .ch:before{top:18vh;transform:none;font-size:70vw}
+ .ch:nth-child(odd):before,.ch:nth-child(even):before{left:auto;right:-4vw}
+ .cht,.cht.r{position:sticky;top:auto;bottom:calc(84px + env(safe-area-inset-bottom));max-width:none;margin:0;padding:22px 20px;border-radius:24px;background:rgba(251,248,243,.86);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 24px 50px -30px rgba(40,28,14,.45)}
+ .cht h2{font-size:36px;margin:.3em 0 .35em}.cht p{font-size:15px}
+ .chl{grid-template-columns:repeat(3,1fr);gap:12px}.chl b{font-size:14px}.chl span{font-size:11.5px}
+ .gt span{font-size:10.5px;padding:7px 11px 7px 9px}
+ .cl5{height:auto;padding:80px 0 50px}
+ .cl5 .pin{position:relative;height:auto;display:block}
+ .hch{display:block}.hch .lab{position:static;margin:0}.hch h2{font-size:38px;margin:.35em 0 .2em}.hcn{display:none}
+ .hct{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:18px 16px 6px;gap:12px}
+ .hct::-webkit-scrollbar{display:none}
+ .hk{width:84vw;height:62vh;max-height:560px;scroll-snap-align:center}
+ .hkt h3{font-size:30px}.hkt p{font-size:14.5px}
+ .hcb{display:none}
+ .fn{padding:70px 0 60px}.fnh h2{font-size:38px}
+ .fnl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:28px -16px 0;padding:0 16px;scrollbar-width:none}
+ .fnl::-webkit-scrollbar{display:none}
+ .fnl figure{flex:0 0 40vw;scroll-snap-align:start}
+ .nx{min-height:150vh;display:block;padding:76vh 16px 12vh}
+ .nxw{max-width:none}.nx h2{font-size:46px}
+ .nx .ha{flex-direction:column;gap:8px}.nx .ha .btn{flex:none;width:100%;justify-content:center;height:54px}
+}
+@media (prefers-reduced-motion:reduce){.lct h1 i{transform:none}}
 </style>
 </head>
 <body>
@@ -559,39 +704,113 @@ body{background:var(--s3);color:var(--k)}
 <div class="grain" aria-hidden="true"></div><div class="cur" id="cur"><span id="curT">Drag</span></div>
 <header class="hd" id="hd"><div class="w">
  <a class="lgw" href="#top" aria-label="Fenlux home"><svg class="lg" xmlns="http://www.w3.org/2000/svg" viewBox="60 172 378 128" aria-hidden="true"><path fill="currentColor" d="M163.863 224.782L163.684 216.25L132 216.25L132 217.384C136.415 217.742 137.191 218.577 137.191 222.754L137.191 248.59C137.191 253.542 136.535 254.318 132 254.616L132 255.75L148.707 255.75L148.707 254.616C144.113 254.378 143.277 253.542 143.277 249.246L143.277 236.239L151.929 236.239C156.762 236.239 157.776 237.134 158.492 241.967L159.865 241.967L159.865 228.124L158.492 228.124C157.776 232.897 156.702 233.792 151.929 233.792L143.277 233.792L143.277 220.546C143.277 218.875 143.576 218.517 145.187 218.517L153.301 218.517C160.044 218.517 161.356 219.412 162.371 224.782ZM200.173 245.666L198.502 245.666C195.519 252.11 192.953 253.542 184.421 253.542L182.81 253.542C179.946 253.542 177.559 253.304 177.022 252.886C176.664 252.647 176.545 252.11 176.545 250.977L176.545 236.239L185.733 236.239C190.626 236.239 191.521 237.014 192.297 241.967L193.669 241.967L193.669 228.124L192.297 228.124C191.521 233.017 190.566 233.792 185.733 233.792L176.545 233.792L176.545 220.546C176.545 218.875 176.903 218.517 178.514 218.517L186.569 218.517C193.311 218.517 194.624 219.412 195.638 224.782L197.13 224.782L196.951 216.25L165.267 216.25L165.267 217.384C169.683 217.742 170.458 218.517 170.458 222.754L170.458 249.246C170.458 253.483 169.623 254.318 165.267 254.616L165.267 255.75L197.488 255.75ZM243.285 217.384L243.285 216.25L229.264 216.25L229.264 217.384C231.531 217.563 232.366 217.801 233.261 218.338C234.455 219.174 234.992 221.322 234.992 225.021L234.992 245.129L212.02 216.25L201.816 216.25L201.816 217.384C204.382 217.384 205.218 217.861 207.604 220.665L207.604 246.979C207.604 253.125 206.769 254.258 201.816 254.616L201.816 255.75L215.838 255.75L215.838 254.616C211.244 254.378 210.23 253.005 210.23 246.979L210.23 223.589L236.603 256.406L237.617 256.406L237.617 225.021C237.617 221.441 238.214 219.233 239.347 218.458C240.183 217.861 241.018 217.622 243.285 217.384ZM279.954 245.368L278.462 245.368C277.508 247.456 276.732 248.829 275.897 249.783C273.808 252.289 270.526 253.423 265.395 253.423L261.397 253.423C257.042 253.423 256.266 253.065 256.266 250.977L256.266 222.754C256.266 218.517 257.101 217.682 261.815 217.384L261.815 216.25L244.989 216.25L244.989 217.384C249.404 217.742 250.18 218.517 250.18 222.754L250.18 249.246C250.18 253.483 249.344 254.318 244.989 254.616L244.989 255.75L277.09 255.75ZM322.887 217.384L322.887 216.25L309.045 216.25L309.045 217.384C313.699 217.742 314.653 219.054 314.653 225.021L314.653 241.131C314.653 245.189 314.236 247.456 313.281 249.246C311.67 252.11 307.851 253.96 303.376 253.96C299.14 253.96 296.216 252.528 294.605 249.724C293.531 247.814 293.113 245.606 293.113 241.847L293.113 222.754C293.113 218.458 293.77 217.801 298.543 217.384L298.543 216.25L281.657 216.25L281.657 217.384C286.371 217.742 287.027 218.398 287.027 222.754L287.027 241.37C287.027 251.693 291.86 256.585 302.004 256.585C308.508 256.585 312.983 254.497 315.31 250.44C316.742 247.934 317.279 245.189 317.279 240.594L317.279 225.021C317.279 218.935 317.995 217.98 322.887 217.384ZM366 255.75L366 254.616C362.838 254.258 361.943 253.662 359.377 250.201L347.921 233.852L356.632 222.992C360.511 218.338 361.704 217.622 365.523 217.384L365.523 216.25L351.322 216.25L351.322 217.384C354.544 217.503 355.498 217.921 355.498 219.293C355.498 220.188 354.842 221.262 353.112 223.41L346.369 231.644L343.863 228.124C340.224 223.052 338.792 220.486 338.792 219.174C338.792 217.98 339.687 217.503 341.656 217.443L343.326 217.384L343.326 216.25L325.307 216.25L325.307 217.384C329.185 217.563 330.259 218.458 336.106 226.752L342.61 236.298L333.242 247.814C327.932 254.139 327.634 254.378 324.591 254.616L324.591 255.75L338.493 255.75L338.493 254.616C335.032 254.378 333.958 253.9 333.958 252.528C333.958 251.633 334.853 250.141 337.061 247.397L344.162 238.566L349.83 246.919C351.799 249.843 352.873 251.872 352.873 252.767C352.873 253.841 351.918 254.437 349.89 254.497C349.651 254.497 348.995 254.557 348.279 254.616L348.279 255.75ZM64 176h120v2h-120ZM64 294h120v2h-120ZM64 176h2v120h-2ZM182 176h2v22h-2ZM182 274h2v22h-2ZM189 176h120v2h-120ZM189 294h120v2h-120ZM189 176h2v22h-2ZM189 274h2v22h-2ZM307 176h2v22h-2ZM307 274h2v22h-2ZM314 176h120v2h-120ZM314 294h120v2h-120ZM314 176h2v22h-2ZM314 274h2v22h-2ZM432 176h2v120h-2Z"/></svg></a>
- <nav class="nv" aria-label="Main"><a href="#collections">Collections</a><a href="#doors">The view</a><a href="#inside">Inside the glass</a><a href="#promise">Our promise</a><a href="#process">Process</a><a href="#trade">Trade</a></nav>
+ <nav class="nv" aria-label="Main"><a href="#story">The door</a><a href="#inside">Inside the glass</a><a href="#collections">Collections</a><a href="#promise">Our promise</a><a href="#process">Process</a><a href="#trade">Trade</a></nav>
  <div class="hr"><a class="tel" href="tel:+441277402469">01277 402469</a><a class="btn" href="#consult"><span>Arrange a consultation</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div>
  <button class="mb" id="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
 </div></header>
-<div class="mm" id="mm"><a class="big" href="#collections">Collections <small>01</small></a><a class="big" href="#doors">The view <small>02</small></a><a class="big" href="#inside">Inside the glass <small>03</small></a><a class="big" href="#promise">Our promise <small>04</small></a><a class="big" href="#process">Process <small>05</small></a><a class="big" href="#trade">Trade <small>06</small></a><a class="big" href="#consult">Consultation <small>&rarr;</small></a><div class="mf"><a href="tel:+441277402469">01277 402469</a><a href="https://wa.me/447897794579">WhatsApp</a><span>Essex and London</span></div></div>
+<div class="mm" id="mm"><a class="big" href="#story">The door <small>01</small></a><a class="big" href="#inside">Inside the glass <small>02</small></a><a class="big" href="#collections">Collections <small>03</small></a><a class="big" href="#promise">Our promise <small>04</small></a><a class="big" href="#process">Process <small>05</small></a><a class="big" href="#trade">Trade <small>06</small></a><a class="big" href="#consult">Consultation <small>&rarr;</small></a><div class="mf"><a href="tel:+441277402469">01277 402469</a><a href="https://wa.me/447897794579">WhatsApp</a><span>Essex and London</span></div></div>
 
 <main id="top">
-<section class="hz win dk" id="hero">
+<section class="lid" id="hero">
  <div class="pin">
-  <div class="hxm" id="hxm">
-   <img class="hp" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/478c0af4-d3d4-4798-baad-4cda014951e0.webp" alt="A glass pavilion at dusk with its sliding doors closed" fetchpriority="high">
-   <video id="hv" muted playsinline preload="auto" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/478c0af4-d3d4-4798-baad-4cda014951e0.webp" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/61514f45-532c-44a0-849f-6ecb06a0425f.mp4"></video>
-  </div>
-  <div class="hxt" id="hxt">
-   <span class="lab f0">Architectural glazing studio &middot; Essex and London</span>
-   <h1><span><i>Enjoy</i></span><span><i><b>the views.</b></i></span></h1>
-   <div class="hxb">
-    <p class="lead f0 d1">Design-led sliding doors, windows, rooflights and entrances for distinctive homes. Designed with you, fitted properly, looked after for years.</p>
-    <div class="ha f0 d2"><a class="btn hb1" href="#consult"><span>Arrange a consultation</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a><a class="btn hb2" href="tel:+441277402469"><span>Call 01277 402469</span></a></div>
+  <div class="box" id="box"><div class="boxin">
+   <span class="lab">Fenlux Design &middot; Essex and London</span>
+   <h2 class="bxh">One door. <b>Every detail.</b></h2>
+   <p class="bxp">Keep scrolling. We'll take it apart for you.</p>
+  </div></div>
+  <div class="lc" id="lc">
+   <div class="lcm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/478c0af4-d3d4-4798-baad-4cda014951e0.webp" alt="A glass pavilion at dusk" fetchpriority="high"><video id="hv" muted playsinline preload="auto" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/478c0af4-d3d4-4798-baad-4cda014951e0.webp" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/61514f45-532c-44a0-849f-6ecb06a0425f.mp4"></video></div>
+   <div class="lct" id="lct">
+    <span class="lab">Architectural glazing studio</span>
+    <h1><span><i>Enjoy</i></span> <span><i><b>the views.</b></i></span></h1>
+    <div class="lcb">
+     <p class="lead">Design-led sliding doors, windows, rooflights and entrances for distinctive homes across Essex and London.</p>
+     <div class="ha"><a class="btn hb1" href="#consult"><span>Arrange a consultation</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a><a class="btn hb2" href="tel:+441277402469"><span>Call 01277 402469</span></a></div>
+    </div>
    </div>
+   <div class="lcs" aria-hidden="true"><i></i><span>Scroll to open</span></div>
   </div>
-  <div class="hxs f0 d3" aria-hidden="true"><span id="hxL">Scroll to open the doors</span><i><b id="hxB"></b></i></div>
  </div>
 </section>
 
-<section class="rg lt" id="range">
+<section class="story" id="story">
+ <article class="ch" data-ch="1"><div class="cht l">
+  <small>01 &middot; The frame</small><h2>Less frame. <b>More view.</b></h2>
+  <p>Slim, thermally broken aluminium profiles that carry large panes of glass without the bulk. Strong where it matters, barely there where it doesn't.</p>
+  <ul class="chl"><li><b>Slim</b><span>sightlines</span></li><li><b>Thermally</b><span>broken frames</span></li><li><b>Powder</b><span>coated finish</span></li></ul>
+ </div></article>
+ <article class="ch" data-ch="2"><div class="cht r">
+  <small>02 &middot; The glass</small><h2>Glass you <b>look through,</b> not at.</h2>
+  <p>Toughened safety glass with a low-emissivity coating keeps the warmth in and the view clear, all year round.</p>
+  <ul class="chl"><li><b>Toughened</b><span>safety glass</span></li><li><b>Low-E</b><span>coated</span></li><li><b>Warm-edge</b><span>spacers</span></li></ul>
+ </div></article>
+ <article class="ch" data-ch="3"><div class="cht l">
+  <small>03 &middot; The opening</small><h2>Opens onto <b>the view.</b></h2>
+  <p>Balanced hardware and precise hanging, so even the largest door moves with a fingertip and closes with a quiet, certain seal.</p>
+  <a class="btn k" href="#consult"><span>Design yours</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+ </div></article>
+</section>
+<section class="ex win" id="inside">
+ <div class="pin"><div class="frm fm xfm"><video id="xv" muted playsinline preload="auto" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/f9a653f4-3065-4009-9340-ad0c87a60205.webp" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/fc1740b5-d1f8-4f24-b9be-a0b68f2db51f.mp4" aria-label="A slim aluminium glazed door separating into its layers"></video></div>
+  <div class="tx"><span class="lab" style="color:#8a7560">04 &middot; Inside the glass</span><h2>Not one part working well. <b>Every layer working together.</b></h2><p class="lead">A glazed opening is built in layers. Scroll to take one apart.</p><ol class="xl" id="xl"><li>Aluminium outer frame</li><li>Thermal break</li><li>Toughened safety glass</li><li>Warm-edge spacer</li><li>Low-E coated glass</li><li>Aluminium inner frame</li></ol></div>
+  <p class="nt">Illustrative. Every specification is confirmed for your opening before anything is ordered.</p>
+ </div>
+</section>
+<section class="cl5" id="collections">
+ <div class="pin">
+  <div class="hch w"><span class="lab">Collections</span><h2>Five collections. <b>One studio.</b></h2><div class="hcn"><b id="hcN">01</b><span>/ 05</span></div></div>
+  <div class="hct" id="hct">
+   <a class="hk" href="#consult"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c3bde915-bd46-4403-b04d-945b2ee3c371.webp" alt="Kitchen opening to the garden through slim sliding doors" loading="lazy"></figure><div class="hkt"><small>01</small><h3>Sliding and bifold doors</h3><p>Slim frames that give the wall back to the view, with blinds built into the glass if you want them.</p></div></a>
+   <a class="hk" href="#consult"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8d477bb1-300b-4240-be16-2be6d78236f7.webp" alt="Slim aluminium windows" loading="lazy"></figure><div class="hkt"><small>02</small><h3>Windows</h3><p>Flush, heritage and contemporary aluminium, to suit a new build or a period home.</p></div></a>
+   <a class="hk" href="#consult"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c34509fd-fc7d-4be0-8a2e-972b93e67686.webp" alt="Kitchen lit by a large rooflight" loading="lazy"></figure><div class="hkt"><small>03</small><h3>Rooflights and lanterns</h3><p>Daylight from above, for the rooms that need it most.</p></div></a>
+   <a class="hk" href="#consult"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/385d0190-b11c-447f-b16a-4454b15308a4.webp" alt="Luxury front door" loading="lazy"></figure><div class="hkt"><small>04</small><h3>Front doors</h3><p>Luxury entrance doors, including our partners at Spitfire.</p></div></a>
+   <a class="hk" href="#consult"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/d4ecd67e-8245-463c-ac48-0505f2f24583.webp" alt="Steel-look glazed internal doors" loading="lazy"></figure><div class="hkt"><small>05</small><h3>Internal steel-look doors</h3><p>Genuine steel and steel-look aluminium, for rooms that open into one another.</p></div></a>
+  </div>
+  <div class="hcb w"><i><b id="hcB"></b></i></div>
+ </div>
+</section>
+
+<section class="fn lt" id="finishes">
  <div class="w">
-  <div class="rgh"><span class="lab rv">The collections</span><h2 class="rv r2">Five ways to <b>frame the view.</b></h2></div>
-  <div class="acc rv r3" id="acc"><a class="ac ph on" href="#collections" data-p="0"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c3bde915-bd46-4403-b04d-945b2ee3c371.webp" alt="Sliding and bifold doors" loading="eager"><span class="vl">Sliding doors</span><div class="act"><small>01</small><h3>Sliding and bifold doors</h3><p>Slim frames that give the wall back to the view.</p><em>Explore<svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></em></div></a><a class="ac ph" href="#collections" data-p="1"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8d477bb1-300b-4240-be16-2be6d78236f7.webp" alt="Windows" loading="eager"><span class="vl">Windows</span><div class="act"><small>02</small><h3>Windows</h3><p>Flush, heritage and contemporary, for new builds and period homes.</p><em>Explore<svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></em></div></a><a class="ac ph" href="#collections" data-p="2"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c34509fd-fc7d-4be0-8a2e-972b93e67686.webp" alt="Rooflights and lanterns" loading="eager"><span class="vl">Rooflights</span><div class="act"><small>03</small><h3>Rooflights and lanterns</h3><p>Daylight from above, for the rooms that need it most.</p><em>Explore<svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></em></div></a><a class="ac ph" href="#collections" data-p="3"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/385d0190-b11c-447f-b16a-4454b15308a4.webp" alt="Front doors" loading="eager"><span class="vl">Front doors</span><div class="act"><small>04</small><h3>Front doors</h3><p>A first impression, built to last. Including our partners at Spitfire.</p><em>Explore<svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></em></div></a><a class="ac ph" href="#collections" data-p="4"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/d4ecd67e-8245-463c-ac48-0505f2f24583.webp" alt="Internal steel-look doors" loading="eager"><span class="vl">Steel-look</span><div class="act"><small>05</small><h3>Internal steel-look doors</h3><p>For rooms that open into one another.</p><em>Explore<svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></em></div></a></div>
-  <ul class="trust rv r4"><li><b>1 day</b><span>to hear back from a person</span></li><li><b>7 days</b><span>to your written proposal</span></li><li><b>Fixed</b><span>price against your specification</span></li><li><b>12 months</b><span>on, a free service visit</span></li></ul>
+  <div class="fnh"><span class="lab rv">Frame finishes</span><h2 class="rv r2">Every finish, <b>on every product.</b></h2></div>
+  <div class="fnl">
+   <figure class="rv"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/566e74c5-60ba-4d47-95db-b66f75217d9a.webp" alt="Anthracite grey frame close-up" loading="lazy"><figcaption>Anthracite grey</figcaption></figure>
+   <figure class="rv r2"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7cbadbf1-4be7-4d82-ac01-95c082e5d5c1.webp" alt="Jet black frame close-up" loading="lazy"><figcaption>Jet black</figcaption></figure>
+   <figure class="rv r3"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/62459b84-29ef-485d-9b03-5a5980364d06.webp" alt="Bronze frame close-up" loading="lazy"><figcaption>Bronze</figcaption></figure>
+   <figure class="rv r4"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c50487a7-ba9d-40fa-a363-6d241efab1c1.webp" alt="Champagne frame close-up" loading="lazy"><figcaption>Champagne</figcaption></figure>
+   <figure class="rv r4"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/be8f0e6d-c4e8-430d-be08-ea5ee02d0259.webp" alt="Pure white frame close-up" loading="lazy"><figcaption>Pure white</figcaption></figure>
+  </div>
  </div>
 </section>
-
+<section class="pr dk" id="promise">
+ <div class="prp"><div class="w">
+  <span class="lab rv">Our On Time Promise</span>
+  <h2 class="rv r2">The hardest part of buying glazing is <b>the not knowing.</b> So we've removed it.</h2>
+  <div class="nums">
+   <div class="rv"><b data-to="1">0</b><p>Working day to hear back from a person at Fenlux.</p></div>
+   <div class="rv r2"><b data-to="7">0</b><p>Working days from your consultation to your written proposal.</p></div>
+   <div class="rv r3"><b class="wd">Weekly</b><p>Updates from survey to handover, so you never have to chase.</p></div>
+   <div class="rv r4"><b data-to="12">0</b><p>Months after handover, we come back for a free check-in and service visit.</p></div>
+  </div>
+  <div class="pg">
+   <div class="rv"><h3>A date you can trust</h3><p>A proposed installation date at order, confirmed in writing once your products are made, and never moved for reasons within our control.</p></div>
+   <div class="rv r2"><h3>A fixed price</h3><p>Your price is fixed against the specification you sign off.</p></div>
+   <div class="rv r3"><h3>Limited capacity</h3><p>We cap the number of projects we take on each month, so yours gets our best attention.</p></div>
+  </div>
+ </div></div>
+</section>
+<section class="hw" id="process">
+ <div class="pin">
+  <div class="hd2"><div><span class="lab" style="color:#8a7560">How it works</span><h2 style="margin-top:.4em">You make the decisions. <b>We bring the precision.</b></h2></div></div>
+  <div class="trk" id="trk">
+   <article class="stp"><figure><img src="https://images.pexels.com/photos/31817155/pexels-photo-31817155.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bright living room with full-height glazing" loading="lazy"></figure><div><small>One</small><h3>Consult</h3><p>A call, then a visit to your home with samples. We review your plans, listen to what you want from the space, and send a tailored proposal.</p></div></article>
+   <article class="stp"><figure><img src="https://images.pexels.com/photos/11578141/pexels-photo-11578141.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Dark framed windows set in a white wall" loading="lazy"></figure><div><small>Two</small><h3>Design</h3><p>Opening styles, colours and hardware. You see and sign off the specification before anything is ordered.</p></div></article>
+   <article class="stp"><figure><img src="https://images.pexels.com/photos/1098982/pexels-photo-1098982.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Slim-framed sliding glass door" loading="lazy"></figure><div><small>Three</small><h3>Install</h3><p>Fitted by specialists with your floors and furniture protected. Every job is then quality checked to the Fenlux standard.</p></div></article>
+   <article class="stp"><figure><img src="https://images.pexels.com/photos/6303114/pexels-photo-6303114.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Living room surrounded by glass, looking out to a garden" loading="lazy"></figure><div><small>Four</small><h3>Aftercare</h3><p>We don't disappear at handover. Your warranty details stay in one place, and we come back at twelve months for a free service.</p></div></article>
+  </div>
+  <div class="pb"><i id="hwb"></i></div>
+ </div>
+</section>
 <section class="cs lt" id="consult">
  <div class="w">
   <div class="ql">
@@ -644,114 +863,12 @@ body{background:var(--s3);color:var(--k)}
   </form>
  </div>
 </section>
-
-<section class="st lt" id="studio">
- <div class="w">
-  <span class="lab rv">The studio</span>
-  <p class="big" id="stT" style="margin-top:.5em">We work the way a luxury kitchen studio does. You come to us with a vision for your home. We help you design it, specify it and have it installed properly.</p>
-  <div class="pil">
-   <div class="rv"><small>01</small><h3>Design</h3><p>Opening styles, colours and hardware, considered alongside your architecture and your interiors.</p></div>
-   <div class="rv r2"><small>02</small><h3>Certainty</h3><p>A fixed price, a date you can plan around and a named contact from start to finish.</p></div>
-   <div class="rv r3"><small>03</small><h3>Care</h3><p>Floors protected, a tidy site every day, and we come back twelve months later to check on everything.</p></div>
-  </div>
- </div>
-</section>
-
-<section class="dr win dk" id="doors">
- <div class="pin"><div class="frm fm"><img class="da" id="drA" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/9450da49-cab7-4c88-957d-6f0575e3ea50.webp" alt="A kitchen and living room opened up to the garden through slim sliding doors" loading="lazy"></div>
-  <div class="tx"><span class="lab">Sliding doors</span><h2><span>Less frame.</span><span><b>More view.</b></span></h2></div>
-  <div class="cards">
-   <div class="card" id="cd0"><small>Sliding and bifold doors</small><p>Slim frames that give the wall back to the view.</p></div>
-   <div class="card" id="cd1"><small>Built in</small><p>Blinds built into the glass, if you want them.</p></div>
-   <div class="card last" id="cd2"><small>Step through</small><p>Kitchens that open to the garden. Evenings outside.</p></div>
-  </div>
- </div>
-</section>
-
-<section class="cf win" id="collections">
- <div class="pin"><div class="frm fm" id="cfs"><figure class="pi on" data-i="0"><img class="c" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/4be077e2-abb3-4722-b9f1-81a85b921122.webp" alt="Sliding and bifold doors" loading="lazy"><img class="o" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/997be372-2ee2-47c8-b3e9-23c9064cb408.webp" alt="Sliding and bifold doors, open" loading="lazy"></figure><figure class="pi" data-i="1"><img class="c" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1a38cc03-2fc2-45b6-8a87-5f71150bf2ee.webp" alt="Windows" loading="lazy"><img class="o" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/65ca16b4-a904-4ba2-a602-1b6010afc03f.webp" alt="Windows, open" loading="lazy"></figure><figure class="pi" data-i="2"><img class="c" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c9c9e47f-a595-416a-b2b4-8f4676792e05.webp" alt="Rooflights and lanterns" loading="lazy"><img class="o" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/63afd5ce-e785-4df0-8b4d-6478b71ed32d.webp" alt="Rooflights and lanterns, open" loading="lazy"></figure><figure class="pi" data-i="3"><img class="c" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/f2cac7fb-398d-425b-bd28-793d9ea50489.webp" alt="Front doors" loading="lazy"><img class="o" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1e5f9a15-0fad-4b24-b258-1543387f3c8b.webp" alt="Front doors, open" loading="lazy"></figure><figure class="pi" data-i="4"><img class="c" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/3aea8b49-f46a-4a99-8503-32a507b8ba1d.webp" alt="Internal steel-look doors" loading="lazy"><img class="o" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/10a45939-d62a-4c0d-b17d-70225ae1e92f.webp" alt="Internal steel-look doors, open" loading="lazy"></figure><div class="finc" id="finC"><img id="finI" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/566e74c5-60ba-4d47-95db-b66f75217d9a.webp" alt="Frame finish close-up"><span>Frame finish<b id="finN2">Anthracite grey</b></span></div></div>
-  <div class="cfp" id="cfp">
-   <span class="lab">Collections</span>
-   <h2>Specified for <b>each opening.</b></h2>
-   <ul class="pt" id="pt">
-    <li class="on"><button type="button" data-i="0"><small>01</small><b>Sliding and bifold doors</b><i></i><p>Slim frames that give the wall back to the view, with blinds built into the glass if you want them.</p></button></li>
-    <li><button type="button" data-i="1"><small>02</small><b>Windows</b><i></i><p>Flush, heritage and contemporary aluminium, to suit a new build or a period home.</p></button></li>
-    <li><button type="button" data-i="2"><small>03</small><b>Rooflights and lanterns</b><i></i><p>Daylight from above, for the rooms that need it most.</p></button></li>
-    <li><button type="button" data-i="3"><small>04</small><b>Front doors</b><i></i><p>Luxury entrance doors, including our partners at Spitfire.</p></button></li>
-    <li><button type="button" data-i="4"><small>05</small><b>Internal steel-look doors</b><i></i><p>Genuine steel and steel-look aluminium, for rooms that open into one another.</p></button></li>
-   </ul>
-   <div class="fins" id="fins"><span>Frame finish · <em id="finN">Anthracite grey</em></span><button type="button" data-f="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/566e74c5-60ba-4d47-95db-b66f75217d9a.webp" data-n="Anthracite grey" class="on" style="background-image:url(https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/566e74c5-60ba-4d47-95db-b66f75217d9a.webp)" aria-label="Anthracite grey"></button><button type="button" data-f="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7cbadbf1-4be7-4d82-ac01-95c082e5d5c1.webp" data-n="Jet black" style="background-image:url(https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7cbadbf1-4be7-4d82-ac01-95c082e5d5c1.webp)" aria-label="Jet black"></button><button type="button" data-f="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/62459b84-29ef-485d-9b03-5a5980364d06.webp" data-n="Bronze" style="background-image:url(https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/62459b84-29ef-485d-9b03-5a5980364d06.webp)" aria-label="Bronze"></button><button type="button" data-f="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c50487a7-ba9d-40fa-a363-6d241efab1c1.webp" data-n="Champagne" style="background-image:url(https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c50487a7-ba9d-40fa-a363-6d241efab1c1.webp)" aria-label="Champagne"></button><button type="button" data-f="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/be8f0e6d-c4e8-430d-be08-ea5ee02d0259.webp" data-n="Pure white" style="background-image:url(https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/be8f0e6d-c4e8-430d-be08-ea5ee02d0259.webp)" aria-label="Pure white"></button><small class="fnote">Shown in anthracite. Every finish is available on every product.</small>
-   </div>
-   <div class="cfa"><button class="tog" id="tog" type="button"><span id="togT">Open it</span><span class="sw"></span></button><a class="btn k" href="#consult"><span>Specify mine</span></a></div>
-  </div>
- </div>
-</section>
-
-<section class="pr dk" id="promise">
- <div class="prp"><div class="w">
-  <span class="lab rv">Our On Time Promise</span>
-  <h2 class="rv r2">The hardest part of buying glazing is <b>the not knowing.</b> So we've removed it.</h2>
-  <div class="nums">
-   <div class="rv"><b data-to="1">0</b><p>Working day to hear back from a person at Fenlux.</p></div>
-   <div class="rv r2"><b data-to="7">0</b><p>Working days from your consultation to your written proposal.</p></div>
-   <div class="rv r3"><b class="wd">Weekly</b><p>Updates from survey to handover, so you never have to chase.</p></div>
-   <div class="rv r4"><b data-to="12">0</b><p>Months after handover, we come back for a free check-in and service visit.</p></div>
-  </div>
-  <div class="pg">
-   <div class="rv"><h3>A date you can trust</h3><p>A proposed installation date at order, confirmed in writing once your products are made, and never moved for reasons within our control.</p></div>
-   <div class="rv r2"><h3>A fixed price</h3><p>Your price is fixed against the specification you sign off.</p></div>
-   <div class="rv r3"><h3>Limited capacity</h3><p>We cap the number of projects we take on each month, so yours gets our best attention.</p></div>
-  </div>
- </div></div>
-</section>
-<section class="vw" id="view">
- <div class="pin">
-  <h2 class="vt"><span class="a">A view</span><span class="b">to come <b>home to.</b></span></h2>
-  <div class="vf" id="vf"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7ddd798a-369d-4e8d-b433-4000e0f1ee47.webp" alt="A glass pavilion at dusk with its doors open to the terrace" loading="lazy"><div class="vc"><span class="lab">Framing your vision</span><p>Every opening designed around the way you live, and the view you want to wake up to.</p><a class="btn" href="#consult"><span>Start with a conversation</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div></div>
- </div>
-</section>
-
-<section class="ex win" id="inside">
- <div class="pin"><div class="frm fm xfm"><video id="xv" muted playsinline preload="auto" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/f9a653f4-3065-4009-9340-ad0c87a60205.webp" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/fc1740b5-d1f8-4f24-b9be-a0b68f2db51f.mp4" aria-label="A slim aluminium glazed door separating into its layers"></video></div>
-  <div class="tx"><span class="lab" style="color:#8a7560">Inside the glass</span><h2>Not one part working well. <b>Every layer working together.</b></h2><p class="lead">A glazed opening is built in layers. Scroll to take one apart.</p><ol class="xl" id="xl"><li>Aluminium outer frame</li><li>Thermal break</li><li>Toughened safety glass</li><li>Warm-edge spacer</li><li>Low-E coated glass</li><li>Aluminium inner frame</li></ol></div>
-  <p class="nt">Illustrative. Every specification is confirmed for your opening before anything is ordered.</p>
- </div>
-</section>
-
-<section class="hw" id="process">
- <div class="pin">
-  <div class="hd2"><div><span class="lab" style="color:#8a7560">How it works</span><h2 style="margin-top:.4em">You make the decisions. <b>We bring the precision.</b></h2></div></div>
-  <div class="trk" id="trk">
-   <article class="stp"><figure><img src="https://images.pexels.com/photos/31817155/pexels-photo-31817155.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bright living room with full-height glazing" loading="lazy"></figure><div><small>One</small><h3>Consult</h3><p>A call, then a visit to your home with samples. We review your plans, listen to what you want from the space, and send a tailored proposal.</p></div></article>
-   <article class="stp"><figure><img src="https://images.pexels.com/photos/11578141/pexels-photo-11578141.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Dark framed windows set in a white wall" loading="lazy"></figure><div><small>Two</small><h3>Design</h3><p>Opening styles, colours and hardware. You see and sign off the specification before anything is ordered.</p></div></article>
-   <article class="stp"><figure><img src="https://images.pexels.com/photos/1098982/pexels-photo-1098982.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Slim-framed sliding glass door" loading="lazy"></figure><div><small>Three</small><h3>Install</h3><p>Fitted by specialists with your floors and furniture protected. Every job is then quality checked to the Fenlux standard.</p></div></article>
-   <article class="stp"><figure><img src="https://images.pexels.com/photos/6303114/pexels-photo-6303114.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Living room surrounded by glass, looking out to a garden" loading="lazy"></figure><div><small>Four</small><h3>Aftercare</h3><p>We don't disappear at handover. Your warranty details stay in one place, and we come back at twelve months for a free service.</p></div></article>
-  </div>
-  <div class="pb"><i id="hwb"></i></div>
- </div>
-</section>
-
 <section class="nv2" id="never">
  <div class="w">
   <div><span class="lab rv">What you won't find here</span><h2 class="rv r2">Premium, <b>without the pressure.</b></h2><p class="lead rv r3">When you call, you'll speak to a person. When you meet us, it's a conversation about your home. We explain. We don't pitch.</p></div>
   <ul class="nl" id="nl"><li>Discounts and sale prices</li><li>"Sign today" offers</li><li>Countdown timers</li><li>Sales presentations</li><li>Trade jargon</li><li>Chatbots pretending to be staff</li></ul>
  </div>
 </section>
-
-<section class="ga" id="interiors">
- <div class="w">
-  <span class="lab rv">Interiors and architecture</span>
-  <h2 class="rv r2">Glass is part of the room, <b>so we design it that way.</b></h2>
-  <div class="gg" id="gg">
-   <figure class="rv"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c3bde915-bd46-4403-b04d-945b2ee3c371.webp" alt="Kitchen opening to the garden" loading="lazy"><figcaption><span>Kitchens that open to the garden</span><small>01</small></figcaption></figure>
-   <figure class="rv r2"><img src="https://cdn.prod.website-files.com/6adca93b2d5dd8c8c7d9a129/6adca93d2d5dd8c8c7d9a276_Image%20%2845%29.webp" alt="Glass doors reflected in a pool at dusk" loading="lazy"><figcaption><span>Evenings outside</span><small>02</small></figcaption></figure>
-   <figure class="rv"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c34509fd-fc7d-4be0-8a2e-972b93e67686.webp" alt="Kitchen lit by a large rooflight" loading="lazy"><figcaption><span>Light at every height</span><small>03</small></figcaption></figure>
-   <figure class="rv r2"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/d4ecd67e-8245-463c-ac48-0505f2f24583.webp" alt="Steel-look glazed internal doors" loading="lazy"><figcaption><span>Frames as a design detail</span><small>04</small></figcaption></figure>
-   <figure class="rv r3"><img src="https://images.pexels.com/photos/38344729/pexels-photo-38344729.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Sunlight falling across a minimal room" loading="lazy"><figcaption><span>Rooms shaped by daylight</span><small>05</small></figcaption></figure>
-  </div>
- </div>
-</section>
-
 <section class="tr lt" id="trade">
  <div class="w">
   <span class="lab rv">Who we work with</span><h2 class="rv r2" style="margin-top:.4em">One studio. <b>Three ways in.</b></h2>
@@ -761,7 +878,6 @@ body{background:var(--s3);color:var(--k)}
   <div class="tp"><div><h3>Delivered <b>as drawn.</b></h3><p>Your name is on the design. We protect it, from thresholds and drainage through to planning and conservation work.</p></div><ul><li>Shop drawings for your sign-off</li><li>No substitution without your approval</li><li>A technical contact you can call</li><li>Grade II experience with the City of London Corporation</li></ul></div>
  </div>
 </section>
-
 <section class="ar" id="areas">
  <div class="w">
   <div class="top"><div><span class="lab rv">Where we work</span><h2 class="rv r2" style="margin-top:.4em">Essex <b>and London.</b></h2></div><p class="lead rv r3">From the City to the Essex coast, with our studio team covering every project personally.</p></div>
@@ -769,6 +885,9 @@ body{background:var(--s3);color:var(--k)}
  </div>
 </section>
 
+<section class="nx" id="next">
+ <div class="nxw"><span class="lab rv">Your project</span><h2 class="rv r2">Your opening <b>is next.</b></h2><p class="lead rv r3">Tell us about your home and a member of our design team will call you personally.</p><div class="ha rv r4"><a class="btn k" href="#consult"><span>Arrange a consultation</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a><a class="btn ln" href="tel:+441277402469"><span>01277 402469</span></a></div></div>
+</section>
 <section class="en" id="end">
  <div class="im"><img id="enI" src="https://cdn.prod.website-files.com/6adca93b2d5dd8c8c7d9a129/6adca93d2d5dd8c8c7d9a1cf_Rectangle%201%20%281%29.webp" alt="Modern home with full-height glazing, seen across a garden" loading="lazy">
   <div class="w"><h2>Framing your <b>vision.</b></h2><a class="btn" href="#consult"><span>Arrange a consultation</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div></div>
@@ -784,6 +903,13 @@ body{background:var(--s3);color:var(--k)}
  </div></footer>
 </section>
 </main>
+<div class="guide" id="guide" aria-hidden="true"><div class="gw" id="gw">
+ <div class="gv" id="gv"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c3bde915-bd46-4403-b04d-945b2ee3c371.webp" alt=""></div>
+ <div class="gdl" id="gdl"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/30b1f3fc-b764-4a58-9f11-0b20a23bbf26.webp" alt=""><i class="ge"></i></div>
+ <i class="gs" id="gs"></i>
+ <div class="gt" id="gt"><span style="--x:62%;--y:30%"><i></i>Toughened safety glass</span><span style="--x:62%;--y:52%"><i></i>Low-E coating</span><span style="--x:8%;--y:72%"><i></i>Warm-edge spacer</span></div>
+</div></div>
+
 <div class="mbar" id="mbar"><a href="tel:+441277402469">Call</a><a href="https://wa.me/447897794579">WhatsApp</a><a class="p" href="#consult">Consultation</a></div>
 
 <script>function t(t,i,e){return Math.max(t,Math.min(i,e))}var i=class{isRunning=!1;value=0;from=0;to=0;currentTime=0;lerp;duration;easing;onUpdate;advance(i){if(!this.isRunning)return;let e=!1;if(this.duration&&this.easing){this.currentTime+=i;const s=t(0,this.currentTime/this.duration,1);e=s>=1;const o=e?1:this.easing(s);this.value=this.from+(this.to-this.from)*o}else this.lerp?(this.value=function(t,i,e,s){return function(t,i,e){return(1-e)*t+e*i}(t,i,1-Math.exp(-e*s))}(this.value,this.to,60*this.lerp,i),Math.round(this.value)===this.to&&(this.value=this.to,e=!0)):(this.value=this.to,e=!0);e&&this.stop(),this.onUpdate?.(this.value,e)}stop(){this.isRunning=!1}fromTo(t,i,{lerp:e,duration:s,easing:o,onStart:n,onUpdate:r}){this.from=this.value=t,this.to=i,this.lerp=e,this.duration=s,this.easing=o,this.currentTime=0,this.isRunning=!0,n?.(),this.onUpdate=r}};var e=class{constructor(t,i,{autoResize:e=!0,debounce:s=250}={}){this.wrapper=t,this.content=i,e&&(this.debouncedResize=function(t,i){let e;return function(...s){let o=this;clearTimeout(e),e=setTimeout((()=>{e=void 0,t.apply(o,s)}),i)}}(this.resize,s),this.wrapper instanceof Window?window.addEventListener("resize",this.debouncedResize,!1):(this.wrapperResizeObserver=new ResizeObserver(this.debouncedResize),this.wrapperResizeObserver.observe(this.wrapper)),this.contentResizeObserver=new ResizeObserver(this.debouncedResize),this.contentResizeObserver.observe(this.content)),this.resize()}width=0;height=0;scrollHeight=0;scrollWidth=0;debouncedResize;wrapperResizeObserver;contentResizeObserver;destroy(){this.wrapperResizeObserver?.disconnect(),this.contentResizeObserver?.disconnect(),this.wrapper===window&&this.debouncedResize&&window.removeEventListener("resize",this.debouncedResize,!1)}resize=()=>{this.onWrapperResize(),this.onContentResize()};onWrapperResize=()=>{this.wrapper instanceof Window?(this.width=window.innerWidth,this.height=window.innerHeight):(this.width=this.wrapper.clientWidth,this.height=this.wrapper.clientHeight)};onContentResize=()=>{this.wrapper instanceof Window?(this.scrollHeight=this.content.scrollHeight,this.scrollWidth=this.content.scrollWidth):(this.scrollHeight=this.wrapper.scrollHeight,this.scrollWidth=this.wrapper.scrollWidth)};get limit(){return{x:this.scrollWidth-this.width,y:this.scrollHeight-this.height}}},s=class{events={};emit(t,...i){let e=this.events[t]||[];for(let t=0,s=e.length;t<s;t++)e[t]?.(...i)}on(t,i){return this.events[t]?.push(i)||(this.events[t]=[i]),()=>{this.events[t]=this.events[t]?.filter((t=>i!==t))}}off(t,i){this.events[t]=this.events[t]?.filter((t=>i!==t))}destroy(){this.events={}}},o=100/6,n={passive:!1},r=class{constructor(t,i={wheelMultiplier:1,touchMultiplier:1}){this.element=t,this.options=i,window.addEventListener("resize",this.onWindowResize,!1),this.onWindowResize(),this.element.addEventListener("wheel",this.onWheel,n),this.element.addEventListener("touchstart",this.onTouchStart,n),this.element.addEventListener("touchmove",this.onTouchMove,n),this.element.addEventListener("touchend",this.onTouchEnd,n)}touchStart={x:0,y:0};lastDelta={x:0,y:0};window={width:0,height:0};emitter=new s;on(t,i){return this.emitter.on(t,i)}destroy(){this.emitter.destroy(),window.removeEventListener("resize",this.onWindowResize,!1),this.element.removeEventListener("wheel",this.onWheel,n),this.element.removeEventListener("touchstart",this.onTouchStart,n),this.element.removeEventListener("touchmove",this.onTouchMove,n),this.element.removeEventListener("touchend",this.onTouchEnd,n)}onTouchStart=t=>{const{clientX:i,clientY:e}=t.targetTouches?t.targetTouches[0]:t;this.touchStart.x=i,this.touchStart.y=e,this.lastDelta={x:0,y:0},this.emitter.emit("scroll",{deltaX:0,deltaY:0,event:t})};onTouchMove=t=>{const{clientX:i,clientY:e}=t.targetTouches?t.targetTouches[0]:t,s=-(i-this.touchStart.x)*this.options.touchMultiplier,o=-(e-this.touchStart.y)*this.options.touchMultiplier;this.touchStart.x=i,this.touchStart.y=e,this.lastDelta={x:s,y:o},this.emitter.emit("scroll",{deltaX:s,deltaY:o,event:t})};onTouchEnd=t=>{this.emitter.emit("scroll",{deltaX:this.lastDelta.x,deltaY:this.lastDelta.y,event:t})};onWheel=t=>{let{deltaX:i,deltaY:e,deltaMode:s}=t;i*=1===s?o:2===s?this.window.width:1,e*=1===s?o:2===s?this.window.height:1,i*=this.options.wheelMultiplier,e*=this.options.wheelMultiplier,this.emitter.emit("scroll",{deltaX:i,deltaY:e,event:t})};onWindowResize=()=>{this.window={width:window.innerWidth,height:window.innerHeight}}},Lenis=class{_isScrolling=!1;_isStopped=!1;_isLocked=!1;_preventNextNativeScrollEvent=!1;_resetVelocityTimeout=null;__rafID=null;isTouching;time=0;userData={};lastVelocity=0;velocity=0;direction=0;options;targetScroll;animatedScroll;animate=new i;emitter=new s;dimensions;virtualScroll;constructor({wrapper:t=window,content:i=document.documentElement,eventsTarget:s=t,smoothWheel:o=!0,syncTouch:n=!1,syncTouchLerp:l=.075,touchInertiaMultiplier:h=35,duration:a,easing:c=t=>Math.min(1,1.001-Math.pow(2,-10*t)),lerp:p=.1,infinite:d=!1,orientation:u="vertical",gestureOrientation:m="vertical",touchMultiplier:v=1,wheelMultiplier:S=1,autoResize:w=!0,prevent:g,virtualScroll:f,overscroll:y=!0,autoRaf:E=!1,anchors:T=!1,__experimental__naiveDimensions:z=!1}={}){window.lenisVersion="1.1.20",t&&t!==document.documentElement||(t=window),this.options={wrapper:t,content:i,eventsTarget:s,smoothWheel:o,syncTouch:n,syncTouchLerp:l,touchInertiaMultiplier:h,duration:a,easing:c,lerp:p,infinite:d,gestureOrientation:m,orientation:u,touchMultiplier:v,wheelMultiplier:S,autoResize:w,prevent:g,virtualScroll:f,overscroll:y,autoRaf:E,anchors:T,__experimental__naiveDimensions:z},this.dimensions=new e(t,i,{autoResize:w}),this.updateClassName(),this.targetScroll=this.animatedScroll=this.actualScroll,this.options.wrapper.addEventListener("scroll",this.onNativeScroll,!1),this.options.wrapper.addEventListener("scrollend",this.onScrollEnd,{capture:!0}),this.options.anchors&&this.options.wrapper===window&&this.options.wrapper.addEventListener("click",this.onClick,!1),this.options.wrapper.addEventListener("pointerdown",this.onPointerDown,!1),this.virtualScroll=new r(s,{touchMultiplier:v,wheelMultiplier:S}),this.virtualScroll.on("scroll",this.onVirtualScroll),this.options.autoRaf&&(this.__rafID=requestAnimationFrame(this.raf))}destroy(){this.emitter.destroy(),this.options.wrapper.removeEventListener("scroll",this.onNativeScroll,!1),this.options.wrapper.removeEventListener("scrollend",this.onScrollEnd,{capture:!0}),this.options.wrapper.removeEventListener("pointerdown",this.onPointerDown,!1),this.options.anchors&&this.options.wrapper===window&&this.options.wrapper.removeEventListener("click",this.onClick,!1),this.virtualScroll.destroy(),this.dimensions.destroy(),this.cleanUpClassName(),this.__rafID&&cancelAnimationFrame(this.__rafID)}on(t,i){return this.emitter.on(t,i)}off(t,i){return this.emitter.off(t,i)}onScrollEnd=t=>{t instanceof CustomEvent||"smooth"!==this.isScrolling&&!1!==this.isScrolling||t.stopPropagation()};dispatchScrollendEvent=()=>{this.options.wrapper.dispatchEvent(new CustomEvent("scrollend",{bubbles:this.options.wrapper===window,detail:{lenisScrollEnd:!0}}))};setScroll(t){this.isHorizontal?this.options.wrapper.scrollTo({left:t,behavior:"instant"}):this.options.wrapper.scrollTo({top:t,behavior:"instant"})}onClick=t=>{const i=t.composedPath().find((t=>t instanceof HTMLAnchorElement&&t.getAttribute("href")?.startsWith("#")));if(i){const t=i.getAttribute("href");if(t){const i="object"==typeof this.options.anchors&&this.options.anchors?this.options.anchors:void 0;this.scrollTo(t,i)}}};onPointerDown=t=>{1===t.button&&this.reset()};onVirtualScroll=t=>{if("function"==typeof this.options.virtualScroll&&!1===this.options.virtualScroll(t))return;const{deltaX:i,deltaY:e,event:s}=t;if(this.emitter.emit("virtual-scroll",{deltaX:i,deltaY:e,event:s}),s.ctrlKey)return;if(s.lenisStopPropagation)return;const o=s.type.includes("touch"),n=s.type.includes("wheel");this.isTouching="touchstart"===s.type||"touchmove"===s.type;const r=0===i&&0===e;if(this.options.syncTouch&&o&&"touchstart"===s.type&&r&&!this.isStopped&&!this.isLocked)return void this.reset();const l="vertical"===this.options.gestureOrientation&&0===e||"horizontal"===this.options.gestureOrientation&&0===i;if(r||l)return;let h=s.composedPath();h=h.slice(0,h.indexOf(this.rootElement));const a=this.options.prevent;if(h.find((t=>t instanceof HTMLElement&&("function"==typeof a&&a?.(t)||t.hasAttribute?.("data-lenis-prevent")||o&&t.hasAttribute?.("data-lenis-prevent-touch")||n&&t.hasAttribute?.("data-lenis-prevent-wheel")))))return;if(this.isStopped||this.isLocked)return void s.preventDefault();if(!(this.options.syncTouch&&o||this.options.smoothWheel&&n))return this.isScrolling="native",this.animate.stop(),void(s.lenisStopPropagation=!0);let c=e;"both"===this.options.gestureOrientation?c=Math.abs(e)>Math.abs(i)?e:i:"horizontal"===this.options.gestureOrientation&&(c=i),(!this.options.overscroll||this.options.infinite||this.options.wrapper!==window&&(this.animatedScroll>0&&this.animatedScroll<this.limit||0===this.animatedScroll&&e>0||this.animatedScroll===this.limit&&e<0))&&(s.lenisStopPropagation=!0),s.preventDefault();const p=o&&this.options.syncTouch,d=o&&"touchend"===s.type&&Math.abs(c)>5;d&&(c=this.velocity*this.options.touchInertiaMultiplier),this.scrollTo(this.targetScroll+c,{programmatic:!1,...p?{lerp:d?this.options.syncTouchLerp:1}:{lerp:this.options.lerp,duration:this.options.duration,easing:this.options.easing}})};resize(){this.dimensions.resize(),this.animatedScroll=this.targetScroll=this.actualScroll,this.emit()}emit(){this.emitter.emit("scroll",this)}onNativeScroll=()=>{if(null!==this._resetVelocityTimeout&&(clearTimeout(this._resetVelocityTimeout),this._resetVelocityTimeout=null),this._preventNextNativeScrollEvent)this._preventNextNativeScrollEvent=!1;else if(!1===this.isScrolling||"native"===this.isScrolling){const t=this.animatedScroll;this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity,this.velocity=this.animatedScroll-t,this.direction=Math.sign(this.animatedScroll-t),this.isStopped||(this.isScrolling="native"),this.emit(),0!==this.velocity&&(this._resetVelocityTimeout=setTimeout((()=>{this.lastVelocity=this.velocity,this.velocity=0,this.isScrolling=!1,this.emit()}),400))}};reset(){this.isLocked=!1,this.isScrolling=!1,this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity=0,this.animate.stop()}start(){this.isStopped&&(this.reset(),this.isStopped=!1)}stop(){this.isStopped||(this.reset(),this.isStopped=!0)}raf=t=>{const i=t-(this.time||t);this.time=t,this.animate.advance(.001*i),this.options.autoRaf&&(this.__rafID=requestAnimationFrame(this.raf))};scrollTo(i,{offset:e=0,immediate:s=!1,lock:o=!1,duration:n=this.options.duration,easing:r=this.options.easing,lerp:l=this.options.lerp,onStart:h,onComplete:a,force:c=!1,programmatic:p=!0,userData:d}={}){if(!this.isStopped&&!this.isLocked||c){if("string"==typeof i&&["top","left","start"].includes(i))i=0;else if("string"==typeof i&&["bottom","right","end"].includes(i))i=this.limit;else{let t;if("string"==typeof i?t=document.querySelector(i):i instanceof HTMLElement&&i?.nodeType&&(t=i),t){if(this.options.wrapper!==window){const t=this.rootElement.getBoundingClientRect();e-=this.isHorizontal?t.left:t.top}const s=t.getBoundingClientRect();i=(this.isHorizontal?s.left:s.top)+this.animatedScroll}}if("number"==typeof i){if(i+=e,i=Math.round(i),this.options.infinite?p&&(this.targetScroll=this.animatedScroll=this.scroll):i=t(0,i,this.limit),i===this.targetScroll)return h?.(this),void a?.(this);if(this.userData=d??{},s)return this.animatedScroll=this.targetScroll=i,this.setScroll(this.scroll),this.reset(),this.preventNextNativeScrollEvent(),this.emit(),a?.(this),this.userData={},void requestAnimationFrame((()=>{this.dispatchScrollendEvent()}));p||(this.targetScroll=i),this.animate.fromTo(this.animatedScroll,i,{duration:n,easing:r,lerp:l,onStart:()=>{o&&(this.isLocked=!0),this.isScrolling="smooth",h?.(this)},onUpdate:(t,i)=>{this.isScrolling="smooth",this.lastVelocity=this.velocity,this.velocity=t-this.animatedScroll,this.direction=Math.sign(this.velocity),this.animatedScroll=t,this.setScroll(this.scroll),p&&(this.targetScroll=t),i||this.emit(),i&&(this.reset(),this.emit(),a?.(this),this.userData={},requestAnimationFrame((()=>{this.dispatchScrollendEvent()})),this.preventNextNativeScrollEvent())}})}}}preventNextNativeScrollEvent(){this._preventNextNativeScrollEvent=!0,requestAnimationFrame((()=>{this._preventNextNativeScrollEvent=!1}))}get rootElement(){return this.options.wrapper===window?document.documentElement:this.options.wrapper}get limit(){return this.options.__experimental__naiveDimensions?this.isHorizontal?this.rootElement.scrollWidth-this.rootElement.clientWidth:this.rootElement.scrollHeight-this.rootElement.clientHeight:this.dimensions.limit[this.isHorizontal?"x":"y"]}get isHorizontal(){return"horizontal"===this.options.orientation}get actualScroll(){const t=this.options.wrapper;return this.isHorizontal?t.scrollX??t.scrollLeft:t.scrollY??t.scrollTop}get scroll(){return this.options.infinite?(t=this.animatedScroll,i=this.limit,(t%i+i)%i):this.animatedScroll;var t,i}get progress(){return 0===this.limit?1:this.scroll/this.limit}get isScrolling(){return this._isScrolling}set isScrolling(t){this._isScrolling!==t&&(this._isScrolling=t,this.updateClassName())}get isStopped(){return this._isStopped}set isStopped(t){this._isStopped!==t&&(this._isStopped=t,this.updateClassName())}get isLocked(){return this._isLocked}set isLocked(t){this._isLocked!==t&&(this._isLocked=t,this.updateClassName())}get isSmooth(){return"smooth"===this.isScrolling}get className(){let t="lenis";return this.isStopped&&(t+=" lenis-stopped"),this.isLocked&&(t+=" lenis-locked"),this.isScrolling&&(t+=" lenis-scrolling"),"smooth"===this.isScrolling&&(t+=" lenis-smooth"),t}updateClassName(){this.cleanUpClassName(),this.rootElement.className=`${this.rootElement.className} ${this.className}`.trim()}cleanUpClassName(){this.rootElement.className=this.rootElement.className.replace(/lenis(-\w+)?/g,"").trim()}};globalThis.Lenis=Lenis,globalThis.Lenis.prototype=Lenis.prototype;</script>
@@ -802,52 +928,53 @@ var mb=$('#mb');function closeMenu(){bd.classList.remove('mo');mb.setAttribute('
 mb.addEventListener('click',function(){var o=bd.classList.toggle('mo');mb.setAttribute('aria-expanded',o);lenis&&(o?lenis.stop():lenis.start())});
 $('#yr').textContent=new Date().getFullYear();
 
-/* ---------- 3D ---------- */
-var FX=null,cv=null;
-var mob=function(){return innerWidth<761},port=function(){return innerHeight>innerWidth*1.05};
-var heroOpen=0,prodSel=0,prodOpen=0,glOn=true;
-
-/* ---------- elements ---------- */
-var hero=$('#hero'),dr=$('#doors'),cf=$('#collections'),ex=$('#inside'),hw=$('#process');
-var wins=[hero,dr,cf,ex];
+/* ---------- shared ---------- */
+var mob=function(){return innerWidth<761};
+var ezz=function(t){t=cl(t);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+var lerp=function(a,b,t){return a+(b-a)*t};
+var hero=$('#hero'),story=$('#story'),ex=$('#inside'),hc=$('#collections'),hw=$('#process'),nxs=$('#next');
 function prog(el){var r=el.getBoundingClientRect(),d=r.height-innerHeight;return d>0?cl(-r.top/d):0}
+function topOf(el){return el.getBoundingClientRect().top+(lenis?lenis.scroll:scrollY)}
 
-/* hero: scroll opens the pavilion doors */
-var hv=$('#hv'),hxm=$('#hxm'),hxt=$('#hxt'),hxB=$('#hxB'),hxL=$('#hxL'),hvC=0;
-function vReady(v,host){var on=function(){host.classList.add('vid')};v.addEventListener('loadeddata',on);if(v.readyState>=2)on()}
-vReady(hv,hxm);
-/* iOS needs one play() before seeking works */
-var unl=false;function unlock(){if(unl)return;unl=true;[hv,$('#xv')].forEach(function(v){if(!v)return;var p=v.play();p&&p.then?p.then(function(){v.pause()}).catch(function(){}):v.pause()})}
+/* hero lid: the pavilion plays once, then the card lifts like a box lid */
+var lc=$('#lc'),lct=$('#lct'),box=$('#box'),hv=$('#hv'),lidK=0;
+hv.addEventListener('loadeddata',function(){lc.classList.add('vid')});if(hv.readyState>=2)lc.classList.add('vid');
+hv.addEventListener('ended',function(){hv.pause()});
+function playHero(){if(SNAP)return;try{hv.currentTime=0;var p=hv.play();p&&p.catch&&p.catch(function(){})}catch(e){}}
+
+/* inside the glass: scroll-scrubbed video */
+var xv=$('#xv'),xvC=0,xls=$$('#xl li'),exV=0;
+(function(){var h=$('#inside .xfm');var on=function(){h.classList.add('vid')};xv.addEventListener('loadeddata',on);if(xv.readyState>=2)on()})();
+var unl=false;function unlock(){if(unl)return;unl=true;var p=xv.play();p&&p.then?p.then(function(){xv.pause()}).catch(function(){}):xv.pause()}
 addEventListener('touchstart',unlock,{passive:true,once:true});addEventListener('wheel',unlock,{passive:true,once:true});addEventListener('keydown',unlock,{once:true});
 function scrub(v,goal,cur){if(!v.duration||isNaN(v.duration))return cur;var g=goal*(v.duration-.05);cur+=(g-cur)*.16;if(Math.abs(g-cur)<.004)cur=g;if(!v.seeking&&Math.abs(v.currentTime-cur)>.008)v.currentTime=cur;return cur}
 
-/* collections accordion */
-var acs=$$('#acc .ac'),a0=acs[0],accT=0;
-function accOn(el){acs.forEach(function(a){a.classList.toggle('on',a===el)})}
-acs.forEach(function(a){a.addEventListener('mouseenter',function(){if(mob())return;clearTimeout(accT);accOn(a)});
- if(a.dataset.p!==undefined)a.addEventListener('click',function(e){e.preventDefault();if(!mob()&&!a.classList.contains('on')){accOn(a);return}userPick=performance.now();setProd(+a.dataset.p,true)})});
-$('#acc').addEventListener('mouseleave',function(){if(mob())return;clearTimeout(accT);accT=setTimeout(function(){accOn(a0)},1200)});
+/* the travelling door */
+var gw=$('#gw'),gl=$('#gdl'),gv=$('#gv'),gs=$('#gs'),gt=$('#gt'),gimg=$('img',gl),AR=606/1600;
+var chs=$$('#story .ch');
+/* states: x,y (share of viewport), h (share of height), ry turn, op open, v view, t labels, a alpha */
+function S(x,y,h,ry,op,v,t,a){return {x:x,y:y,h:h,ry:ry,op:op,v:v,t:t,a:a}}
+function states(m){return m?{
+ pre:S(.5,1.3,.42,0,0,0,0,0), s0:S(.5,.56,.46,0,0,0,0,1), s1:S(.5,.31,.4,-34,0,0,0,1), s2:S(.5,.31,.4,0,0,1,1,1), s3:S(.5,.31,.4,0,1,1,0,1),
+ s4:S(.5,-.25,.36,0,1,1,0,0), h0:S(.5,1.3,.42,0,.9,1,0,0), s5:S(.5,.32,.42,0,.9,1,0,1), s6:S(.5,-.3,.42,0,.9,1,0,0)}:{
+ pre:S(.5,1.25,.56,0,0,0,0,0), s0:S(.5,.64,.5,0,0,0,0,1), s1:S(.69,.53,.74,-34,0,0,0,1), s2:S(.31,.53,.78,0,0,1,1,1), s3:S(.67,.53,.74,0,1,1,0,1),
+ s4:S(.67,-.3,.6,0,1,1,0,0), h0:S(.66,1.3,.62,0,.9,1,0,0), s5:S(.66,.54,.66,0,.9,1,0,1), s6:S(.66,-.3,.62,0,.9,1,0,0)}}
+function guide(y,H,W,m){
+ var st=states(m),hT=topOf(hero),hH=hero.offsetHeight,c=chs.map(function(el){return topOf(el)+el.offsetHeight/2-H/2}),eT=topOf(ex),nT=topOf(nxs),nH=nxs.offsetHeight;
+ var A=[[hT+(hH-H)*.32,st.pre],[hT+(hH-H)*.86,st.s0],[c[0],st.s1],[c[1],st.s2],[c[2],st.s3],[eT-H*.15,st.s4],[nT-H*.75,st.h0],[nT+nH/2-H/2,st.s5],[nT+nH,st.s6]];
+ var g;if(y<=A[0][0])g=A[0][1];else if(y>=A[A.length-1][0])g=A[A.length-1][1];else{for(var i=0;i<A.length-1;i++)if(y<A[i+1][0]){var f=ezz((y-A[i][0])/(A[i+1][0]-A[i][0])),a=A[i][1],b=A[i+1][1];g={};for(var k in a)g[k]=lerp(a[k],b[k],f);break}}
+ if(g.a<.01){gw.style.visibility='hidden';return}gw.style.visibility='visible';
+ var h=g.h*H,w=h*AR;
+ gw.style.width=w.toFixed(1)+'px';gw.style.height=h.toFixed(1)+'px';
+ gw.style.transform='translate3d('+(g.x*W-w/2).toFixed(1)+'px,'+(g.y*H-h/2).toFixed(1)+'px,0) rotateY('+g.ry.toFixed(2)+'deg)';
+ gw.style.opacity=g.a.toFixed(3);
+ gl.style.transform='rotateY('+(-74*g.op).toFixed(2)+'deg)';
+ gv.style.opacity=g.v.toFixed(3);gw.style.setProperty('--op',g.op.toFixed(3));
+ gt.style.opacity=g.t.toFixed(3);gt.classList.toggle('on',g.t>.6);
+}
 
-/* a view to come home to */
-var drA=$('#drA'),xv=$('#xv'),xvC=0,xls=$$('#xl li');vReady(xv,$('#inside .xfm'));
-var vw=$('#view'),vf=$('#vf'),vimg=$('img',vf),vta=$('.vt .a'),vtb=$('.vt .b');
-var ezz=function(t){t=cl(t);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
-
-/* configurator */
-var pli=$$('#pt li'),wasT=0;
-var pfs=$$('#cfs .pi');function setProd(i,scroll){prodSel=i;pli.forEach(function(l,j){l.classList.toggle('on',j===i)});var prev=pfs.filter(function(f){return f.classList.contains('on')})[0];pfs.forEach(function(f,j){f.classList.remove('was');if(f===prev&&j!==i)f.classList.add('was');f.classList.toggle('on',j===i)});clearTimeout(wasT);wasT=setTimeout(function(){pfs.forEach(function(f){f.classList.remove('was')})},1500);
- if(mob()){var ptl=$('#pt');ptl.scrollTo({left:Math.max(0,pli[i].offsetLeft-ptl.offsetLeft-12),behavior:'smooth'})}
- if(scroll){var r=cf.getBoundingClientRect(),top=r.top+scrollY,d=r.height-innerHeight;goY(top+d*((i+.5)/5))}}
-pli.forEach(function(l,i){$('button',l).addEventListener('click',function(){userPick=performance.now();setProd(i,true)})});
-var userPick=0;
-$$('#fins button').forEach(function(b){b.addEventListener('click',function(){$$('#fins button').forEach(function(x){x.classList.toggle('on',x===b)});$('#finN').textContent=b.dataset.n;$('#finN2').textContent=b.dataset.n;var fc=$('#finC');fc.classList.remove('pop');void fc.offsetWidth;$('#finI').src=b.dataset.f;fc.classList.add('pop')})});
-var tog=$('#tog');tog.addEventListener('click',function(){prodOpen=prodOpen?0:1;tog.classList.toggle('on',!!prodOpen);$('#cfs').classList.toggle('open',!!prodOpen);$('#togT').textContent=prodOpen?'Close it':'Open it'});
-
-
-var exV=0;
-
-/* studio statement words */
-var stT=$('#stT'),words=stT.textContent.trim().split(/\s+/);stT.innerHTML=words.map(function(w){return '<span>'+w+'</span> '}).join('');var ws=$$('span',stT);
+/* collections: horizontal track */
+var hct=$('#hct'),hks=$$('#hct .hk'),hcB=$('#hcB'),hcN=$('#hcN');
 
 /* never list */
 var nls=$$('#nl li');
@@ -882,7 +1009,7 @@ if(SNAP){$$('.rv').forEach(function(el){el.classList.add('in')});$$('b[data-to]'
 
 /* cursor */
 var cur=$('#cur'),curT=$('#curT'),cx=innerWidth/2,cy=innerHeight/2,px=cx,py=cy;
-$$('.gg figure').forEach(function(f){f.dataset.cur='View'});trk.dataset.cur='Scroll';$('#map').dataset.cur='Essex';
+$$('.hk').forEach(function(f){f.dataset.cur='View'});trk.dataset.cur='Scroll';$('#map').dataset.cur='Essex';
 addEventListener('pointermove',function(e){cx=e.clientX;cy=e.clientY;var t=e.target.closest&&e.target.closest('[data-cur]');cur.classList.toggle('big',!!t);if(t)curT.textContent=t.dataset.cur});
 
 /* header */
@@ -893,41 +1020,31 @@ function under(y){var els=document.elementsFromPoint(innerWidth/2,y);for(var i=0
 function frame(){var y=lenis?lenis.scroll:scrollY,H=innerHeight,W=innerWidth;
  px+=(cx-px)*.2;py+=(cy-py)*.2;cur.style.transform='translate('+px.toFixed(1)+'px,'+py.toFixed(1)+'px) translate(-50%,-50%)';
  /* header */
- var s=under(hh()/2);hd.classList.toggle('dkk',!!(s&&s.classList.contains('dk')));
+ var s=under(hh()/2);hd.classList.toggle('dkk',!!(s&&(s===hero?lidK<.45:s.classList.contains('dk'))));
  if(!bd.classList.contains('mo')){if(y>H*.9&&y>lastY+4)hd.classList.add('hide');else if(y<lastY-4||y<H*.9)hd.classList.remove('hide')}lastY=y;
- mbar.classList.toggle('on',y>hero.offsetHeight-H*.7);
- /* which window */
- var act=null,vis=false;wins.forEach(function(el){var r=el.getBoundingClientRect();if(r.bottom>0&&r.top<H){vis=true;if(r.top<=H*.5&&r.bottom>=H*.5)act=el}});
- if(!act&&vis){var best=1e9;wins.forEach(function(el){var r=el.getBoundingClientRect();if(r.bottom>0&&r.top<H){var d=Math.min(Math.abs(r.top-H/2),Math.abs(r.bottom-H/2));if(d<best){best=d;act=el}}})}
- var m=mob(),pt=port(),sx=m?0:.13;
- var pD=prog(dr),pC=prog(cf),pE=prog(ex),pH=prog(hero);
- /* hero */
- var rH=hero.getBoundingClientRect();if(rH.bottom>0){var ho=cl((pH-.03)/.72);hvC=scrub(hv,ezz(ho),hvC);
-  hxm.style.transform='scale('+(1.09-.09*ezz(cl(pH/.9))).toFixed(4)+')';hxB.style.transform='scaleX('+ho.toFixed(3)+')';
-  var tf=cl((pH-.8)/.18);hxt.style.opacity=(1-tf).toFixed(3);hxt.style.transform='translateY('+(-tf*40).toFixed(1)+'px)';
-  var lt=ho>.98?'Doors open':'Scroll to open the doors';if(hxL.textContent!==lt)hxL.textContent=lt}
- /* doors: slow pull back as the notes arrive */
- var rD=dr.getBoundingClientRect();if(rD.bottom>0&&rD.top<H){drA.style.transform='scale('+(1.16-.16*ezz(pD)).toFixed(4)+')'}
- dr.classList.toggle('on',pD>.01&&pD<.995||act===dr);$('#cd0').classList.toggle('on',pD>.12);$('#cd1').classList.toggle('on',pD>.36);$('#cd2').classList.toggle('on',pD>.6);
- /* configurator: scroll picks product unless user just clicked */
- cf.classList.toggle('on',act===cf);
- if(act===cf&&performance.now()-userPick>1800){var pi=Math.min(4,Math.floor(pC*5));if(pi!==prodSel)setProd(pi)}
+ mbar.classList.toggle('on',y>hero.offsetHeight*.55);
+ var m=mob();
+ /* hero lid */
+ var pH=prog(hero);lidK=ezz(cl((pH-.04)/.6));
+ if(hero.getBoundingClientRect().bottom>0){
+  lc.style.transform='translate3d(0,'+(-lidK*4).toFixed(2)+'vh,0) rotateX('+(-lidK*86).toFixed(2)+'deg) scale('+(1-lidK*.05).toFixed(4)+')';
+  lc.style.opacity=(1-cl((lidK-.82)/.16)).toFixed(3);lc.style.setProperty('--sh',lidK.toFixed(3));
+  lct.style.opacity=(1-cl(lidK*1.8)).toFixed(3);
+  var bk=cl((lidK-.3)/.5);box.style.setProperty('--k',bk.toFixed(3));
+ }
+ guide(y,H,W,m);
+ /* chapters */
+ chs.forEach(function(ch){var r=ch.getBoundingClientRect();ch.classList.toggle('on',r.top<H*.62&&r.bottom>H*.38)});
  /* explode */
- exV=cl((pE-.06)/.62);
+ var pE=prog(ex);exV=cl((pE-.06)/.62);
  var rE=ex.getBoundingClientRect();if(rE.bottom>0&&rE.top<H){xvC=scrub(xv,ezz(exV),xvC);xls.forEach(function(li,i){li.classList.toggle('on',exV>.12+i*.13)})}
- /* view */
- var rv=vw.getBoundingClientRect();if(rv.bottom>0&&rv.top<H){var kv=ezz((prog(vw)-.04)/.62),ins=m?8:Math.max(8,Math.min(14,W*.008));
-  var w0=m?W*.66:W*.26,h0=m?H*.3:H*.44,w1=W-2*ins,h1=H-2*ins;
-  vf.style.width=(w0+(w1-w0)*kv).toFixed(1)+'px';vf.style.height=(h0+(h1-h0)*kv).toFixed(1)+'px';vf.style.borderRadius=(28-6*kv).toFixed(1)+'px';
-  vimg.style.transform='scale('+(1.25-.25*kv).toFixed(4)+')';
-  var op=Math.max(0,1-kv*2.4).toFixed(3);
-  if(m){vta.style.transform='translateY('+(-kv*26).toFixed(2)+'vh)';vtb.style.transform='translateY('+(kv*26).toFixed(2)+'vh)'}else{vta.style.transform='translateX('+(-kv*30).toFixed(2)+'vw)';vtb.style.transform='translateX('+(kv*30).toFixed(2)+'vw)'}
-  vta.style.opacity=vtb.style.opacity=op;vw.classList.toggle('end',kv>.94)}
- /* statement words */
- var r=stT.getBoundingClientRect(),k=cl((H*.85-r.top)/(r.height+H*.35));var n=Math.round(k*ws.length);ws.forEach(function(w,i){w.classList.toggle('on',i<n||SNAP)});
- /* how it works */
- var pH=prog(hw),max=trk.scrollWidth-W+(m?20:80);trk.style.transform='translateX('+(-pH*Math.max(0,max)).toFixed(1)+'px)';hwb.style.transform='scaleX('+pH.toFixed(3)+')';
- simg.forEach(function(im,i){var rr=im.parentNode.getBoundingClientRect(),c=(rr.left+rr.width/2-W/2)/W;im.style.transform='scale(1.12) translateX('+(c*-6).toFixed(2)+'%)'});
+ /* collections */
+ if(!m){var rc=hc.getBoundingClientRect();if(rc.bottom>0&&rc.top<H){var pc=ezz(cl((prog(hc)-.04)/.92)),f0=hks[0],fl=hks[hks.length-1],span=(fl.offsetLeft+fl.offsetWidth/2)-(f0.offsetLeft+f0.offsetWidth/2);
+  var tx=-pc*span;hct.style.transform='translate3d('+tx.toFixed(1)+'px,0,0)';hcB.style.transform='scaleX('+pc.toFixed(3)+')';
+  var best=0,bd2=1e9;hks.forEach(function(k,i){var rr=k.getBoundingClientRect(),d=(rr.left+rr.width/2-W/2)/W;var ad=Math.abs(d);if(ad<bd2){bd2=ad;best=i}
+   k.style.transform='scale('+(1-Math.min(ad,1)*.09).toFixed(4)+')';k.style.opacity=(1-Math.min(ad,1)*.45).toFixed(3);$('img',k).style.transform='scale(1.14) translateX('+(d*-7).toFixed(2)+'%)'});
+  var nn='0'+(best+1);if(hcN.textContent!==nn)hcN.textContent=nn}}
+ else{hct.style.transform='';hks.forEach(function(k){k.style.transform='';k.style.opacity='';$('img',k).style.transform=''})}
  /* never list */
  nls.forEach(function(li){var rr=li.getBoundingClientRect();li.classList.toggle('x',rr.top<H*.62||SNAP)});
  /* end parallax */
@@ -954,7 +1071,7 @@ setStep(0);
 var ld=$('#ld'),ldn=$('#ldn'),lt0=performance.now(),pv=0,lw=document.readyState==='complete';
 addEventListener('load',function(){lw=true});
 var lims=$$('#hero img'),ldone=0;lims.forEach(function(i){if(i.complete)ldone++;else{i.addEventListener('load',function(){ldone++});i.addEventListener('error',function(){ldone++})}});
-function opened(){ld.classList.add('out');lenis&&lenis.start();setTimeout(function(){root.classList.add('go')},520);setTimeout(function(){ld.classList.add('done')},2000)}
+function opened(){ld.classList.add('out');setTimeout(playHero,700);lenis&&lenis.start();setTimeout(function(){root.classList.add('go')},520);setTimeout(function(){ld.classList.add('done')},2000)}
 if(SNAP||reduce){ld.classList.add('done');root.classList.add('go')}
 else{lenis&&lenis.stop();scrollTo(0,0);(function lt(){var el=performance.now()-lt0;var tg=Math.min(.9,.08+(ldone/Math.max(1,lims.length))*.62+Math.min(el/3000,.2));if((lw&&el>1500)||el>5500)tg=1;pv+=(tg-pv)*(tg===1?.12:.06);if(tg===1&&pv>.994)pv=1;ldn.textContent=Math.round(pv*100);if(pv<1)requestAnimationFrame(lt);else setTimeout(opened,180)})()}
 })();
