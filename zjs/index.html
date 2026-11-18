@@ -148,9 +148,6 @@ body.ready .hero h1 .w span{transform:none}
 .pc:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(19,32,26,.35)}
 .pc .im{height:340px;overflow:hidden;position:relative;background:var(--forest2)}
 .pc .im img{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover}
-.pc:nth-child(1) .im img{animation:pan1 18s ease-in-out infinite alternate}
-.pc:nth-child(2) .im img{animation:pan2 20s ease-in-out infinite alternate}
-.pc:nth-child(3) .im img{animation:pan3 22s ease-in-out infinite alternate}
 @keyframes pan1{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(2%,-2%,0) scale(1.05)}}
 @keyframes pan2{from{transform:translate3d(0,2%,0) scale(1.05)}to{transform:translate3d(-2%,-1%,0) scale(1)}}
 @keyframes pan3{from{transform:translate3d(2%,0,0) scale(1.02)}to{transform:translate3d(-2%,2%,0) scale(1.07)}}
@@ -487,7 +484,7 @@ footer a:hover{color:#fff}
 .hmeta .sc{letter-spacing:.2em;text-transform:uppercase;font-size:11px}
 /* practice cards */
 a.pc{color:inherit}
-.pc .im img{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;animation:none}
+.pc .im img{position:absolute;top:-8%;left:-8%;width:116%;height:116%;max-width:none;object-fit:cover;animation:none}
 .pc .im img.a{animation:kbA 16s ease-in-out infinite alternate}
 .pc .im img.b{opacity:0;animation:kbB 16s ease-in-out infinite alternate,xf 16s ease-in-out infinite}
 .pc:nth-child(2) .im img{animation-delay:-5s}.pc:nth-child(3) .im img{animation-delay:-10s}
