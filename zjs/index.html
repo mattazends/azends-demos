@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ZJS Architectural Design | New homes, extensions and country houses · Odiham, Hampshire</title>
 <meta name="description" content="Award-winning architectural design studio near Odiham, Hampshire. Bespoke new builds, extensions, renovations and country houses across Hampshire, Surrey, Berkshire and beyond.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZJS Architectural Design · Countryside design studio near Odiham">
+<meta property="og:description" content="Bespoke new builds, country houses and extensions, designed with you at our countryside studio and taken through planning and onto site.">
+<meta property="og:image" content="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/2a2b98dd-a2b5-4173-89ab-1c2f1c7c1844.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["ProfessionalService","LocalBusiness"],"name":"ZJS Architectural Design","description":"Award-winning architectural design studio near Odiham, Hampshire, for bespoke new builds, country houses, extensions and renovations.","telephone":"+447533625173","email":"zjsarchitecturaldesign@gmail.com","image":"https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/2a2b98dd-a2b5-4173-89ab-1c2f1c7c1844.jpg","address":{"@type":"PostalAddress","streetAddress":"Varndell House, Farnham Road","addressLocality":"Odiham","addressRegion":"Hampshire","postalCode":"RG29 1HS","addressCountry":"GB"},"areaServed":["Hampshire","Surrey","Berkshire","Cornwall","French Alps","Swiss Alps"],"knowsAbout":["New build homes","Country houses","Extensions","Renovations","Planning applications","Building control","Structural calculations"]}</script>
 <meta name="theme-color" content="#13201A">
 <link rel="icon" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c8443a52-e27e-41d3-aa02-652ece223dc8.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -622,6 +628,37 @@ a.pc{color:inherit}
 @media (max-width:1180px){.ddm{display:none}}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== sharpen pass ===== */
+.explore .p{color:#B7BBAD}
+.explore{padding-bottom:96px}
+.stats b{white-space:nowrap;font-size:clamp(24px,2.4vw,36px)}
+.hero .copy .lbl{color:#F3E7D1;font-weight:600}
+@media (min-width:821px){.hero .shade{background:linear-gradient(180deg,rgba(13,22,17,.55),rgba(13,22,17,0) 28%),linear-gradient(0deg,rgba(13,22,17,.85),rgba(13,22,17,.15) 45%,rgba(13,22,17,0) 70%),linear-gradient(90deg,rgba(13,22,17,.72),rgba(13,22,17,.25) 42%,rgba(13,22,17,0) 62%)}}
+.hero .lead{color:#E4E0D4}
+.cal .days button:not(.av){color:#4E5A52}
+.cal .days button.av{font-weight:500}
+.slot.on b{font-weight:500}
+.zfb{margin-top:10px;font-size:14px}.zfb a{text-decoration:underline;text-underline-offset:3px}
+.mbar{display:none}
+@media (max-width:820px){
+  .hero .shade{background:linear-gradient(180deg,rgba(13,22,17,.55),rgba(13,22,17,0) 24%),linear-gradient(0deg,rgba(13,22,17,.94) 8%,rgba(13,22,17,.6) 52%,rgba(13,22,17,.08) 82%)}
+  .stats b{font-size:23px}
+  .acc .it:after{background:linear-gradient(180deg,rgba(13,22,17,.1) 25%,rgba(13,22,17,.88) 78%)}
+  footer .row{grid-template-columns:1fr 1fr;gap:34px 24px}
+  footer .row>div:first-child{grid-column:1/-1}
+  footer .row>div:nth-child(3){grid-column:1/-1}
+  footer .row>div:last-child{grid-column:1/-1}
+  footer{padding-bottom:100px}
+  .mbar{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;position:fixed;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:105;padding:6px;border-radius:99px;background:rgba(19,32,26,.86);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid var(--lineL);box-shadow:0 14px 40px rgba(0,0,0,.28);transform:translateY(140%);transition:transform .6s var(--ease)}
+  body.scrolled .mbar{transform:none}
+  .mbar a{height:46px;border-radius:99px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:14px;font-weight:500;white-space:nowrap}
+  .mb-call{padding:0 16px;color:var(--cream);background:rgba(239,233,220,.1)}
+  .mb-ws{color:var(--cream);border:1px solid var(--lineL)}
+  .mb-go{background:var(--oak);color:#1a130b}
+  body[data-route="design"] .mbar,body[data-route="start"] .mbar{display:none}
+}
+@media (max-width:380px){.mb-ws{display:none!important}.mbar{grid-template-columns:auto 1fr}}
 </style>
 </head>
 <body data-route="home">
@@ -668,20 +705,20 @@ a.pc{color:inherit}
   <section class="explore">
     <div class="wrap">
       <div class="top">
-        <div><div class="lbl rv">Explore the studio</div><h2 class="h2 rv d1" style="margin-top:18px">Where would you <b>like to start?</b></h2></div>
+        <div><div class="lbl l rv">Explore the studio</div><h2 class="h2 rv d1" style="margin-top:18px">Where would you <b>like to start?</b></h2></div>
         <p class="p rv d2">New homes, country houses and extensions, designed with you in our countryside studio and taken all the way through planning and onto site.</p>
       </div>
       <div class="eg">
-        <a href="#/services" class="ec big rv"><img src="/zjs/img/site-front.jpg" alt=""><span class="tag">Our focus</span><span class="go">↗</span><div class="in"><div class="t">Bespoke <b>new builds</b> &amp; country houses</div><p>From the first site appraisal to a finished home, with one joined-up team.</p></div></a>
-        <a href="#/design" class="ec rv d1"><img src="/zjs/img/render.jpg" alt=""><span class="tag">Interactive</span><span class="go">↗</span><div class="in"><div class="t">Design it <b>in 3D</b></div><p>Shape a new build or extension and send us the brief.</p></div></a>
-        <a href="#/workshop" class="ec rv d2"><img src="/zjs/img/sketch.jpg" alt=""><span class="tag">Mondays &amp; Tuesdays</span><span class="go">↗</span><div class="in"><div class="t">The <b>design workshop</b></div><p>Two hours at the studio, sketching your project with us.</p></div></a>
-        <a href="#/projects" class="ec rv d1"><img src="/zjs/img/oak-entrance.jpg" alt=""><span class="go">↗</span><div class="in"><div class="t">Selected <b>projects</b></div><p>Oak, glass, stone and brick, done properly.</p></div></a>
-        <a href="#/where" class="ec rv d2"><img src="/zjs/img/aerial-wide.jpg" alt=""><span class="tag">UK &amp; international</span><span class="go">↗</span><div class="in"><div class="t">Where <b>we work</b></div><p>Hampshire, Surrey, Berkshire, Cornwall and the Alps.</p></div></a>
+        <a href="#/services" class="ec big rv"><img src="/zjs/img/site-front.jpg" alt="Country house new build on site with clay tiles and cedar-clad dormers"><span class="tag">Our focus</span><span class="go">↗</span><div class="in"><div class="t">Bespoke <b>new builds</b> &amp; country houses</div><p>From the first site appraisal to a finished home, with one joined-up team.</p></div></a>
+        <a href="#/design" class="ec rv d1"><img src="/zjs/img/render.jpg" alt="3D visual of a bespoke brick new build designed by ZJS"><span class="tag">Interactive</span><span class="go">↗</span><div class="in"><div class="t">Design it <b>in 3D</b></div><p>Shape a new build or extension and send us the brief.</p></div></a>
+        <a href="#/workshop" class="ec rv d2"><img src="/zjs/img/sketch.jpg" alt="Hand sketch of a house elevation from a ZJS design workshop"><span class="tag">Mondays &amp; Tuesdays</span><span class="go">↗</span><div class="in"><div class="t">The <b>design workshop</b></div><p>Two hours at the studio, sketching your project with us.</p></div></a>
+        <a href="#/projects" class="ec rv d1"><img src="/zjs/img/oak-entrance.jpg" alt="Oak-framed glazed entrance designed by ZJS Architectural Design"><span class="go">↗</span><div class="in"><div class="t">Selected <b>projects</b></div><p>Oak, glass, stone and brick, done properly.</p></div></a>
+        <a href="#/where" class="ec rv d2"><img src="/zjs/img/aerial-wide.jpg" alt="Aerial view of a Hampshire village site"><span class="tag">UK &amp; international</span><span class="go">↗</span><div class="in"><div class="t">Where <b>we work</b></div><p>Hampshire, Surrey, Berkshire, Cornwall and the Alps.</p></div></a>
       </div>
       <div class="stats rv">
         <div><b>Award-winning</b><span>Design practice</span></div>
-        <div><b>Concept → site</b><span>One joined-up team</span></div>
-        <div><b>Countryside studio</b><span>Near Odiham, Hampshire</span></div>
+        <div><b>Sketch → site</b><span>One joined-up team</span></div>
+        <div><b>Odiham</b><span>Countryside studio, Hampshire</span></div>
         <div><b>Free</b><span>Initial consultation</span></div>
       </div>
     </div>
@@ -696,15 +733,15 @@ a.pc{color:inherit}
       </div>
       <div class="pgrid">
         <a href="#/services" class="pc rv">
-          <div class="im"><img class="a" src="/zjs/img/terrace.jpg" alt=""><img class="b" src="/zjs/img/oak-entrance.jpg" alt=""><span class="badge">Now</span><span class="sheen"></span></div>
+          <div class="im"><img class="a" src="/zjs/img/terrace.jpg" alt="Contemporary home terrace and garden"><img class="b" src="/zjs/img/oak-entrance.jpg" alt="Oak-framed glazed entrance designed by ZJS Architectural Design"><span class="badge">Now</span><span class="sheen"></span></div>
           <div class="bd"><h3 class="brh"><img class="bl" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c8443a52-e27e-41d3-aa02-652ece223dc8.png" alt="ZJS"><span>The <b>design studio</b></span></h3><p>New builds, country houses, extensions and renovations, with planning, building control and structural calculations handled for you.</p><span class="lk">See what we design →</span></div>
         </a>
         <a href="#/services/design-and-build" class="pc rv d1">
-          <div class="im"><img class="a" src="/zjs/img/onsite.jpg" alt=""><img class="b" src="/zjs/img/site-front.jpg" alt=""><span class="badge soon">Introducing</span><span class="sheen"></span></div>
+          <div class="im"><img class="a" src="/zjs/img/onsite.jpg" alt="ZJS project on site during construction"><img class="b" src="/zjs/img/site-front.jpg" alt="Country house new build on site with clay tiles and cedar-clad dormers"><span class="badge soon">Introducing</span><span class="sheen"></span></div>
           <div class="bd"><h3 class="brh"><img class="bl" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c8443a52-e27e-41d3-aa02-652ece223dc8.png" alt="ZJS"><span>Design <b>&amp; Build</b></span></h3><p>A more joined-up service, taking projects from design and planning through to construction with our build partners.</p><span class="lk">Register interest →</span></div>
         </a>
         <a href="#/services/land-promotion" class="pc rv d2">
-          <div class="im"><img class="a" src="/zjs/img/plot-aerial.jpg" alt=""><img class="b" src="/zjs/img/aerial-wide.jpg" alt=""><span class="badge soon">Introducing</span><span class="sheen"></span></div>
+          <div class="im"><img class="a" src="/zjs/img/plot-aerial.jpg" alt="Aerial view of a rural development plot"><img class="b" src="/zjs/img/aerial-wide.jpg" alt="Aerial view of a Hampshire village site"><span class="badge soon">Introducing</span><span class="sheen"></span></div>
           <div class="bd"><h3 class="brh"><img class="bl" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c8443a52-e27e-41d3-aa02-652ece223dc8.png" alt="ZJS"><span>Land <b>&amp; Property</b></span></h3><p>For landowners: finding development opportunities and promoting land through the planning process to unlock its value.</p><span class="lk">Talk to us about land →</span></div>
         </a>
       </div>
@@ -743,8 +780,8 @@ a.pc{color:inherit}
     <div class="lbl rv">Where are you starting from?</div>
     <h2 class="h2 rv d1" style="margin:18px 0 40px;max-width:20ch">Two kinds of project. <b>The same attention.</b></h2>
     <div class="door-grid">
-      <a href="#/start?type=newbuild" class="door rv"><span class="tag">Our focus</span><img src="/zjs/img/render.jpg" alt=""><div class="in"><div class="lbl l">New builds &amp; country houses</div><div class="h3">From a plot of land <b>to a bespoke home.</b></div><p>Contemporary rural homes, replacement dwellings and country houses, from the first site appraisal through planning, technical design and onto site.</p><ul><li>Bespoke new homes</li><li>Replacement dwellings</li><li>Country houses</li><li>Design &amp; build</li></ul></div></a>
-      <a href="#/start?type=extension" class="door rv d1"><img src="/zjs/img/kitchen.jpg" alt=""><div class="in"><div class="lbl l">Extensions &amp; renovations</div><div class="h3">Make the home you have <b>work for how you live now.</b></div><p>Rear, side and wraparound extensions, glazed links and whole-house remodels, designed around light, flow and value.</p><ul><li>Rear &amp; side extensions</li><li>Remodels</li><li>Planning &amp; building control</li></ul></div></a>
+      <a href="#/start?type=newbuild" class="door rv"><span class="tag">Our focus</span><img src="/zjs/img/render.jpg" alt="3D visual of a bespoke brick new build designed by ZJS"><div class="in"><div class="lbl l">New builds &amp; country houses</div><div class="h3">From a plot of land <b>to a bespoke home.</b></div><p>Contemporary rural homes, replacement dwellings and country houses, from the first site appraisal through planning, technical design and onto site.</p><ul><li>Bespoke new homes</li><li>Replacement dwellings</li><li>Country houses</li><li>Design &amp; build</li></ul></div></a>
+      <a href="#/start?type=extension" class="door rv d1"><img src="/zjs/img/kitchen.jpg" alt="Open-plan kitchen extension with roof lanterns"><div class="in"><div class="lbl l">Extensions &amp; renovations</div><div class="h3">Make the home you have <b>work for how you live now.</b></div><p>Rear, side and wraparound extensions, glazed links and whole-house remodels, designed around light, flow and value.</p><ul><li>Rear &amp; side extensions</li><li>Remodels</li><li>Planning &amp; building control</li></ul></div></a>
     </div>
     <div class="svc">
       <a href="#/start?type=newbuild" class="rv">New builds<span>01</span></a>
@@ -866,19 +903,19 @@ a.pc{color:inherit}
   </div></header>
   <section class="work"><div class="wrap">
     <div class="acc rv" id="acc">
-      <div class="it on" data-g="0"><img src="/zjs/img/site-front.jpg" alt=""><span class="n">01</span><span class="vt">Country house · new build</span><div class="tx"><h3>Country house, <b>new build</b></h3><p>Handmade clay tiles, cedar-clad dormers and brick, currently on site behind an old walled garden.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="1"><img src="/zjs/img/rear.jpg" alt=""><span class="n">02</span><span class="vt">Contemporary home</span><div class="tx"><h3>Contemporary home &amp; <b>garden studio</b></h3><p>Stone cladding, slim black frames and sedum roofs stepping down a wooded garden.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="2"><img src="/zjs/img/oak-entrance.jpg" alt=""><span class="n">03</span><span class="vt">Oak &amp; glass entrance</span><div class="tx"><h3>Oak-framed <b>glazed entrance</b></h3><p>A full-height oak and glass gable pulling light and the trees right through the house.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="3"><img src="/zjs/img/kitchen.jpg" alt=""><span class="n">04</span><span class="vt">Kitchen extension</span><div class="tx"><h3>Open-plan <b>kitchen extension</b></h3><p>Lantern roof lights over a kitchen, dining and living space opening onto the terrace.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="4"><img src="/zjs/img/link-dusk.jpg" alt=""><span class="n">05</span><span class="vt">Glazed link</span><div class="tx"><h3>Glazed <b>link extension</b></h3><p>A tight gap between two brick buildings turned into a warm, light-filled entrance.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
-      <div class="it" data-g="5"><img src="/zjs/img/landing.jpg" alt=""><span class="n">06</span><span class="vt">Interiors &amp; detail</span><div class="tx"><h3>Interiors &amp; <b>detailing</b></h3><p>Reclaimed brick, steel balustrades, oak and stone, chosen with the same care as the architecture.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it on" data-g="0"><img src="/zjs/img/site-front.jpg" alt="Country house new build on site with clay tiles and cedar-clad dormers"><span class="n">01</span><span class="vt">Country house · new build</span><div class="tx"><h3>Country house, <b>new build</b></h3><p>Handmade clay tiles, cedar-clad dormers and brick, currently on site behind an old walled garden.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="1"><img src="/zjs/img/rear.jpg" alt="Contemporary home with stone cladding and black frames"><span class="n">02</span><span class="vt">Contemporary home</span><div class="tx"><h3>Contemporary home &amp; <b>garden studio</b></h3><p>Stone cladding, slim black frames and sedum roofs stepping down a wooded garden.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="2"><img src="/zjs/img/oak-entrance.jpg" alt="Oak-framed glazed entrance designed by ZJS Architectural Design"><span class="n">03</span><span class="vt">Oak &amp; glass entrance</span><div class="tx"><h3>Oak-framed <b>glazed entrance</b></h3><p>A full-height oak and glass gable pulling light and the trees right through the house.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="3"><img src="/zjs/img/kitchen.jpg" alt="Open-plan kitchen extension with roof lanterns"><span class="n">04</span><span class="vt">Kitchen extension</span><div class="tx"><h3>Open-plan <b>kitchen extension</b></h3><p>Lantern roof lights over a kitchen, dining and living space opening onto the terrace.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="4"><img src="/zjs/img/link-dusk.jpg" alt="Glazed link extension at dusk"><span class="n">05</span><span class="vt">Glazed link</span><div class="tx"><h3>Glazed <b>link extension</b></h3><p>A tight gap between two brick buildings turned into a warm, light-filled entrance.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
+      <div class="it" data-g="5"><img src="/zjs/img/landing.jpg" alt="Renovated home interior"><span class="n">06</span><span class="vt">Interiors &amp; detail</span><div class="tx"><h3>Interiors &amp; <b>detailing</b></h3><p>Reclaimed brick, steel balustrades, oak and stone, chosen with the same care as the architecture.</p><button class="pill cream">View project <span class="ar">↗</span></button></div></div>
     </div>
   </div></section>
   <section class="proc"><div class="wrap">
     <div class="lbl l">How a project comes together</div>
     <h2 class="h2" style="margin-top:18px;max-width:18ch">From a survey <b>to the day you move in.</b></h2>
     <div class="grid">
-      <div class="pics" id="pics"><img src="/zjs/img/drone-roof.jpg" class="on" alt=""><img src="/zjs/img/sketch.jpg" alt=""><img src="/zjs/img/render.jpg" alt=""><img src="/zjs/img/onsite.jpg" alt=""><img src="/zjs/img/rear.jpg" alt=""></div>
+      <div class="pics" id="pics"><img src="/zjs/img/drone-roof.jpg" class="on" alt=""><img src="/zjs/img/sketch.jpg" alt="Hand sketch of a house elevation from a ZJS design workshop"><img src="/zjs/img/render.jpg" alt="3D visual of a bespoke brick new build designed by ZJS"><img src="/zjs/img/onsite.jpg" alt="ZJS project on site during construction"><img src="/zjs/img/rear.jpg" alt="Contemporary home with stone cladding and black frames"></div>
       <div id="steps">
         <div class="s on"><small>01 · SURVEY</small><h3>We start with what's already there.</h3><p>Measured surveys, drone photography and home scanning, so design starts from accurate drawings, not guesswork.</p></div>
         <div class="s"><small>02 · DESIGN WORKSHOP</small><h3>Ideas, shaped with you in the studio.</h3><p>Two-hour design workshops at our countryside studio, sketching and modelling options together in real time.</p></div>
@@ -1033,6 +1070,7 @@ a.pc{color:inherit}
   </div>
 </footer>
 
+<div class="mbar" id="mbar"><a href="tel:+447533625173" class="mb-call"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call</a><a href="#/workshop/book" class="mb-ws">Book a workshop</a><a href="#/start" class="mb-go">Start a project <span>→</span></a></div>
 <div class="lb" id="lb"><button class="x" id="lbx">✕</button><img id="lbi" alt=""><div class="ttl" id="lbt"></div><div class="ctrl"><button id="lbp">←</button><button id="lbn">→</button></div></div>
 
 <script>
@@ -1069,6 +1107,7 @@ function route(){
   requestAnimationFrame(()=>{if(anchor)$(anchor).scrollIntoView({behavior:'smooth'});else scrollTo({top:0,behavior:'instant'})});
 }
 addEventListener('hashchange',route);
+addEventListener('scroll',()=>document.body.classList.toggle('scrolled',scrollY>innerHeight*.6),{passive:true});
 
 /* marquees */
 const SV=['Bespoke new builds','Country houses','Ski chalets','Rear & side extensions','Renovations','Design & build','Land promotion','Planning applications','Building control','Structural calculations','Design workshops'];
@@ -1119,9 +1158,10 @@ addEventListener('keydown',e=>{if(!$('#lb').classList.contains('open'))return;if
     location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Workshop request: '+when)+'&body='+encodeURIComponent(body);
     const st=iso(sel).replace(/-/g,'')+'T'+WORKSHOP.start.replace(':','')+'00',en=iso(sel).replace(/-/g,'')+'T'+WORKSHOP.end.replace(':','')+'00';
     $('#wsCal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('ZJS design workshop')+'&dates='+st+'/'+en+'&ctz=Europe/London&location='+encodeURIComponent('Varndell House, Farnham Road, Odiham RG29 1HS');
-    $('#wsDoneTxt').textContent=when+'. We\'ll confirm by email shortly.';
+    $('#wsDoneTxt').innerHTML=when+'. Press send in your email app and we\'ll confirm shortly.<br><span style="opacity:.75">Email app didn\'t open? Call <a href="tel:+447533625173" style="text-decoration:underline">07533 625173</a>.</span>';
     e.target.style.display='none';$('#slotArea').innerHTML='';$('#wsDone').classList.add('on')};
-  draw();
+  (function(){const d=new Date(today);for(let i=0;i<120;i++){d.setDate(d.getDate()+1);if(avail(d)){sel=new Date(d);view=new Date(d.getFullYear(),d.getMonth(),1);break}}})();
+  draw();if(sel)slot();
 })();
 
 /* services pages */
@@ -1189,7 +1229,7 @@ const ZF=(function(){
     if(step===0){h=`<h3 class="zq">What are you <b>planning?</b></h3><div class="zgrid">${Object.entries(FT).map(([k,v],i)=>`<button type="button" class="zo zi ${type===k?'on':''}" data-t="${k}"><span class="zill">${ILL[k]}</span><span class="zx"><b>${v.n}</b><small>${v.s}</small></span><span class="zno">${String(i+1).padStart(2,'0')}</span></button>`).join('')}</div>`}
     else if(step<=nq){const [q,o]=FT[type].steps[step-1];h=`<h3 class="zq">${q}</h3><div class="zgrid two">${o.map(x=>`<button type="button" class="zo ${ans[step-1]===x?'on':''}"><span class="zx"><b>${x}</b></span><span class="zdot"></span></button>`).join('')}</div>${back()}`}
     else if(step===nq+1){h=`<h3 class="zq">Where should we <b>reach you?</b></h3><form class="zf2"><label class="full">Site location<input name="site" placeholder="Postcode, village or resort"></label><label>Name<input required name="name" autocomplete="name"></label><label>Phone<input required name="phone" type="tel" autocomplete="tel"></label><label class="full">Email<input name="email" type="email" autocomplete="email"></label><label class="full">Anything else? <small>Optional</small><textarea name="msg" rows="3"></textarea></label><button type="submit" class="pill forest">Send to the studio <span class="ar">→</span></button></form>${back()}`}
-    else{h=`<div class="zok"><span class="ztk">✓</span><h3 class="zq">Thank you, <b>it's on its way.</b></h3><p class="zp">Your email app has opened with everything filled in. Press send and we'll be in touch to arrange a free initial consultation.</p><button type="button" class="zback" data-reset>Start again</button></div>`}
+    else{h=`<div class="zok"><span class="ztk">✓</span><h3 class="zq">Thank you, <b>it's on its way.</b></h3><p class="zp">Your email app has opened with everything filled in. Press send and we'll be in touch to arrange a free initial consultation.</p><p class="zp zfb">Email app didn't open? Call <a href="tel:+447533625173">07533 625173</a> or email <a href="mailto:zjsarchitecturaldesign@gmail.com">zjsarchitecturaldesign@gmail.com</a>.</p><button type="button" class="zback" data-reset>Start again</button></div>`}
     zb.innerHTML=`<div class="zstp">${h}</div>`;
     if(ready&&el.isConnected){const r=el.getBoundingClientRect();if(r.top<70||r.top>innerHeight*.5)scrollTo({top:scrollY+r.top-110,behavior:'smooth'})}
     zb.querySelectorAll('.zi').forEach(b=>b.onclick=()=>{if(type!==b.dataset.t){type=b.dataset.t;ans=[]}b.classList.add('on');setTimeout(()=>{step=1;draw()},220)});
