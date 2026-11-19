@@ -701,8 +701,8 @@ const area=$('#area'),plot=$('#plot');let rate=140,mat='porc',extras={};let show
 function est(){const a=+area.value;$('#av').textContent=a;$('#dimt').textContent=a+' m²';area.style.setProperty('--p',((a-10)/140*100)+'%');
   const s=Math.sqrt(a)*15;plot.style.width=Math.min(260,s*1.35)+'px';plot.style.height=Math.min(130,s*.8)+'px';plot.dataset.m=mat;
   const ex=Object.values(extras).reduce((x,y)=>x+y,0);const base=a*rate+ex+1500;const lo=Math.round(base*.9/100)*100,hi=Math.round(base*1.18/100)*100;
-  const from=shown.slice(),t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/500),e=1-Math.pow(1-k,3);
-    $('#lo').textContent=Math.round(from[0]+(lo-from[0])*e).toLocaleString('en-GB');$('#hi').textContent=Math.round(from[1]+(hi-from[1])*e).toLocaleString('en-GB');if(k<1)requestAnimationFrame(f);else shown=[lo,hi]})(t0)}
+  const from=shown.slice(),t0=performance.now();est._id=(est._id||0)+1;const id=est._id;(function f(t){if(id!==est._id)return;const k=Math.max(0,Math.min(1,(t-t0)/500)),e=1-Math.pow(1-k,3);shown=[Math.round(from[0]+(lo-from[0])*e),Math.round(from[1]+(hi-from[1])*e)];
+    $('#lo').textContent=Math.round(from[0]+(lo-from[0])*e).toLocaleString('en-GB');$('#hi').textContent=Math.round(from[1]+(hi-from[1])*e).toLocaleString('en-GB');if(k<1)requestAnimationFrame(f)})(t0)}
 area.addEventListener('input',est);
 $$('#mat .chip').forEach(c=>c.onclick=()=>{$$('#mat .chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');rate=+c.dataset.r2;mat=c.dataset.m;est()});
 $$('#ext .chip').forEach(c=>c.onclick=()=>{c.classList.toggle('on');const on=c.classList.contains('on');plot.classList.toggle(c.dataset.c,on);if(on)extras[c.dataset.c]=+c.dataset.a;else delete extras[c.dataset.c];est()});
