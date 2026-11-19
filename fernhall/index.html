@@ -381,7 +381,7 @@ footer .logo{color:var(--ink)}
   <div class="hf" id="hf">
     <div class="iris"></div>
     <div class="hm" id="hm">
-      <img src="https://images.pexels.com/photos/31291000/pexels-photo-31291000.jpeg?auto=compress&cs=tinysrgb&w=900" alt="">
+      <img src="https://images.pexels.com/photos/38220910/pexels-photo-38220910.jpeg?auto=compress&cs=tinysrgb&w=900" alt="">
       <video id="hv" autoplay muted loop playsinline preload="auto"><source src="https://assets.mixkit.co/videos/4205/4205-720.mp4" type="video/mp4"></video>
     </div>
     <div class="hs"></div><div class="hglow"></div>
@@ -709,10 +709,10 @@ $$('#ext .chip').forEach(c=>c.onclick=()=>{c.classList.toggle('on');const on=c.c
 est();
 
 /* projects */
-const PJ=[{t:['The Sunken','Terrace'],l:'Full redesign · St Albans',p:'8 weeks',img:[38220910,13871294,31291000],s:[['Build','8 wks'],['Area','140 m²'],['Budget','£48k']],d:'A sloping, overgrown plot cut into two levels: a sunken porcelain terrace with built-in seating, curved stone steps and wildflower borders.',q:['"We use the terrace every evening now. It feels like a holiday."','Hannah P.']},
+const PJ=[{t:['The Sunken','Terrace'],l:'Full redesign · St Albans',p:'8 weeks',img:[38220910,7969008,37028020],s:[['Build','8 wks'],['Area','140 m²'],['Budget','£48k']],d:'A sloping, overgrown plot cut into two levels: a sunken porcelain terrace with built-in seating, curved stone steps and wildflower borders.',q:['"We use the terrace every evening now. It feels like a holiday."','Hannah P.']},
 {t:['Harpenden','Family Garden'],l:'Lawn, patio & play · Harpenden',p:'5 weeks',img:[13871294,7969008,8678740],s:[['Build','5 wks'],['Area','210 m²'],['Budget','£32k']],d:'A new lawn levelled for the kids, a cedar pergola over the dining patio and a hidden play corner screened by pleached hornbeams.',q:['"What we saw in 3D is exactly what got built."','Ollie B.']},
 {t:['Rickmansworth','Courtyard'],l:'Courtyard · Rickmansworth',p:'3 weeks',img:[35354797,33649128,41063099],s:[['Build','3 wks'],['Area','36 m²'],['Budget','£18k']],d:'A tired courtyard turned outdoor kitchen: polished concrete table, raised planters and evergreen planting that looks good all year.',q:['"Fixed price, no extras, and a site lead who answers his phone."','Priya S.']},
-{t:['Berkhamsted','Night Garden'],l:'Lighting & decking · Berkhamsted',p:'4 weeks',img:[19740269,31291000,37028020],s:[['Build','4 wks'],['Area','95 m²'],['Budget','£27k']],d:'Composite decking, a fire-pit seating area and a 24-light low-voltage scheme so the garden comes alive after dark.',q:['"The lighting is unreal. We sit out till midnight."','David & Jo K.']}];
+{t:['Berkhamsted','Night Garden'],l:'Lighting & decking · Berkhamsted',p:'4 weeks',img:[19740269,8678740,33649128],s:[['Build','4 wks'],['Area','95 m²'],['Budget','£27k']],d:'Composite decking, a fire-pit seating area and a 24-light low-voltage scheme so the garden comes alive after dark.',q:['"The lighting is unreal. We sit out till midnight."','David & Jo K.']}];
 $('#stack').innerHTML=PJ.map((p,i)=>`<article class="pj" style="top:${70+i*14}px"><button class="ph"><img src="${IMG(p.img[0],1000)}" alt="${p.t.join(' ')}" loading="lazy"><span class="ix">0${i+1}</span><span class="pill">${p.p}</span><span class="meta"><span class="tx"><h3><span class="thin">${p.t[0]}</span><br><b>${p.t[1]}</b></h3><p>${p.l}</p></span><span class="plus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></span></button>
 <div class="pb"><div><div class="pin"><div class="gal">${p.img.map(id=>`<img src="${IMG(id,700)}" alt="" loading="lazy">`).join('')}</div><div class="specs">${p.s.map(([a,b])=>`<div><small>${a}</small><b>${b}</b></div>`).join('')}</div><p class="story">${p.d}</p><div class="pq">${p.q[0]}<span>${S5} ${p.q[1]} · Google review</span></div><a href="#quote" class="btn bd pcta">Start a garden like this</a></div></div></div></article>`).join('');
 const pjs=$$('.pj');
