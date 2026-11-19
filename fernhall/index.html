@@ -408,7 +408,7 @@ footer .logo{color:var(--ink)}
 <div class="trust"><div class="mq" id="m1"></div><div class="mq rv" id="m2"></div></div>
 
 <div class="bento">
-  <div class="bx tall" data-r><div><div class="l" style="margin:0 0 4px;color:rgba(255,255,255,.7)">Finished on schedule</div></div><div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="9"/><circle class="rv2" cx="60" cy="60" r="52"/></svg><b><span data-count="96">0</span>%</b></div><div class="l">of builds handed over on or before the date we agreed</div></div>
+  <div class="bx tall" data-r><div><div class="l" style="margin:0 0 4px;color:rgba(255,255,255,.7)">Finished on schedule</div></div><div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="9"/><circle class="rv2" cx="60" cy="60" r="52"/></svg><b><span><span data-count="96">0</span>%</span></b></div><div class="l">of builds handed over on or before the date we agreed</div></div>
   <div class="bx" data-r style="--d:80ms"><div class="n"><span data-count="12">0</span><sup>yrs</sup></div><div class="l">Designing local gardens</div></div>
   <div class="bx" data-r style="--d:160ms"><div class="n"><span data-count="540">0</span><sup>+</sup></div><div class="l">Gardens built since 2014</div></div>
 </div>
@@ -717,7 +717,7 @@ $('#stack').innerHTML=PJ.map((p,i)=>`<article class="pj" style="top:${70+i*14}px
 <div class="pb"><div><div class="pin"><div class="gal">${p.img.map(id=>`<img src="${IMG(id,700)}" alt="" loading="lazy">`).join('')}</div><div class="specs">${p.s.map(([a,b])=>`<div><small>${a}</small><b>${b}</b></div>`).join('')}</div><p class="story">${p.d}</p><div class="pq">${p.q[0]}<span>${S5} ${p.q[1]} · Google review</span></div><a href="#quote" class="btn bd pcta">Start a garden like this</a></div></div></div></article>`).join('');
 const pjs=$$('.pj');
 pjs.forEach(pj=>$('.ph',pj).addEventListener('click',()=>{const o=!pj.classList.contains('open');pjs.forEach(x=>x!==pj&&x.classList.remove('open'));pj.classList.toggle('open',o);
-  if(o)setTimeout(()=>scrollTo({top:pj.offsetTop+$('#stack').offsetTop-40,behavior:'smooth'}),350);navigator.vibrate&&navigator.vibrate(8)}));
+  if(o){const r=pj.getBoundingClientRect();if(r.top<60||r.top>innerHeight*.45)scrollTo({top:r.top+scrollY-80,behavior:'smooth'})}navigator.vibrate&&navigator.vibrate(8)}));
 
 /* faq */
 const FQ=[['How much does a new garden cost?','Most of our gardens land between £15k and £50k. Use the estimator above for a ballpark, then we fix the price after the free design visit.'],['How long does a build take?','Small courtyards take 2 to 3 weeks. Full redesigns usually 5 to 8 weeks, depending on size and access.'],['Do I need to be home during the build?','No. Your site lead keeps you updated with photos every Friday and calls with anything that needs a decision.'],['What areas do you cover?','Hertfordshire and North London, including St Albans, Harpenden, Watford, Rickmansworth, Berkhamsted and Barnet.']];
