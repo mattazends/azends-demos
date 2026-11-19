@@ -41,9 +41,8 @@ section{position:relative}
 .hglow{position:absolute;width:420px;height:420px;right:-170px;top:24%;border-radius:50%;background:radial-gradient(circle,rgba(244,162,97,.28),transparent 64%);animation:gl 7s ease-in-out infinite alternate;pointer-events:none}
 @keyframes gl{to{transform:translate(-50px,40px) scale(1.2);opacity:.6}}
 /* iris intro */
-.iris{position:absolute;inset:0;z-index:7;pointer-events:none}
-.iris:before{content:"";position:absolute;inset:0;background:var(--bg);clip-path:inset(0 0 0 0);transition:clip-path 1.5s var(--ease) .15s}
-.go .iris:before{clip-path:inset(50% 50% 50% 50% round 30px)}
+.hf{clip-path:inset(38% 14% 38% 14% round 44px);transition:clip-path 1.5s var(--ease) .1s}
+.go .hf{clip-path:inset(0 0 0 0 round 30px)}
 
 .nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:22px 20px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.02em;color:#fff}
@@ -164,7 +163,7 @@ section{position:relative}
 .stage.dusk .sky{opacity:.8}
 .hint{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);transition:color 1s}
 .stage.dusk .hint{color:rgba(255,255,255,.5)}
-.world{position:absolute;left:50%;top:64%;width:0;height:0;transform-style:preserve-3d}
+.world{position:absolute;left:50%;top:57%;width:0;height:0;transform-style:preserve-3d}
 .world *{transform-style:preserve-3d}
 .f{position:absolute;left:0;top:0;backface-visibility:visible}
 .gnd{width:230px;height:170px;margin:-85px 0 0 -115px;transform:rotateX(90deg);border-radius:10px;background:#d9cdb6;
@@ -184,6 +183,8 @@ section{position:relative}
 .lit .bulb{background:#ffe2a8;box-shadow:0 0 10px 4px rgba(255,196,110,.9),0 0 30px 10px rgba(255,170,80,.35)}
 .pool{width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,120,.55),transparent 65%);opacity:0;transition:opacity 1s;transition-delay:var(--d,0s)}
 .lit .pool{opacity:1}
+.lamp3{opacity:0;transform:translateY(-10px);transition:opacity .5s,transform .7s var(--ease);transition-delay:var(--d,0s)}
+.world.s4 .lamp3{opacity:1;transform:none}
 
 .bar{display:flex;gap:6px;padding:0 22px;margin-top:18px}
 .bar i{flex:1;height:3px;border-radius:3px;background:var(--line);position:relative;overflow:hidden}
@@ -379,7 +380,6 @@ footer .logo{color:var(--ink)}
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="hf" id="hf">
-    <div class="iris"></div>
     <div class="hm" id="hm">
       <img src="https://images.pexels.com/photos/38220910/pexels-photo-38220910.jpeg?auto=compress&cs=tinysrgb&w=900" alt="">
       <video id="hv" autoplay muted loop playsinline preload="auto"><source src="https://assets.mixkit.co/videos/4205/4205-720.mp4" type="video/mp4"></video>
@@ -651,7 +651,7 @@ const pl2=grp(.3);box(pl2,30,62,18,18,14,'#c4b8a6','#6aa25a');g3.push(pl2);
 const pg=grp(0);[[-95,20],[-30,20],[-95,80],[-30,80]].forEach(([x,z])=>box(pg,x,z,4,4,52,'#e9dcc5'));
 for(let i=0;i<7;i++)box(pg,-62.5,20+i*10,72,3,3,'#e9dcc5',null,52);
 const lights=[];
-[[-100,-20],[0,-20],[100,-20],[-20,60],[60,60],[100,70]].forEach(([x,z],i)=>{const g=document.createElement('div');g.className='f';g.style.setProperty('--d',i*.12+'s');world.appendChild(g);
+[[-100,-20],[0,-20],[100,-20],[-20,60],[60,60],[100,70]].forEach(([x,z],i)=>{const g=document.createElement('div');g.className='f lamp3';g.style.setProperty('--d',i*.12+'s');world.appendChild(g);
   el('',`width:2px;height:12px;margin:-6px 0 0 -1px;background:#555;transform:translate3d(${x}px,-6px,${z}px)`,g);
   const b=el('bulb',`transform:translate3d(${x}px,-14px,${z}px)`,g);b.style.setProperty('--d',i*.12+'s');
   const p=el('pool',`transform:translate3d(${x}px,-.5px,${z}px) rotateX(90deg)`,g);p.style.setProperty('--d',i*.12+'s');lights.push(g)});
@@ -659,7 +659,7 @@ function stageTo(n){
   tiles.forEach(t=>t.classList.toggle('on',n>=1));
   world.classList.toggle('s2',n>=2);stones.forEach(s=>s.classList.toggle('on',n>=2));
   g3.forEach(g=>g.classList.toggle('on',n>=3));
-  pg.classList.toggle('on',n>=4);world.classList.toggle('lit',n>=4);stage.classList.toggle('dusk',n>=4);
+  pg.classList.toggle('on',n>=4);world.classList.toggle('s4',n>=4);world.classList.toggle('lit',n>=5);stage.classList.toggle('dusk',n>=5);
 }
 let ang=-30,drag=null,tilt=-26;
 (function spin(){if(!drag)ang+=.14;world.style.transform=`rotateX(${tilt}deg) rotateY(${ang}deg)`;requestAnimationFrame(spin)})();
@@ -678,7 +678,7 @@ function go(n){if(n===cur||busy)return;const a=$(`.qs[data-step="${cur}"]`),b=$(
   a.animate([{transform:'none',opacity:1},{transform:`rotateY(${dir*75}deg) translateZ(-60px)`,opacity:0}],{duration:280,easing:'cubic-bezier(.5,0,.75,0)'}).onfinish=()=>{a.classList.remove('on');b.classList.add('on');cur=n;
     b.animate([{transform:`rotateY(${dir*-75}deg) translateZ(-60px)`,opacity:0},{transform:'none',opacity:1}],{duration:600,easing:'cubic-bezier(.22,1,.36,1)'});busy=false;after()}}
 function after(){bar.forEach((b,i)=>b.classList.toggle('on',i<Math.min(cur,4)));back.classList.toggle('show',cur>1&&cur<5);sno.textContent=cur<5?`STEP ${cur} OF 4`:'SENT';
-  stageTo(cur>=5?4:cur-1);
+  stageTo(cur>=5?5:cur-1);
   if(cur===4)$('#sum').innerHTML=['type','size','budget'].filter(k=>st[k]).map(k=>`<span>${st[k]}</span>`).join('');
   if(cur===5)setTimeout(()=>$('#done').classList.add('show'),60)}
 $$('.tiles').forEach(g=>{const k=g.dataset.key;
