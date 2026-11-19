@@ -527,55 +527,70 @@ a.pc{color:inherit}
 .sv-next{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:30px}
 .sv-next a{border:1px solid var(--line);border-radius:16px;padding:16px;font-size:14px;background:rgba(255,255,255,.4);transition:background .3s}
 .sv-next a:hover{background:#fff}
-/* ===== Lakeview-style form ===== */
-.hstart{padding:110px 0;background:var(--stone,#E9E3D6)}
-.hstart.dkf{background:var(--forest);color:var(--cream)}
-.fhead{text-align:center;max-width:760px;margin:0 auto 40px}
-.fhead .lbl{justify-content:center}
-.zf{max-width:980px;margin:0 auto;background:var(--card);color:var(--ink);border-radius:30px;box-shadow:0 40px 90px -40px rgba(19,32,26,.45);overflow:hidden;border:1px solid rgba(19,32,26,.06)}
-.zf .bar{display:flex;align-items:center;gap:18px;padding:18px 26px;border-bottom:1px solid var(--line)}
-.zf .cnt{font-size:14px;color:var(--mute);min-width:44px}.zf .cnt b{color:var(--forest)}
-.zf .trk{flex:1;height:5px;border-radius:5px;background:#ECE7DC;overflow:hidden}
-.zf .trk i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,var(--moss),var(--oak));transition:width .6s var(--ease)}
-.zf .bar a{font-size:14px;font-weight:500;color:var(--forest)}
-.zf .bd{padding:34px 28px 30px;min-height:420px}
-.zf .q{font-size:clamp(26px,3vw,40px);font-weight:300;letter-spacing:-.04em;text-align:center;margin-bottom:26px}
-.zf .q b{font-weight:500}
-.zf .stp{animation:stin .55s var(--ease)}
-@keyframes stin{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{border:1px solid var(--line);border-radius:22px;padding:10px;background:#F4F1EA;text-align:left;transition:transform .4s var(--ease),border-color .3s,box-shadow .4s;position:relative}
-.card:hover{transform:translateY(-4px);border-color:rgba(19,32,26,.25);box-shadow:0 18px 40px -24px rgba(19,32,26,.4)}
-.card .ill{background:#fff;border-radius:16px;height:170px;display:grid;place-items:center;overflow:hidden}
-.card .ill svg{width:86%;height:86%}
-.card .tx{padding:12px 8px 4px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.card .tx b{display:block;font-weight:500;font-size:17px}
-.card .tx small{font-size:13px;color:var(--mute)}
-.card .rd{width:24px;height:24px;border-radius:50%;border:1px solid var(--line);flex-shrink:0;transition:all .3s;display:grid;place-items:center;font-size:12px;color:#fff}
-.card.on{border-color:var(--forest);background:#EFEBE1}
-.card.on .rd{background:var(--forest);border-color:var(--forest)}
-.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:720px;margin:0 auto}
-.tile{border:1px solid var(--line);border-radius:18px;padding:20px 22px;font-size:17px;text-align:left;background:#F4F1EA;display:flex;justify-content:space-between;align-items:center;transition:all .3s var(--ease)}
-.tile:hover{border-color:rgba(19,32,26,.3);transform:translateY(-2px)}
-.tile.on{background:var(--forest);color:var(--cream);border-color:var(--forest)}
-.tile .rd{width:22px;height:22px;border-radius:50%;border:1px solid currentColor;opacity:.4}
-.tile.on .rd{opacity:1;background:var(--oak);border-color:var(--oak)}
-.ff{max-width:640px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ff .full{grid-column:1/-1}
-.ff input,.ff textarea{width:100%;border:1px solid var(--line);background:#F4F1EA;border-radius:14px;padding:16px;font-size:16px;outline:none;transition:border-color .3s,background .3s}
-.ff input:focus,.ff textarea:focus{border-color:var(--forest);background:#fff}
-.ff textarea{min-height:100px;resize:vertical}
-.ff button{grid-column:1/-1;height:58px;border-radius:99px;background:var(--forest);color:var(--cream);font-size:16px;font-weight:500}
-.zf .back{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14px;color:var(--mute)}
-.zf .back[hidden]{display:none}
-.zf .ok{text-align:center;padding:40px 10px}
-.zf .ok .tk{width:74px;height:74px;border-radius:50%;background:var(--forest);color:var(--oak2);display:grid;place-items:center;margin:0 auto 20px;font-size:30px;animation:pop .6s var(--ease)}
+/* ===== native step form ===== */
+.hstart{padding:120px 0;background:var(--paper);border-top:1px solid var(--line)}
+.zf{display:grid;grid-template-columns:minmax(260px,.78fr) 1.4fr;gap:clamp(36px,6vw,96px);align-items:start}
+.zl{position:sticky;top:110px}
+.zl .zt{margin-top:18px}
+.zp{font-size:16px;color:var(--ink2);margin-top:16px;max-width:42ch}
+.zs{list-style:none;margin-top:34px;border-top:1px solid var(--line)}
+.zs li{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--mute);transition:color .4s}
+.zs li i{font-style:normal;font-size:12px;letter-spacing:.06em;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);transition:all .4s var(--ease)}
+.zs li em{font-style:normal;font-size:13px;color:var(--ink2);text-align:right;max-width:18ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.zs li.cu{color:var(--ink);font-weight:500}.zs li.cu i{background:var(--forest);border-color:var(--forest);color:var(--cream)}
+.zs li.dn{color:var(--ink2)}.zs li.dn i{background:var(--oak2);border-color:var(--oak2);color:var(--forest)}
+.zc{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:26px;font-size:14px;color:var(--mute)}
+.zc a{color:var(--forest);font-weight:500;border-bottom:1px solid rgba(19,32,26,.25)}
+.zbar{display:flex;align-items:center;gap:16px;margin-bottom:30px}
+.zn{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);font-weight:500;white-space:nowrap}
+.zline{flex:1;height:1px;background:var(--line);position:relative}
+.zline i{position:absolute;left:0;top:-1px;height:3px;border-radius:3px;background:var(--forest);width:0;transition:width .7s var(--ease)}
+.zstp{animation:zin .6s var(--ease)}
+@keyframes zin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.zq{font-size:clamp(28px,2.8vw,42px);font-weight:200;letter-spacing:-.04em;line-height:1.08;margin-bottom:28px}
+.zq b{font-weight:500}
+.zgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.zgrid.two{grid-template-columns:1fr 1fr}
+.zo{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:14px;text-align:left;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--card);transition:border-color .35s,background .35s,color .35s,transform .45s var(--ease),box-shadow .45s var(--ease)}
+.zgrid.two .zo{flex-direction:row;align-items:center;justify-content:space-between;padding:22px 22px}
+.zo:hover{border-color:rgba(19,32,26,.32);transform:translateY(-3px);box-shadow:0 22px 40px -30px rgba(19,32,26,.5)}
+.zo .zx b{display:block;font-size:17px;font-weight:500;letter-spacing:-.01em}
+.zgrid.two .zo .zx b{font-weight:400;font-size:17px}
+.zo .zx small{display:block;font-size:13px;color:var(--mute);margin-top:3px}
+.zo .zno{position:absolute;top:18px;right:20px;font-size:11px;letter-spacing:.12em;color:var(--mute)}
+.zill{display:block;width:100%;height:96px;margin:-4px 0 0}
+.zill svg{width:auto;height:100%;max-width:100%}
+.zdot{width:22px;height:22px;border-radius:50%;border:1px solid rgba(19,32,26,.25);flex-shrink:0;transition:all .3s}
+.zo.on{background:var(--forest);border-color:var(--forest);color:var(--cream)}
+.zo.on .zx small,.zo.on .zno{color:#AFB5A6}
+.zo.on .zdot{background:var(--oak2);border-color:var(--oak2);box-shadow:inset 0 0 0 5px var(--forest)}
+.zo.on .ln{stroke:var(--cream)}
+.zo.on .zill .forf{fill:var(--oak2)}
+.zo.on svg [fill="#fff"]{fill:var(--forest)}
+.zback{margin-top:24px;font-size:14px;color:var(--mute);display:inline-flex;gap:6px;transition:color .3s}
+.zback:hover{color:var(--forest)}
+.zf2{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.zf2 label{display:flex;flex-direction:column;gap:7px;font-size:13px;color:var(--ink2);font-weight:500}
+.zf2 label small{font-weight:300;color:var(--mute)}
+.zf2 .full{grid-column:1/-1}
+.zf2 input,.zf2 textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:15px 16px;font-size:16px;font-weight:300;outline:none;transition:border-color .3s,box-shadow .3s;resize:vertical}
+.zf2 input:focus,.zf2 textarea:focus{border-color:var(--forest);box-shadow:0 0 0 4px rgba(19,32,26,.06)}
+.zf2 .pill{grid-column:1/-1;justify-self:start;margin-top:6px;height:56px}
+.zok{padding:10px 0}
+.ztk{width:56px;height:56px;border-radius:50%;background:var(--forest);color:var(--oak2);display:grid;place-items:center;font-size:22px;margin-bottom:22px;animation:pop .6s var(--ease)}
 @keyframes pop{from{transform:scale(.4);opacity:0}}
-.zf .sum{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:16px}
-.zf .sum span{font-size:13px;padding:7px 12px;border-radius:99px;background:#F0ECE3}
+.rg.tx{background:var(--forest2);border:1px solid var(--lineL)}
+.rg.tx:after{display:none}
+.rgsvg{position:absolute;left:24px;right:24px;top:40px;width:calc(100% - 48px);height:46%}
+.rgsvg path{fill:none;stroke:var(--oak2);stroke-width:1.4;stroke-dasharray:600;stroke-dashoffset:600;animation:rgdraw 4s var(--ease) forwards .3s}
+.rgsvg circle{fill:var(--oak2)}
+@keyframes rgdraw{to{stroke-dashoffset:0}}
+@media (max-width:980px){.zf{grid-template-columns:1fr;gap:28px}.zl{position:relative;top:0}.zs{display:none}.zc{margin-top:16px}}
+@media (max-width:640px){.zgrid,.zgrid.two{grid-template-columns:1fr 1fr}.zo{padding:16px}.zill{height:70px}.zo .zx small{display:none}.zo .zx b,.zgrid.two .zo .zx b{font-size:15px}.zf2{grid-template-columns:1fr}.hstart{padding:80px 0}}
+
 /* illustration animations */
-.ill .ln{fill:none;stroke:#1A2B22;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.ill .oakf{fill:#D9B98C}.ill .sage{fill:#A8B59C}.ill .forf{fill:#2C4234}
+.zill .ln{fill:none;stroke:#1A2B22;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.zill .oakf{fill:#D9B98C}.zill .sage{fill:#A8B59C}.zill .forf{fill:#2C4234}
 .a-draw{stroke-dasharray:420;stroke-dashoffset:420;animation:adraw 5s var(--ease) infinite}
 @keyframes adraw{0%{stroke-dashoffset:420}45%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:-420}}
 .a-door{animation:adoor 5s ease infinite;transform-origin:bottom}
@@ -595,9 +610,6 @@ a.pc{color:inherit}
 .a-sun{animation:asun 8s linear infinite;transform-box:fill-box;transform-origin:center}
 @keyframes asun{to{transform:rotate(360deg)}}
 @media (max-width:820px){
-  .cards{grid-template-columns:1fr 1fr}.card .ill{height:120px}.card .tx b{font-size:15px}.card .tx small{display:none}
-  .tiles,.ff{grid-template-columns:1fr}
-  .zf .bd{padding:26px 16px}
   .split{grid-template-columns:1fr;gap:20px}.pillars{grid-template-columns:1fr 1fr}.pillars div:nth-child(3){padding-left:0;border-left:0}.pillars div{padding-bottom:22px}
   .cgrid{grid-template-columns:1fr}
   .inc{grid-template-columns:1fr}.sv-gal{grid-template-columns:1fr;height:auto}.sv-gal img{height:260px}.sv-next{grid-template-columns:1fr 1fr}
@@ -657,11 +669,11 @@ a.pc{color:inherit}
         <p class="p rv d2">New homes, country houses and extensions, designed with you in our countryside studio and taken all the way through planning and onto site.</p>
       </div>
       <div class="eg">
-        <a href="#/services" class="ec big rv"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt=""><span class="tag">Our focus</span><span class="go">↗</span><div class="in"><div class="t">Bespoke <b>new builds</b> &amp; country houses</div><p>From the first site appraisal to a finished home, with one joined-up team.</p></div></a>
+        <a href="#/services" class="ec big rv"><img src="/zjs/img/site-front.jpg" alt=""><span class="tag">Our focus</span><span class="go">↗</span><div class="in"><div class="t">Bespoke <b>new builds</b> &amp; country houses</div><p>From the first site appraisal to a finished home, with one joined-up team.</p></div></a>
         <a href="#/design" class="ec rv d1"><img src="/zjs/img/render.jpg" alt=""><span class="tag">Interactive</span><span class="go">↗</span><div class="in"><div class="t">Design it <b>in 3D</b></div><p>Shape a new build or extension and send us the brief.</p></div></a>
         <a href="#/workshop" class="ec rv d2"><img src="/zjs/img/sketch.jpg" alt=""><span class="tag">Mondays &amp; Tuesdays</span><span class="go">↗</span><div class="in"><div class="t">The <b>design workshop</b></div><p>Two hours at the studio, sketching your project with us.</p></div></a>
         <a href="#/projects" class="ec rv d1"><img src="/zjs/img/oak-entrance.jpg" alt=""><span class="go">↗</span><div class="in"><div class="t">Selected <b>projects</b></div><p>Oak, glass, stone and brick, done properly.</p></div></a>
-        <a href="#/where" class="ec rv d2"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c537bc9d-c277-451b-9476-dd712d663fe2.jpg" alt=""><span class="tag">UK &amp; international</span><span class="go">↗</span><div class="in"><div class="t">Where <b>we work</b></div><p>Hampshire, Surrey, Berkshire, Cornwall and the Alps.</p></div></a>
+        <a href="#/where" class="ec rv d2"><img src="/zjs/img/aerial-wide.jpg" alt=""><span class="tag">UK &amp; international</span><span class="go">↗</span><div class="in"><div class="t">Where <b>we work</b></div><p>Hampshire, Surrey, Berkshire, Cornwall and the Alps.</p></div></a>
       </div>
       <div class="stats rv">
         <div><b>Award-winning</b><span>Design practice</span></div>
@@ -685,11 +697,11 @@ a.pc{color:inherit}
           <div class="bd"><h3>ZJS <b>Architectural Design</b></h3><p>New builds, country houses, extensions and renovations, with planning, building control and structural calculations handled for you.</p><span class="lk">See what we design →</span></div>
         </a>
         <a href="#/services/design-and-build" class="pc rv d1">
-          <div class="im"><img class="a" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg" alt=""><img class="b" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/bbdc49c7-0d70-47e8-98fb-2cfd543e5103.jpg" alt=""><span class="badge soon">Introducing</span><span class="sheen"></span></div>
+          <div class="im"><img class="a" src="/zjs/img/onsite.jpg" alt=""><img class="b" src="/zjs/img/site-front.jpg" alt=""><span class="badge soon">Introducing</span><span class="sheen"></span></div>
           <div class="bd"><h3>ZJS <b>Design &amp; Build</b></h3><p>A more joined-up service, taking projects from design and planning through to construction with our build partners.</p><span class="lk">Register interest →</span></div>
         </a>
         <a href="#/services/land-promotion" class="pc rv d2">
-          <div class="im"><img class="a" src="https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_d9875554-4b87-4179-af63-154b9817ddb4.png" alt=""><img class="b" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/baaa6b3b-5bdc-456e-b758-921a3bda94af.jpg" alt=""><span class="badge soon">Introducing</span><span class="sheen"></span></div>
+          <div class="im"><img class="a" src="/zjs/img/plot-aerial.jpg" alt=""><img class="b" src="/zjs/img/aerial-wide.jpg" alt=""><span class="badge soon">Introducing</span><span class="sheen"></span></div>
           <div class="bd"><h3>ZJS <b>Land &amp; Property</b></h3><p>For landowners: finding development opportunities and promoting land through the planning process to unlock its value.</p><span class="lk">Talk to us about land →</span></div>
         </a>
       </div>
@@ -698,8 +710,7 @@ a.pc{color:inherit}
 
   <section class="hstart" id="hstart">
     <div class="wrap">
-      <div class="fhead"><div class="lbl rv">Start a project</div><h2 class="h2 rv d1" style="margin-top:16px">Tell us about your project <b>in two minutes.</b></h2><p class="p rv d2" style="margin:16px auto 0">A few quick taps and we'll come back to arrange a free initial consultation.</p></div>
-      <div data-slot="form"></div>
+      <div data-slot="form" data-h="Tell us about your project &lt;b&gt;in two minutes.&lt;/b&gt;"></div>
     </div>
   </section>
 
@@ -712,14 +723,14 @@ a.pc{color:inherit}
         <span class="slotchip"><i></i><span>Mondays &amp; Tuesdays · 2-hour sessions</span></span>
         <div style="display:flex;gap:10px;flex-wrap:wrap"><a href="#/workshop/book" class="pill cream">Book a workshop <span class="ar">→</span></a><a href="#/workshop" class="pill ghost">How it works</a></div>
       </div>
-      <div class="r"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_c6c5f8be-99f1-4185-b0e7-a59d0dc40888.png" alt="Architectural card model in the studio"></div>
+      <div class="r"><img src="/zjs/img/sketch.jpg" alt="Hand-drawn elevation from the studio"></div>
     </div>
   </section>
 </main>
 
 <!-- ============ SERVICES ============ -->
 <main class="page" data-page="services">
-  <header class="phead"><div class="bg" style="background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg')"></div><div class="wrap">
+  <header class="phead"><div class="bg" style="background-image:url('/zjs/img/site-front.jpg')"></div><div class="wrap">
     <div class="lbl l">New builds &amp; services</div>
     <h1 class="h1">Bespoke homes, <b>designed around how you live.</b></h1>
     <p class="p">Our focus is new homes and country houses, and we still love a well-designed extension. Every project gets the same design quality and attention. Only the scale of the service changes.</p>
@@ -729,7 +740,7 @@ a.pc{color:inherit}
     <div class="lbl rv">Where are you starting from?</div>
     <h2 class="h2 rv d1" style="margin:18px 0 40px;max-width:20ch">Two kinds of project. <b>The same attention.</b></h2>
     <div class="door-grid">
-      <a href="#/start?type=newbuild" class="door rv"><span class="tag">Our focus</span><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt=""><div class="in"><div class="lbl l">New builds &amp; country houses</div><div class="h3">From a plot of land <b>to a bespoke home.</b></div><p>Contemporary rural homes, replacement dwellings and country houses, from the first site appraisal through planning, technical design and onto site.</p><ul><li>Bespoke new homes</li><li>Replacement dwellings</li><li>Country houses</li><li>Design &amp; build</li></ul></div></a>
+      <a href="#/start?type=newbuild" class="door rv"><span class="tag">Our focus</span><img src="/zjs/img/render.jpg" alt=""><div class="in"><div class="lbl l">New builds &amp; country houses</div><div class="h3">From a plot of land <b>to a bespoke home.</b></div><p>Contemporary rural homes, replacement dwellings and country houses, from the first site appraisal through planning, technical design and onto site.</p><ul><li>Bespoke new homes</li><li>Replacement dwellings</li><li>Country houses</li><li>Design &amp; build</li></ul></div></a>
       <a href="#/start?type=extension" class="door rv d1"><img src="/zjs/img/kitchen.jpg" alt=""><div class="in"><div class="lbl l">Extensions &amp; renovations</div><div class="h3">Make the home you have <b>work for how you live now.</b></div><p>Rear, side and wraparound extensions, glazed links and whole-house remodels, designed around light, flow and value.</p><ul><li>Rear &amp; side extensions</li><li>Remodels</li><li>Planning &amp; building control</li></ul></div></a>
     </div>
     <div class="svc">
@@ -864,7 +875,7 @@ a.pc{color:inherit}
     <div class="lbl l">How a project comes together</div>
     <h2 class="h2" style="margin-top:18px;max-width:18ch">From a survey <b>to the day you move in.</b></h2>
     <div class="grid">
-      <div class="pics" id="pics"><img src="/zjs/img/drone-roof.jpg" class="on" alt=""><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_c6c5f8be-99f1-4185-b0e7-a59d0dc40888.png" alt=""><img src="/zjs/img/render.jpg" alt=""><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg" alt=""><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg" alt=""></div>
+      <div class="pics" id="pics"><img src="/zjs/img/drone-roof.jpg" class="on" alt=""><img src="/zjs/img/sketch.jpg" alt=""><img src="/zjs/img/render.jpg" alt=""><img src="/zjs/img/onsite.jpg" alt=""><img src="/zjs/img/rear.jpg" alt=""></div>
       <div id="steps">
         <div class="s on"><small>01 · SURVEY</small><h3>We start with what's already there.</h3><p>Measured surveys, drone photography and home scanning, so design starts from accurate drawings, not guesswork.</p></div>
         <div class="s"><small>02 · DESIGN WORKSHOP</small><h3>Ideas, shaped with you in the studio.</h3><p>Two-hour design workshops at our countryside studio, sketching and modelling options together in real time.</p></div>
@@ -878,7 +889,7 @@ a.pc{color:inherit}
 
 <!-- ============ WORKSHOP ============ -->
 <main class="page" data-page="workshop">
-  <header class="phead"><div class="bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_c6c5f8be-99f1-4185-b0e7-a59d0dc40888.png')"></div><div class="wrap">
+  <header class="phead"><div class="bg" style="background-image:url('/zjs/img/sketch.jpg')"></div><div class="wrap">
     <div class="lbl l">The design workshop</div>
     <h1 class="h1">Two hours that <b>shape your whole project.</b></h1>
     <p class="p">Our design workshops are how every ZJS project really begins. You come to the countryside studio near Odiham and we design with you, around the table, in real time.</p>
@@ -922,7 +933,7 @@ a.pc{color:inherit}
 
 <!-- ============ WHERE WE WORK ============ -->
 <main class="page" data-page="where">
-  <header class="phead"><div class="bg" style="background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c537bc9d-c277-451b-9476-dd712d663fe2.jpg')"></div><div class="wrap">
+  <header class="phead"><div class="bg" style="background-image:url('/zjs/img/aerial-wide.jpg')"></div><div class="wrap">
     <div class="lbl l">Where we work</div>
     <h1 class="h1">Rooted in Hampshire. <b>Designing further afield.</b></h1>
     <p class="p">From villages around Odiham to the Cornish coast and alpine ski resorts, wherever the site, the same countryside studio designs it.</p>
@@ -931,8 +942,8 @@ a.pc{color:inherit}
   <section class="where"><div class="wrap">
     <div class="regions">
       <div class="rg rv"><img src="/zjs/img/garden-high.jpg" alt=""><div class="in"><div class="lbl l">Home counties</div><h3>Hampshire, Surrey <b>&amp; Berkshire</b></h3><p>Our home patch, centred on the studio near Odiham.</p><div class="pl"><span>Odiham</span><span>Fleet</span><span>Hook</span><span>Hartley Wintney</span><span>Farnham</span><span>Basingstoke</span></div></div></div>
-      <div class="rg rv d1"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/f63b6d8d-1dac-43b7-a30a-203b1193dfd6.jpg" alt=""><div class="in"><div class="lbl l">Coastal</div><h3><b>Cornwall</b></h3><p>Coastal homes and second homes on the north and south coasts.</p><div class="pl"><span>Rock</span><span>Polzeath</span><span>Mevagissey</span><span>Portmellon</span></div></div></div>
-      <div class="rg rv d2"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/c537bc9d-c277-451b-9476-dd712d663fe2.jpg" alt=""><div class="in"><div class="lbl l">International</div><h3>Ski chalets <b>&amp; the Alps</b></h3><p>Chalets and mountain homes in Europe's best-known resorts.</p><div class="pl"><span>Verbier</span><span>Méribel</span><span>Courchevel</span><span>Val d'Isère</span><span>Chamonix</span><span>Zermatt</span></div></div></div>
+      <div class="rg tx rv d1"><svg class="rgsvg" viewBox="0 0 300 200"><path d="M30 150 C 70 140, 90 120, 130 118 S 200 96, 240 70 L 268 52" /><circle cx="268" cy="52" r="4"/><circle cx="180" cy="100" r="3"/><circle cx="120" cy="120" r="3"/></svg><div class="in"><div class="lbl l">Coastal</div><h3><b>Cornwall</b></h3><p>Coastal homes and second homes on the north and south coasts.</p><div class="pl"><span>Rock</span><span>Polzeath</span><span>Mevagissey</span><span>Portmellon</span></div></div></div>
+      <div class="rg tx rv d2"><svg class="rgsvg" viewBox="0 0 300 200"><path d="M10 170 L 70 90 L 100 120 L 150 50 L 200 110 L 230 80 L 290 170" /><path d="M136 70 L150 50 L164 70" /></svg><div class="in"><div class="lbl l">International</div><h3>Ski chalets <b>&amp; the Alps</b></h3><p>Chalets and mountain homes in Europe's best-known resorts.</p><div class="pl"><span>Verbier</span><span>Méribel</span><span>Courchevel</span><span>Val d'Isère</span><span>Chamonix</span><span>Zermatt</span></div></div></div>
     </div>
     <div class="lbl rv" style="margin-top:70px">International</div>
     <div class="intl">
@@ -948,9 +959,8 @@ a.pc{color:inherit}
     <div class="vill"><div class="track" id="v1"></div></div>
     <div class="vill r"><div class="track" id="v2"></div></div>
   </div></section>
-  <section class="hstart dkf" id="wstart"><div class="wrap">
-    <div class="fhead"><div class="lbl l">Start a project</div><h2 class="h2" style="margin-top:16px">Wherever it is, <b>tell us about it.</b></h2></div>
-    <div data-slot="form"></div>
+  <section class="hstart" id="wstart"><div class="wrap">
+    <div data-slot="form" data-h="Wherever it is, &lt;b&gt;tell us about it.&lt;/b&gt;"></div>
   </div></section>
 </main>
 
@@ -960,14 +970,13 @@ a.pc{color:inherit}
 <!-- ============ START ============ -->
 <main class="page" data-page="start">
   <section class="hstart" style="padding-top:140px;min-height:100vh"><div class="wrap">
-    <div class="fhead"><div class="lbl">Start a project</div><h1 class="h2" style="margin-top:16px">Tell us about your project <b>in two minutes.</b></h1><p class="p" style="margin:16px auto 0">A few quick taps. We'll come back to you to arrange a free initial consultation.</p></div>
-    <div data-slot="form"></div>
+    <div data-slot="form" data-h="Tell us about your project &lt;b&gt;in two minutes.&lt;/b&gt;"></div>
   </div></section>
 </main>
 
 <!-- ============ STUDIO ============ -->
 <main class="page" data-page="studio">
-  <header class="phead"><div class="bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_c6c5f8be-99f1-4185-b0e7-a59d0dc40888.png')"></div><div class="wrap">
+  <header class="phead"><div class="bg" style="background-image:url('/zjs/img/oak-interior.jpg')"></div><div class="wrap">
     <div class="lbl l">The studio</div>
     <h1 class="h1">A countryside studio, <b>near Odiham.</b></h1>
     <p class="p">We're an award-winning practice with a personal, hands-on approach to every project. Our countryside setting reflects our passion for country homes, rural properties and design that responds to its surroundings.</p>
@@ -1004,8 +1013,7 @@ a.pc{color:inherit}
     </div>
   </div></header>
   <section class="hstart"><div class="wrap">
-    <div class="fhead"><div class="lbl">Start a project</div><h2 class="h2" style="margin-top:16px">Or tell us about it <b>here.</b></h2></div>
-    <div data-slot="form"></div>
+    <div data-slot="form" data-h="Or tell us about it &lt;b&gt;here.&lt;/b&gt;"></div>
   </div></section>
 </main>
 
@@ -1052,7 +1060,7 @@ function route(){
   $$('[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===(page==='svc'?'services':page)));
   $$(`.page.on .rv`).forEach(el=>io.observe(el));
   if(page==='design'){if(window.ZJS3D)ZJS3D.show();else addEventListener('zjs3d-ready',()=>ZJS3D.show(),{once:true})}
-  const slot=$(`.page.on [data-slot="form"]`);if(slot&&ZF.el.parentNode!==slot){slot.appendChild(ZF.el)}
+  const slot=$(`.page.on [data-slot="form"]`);if(slot){if(ZF.el.parentNode!==slot)slot.appendChild(ZF.el);ZF.title(slot.dataset.h)}
   const params=new URLSearchParams(qs||'');if(params.get('type'))ZF.start(params.get('type'));
   const anchor=parts[1]==='book'?'#book':(page==='where'&&parts[1]==='start')?'#wstart':null;
   requestAnimationFrame(()=>{if(anchor)$(anchor).scrollIntoView({behavior:'smooth'});else scrollTo({top:0,behavior:'instant'})});
@@ -1115,10 +1123,10 @@ addEventListener('keydown',e=>{if(!$('#lb').classList.contains('open'))return;if
 
 /* services pages */
 const SVC={
- 'new-builds':{t:'New builds',h:'Bespoke new homes <b>&amp; country houses.</b>',img:'https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg',type:'newbuild',
+ 'new-builds':{t:'New builds',h:'Bespoke new homes <b>&amp; country houses.</b>',img:'/zjs/img/site-front.jpg',type:'newbuild',
    p:'Contemporary rural homes, replacement dwellings and country houses, designed around how you live and the land they sit in. We take you from the first site appraisal through planning, technical design and onto site.',
    inc:[['Site appraisal','We look at the plot, its constraints and its potential before anything is drawn.'],['Design workshops','Ideas sketched and modelled with you at our countryside studio.'],['3D visuals','See light, scale and views before you commit.'],['Planning application','Prepared and managed for you, with pre-application advice where it helps.'],['Technical design','Building regulations, structural calculations and drawings to build from.'],['Build partners','The option to go on to construction through ZJS Design & Build.']],
-   gal:['https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg','/zjs/img/site-front.jpg','/zjs/img/gate.jpg']},
+   gal:['/zjs/img/render.jpg','/zjs/img/onsite.jpg','/zjs/img/gate.jpg']},
  'extensions':{t:'Extensions',h:'Extensions that <b>change how a home works.</b>',img:'/zjs/img/kitchen.jpg',type:'extension',
    p:'Rear, side and wraparound extensions, glazed links and garden rooms, designed around light, flow and long-term value. Extensions are the bread and butter of the practice, and get the same design care as a new home.',
    inc:[['Measured survey','Accurate drawings of the house as it is today.'],['Options in a workshop','Layouts and massing tested with you around the table.'],['Planning or PD check','Householder planning, or confirming permitted development.'],['Building regulations','Technical drawings and building control approval.'],['Structural calculations','Steels, beams and foundations specified properly.'],['Roof lights & glazing','Lanterns, glazed gables, bifolds and Crittall-style doors.']],
@@ -1127,18 +1135,18 @@ const SVC={
    p:'Whole-house remodels, period and rural properties and substantial renovations. We explore how an existing property can be transformed to better suit modern life while adding long-term value.',
    inc:[['Survey & home scanning','A clear picture of the building before design starts.'],['Remodel options','New layouts, light and flow worked through with you.'],['Period & rural homes','Character properties treated with care.'],['Planning where needed','Applications when the outside of the building changes.'],['Building regulations','Technical design and approvals.'],['Interiors & detail','Stone, oak, brick and steel chosen with the architecture.']],
    gal:['/zjs/img/landing.jpg','/zjs/img/balcony.jpg','/zjs/img/bathroom.jpg']},
- 'development':{t:'Development',h:'Small developments, <b>designed properly.</b>',img:'https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/2c5cf7df-5cb9-4ece-8a52-87999a86137f.jpg',type:'dev',
+ 'development':{t:'Development',h:'Small developments, <b>designed properly.</b>',img:'/zjs/img/plot-aerial.jpg',type:'dev',
    p:'Design and planning for small residential schemes, from a pair of homes to a handful on a rural site. Thoughtful design that responds to its surroundings tends to make planning, and selling, easier.',
    inc:[['Site appraisal','Capacity, access and constraints looked at early.'],['Scheme design','Layouts and house types that suit the location.'],['Pre-application advice','Testing the scheme with the planners first.'],['Planning application','Prepared and managed through to a decision.'],['Technical design','Drawings and approvals ready for the build.'],['Build partners','Construction through ZJS Design & Build, being introduced.']],
-   gal:['https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/2c5cf7df-5cb9-4ece-8a52-87999a86137f.jpg','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/bbdc49c7-0d70-47e8-98fb-2cfd543e5103.jpg']},
- 'land-promotion':{t:'Land promotion',h:'Unlock the value <b>in your land.</b>',img:'https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_d9875554-4b87-4179-af63-154b9817ddb4.png',type:'promo',soon:1,
+   gal:['/zjs/img/aerial-wide.jpg','/zjs/img/render.jpg','/zjs/img/onsite.jpg']},
+ 'land-promotion':{t:'Land promotion',h:'Unlock the value <b>in your land.</b>',img:'/zjs/img/aerial-wide.jpg',type:'promo',soon:1,
    p:'ZJS Land & Property is being introduced for landowners: identifying development opportunities and promoting land through the planning process to help unlock and maximise its value.',
    inc:[['Opportunity review','An honest look at what your land could become.'],['Planning strategy','The right route through the local plan and planning system.'],['Design-led proposals','Schemes designed to win support.'],['Planning applications','Prepared and managed for you.'],['Commercial awareness','Value and deliverability considered throughout.'],['Next steps','Sell with consent, develop, or partner.']],
-   gal:['https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261115_185154_d9875554-4b87-4179-af63-154b9817ddb4.png','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/baaa6b3b-5bdc-456e-b758-921a3bda94af.jpg','/zjs/img/drone-roof.jpg']},
- 'design-and-build':{t:'Design & build',h:'One team, <b>concept to completion.</b>',img:'https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg',type:'dnb',soon:1,
+   gal:['/zjs/img/plot-aerial.jpg','/zjs/img/aerial-wide.jpg','/zjs/img/drone-roof.jpg']},
+ 'design-and-build':{t:'Design & build',h:'One team, <b>concept to completion.</b>',img:'/zjs/img/onsite.jpg',type:'dnb',soon:1,
    p:'Through ZJS Design & Build we are introducing a more joined-up service, taking projects from initial concept through planning, technical design and construction with our build partners.',
    inc:[['One point of contact','The team that designed it stays with it on site.'],['Design & planning','Everything from the first sketch to consent.'],['Technical design','Drawn to be built, with buildability in mind.'],['Build partners','Construction through trusted partners.'],['Budget & programme','Costs and timings considered from the outset.'],['Handover','A finished home, done properly.']],
-   gal:['https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/64b1fc5e-0aff-4557-b0ab-c73fdf396a97.jpg','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/bbdc49c7-0d70-47e8-98fb-2cfd543e5103.jpg','https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/1b931947-b5da-4386-8121-61b80b4b006e.jpg']},
+   gal:['/zjs/img/onsite.jpg','/zjs/img/site-front.jpg','/zjs/img/rear.jpg']},
 };
 function renderSvc(k){const d=SVC[k];const others=Object.entries(SVC).filter(([x])=>x!==k);
   $('#svcPage').innerHTML=`<header class="sv-hero"><img src="${d.img}" alt=""><div class="wrap"><div class="lbl l">${d.soon?'Introducing · ':''}${d.t}</div><h1 class="h1" style="margin-top:18px;max-width:16ch">${d.h}</h1><p class="p">${d.p}</p><div class="crumbs"><a href="#/start?type=${d.type}" class="pill oak">Start your ${d.t.toLowerCase()} project <span class="ar">→</span></a><a href="#/workshop/book" class="pill ghost">Book a design workshop</a></div></div></header>
@@ -1146,7 +1154,7 @@ function renderSvc(k){const d=SVC[k];const others=Object.entries(SVC).filter(([x
   <div class="inc">${d.inc.map((x,i)=>`<div class="rv ${['','d1','d2'][i%3]}"><i>${String(i+1).padStart(2,'0')}</i><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div>
   <div class="sv-gal rv">${d.gal.map(g=>`<img src="${g}" alt="" loading="lazy">`).join('')}</div>
   <div class="lbl rv" style="margin-top:70px">More services</div><div class="sv-next">${others.map(([x,o])=>`<a href="#/services/${x}">${o.t} →</a>`).join('')}</div></div></section>
-  <section class="hstart"><div class="wrap"><div class="fhead"><div class="lbl">Start a project</div><h2 class="h2" style="margin-top:16px">Tell us about your <b>${d.t.toLowerCase()}.</b></h2></div><div data-slot="form"></div></div></section>`;
+  <section class="hstart"><div class="wrap"><div data-slot="form" data-h="Tell us about your &lt;b&gt;${d.t.toLowerCase()}.&lt;/b&gt;"></div></div></section>`;
 }
 
 /* ===== Lakeview-style step form ===== */
@@ -1164,29 +1172,33 @@ const FT={
  promo:{n:'Land promotion',s:'Unlock your land',steps:[['How much land?',['Under 1 acre','1–5 acres','5–20 acres','20 acres +']],['What is it used for now?',['Agricultural','Paddock or garden','Brownfield','Woodland']],['What would you like to do?',['Sell with planning','Develop it myself','Joint venture','Just exploring']]]},
  reno:{n:'Renovation',s:'Remodel the house',steps:[['What kind of property?',['Period home','Listed building','Barn or rural','Modern house']],['What is the scope?',['Remodel inside','Whole-house refurb','Renovate and extend','Conversion']],['Budget',['Under £150k','£150k–£400k','£400k–£1m','£1m +']]]},
  dnb:{n:'Design & build',s:'Concept to completion',steps:[['What would we design and build?',['New home','Country house','Extension','Renovation']],['Where are you now?',['Just an idea','Have drawings','Have planning','Ready to build']],['When would you like to start?',['Within 6 months','6–12 months','12 months +','Not sure']]]}};
+const SHORT={newbuild:['Site','Style','Size','Budget'],extension:['Type','Size','Roof','Budget'],dev:['Homes','Site','Planning'],promo:['Land','Use','Goal'],reno:['Property','Scope','Budget'],dnb:['Project','Stage','Timing']};
 const ZF=(function(){
   const el=document.createElement('div');el.className='zf';
-  el.innerHTML=`<div class="bar"><span class="cnt"></span><span class="trk"><i></i></span><a href="tel:+447533625173">07533 625173</a></div><div class="bd"></div>`;
-  let type=null,step=0,ans=[];const bd=el.querySelector('.bd');
-  const total=()=>type?FT[type].steps.length+2:5;
-  function prog(){const t=total(),c=Math.min(step+1,t);el.querySelector('.cnt').innerHTML=`<b>${c}</b> / ${t}`;el.querySelector('.trk i').style.width=(c/t*100)+'%'}
-  function back(){return `<button type="button" class="back" ${step===0?'hidden':''}>← Back</button>`}
-  function draw(){prog();let h='';
-    if(step===0){h=`<div class="stp"><h3 class="q">What are you <b>planning?</b></h3><div class="cards">${Object.entries(FT).map(([k,v])=>`<button type="button" class="card ${type===k?'on':''}" data-t="${k}"><div class="ill">${ILL[k]}</div><div class="tx"><span><b>${v.n}</b><small>${v.s}</small></span><span class="rd">${type===k?'✓':''}</span></div></button>`).join('')}</div></div>`}
-    else if(step<=FT[type].steps.length){const [q,o]=FT[type].steps[step-1];h=`<div class="stp"><h3 class="q">${q}</h3><div class="tiles">${o.map(x=>`<button type="button" class="tile ${ans[step-1]===x?'on':''}">${x}<span class="rd"></span></button>`).join('')}</div>${back()}</div>`}
-    else if(step===FT[type].steps.length+1){h=`<div class="stp"><h3 class="q">Where should we <b>send your ideas?</b></h3><form class="ff"><input class="full" name="site" placeholder="Site postcode, village or resort"><input required name="name" placeholder="Your name"><input required name="phone" type="tel" placeholder="Phone"><input class="full" name="email" type="email" placeholder="Email"><textarea class="full" name="msg" placeholder="Anything else we should know? (optional)"></textarea><button type="submit">Send to the studio →</button></form>${back()}</div>`}
-    else{h=`<div class="ok stp"><div class="tk">✓</div><h3 class="q" style="margin-bottom:8px">Thank you, <b>it's on its way.</b></h3><p class="p" style="margin:0 auto">Your email app has opened with everything filled in. Press send and we'll be in touch to arrange a free initial consultation.</p><div class="sum">${[FT[type].n,...ans].map(a=>`<span>${a}</span>`).join('')}</div><button type="button" class="back" data-reset>Start again</button></div>`}
-    bd.innerHTML=h;if(el.isConnected&&ZF_READY){const r=el.getBoundingClientRect();if(r.top<80||r.top>innerHeight*.6)scrollTo({top:scrollY+r.top-100,behavior:'smooth'})}
-    bd.querySelectorAll('.card').forEach(b=>b.onclick=()=>{if(type!==b.dataset.t){type=b.dataset.t;ans=[]}b.classList.add('on');setTimeout(()=>{step=1;draw()},260)});
-    bd.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{ans[step-1]=b.textContent.trim();b.classList.add('on');setTimeout(()=>{step++;draw()},240)});
-    const bk=bd.querySelector('.back:not([data-reset])');if(bk)bk.onclick=()=>{step=Math.max(0,step-1);draw()};
-    const rs=bd.querySelector('[data-reset]');if(rs)rs.onclick=()=>{type=null;ans=[];step=0;draw()};
-    const f=bd.querySelector('form');if(f)f.onsubmit=e=>{e.preventDefault();const d=new FormData(f);const qs=FT[type].steps.map((s,i)=>s[0]+': '+(ans[i]||'-')).join('\n');
+  el.innerHTML=`<aside class="zl"><div class="lbl">Start a project</div><h2 class="h2 zt"></h2><p class="zp">A few quick taps, then we'll be in touch to arrange a free initial consultation at the studio.</p><ol class="zs"></ol><div class="zc"><span>Prefer to talk?</span><a href="tel:+447533625173">07533 625173</a><a href="mailto:zjsarchitecturaldesign@gmail.com">Email the studio</a></div></aside><div class="zr"><div class="zbar"><span class="zn"></span><span class="zline"><i></i></span></div><div class="zb"></div></div>`;
+  let type=null,step=0,ans=[];const zb=el.querySelector('.zb');let ready=false;
+  const names=()=>['Project',...(type?SHORT[type]:['Questions']),'Details'];
+  const total=()=>names().length;
+  function side(){const n=names();el.querySelector('.zs').innerHTML=n.map((x,i)=>`<li class="${i<step?'dn':''} ${i===step?'cu':''}"><i>${i<step?'✓':String(i+1).padStart(2,'0')}</i><span>${x}</span>${i<step&&i>0&&ans[i-1]?`<em>${ans[i-1]}</em>`:(i===0&&type&&step>0?`<em>${FT[type].n}</em>`:'')}</li>`).join('');
+    const t=total(),c=Math.min(step+1,t);el.querySelector('.zn').textContent=step>=t?'Sent':(type?`Step ${c} of ${t}`:'Step 1');el.querySelector('.zline i').style.width=(Math.min(step,t)/t*100)+'%'}
+  const back=()=>step?`<button type="button" class="zback">← Back</button>`:'';
+  function draw(){side();let h='';const nq=type?FT[type].steps.length:0;
+    if(step===0){h=`<h3 class="zq">What are you <b>planning?</b></h3><div class="zgrid">${Object.entries(FT).map(([k,v],i)=>`<button type="button" class="zo zi ${type===k?'on':''}" data-t="${k}"><span class="zill">${ILL[k]}</span><span class="zx"><b>${v.n}</b><small>${v.s}</small></span><span class="zno">${String(i+1).padStart(2,'0')}</span></button>`).join('')}</div>`}
+    else if(step<=nq){const [q,o]=FT[type].steps[step-1];h=`<h3 class="zq">${q}</h3><div class="zgrid two">${o.map(x=>`<button type="button" class="zo ${ans[step-1]===x?'on':''}"><span class="zx"><b>${x}</b></span><span class="zdot"></span></button>`).join('')}</div>${back()}`}
+    else if(step===nq+1){h=`<h3 class="zq">Where should we <b>reach you?</b></h3><form class="zf2"><label class="full">Site location<input name="site" placeholder="Postcode, village or resort"></label><label>Name<input required name="name" autocomplete="name"></label><label>Phone<input required name="phone" type="tel" autocomplete="tel"></label><label class="full">Email<input name="email" type="email" autocomplete="email"></label><label class="full">Anything else? <small>Optional</small><textarea name="msg" rows="3"></textarea></label><button type="submit" class="pill forest">Send to the studio <span class="ar">→</span></button></form>${back()}`}
+    else{h=`<div class="zok"><span class="ztk">✓</span><h3 class="zq">Thank you, <b>it's on its way.</b></h3><p class="zp">Your email app has opened with everything filled in. Press send and we'll be in touch to arrange a free initial consultation.</p><button type="button" class="zback" data-reset>Start again</button></div>`}
+    zb.innerHTML=`<div class="zstp">${h}</div>`;
+    if(ready&&el.isConnected){const r=el.getBoundingClientRect();if(r.top<70||r.top>innerHeight*.5)scrollTo({top:scrollY+r.top-110,behavior:'smooth'})}
+    zb.querySelectorAll('.zi').forEach(b=>b.onclick=()=>{if(type!==b.dataset.t){type=b.dataset.t;ans=[]}b.classList.add('on');setTimeout(()=>{step=1;draw()},220)});
+    zb.querySelectorAll('.zo:not(.zi)').forEach(b=>b.onclick=()=>{ans[step-1]=b.textContent.trim();b.classList.add('on');setTimeout(()=>{step++;draw()},200)});
+    const bk=zb.querySelector('.zback:not([data-reset])');if(bk)bk.onclick=()=>{step=Math.max(0,step-1);draw()};
+    const rs=zb.querySelector('[data-reset]');if(rs)rs.onclick=()=>{type=null;ans=[];step=0;draw()};
+    const f=zb.querySelector('form');if(f)f.onsubmit=e=>{e.preventDefault();const d=new FormData(f);const qs=FT[type].steps.map((x,i)=>x[0]+': '+(ans[i]||'-')).join('\n');
       const body=`New enquiry: ${FT[type].n}\n\n${qs}\nSite: ${d.get('site')}\n\n${d.get('msg')}\n\nName: ${d.get('name')}\nPhone: ${d.get('phone')}\nEmail: ${d.get('email')}`;
       location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('New enquiry: '+FT[type].n)+'&body='+encodeURIComponent(body);step++;draw()};
   }
-  let ZF_READY=false;draw();ZF_READY=true;
-  return {el,start(t){if(!FT[t])return;type=t;ans=[];step=1;draw()}};
+  draw();ready=true;
+  return {el,title(h){el.querySelector('.zt').innerHTML=h||'Tell us about your project <b>in two minutes.</b>'},start(t){if(!FT[t])return;type=t;ans=[];step=1;draw()}};
 })();
 
 route();
