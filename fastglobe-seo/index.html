@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fastglobe Mastics · Essex SEO Report</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111318;--mute:#6b7080;--line:#e7e8ec;--bg:#fafafa;--card:#fff;--red:#DB3238;--red-soft:#fdeeee;--green:#1f9d61;--green-soft:#e8f6ef;--amber:#c98a12;--amber-soft:#fdf5e4}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Geist,system-ui,sans-serif;color:var(--ink);background:var(--bg);font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(250,250,250,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px}
+.brand i{width:22px;height:22px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700;font-size:12px}
+.toc{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{font-size:13px;text-decoration:none;color:var(--mute);padding:6px 10px;border-radius:99px;white-space:nowrap}
+.toc a:hover{background:#fff;color:var(--ink)}
+/* hero */
+.hero{padding:88px 0 56px;text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-40% -10% auto;height:120%;background:radial-gradient(closest-side,rgba(219,50,56,.10),transparent 70%);pointer-events:none}
+.eyebrow{font-size:13px;color:var(--red);font-weight:500;letter-spacing:.02em}
+h1{font-size:clamp(34px,5.6vw,60px);font-weight:500;letter-spacing:-.035em;line-height:1.04;margin:14px auto 18px;max-width:820px}
+h1 b{font-weight:600;color:var(--red)}
+.lede{font-size:18px;color:var(--mute);max-width:620px;margin:0 auto;font-weight:300}
+.lede strong{color:var(--ink);font-weight:500}
+.meta{margin-top:22px;font-size:12.5px;color:var(--mute)}
+/* score row */
+.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.score{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;text-align:left}
+.score .n{font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1}
+.score .n small{font-size:18px;color:var(--mute);font-weight:400}
+.score .l{font-size:13.5px;color:var(--mute);margin-top:8px}
+.score.bad .n{color:var(--red)}
+/* sections */
+section.block{padding:72px 0;border-top:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:500}
+h2{font-size:clamp(26px,3.6vw,38px);font-weight:500;letter-spacing:-.03em;line-height:1.1;margin:10px 0 12px}
+h2 b{font-weight:600;color:var(--red)}
+.sub{color:var(--mute);max-width:640px;font-size:16px}
+/* serp table */
+.serp{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.serp-row{display:grid;grid-template-columns:1.25fr 2fr .7fr;gap:16px;padding:16px 22px;border-top:1px solid var(--line);align-items:center;font-size:14.5px}
+.serp-row:first-child{border-top:0;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;padding:12px 22px;background:#fcfcfd}
+.kw{font-weight:500}
+.who{color:var(--mute);font-size:13.5px}
+.who span{color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.pill.no{background:var(--red-soft);color:var(--red)}
+.pill.ok{background:var(--green-soft);color:var(--green)}
+.pill.mid{background:var(--amber-soft);color:var(--amber)}
+.note{font-size:12.5px;color:var(--mute);margin-top:14px}
+/* bars */
+.bars{margin-top:30px;display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:190px 1fr 70px;align-items:center;gap:14px;font-size:14px}
+.bar .t{height:12px;background:#eef0f3;border-radius:99px;overflow:hidden}
+.bar .t i{display:block;height:100%;width:0;background:var(--ink);border-radius:99px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.bar.us .t i{background:var(--red)}
+.bar.us{font-weight:600}
+.bar .v{text-align:right;color:var(--mute);font-variant-numeric:tabular-nums}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.card p{font-size:14.5px;color:var(--mute)}
+.card .tag{margin-bottom:12px}
+/* issues */
+.issues{margin-top:30px;display:grid;gap:12px}
+.issue{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.issue .ix{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:600;font-size:15px;background:var(--red-soft);color:var(--red)}
+.issue.m .ix{background:var(--amber-soft);color:var(--amber)}
+.issue h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.issue p{font-size:14.5px;color:var(--mute);margin-top:4px;max-width:640px}
+.issue .fix{font-size:13.5px;margin-top:10px;color:var(--ink)}
+.issue .fix b{color:var(--green);font-weight:600}
+/* advantage */
+.adv{background:var(--ink);color:#fff;border-radius:28px;padding:48px;margin-top:8px;position:relative;overflow:hidden}
+.adv:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(closest-side,rgba(219,50,56,.45),transparent)}
+.adv h2{color:#fff}
+.adv .sub{color:#a7abb8}
+.adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;position:relative;z-index:1}
+.adv-grid div{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px}
+.adv-grid strong{display:block;font-size:26px;font-weight:600;letter-spacing:-.03em}
+.adv-grid span{font-size:13px;color:#a7abb8}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;position:relative;z-index:1}
+.chips span{font-size:12.5px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.08);color:#e3e5ea}
+/* keyword map */
+.kmap{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.krow{display:grid;grid-template-columns:1.4fr 1.4fr .8fr .8fr;gap:14px;padding:14px 22px;border-top:1px solid var(--line);font-size:14px;align-items:center}
+.krow:first-child{border-top:0;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;background:#fcfcfd;padding:12px 22px}
+.krow code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--mute)}
+.group{padding:12px 22px;background:#f6f6f8;font-size:12.5px;font-weight:600;border-top:1px solid var(--line)}
+/* towns */
+.towns{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.towns span{font-size:13.5px;padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:#fff}
+.towns span.new{border-color:var(--red);color:var(--red);font-weight:500}
+.towns span.top{background:var(--ink);color:#fff;border-color:var(--ink)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--mute);margin-top:16px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+/* roadmap */
+.road{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+.phase{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.phase .when{font-size:12px;color:var(--red);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.phase h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin:6px 0 14px}
+.phase ul{list-style:none;display:grid;gap:9px}
+.phase li{font-size:14px;color:#3a3e4a;padding-left:22px;position:relative}
+.phase li:before{content:"";position:absolute;left:0;top:7px;width:10px;height:10px;border-radius:3px;border:1.5px solid var(--red)}
+/* targets */
+.targets{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.target{border:1px solid var(--line);background:#fff;border-radius:18px;padding:20px}
+.target .from{font-size:13px;color:var(--mute)}
+.target .to{font-size:28px;font-weight:600;letter-spacing:-.03em;margin-top:4px}
+.target .what{font-size:13.5px;color:var(--mute);margin-top:6px}
+footer{padding:48px 0 64px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:860px){
+  .scores,.adv-grid,.targets{grid-template-columns:1fr 1fr}
+  .grid2,.grid3,.road{grid-template-columns:1fr}
+  .serp-row{grid-template-columns:1fr;gap:6px}
+  .serp-row:first-child{display:none}
+  .krow{grid-template-columns:1fr 1fr}
+  .krow:first-child{display:none}
+  .bar{grid-template-columns:120px 1fr 54px;font-size:13px}
+  .adv{padding:30px 22px;border-radius:22px}
+  .issue{grid-template-columns:1fr}
+  .toc{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="brand"><i>F</i>Fastglobe · Essex SEO report</div>
+  <nav class="toc">
+    <a href="#now">Where you rank</a>
+    <a href="#competitors">Competitors</a>
+    <a href="#issues">What's holding you back</a>
+    <a href="#keywords">Keyword plan</a>
+    <a href="#towns">Towns</a>
+    <a href="#plan">90-day plan</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Prepared by Azends · 20 November 2026</div>
+  <h1>Fastglobe should own Essex. <b>Right now Google can't find you.</b></h1>
+  <p class="lede">We checked 11 of the searches Essex customers actually type. <strong>Fastglobe wasn't in the top 10 for any of them</strong>, not even in Canvey Island where your registered office is. The good news: you have 40 years of proof none of these competitors can match. Google just isn't seeing it.</p>
+  <div class="meta">Live Google UK searches, 20 Nov 2026. Rankings shift by searcher location, so treat positions as a snapshot.</div>
+
+  <div class="scores">
+    <div class="score bad reveal"><div class="n">0<small>/11</small></div><div class="l">Essex searches where you're on page 1</div></div>
+    <div class="score bad reveal"><div class="n">~10<small>/46</small></div><div class="l">Essex town pages Google has indexed</div></div>
+    <div class="score bad reveal"><div class="n">14.5<small>MB</small></div><div class="l">Homepage weight (a fast page is under 2MB)</div></div>
+    <div class="score reveal"><div class="n">15</div><div class="l">Google reviews (5.0). Top rival has 184</div></div>
+  </div>
+</div></header>
+
+<!-- WHERE YOU RANK -->
+<section class="block" id="now"><div class="wrap">
+  <div class="kicker">01 · Where you rank today</div>
+  <h2>Page one is full of <b>one-man mastic firms</b>.</h2>
+  <p class="sub">Every search below is a job Fastglobe can do better than whoever's ranking. None of them show Fastglobe.</p>
+
+  <div class="serp reveal">
+    <div class="serp-row"><div>Search</div><div>Who's top right now</div><div>Fastglobe</div></div>
+    <div class="serp-row"><div class="kw">mastic sealant essex</div><div class="who"><span>The Mastic Man</span>, GT Sealants, KM Sealants, UK Mastic Applicators</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">mastic man essex</div><div class="who"><span>The Mastic Man</span>, The Mastic Guys, Essex Mastic Man, Jimmy Harris</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">commercial mastic contractors essex</div><div class="who"><span>Essex Mastic</span>, GT Sealants, KM Sealants, UK Mastic Applicators</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">mastic sealant southend</div><div class="who"><span>The Mastic Guys</span>, Checkatrade, KM Sealants, TrustATrader</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">mastic sealant chelmsford</div><div class="who"><span>GT Sealants</span>, The Mastic Guys, Checkatrade, KM Sealants</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">mastic sealant romford</div><div class="who"><span>The Mastic Guys</span>, Checkatrade, Gould Silicone Sealants</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">mastic sealant canvey island</div><div class="who"><span>GT Sealants</span>, Checkatrade, Sealapp, Mr Mastic</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">expansion joint sealing contractors essex</div><div class="who"><span>Essex Sealants</span>, UK Mastic Applicators, Expansion Joint Contractors</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">anti graffiti coating essex</div><div class="who"><span>Comclean UK</span>, then mostly graffiti cleaning firms</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">concrete repair contractors essex</div><div class="who"><span>Checkatrade</span>, TrustATrader, MPS Concrete</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">rope access contractors essex</div><div class="who"><span>R3 Access</span>, Rappel, Access All Areas</div><div><span class="pill no">Not in top 10</span></div></div>
+  </div>
+  <p class="note">The only searches you show up for are your own name. That means people who already know you can find you, but nobody new can.</p>
+</div></section>
+
+<!-- COMPETITORS -->
+<section class="block" id="competitors"><div class="wrap">
+  <div class="kicker">02 · Who's beating you</div>
+  <h2>They win on <b>reviews and town pages</b>, not on experience.</h2>
+  <p class="sub">Google reviews from the Maps results on the same day. Reviews are the biggest lever in the map pack, and it's where the gap is easiest to see.</p>
+
+  <div class="bars reveal" id="bars">
+    <div class="bar"><span>GT Sealants (Brentwood)</span><div class="t"><i data-w="184"></i></div><span class="v">184 · 4.9</span></div>
+    <div class="bar"><span>KB Mastic &amp; Sealants</span><div class="t"><i data-w="107"></i></div><span class="v">107 · 5.0</span></div>
+    <div class="bar"><span>Clean Cut Sealants (Grays)</span><div class="t"><i data-w="27"></i></div><span class="v">27 · 5.0</span></div>
+    <div class="bar"><span>The Mastic Man (Rayleigh)</span><div class="t"><i data-w="21"></i></div><span class="v">21 · 4.8</span></div>
+    <div class="bar"><span>KM Sealants</span><div class="t"><i data-w="19"></i></div><span class="v">19 · 4.8</span></div>
+    <div class="bar us"><span>Fastglobe</span><div class="t"><i data-w="15"></i></div><span class="v">15 · 5.0</span></div>
+  </div>
+
+  <div class="grid3">
+    <div class="card reveal"><div class="tag"><span class="pill mid">Biggest threat</span></div><h3>GT Sealants</h3><p>Ranks for Essex, Chelmsford and Canvey Island. One strong Essex page, 184 reviews, online price calculator, book online button, WhatsApp. Same commercial + domestic mix as you.</p></div>
+    <div class="card reveal"><div class="tag"><span class="pill mid">Town page machine</span></div><h3>The Mastic Guys / Mr Mastic</h3><p>A page for every town (Southend, Romford, Chelmsford, Canvey). Each title leads with a hook like "2 year guarantee" or "Open everyday". That's what you're up against on domestic searches.</p></div>
+    <div class="card reveal"><div class="tag"><span class="pill ok">Easy to beat</span></div><h3>Commercial searches</h3><p>Anti-graffiti, concrete repair and rope access in Essex are ranked by cleaners and directories. Nobody with your accreditations has a proper Essex page for these. Open goal.</p></div>
+  </div>
+</div></section>
+
+<!-- ADVANTAGE -->
+<section class="block" style="border-top:0;padding-top:0"><div class="wrap">
+  <div class="adv reveal">
+    <div class="kicker" style="color:#a7abb8">03 · Your unfair advantage</div>
+    <h2>No one ranking above you has <b>this</b>.</h2>
+    <p class="sub">Google rewards proof of experience and trust. You have more of it than every Essex competitor combined. It's just buried.</p>
+    <div class="adv-grid">
+      <div><strong>1985</strong><span>Founded. 40+ years trading</span></div>
+      <div><strong>8</strong><span>Accreditations incl. ISO 9001 / 14001 / 45001</span></div>
+      <div><strong>6</strong><span>UK offices, head office in Rainham</span></div>
+      <div><strong>30+</strong><span>Named projects already on your site</span></div>
+    </div>
+    <div class="chips">
+      <span>Emirates Stadium</span><span>Wembley Stadium</span><span>Heathrow Airport</span><span>HMP Chelmsford</span><span>Imperial War Museum</span><span>County Hall</span><span>Lee Tunnel</span><span>One Pancras Square</span><span>Balfour Beatty</span><span>Kier</span><span>Mace</span><span>Laing O'Rourke</span><span>Morgan Sindall</span><span>Wates</span>
+    </div>
+  </div>
+</div></section>
+
+<!-- ISSUES -->
+<section class="block" id="issues"><div class="wrap">
+  <div class="kicker">04 · What's holding you back</div>
+  <h2>Ten fixes, <b>biggest impact first</b>.</h2>
+  <p class="sub">Most of these are quick. Together they're why a 40-year company is losing to firms that started last year.</p>
+
+  <div class="issues">
+    <div class="issue reveal"><div class="ix">1</div><div><h3>Your 46 Essex town pages are mostly invisible</h3><p>The pages exist, but they were moved recently to a 3-level-deep URL (/domestic-mastic-services/mastic-man-essex/mastic-man-chelmsford/) and nothing in your menu links to them. Google has only picked up around 10, and still under the old addresses.</p><div class="fix"><b>Fix:</b> one Essex hub page linked from the main menu, short URLs like /essex/chelmsford/, every town linked from the hub and from its neighbours, then resubmit in Search Console.</div></div><span class="pill no">Critical</span></div>
+
+    <div class="issue reveal"><div class="ix">2</div><div><h3>The town pages are 70 to 80% the same copy</h3><p>The Chelmsford page has around 400 words and only a third mentions Chelmsford. Its photos are labelled "Basildon Mastic Man" and captioned "Wembley Stadium". Google treats near-copies as one page and ranks none of them.</p><div class="fix"><b>Fix:</b> rewrite the top 15 towns with real local detail: jobs done there, areas and postcodes covered, a local project photo, a local review, a town FAQ.</div></div><span class="pill no">Critical</span></div>
+
+    <div class="issue reveal"><div class="ix">3</div><div><h3>Google Business Profile name breaks Google's rules</h3><p>Your listing is called "Fastglobe Mastics - Mastic Man Essex and London". Google's guidelines say extra keywords in the business name aren't allowed and can get the profile suspended. There's also a second listing in Aldridge set as "Manufacturer" with 0 reviews.</p><div class="fix"><b>Fix:</b> rename to "Fastglobe Mastics", set the main category to a sealant/waterproofing contractor type, add every service, photos weekly, posts weekly. Tidy the Aldridge listing.</div></div><span class="pill no">Critical</span></div>
+
+    <div class="issue reveal"><div class="ix">4</div><div><h3>15 reviews vs 184</h3><p>The map pack is where most local calls come from, and review count is a big part of who gets in it. You're 169 behind GT Sealants.</p><div class="fix"><b>Fix:</b> automatic review request by text after every finished job, with a direct link. Even 15 a month closes the gap within a year.</div></div><span class="pill no">Critical</span></div>
+
+    <div class="issue reveal"><div class="ix">5</div><div><h3>No phone number anywhere on the website</h3><p>There's no clickable number on the homepage, Essex pages or domestic page. Only a form and a "WhatsApp us" button with no number. Google and customers both read a visible local number as a trust signal.</p><div class="fix"><b>Fix:</b> 01708 523921 in the header, hero and footer of every page, as a tap-to-call link.</div></div><span class="pill mid">High</span></div>
+
+    <div class="issue m reveal"><div class="ix">6</div><div><h3>Name, address and number don't match anywhere</h3><p>Every footer shows Canvey Island. Google Maps says 1 Barlow Way. Your contact page says Unit 1H, 9 Barlow Way. Emails are hello@ on the site and info@ on directories. The Durham office uses a Leeds 0113 number.</p><div class="fix"><b>Fix:</b> pick one exact Rainham head office format and use it on the site, Google, Yell, Companies House listings and directories.</div></div><span class="pill mid">High</span></div>
+
+    <div class="issue m reveal"><div class="ix">7</div><div><h3>Homepage is 14.5MB and loads 60 files</h3><p>Single photos are 1.5 to 2.1MB PNGs. On a phone over 4G that's slow, and page speed feeds into rankings and into how many people wait for the page.</p><div class="fix"><b>Fix:</b> WebP images under 200KB each, lazy loading, lighter hero. Target under 2MB.</div></div><span class="pill mid">High</span></div>
+
+    <div class="issue m reveal"><div class="ix">8</div><div><h3>No meta descriptions, weak titles</h3><p>The homepage title is "Home - Fastglobe Mastics" and core pages have no meta description at all, so Google writes its own snippet.</p><div class="fix"><b>Fix:</b> e.g. "Mastic &amp; Sealant Contractors Essex | Since 1985 | Fastglobe" with a description that sells the click.</div></div><span class="pill mid">Medium</span></div>
+
+    <div class="issue m reveal"><div class="ix">9</div><div><h3>Google can't read who you are</h3><p>The only structured data is a generic "WebPage". No LocalBusiness, address, opening hours, service areas or review rating. 28 of 29 homepage images have no alt text, and the "Company founded / Completed projects" counters show no numbers to Google.</p><div class="fix"><b>Fix:</b> LocalBusiness + Service + FAQ schema, descriptive alt text, real numbers written in the HTML.</div></div><span class="pill mid">Medium</span></div>
+
+    <div class="issue m reveal"><div class="ix">10</div><div><h3>No commercial pages for Essex, no guides</h3><p>Waterproofing, anti-graffiti, movement joints, concrete repair and rope access only have national pages. No blog or cost guides, so nothing ranks for questions like "how much does mastic cost".</p><div class="fix"><b>Fix:</b> an Essex page per commercial service, plus 2 guides a month answering real questions (cost, how long sealant lasts, mastic vs silicone).</div></div><span class="pill mid">Medium</span></div>
+  </div>
+</div></section>
+
+<!-- KEYWORDS -->
+<section class="block" id="keywords"><div class="wrap">
+  <div class="kicker">05 · Keyword plan</div>
+  <h2>One page for <b>every search that pays</b>.</h2>
+  <p class="sub">Each target gets its own page so nothing competes with itself. Difficulty is based on who ranks today: directories and one-man sites are beatable, established contractors take longer.</p>
+
+  <div class="kmap reveal">
+    <div class="krow"><div>Target search</div><div>Page</div><div>Type</div><div>Difficulty</div></div>
+    <div class="group">Essex hub</div>
+    <div class="krow"><div>mastic sealant essex · mastic man essex</div><div><code>/essex/</code></div><div>Both</div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>commercial sealant contractors essex</div><div><code>/essex/commercial-sealants/</code></div><div>Commercial</div><div><span class="pill ok">Low</span></div></div>
+    <div class="group">Commercial services, Essex</div>
+    <div class="krow"><div>expansion joint sealing essex</div><div><code>/essex/expansion-joints/</code></div><div>Commercial</div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>structural waterproofing essex</div><div><code>/essex/structural-waterproofing/</code></div><div>Commercial</div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>anti graffiti coating essex</div><div><code>/essex/anti-graffiti-coatings/</code></div><div>Commercial</div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>concrete repair contractors essex</div><div><code>/essex/concrete-repair/</code></div><div>Commercial</div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>rope access contractors essex</div><div><code>/essex/rope-access/</code></div><div>Commercial</div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>fire stopping mastic · intumescent sealant</div><div><code>/fire-acoustic-sealants/</code></div><div>Commercial</div><div><span class="pill mid">Medium</span></div></div>
+    <div class="group">Domestic services</div>
+    <div class="krow"><div>bathroom reseal · shower silicone replacement</div><div><code>/bathroom-resealing/</code></div><div>Domestic</div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>window mastic replacement</div><div><code>/window-door-mastic/</code></div><div>Domestic</div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>kitchen worktop sealant</div><div><code>/kitchen-sealant/</code></div><div>Domestic</div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>coloured mastic · colour matched sealant</div><div><code>/coloured-mastic/</code></div><div>Both</div><div><span class="pill ok">Low</span></div></div>
+    <div class="group">Town pages (pattern)</div>
+    <div class="krow"><div>mastic man + town · mastic sealant + town</div><div><code>/essex/{town}/</code></div><div>Domestic</div><div><span class="pill mid">Medium</span></div></div>
+    <div class="group">Guides (answer the question, link to the service)</div>
+    <div class="krow"><div>how much does a mastic man cost</div><div><code>/guides/mastic-cost-essex/</code></div><div>Info</div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>how long does mastic sealant last</div><div><code>/guides/how-long-sealant-lasts/</code></div><div>Info</div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>mastic vs silicone</div><div><code>/guides/mastic-vs-silicone/</code></div><div>Info</div><div><span class="pill ok">Low</span></div></div>
+  </div>
+  <p class="note">Next step: confirm monthly search volumes for this list in Google Keyword Planner before we lock the order of the content calendar.</p>
+</div></section>
+
+<!-- TOWNS -->
+<section class="block" id="towns"><div class="wrap">
+  <div class="kicker">06 · Essex coverage</div>
+  <h2>Rebuild the big towns first, then <b>fill the gaps</b>.</h2>
+  <p class="sub">You already have pages for most of Essex. These are the ones to rewrite properly first, plus the towns missing entirely, including Canvey Island, where your registered office is.</p>
+  <div class="towns reveal">
+    <span class="top">Southend-on-Sea</span><span class="top">Chelmsford</span><span class="top">Colchester</span><span class="top">Basildon</span><span class="top">Romford</span><span class="top">Brentwood</span><span class="top">Rayleigh</span><span class="top">Billericay</span><span class="top">Grays</span><span class="top">Rainham</span><span class="top">Hornchurch</span><span class="top">Leigh-on-Sea</span><span class="top">Wickford</span><span class="top">Upminster</span><span class="top">Loughton</span>
+    <span class="new">Canvey Island</span><span class="new">Benfleet</span><span class="new">Harlow</span><span class="new">Hockley</span><span class="new">South Woodham Ferrers</span><span class="new">Ilford</span><span class="new">Thurrock</span>
+    <span>Braintree</span><span>Witham</span><span>Maldon</span><span>Clacton-on-Sea</span><span>Epping</span><span>Saffron Walden</span><span>Harwich</span><span>Great Dunmow</span><span>Shenfield</span><span>Ingatestone</span><span>Chigwell</span><span>Buckhurst Hill</span><span>Stanford-le-Hope</span><span>Corringham</span><span>Tilbury</span><span>Hadleigh</span><span>Waltham Abbey</span><span>Burnham-on-Crouch</span><span>Halstead</span><span>Tiptree</span><span>Frinton-on-Sea</span><span>Walton-on-the-Naze</span><span>Brightlingsea</span><span>Manningtree</span><span>Wivenhoe</span><span>Ongar</span><span>Hutton</span><span>Danbury</span><span>Hatfield Peverel</span><span>Stansted Mountfitchet</span>
+  </div>
+  <div class="legend"><span><i style="background:var(--ink)"></i>Rewrite first (biggest towns)</span><span><i style="background:var(--red)"></i>Missing, create</span><span><i style="background:#dfe1e6"></i>Keep, improve over time</span></div>
+</div></section>
+
+<!-- PLAN -->
+<section class="block" id="plan"><div class="wrap">
+  <div class="kicker">07 · The 90-day plan</div>
+  <h2>How we get you to <b>number one</b>.</h2>
+  <p class="sub">Local SEO compounds. The quick fixes move you in weeks, the content and reviews are what keep you at the top.</p>
+  <div class="road">
+    <div class="phase reveal"><div class="when">Weeks 1 to 2</div><h3>Stop the leaks</h3><ul>
+      <li>Fix Google Business Profile name, categories, services</li>
+      <li>One consistent address and number everywhere</li>
+      <li>Phone number on every page</li>
+      <li>Titles and descriptions on every core page</li>
+      <li>Compress all images, fix alt text</li>
+      <li>Search Console: submit sitemap, request indexing</li>
+    </ul></div>
+    <div class="phase reveal"><div class="when">Weeks 2 to 6</div><h3>New site, real pages</h3><ul>
+      <li>Launch the new fast website</li>
+      <li>Essex hub in the main menu</li>
+      <li>Rewrite the top 15 town pages with local proof</li>
+      <li>Create the 7 missing towns</li>
+      <li>6 commercial Essex service pages</li>
+      <li>LocalBusiness, Service and FAQ schema</li>
+    </ul></div>
+    <div class="phase reveal"><div class="when">Weeks 6 to 12</div><h3>Build authority</h3><ul>
+      <li>Automatic review requests after every job</li>
+      <li>Project case studies with Essex locations</li>
+      <li>2 guides a month (cost, lifespan, mastic vs silicone)</li>
+      <li>Accreditation and supplier profile links (Sika, CHAS, Constructionline)</li>
+      <li>Weekly Google posts and job photos</li>
+      <li>Monthly ranking report</li>
+    </ul></div>
+  </div>
+
+  <div class="targets">
+    <div class="target reveal"><div class="from">Page 1 searches · now 0</div><div class="to">8+ of 11</div><div class="what">Essex searches on page one by day 90</div></div>
+    <div class="target reveal"><div class="from">Google reviews · now 15</div><div class="to">60+</div><div class="what">By day 90, then 185+ to overtake GT</div></div>
+    <div class="target reveal"><div class="from">Indexed Essex pages · now ~10</div><div class="to">50+</div><div class="what">Every town and service page in Google</div></div>
+    <div class="target reveal"><div class="from">Homepage weight · now 14.5MB</div><div class="to">&lt; 2MB</div><div class="what">Loads fast on a phone</div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Prepared for Fastglobe (Mastics) Limited by Azends.</span>
+  <span>Data: live Google UK searches and Google Maps, fastglobemastics.co.uk crawl, 20 Nov 2026.</span>
+</div></footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const bars=document.getElementById('bars');
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){bars.querySelectorAll('i').forEach(i=>i.style.width=(i.dataset.w/184*100)+'%');o.disconnect()}},{threshold:.3}).observe(bars);
+</script>
+</body>
+</html>
