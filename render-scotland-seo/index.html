@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Render Scotland · Edinburgh SEO Report</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111412;--mute:#6a6f6b;--line:#e6e8e4;--bg:#fafaf8;--card:#fff;--acc:#3f8a2c;--acc-soft:#eef6e8;--red:#cf3a32;--red-soft:#fcecea;--amber:#b9800f;--amber-soft:#fcf4e2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Geist,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.top{position:sticky;top:0;z-index:20;background:rgba(250,250,248,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px}
+.brand svg{flex:none}
+.toc{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.toc a{font-size:13px;text-decoration:none;color:var(--mute);padding:6px 10px;border-radius:99px;white-space:nowrap}
+.toc a:hover{background:#fff;color:var(--ink)}
+.hero{padding:88px 0 56px;text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-40% -10% auto;height:120%;background:radial-gradient(closest-side,rgba(63,138,44,.12),transparent 70%);pointer-events:none}
+.eyebrow{font-size:13px;color:var(--acc);font-weight:500}
+h1{font-size:clamp(34px,5.6vw,60px);font-weight:500;letter-spacing:-.035em;line-height:1.04;margin:14px auto 18px;max-width:860px}
+h1 b,h2 b{font-weight:600;color:var(--acc)}
+.lede{font-size:18px;color:var(--mute);max-width:640px;margin:0 auto;font-weight:300}
+.lede strong{color:var(--ink);font-weight:500}
+.meta{margin-top:22px;font-size:12.5px;color:var(--mute)}
+.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.score{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;text-align:left}
+.score .n{font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1}
+.score .n small{font-size:18px;color:var(--mute);font-weight:400}
+.score .l{font-size:13.5px;color:var(--mute);margin-top:8px}
+.score.bad .n{color:var(--red)}
+.score.good .n{color:var(--acc)}
+section.block{padding:72px 0;border-top:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:500}
+h2{font-size:clamp(26px,3.6vw,38px);font-weight:500;letter-spacing:-.03em;line-height:1.1;margin:10px 0 12px}
+.sub{color:var(--mute);max-width:660px;font-size:16px}
+.serp{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.serp-row{display:grid;grid-template-columns:1.2fr 2fr .9fr;gap:16px;padding:15px 22px;border-top:1px solid var(--line);align-items:center;font-size:14.5px}
+.serp-row:first-child{border-top:0;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;padding:12px 22px;background:#fcfcfb}
+.kw{font-weight:500}
+.who{color:var(--mute);font-size:13.5px}
+.who span{color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.pill.no{background:var(--red-soft);color:var(--red)}
+.pill.ok{background:var(--acc-soft);color:var(--acc)}
+.pill.mid{background:var(--amber-soft);color:var(--amber)}
+.note{font-size:12.5px;color:var(--mute);margin-top:14px}
+.bars{margin-top:30px;display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:230px 1fr 70px;align-items:center;gap:14px;font-size:14px}
+.bar .t{height:12px;background:#eef0ec;border-radius:99px;overflow:hidden}
+.bar .t i{display:block;height:100%;width:0;background:var(--ink);border-radius:99px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.bar.us .t i{background:var(--acc)}
+.bar.us{font-weight:600}
+.bar .v{text-align:right;color:var(--mute);font-variant-numeric:tabular-nums}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.card p{font-size:14.5px;color:var(--mute)}
+.card .tag{margin-bottom:12px}
+/* domains */
+.domains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.dom{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;position:relative}
+.dom code{font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:600}
+.dom ul{list-style:none;margin-top:14px;display:grid;gap:8px}
+.dom li{font-size:14px;color:#3b3f3c;padding-left:20px;position:relative}
+.dom li:before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:50%}
+.dom li.g:before{background:var(--acc)}
+.dom li.r:before{background:var(--red)}
+.dom li.a:before{background:var(--amber)}
+.dom .verdict{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px}
+.dom .verdict b{font-weight:600}
+.flow{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px;flex-wrap:wrap;font-size:14px}
+.flow span{padding:10px 16px;border-radius:99px;border:1px solid var(--line);background:#fff}
+.flow span.main{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
+.flow i{color:var(--mute);font-style:normal}
+.issues{margin-top:30px;display:grid;gap:12px}
+.issue{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.issue .ix{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:600;font-size:15px;background:var(--red-soft);color:var(--red)}
+.issue.m .ix{background:var(--amber-soft);color:var(--amber)}
+.issue h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.issue p{font-size:14.5px;color:var(--mute);margin-top:4px;max-width:660px}
+.issue .fix{font-size:13.5px;margin-top:10px}
+.issue .fix b{color:var(--acc);font-weight:600}
+.adv{background:var(--ink);color:#fff;border-radius:28px;padding:48px;position:relative;overflow:hidden}
+.adv:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(closest-side,rgba(141,198,63,.4),transparent)}
+.adv h2{color:#fff}.adv h2 b{color:#a6d86a}
+.adv .sub{color:#a6aba7}
+.sys{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:30px;position:relative;z-index:1}
+.sys div{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px;position:relative}
+.sys b{display:block;font-size:12px;color:#a6d86a;font-weight:600;letter-spacing:.04em}
+.sys strong{display:block;font-size:15.5px;font-weight:600;margin-top:6px;letter-spacing:-.01em}
+.sys span{display:block;font-size:13px;color:#a6aba7;margin-top:4px}
+.kmap{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.krow{display:grid;grid-template-columns:1.4fr 1.4fr .8fr;gap:14px;padding:14px 22px;border-top:1px solid var(--line);font-size:14px;align-items:center}
+.krow:first-child{border-top:0;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;background:#fcfcfb;padding:12px 22px}
+.krow code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--mute)}
+.group{padding:12px 22px;background:#f5f6f3;font-size:12.5px;font-weight:600;border-top:1px solid var(--line)}
+.towns{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.towns span{font-size:13.5px;padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:#fff}
+.towns span.top{background:var(--ink);color:#fff;border-color:var(--ink)}
+.road{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.phase{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.phase .when{font-size:12px;color:var(--acc);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.phase h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin:6px 0 14px}
+.phase ul{list-style:none;display:grid;gap:9px}
+.phase li{font-size:14px;color:#3a3e3b;padding-left:22px;position:relative}
+.phase li:before{content:"";position:absolute;left:0;top:7px;width:10px;height:10px;border-radius:3px;border:1.5px solid var(--acc)}
+.targets{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.target{border:1px solid var(--line);background:#fff;border-radius:18px;padding:20px}
+.target .from{font-size:13px;color:var(--mute)}
+.target .to{font-size:28px;font-weight:600;letter-spacing:-.03em;margin-top:4px}
+.target .what{font-size:13.5px;color:var(--mute);margin-top:6px}
+footer{padding:48px 0 64px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:860px){
+  .scores,.targets{grid-template-columns:1fr 1fr}
+  .grid3,.road,.domains{grid-template-columns:1fr}
+  .sys{grid-template-columns:1fr 1fr}
+  .serp-row{grid-template-columns:1fr;gap:6px}
+  .serp-row:first-child,.krow:first-child{display:none}
+  .krow{grid-template-columns:1fr 1fr}
+  .bar{grid-template-columns:130px 1fr 54px;font-size:13px}
+  .adv{padding:30px 22px;border-radius:22px}
+  .issue{grid-template-columns:1fr}
+  .toc{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="brand"><svg width="22" height="22" viewBox="0 0 40 40"><rect x="2" y="2" width="22" height="22" rx="6" fill="#8DC63F"/><rect x="16" y="16" width="22" height="22" rx="6" fill="#4E9A2F"/></svg>Render Scotland · SEO report</div>
+  <nav class="toc">
+    <a href="#now">Where you rank</a><a href="#domains">Your 3 websites</a><a href="#competitors">Competitors</a><a href="#issues">What's holding you back</a><a href="#system">The system</a><a href="#plan">90-day plan</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Prepared by Azends · 20 November 2026</div>
+  <h1>Three websites working against each other. <b>One should be winning Edinburgh.</b></h1>
+  <p class="lede">We checked 12 searches people in Edinburgh, West Lothian and Glasgow type when they want a house rendered. <strong>You're on page one for 4 of them, and nowhere for the biggest one: "rendering Edinburgh".</strong> Your reviews are perfect, there just aren't enough of them, and your three sites are splitting what Google gives you.</p>
+  <div class="meta">Live Google UK searches and Google Maps, 20 Nov 2026. Positions shift with where someone searches from, so treat them as a snapshot.</div>
+  <div class="scores">
+    <div class="score bad reveal"><div class="n">4<small>/12</small></div><div class="l">Searches where any of your sites is on page 1</div></div>
+    <div class="score bad reveal"><div class="n">5th</div><div class="l">On Google Maps for "rendering Edinburgh" (last of 5)</div></div>
+    <div class="score bad reveal"><div class="n">6</div><div class="l">Google reviews. The top Edinburgh renderer has 80</div></div>
+    <div class="score good reveal"><div class="n">#1</div><div class="l">For "external rendering Edinburgh". Proof it can work</div></div>
+  </div>
+</div></header>
+
+<section class="block" id="now"><div class="wrap">
+  <div class="kicker">01 · Where you rank today</div>
+  <h2>You win the narrow searches. <b>You miss the big ones.</b></h2>
+  <p class="sub">Most homeowners search "rendering Edinburgh" or "house rendering Edinburgh". That's where the calls are, and that's where you're missing.</p>
+  <div class="serp reveal">
+    <div class="serp-row"><div>Search</div><div>Who's top right now</div><div>You</div></div>
+    <div class="serp-row"><div class="kw">external rendering edinburgh</div><div class="who"><span>externalrenderingedinburgh.co.uk</span> (you), Checkatrade, externalrenderedinburgh.co.uk</div><div><span class="pill ok">#1</span></div></div>
+    <div class="serp-row"><div class="kw">rendering scotland</div><div class="who"><span>renderingscotland.co.uk</span>, then renderscotland.com (you)</div><div><span class="pill ok">#2</span></div></div>
+    <div class="serp-row"><div class="kw">insulated render edinburgh</div><div class="who"><span>IRS Construction</span>, ERG, TrustATrader</div><div><span class="pill mid">#4</span></div></div>
+    <div class="serp-row"><div class="kw">k rend edinburgh</div><div class="who"><span>Checkatrade</span>, K-Rend Contractors, TrustATrader</div><div><span class="pill mid">#8</span></div></div>
+    <div class="serp-row"><div class="kw">rendering edinburgh</div><div class="who"><span>Checkatrade</span>, Probuild Contracts, externalrenderedinburgh.co.uk</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">house rendering edinburgh</div><div class="who"><span>Checkatrade</span>, Probuild Contracts, William Bain</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">roughcasting edinburgh</div><div class="who"><span>roughcastingedinburgh.co.uk</span>, Trusted Trader, William Bain</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">render repair edinburgh</div><div class="who"><span>renderepair.co.uk</span>, Checkatrade, William Bain</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">external wall insulation edinburgh</div><div class="who"><span>Insulation Scotland</span>, ERG, Edinhome</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">rendering livingston</div><div class="who"><span>Checkatrade</span>, externalrenderlivingston.co.uk, Edinhome</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">rendering west lothian</div><div class="who"><span>Checkatrade</span>, ERG, Local Links West Lothian</div><div><span class="pill no">Not in top 10</span></div></div>
+    <div class="serp-row"><div class="kw">rendering glasgow</div><div class="who"><span>Checkatrade</span>, roughcastingglasgow.co.uk, Bell &amp; Higgins</div><div><span class="pill no">Not in top 10</span></div></div>
+  </div>
+  <p class="note">Livingston and West Lothian are on your doorstep (your yard is in Broxburn) and you're not ranking there at all.</p>
+</div></section>
+
+<section class="block" id="domains"><div class="wrap">
+  <div class="kicker">02 · Your three websites</div>
+  <h2>Three sites, one business. <b>Google sees a copy.</b></h2>
+  <p class="sub">renderingedinburgh.co.uk and externalrenderingedinburgh.co.uk show Google the exact same title and description. When Google finds two copies it picks one and ignores the other, so the second site is doing nothing.</p>
+  <div class="domains">
+    <div class="dom reveal"><code>renderscotland.com</code><ul>
+      <li class="g">Your brand, your Google listing points here</li>
+      <li class="g">#2 for "rendering scotland", #4 insulated render</li>
+      <li class="r">Only 10 pages in Google, no town pages</li>
+      <li class="r">Title is "Home - Render Scotland"</li>
+    </ul><div class="verdict"><b>Keep.</b> Make this the main site.</div></div>
+    <div class="dom reveal"><code>externalrenderingedinburgh.co.uk</code><ul>
+      <li class="g">#1 for "external rendering Edinburgh"</li>
+      <li class="r">One page in Google</li>
+      <li class="r">Same title and description as the site below</li>
+      <li class="a">A rival owns externalrenderedinburgh.co.uk, one letter different</li>
+    </ul><div class="verdict"><b>Move last.</b> Redirect into the main site's Edinburgh page once that page is live, then watch it.</div></div>
+    <div class="dom reveal"><code>renderingedinburgh.co.uk</code><ul>
+      <li class="r">One page in Google</li>
+      <li class="r">Doesn't rank for "rendering Edinburgh"</li>
+      <li class="r">Duplicate of the site above</li>
+    </ul><div class="verdict"><b>Redirect now.</b> Point it straight at the new Edinburgh page.</div></div>
+  </div>
+  <div class="flow reveal"><span>renderingedinburgh.co.uk</span><i>→</i><span class="main">renderscotland.com/edinburgh</span><i>←</i><span>externalrenderingedinburgh.co.uk</span></div>
+</div></section>
+
+<section class="block" id="competitors"><div class="wrap">
+  <div class="kicker">03 · Who's beating you</div>
+  <h2>Your reviews are perfect. <b>There just aren't enough.</b></h2>
+  <p class="sub">Google Maps for "rendering Edinburgh". You're the only 5.0 with single-digit reviews, so you show last.</p>
+  <div class="bars reveal" id="bars">
+    <div class="bar"><span>One Up Plastering</span><div class="t"><i data-w="80"></i></div><span class="v">80 · 5.0</span></div>
+    <div class="bar"><span>Edinhome Roughcasting</span><div class="t"><i data-w="66"></i></div><span class="v">66 · 5.0</span></div>
+    <div class="bar"><span>Paintworks &amp; Plastering</span><div class="t"><i data-w="61"></i></div><span class="v">61 · 4.9</span></div>
+    <div class="bar"><span>Edinburgh Render &amp; Roughcasting</span><div class="t"><i data-w="39"></i></div><span class="v">39 · 5.0</span></div>
+    <div class="bar us"><span>Render Scotland</span><div class="t"><i data-w="6"></i></div><span class="v">6 · 5.0</span></div>
+  </div>
+  <div class="grid3">
+    <div class="card reveal"><div class="tag"><span class="pill mid">Brand confusion</span></div><h3>renderingscotland.co.uk</h3><p>Ranks #1 for "rendering scotland" above you and its Google description says "At Render Scotland". scotlandrendering.co.uk is #3. Customers searching your name can land on them.</p></div>
+    <div class="card reveal"><div class="tag"><span class="pill mid">Biggest local threat</span></div><h3>Edinhome &amp; Edinburgh Render</h3><p>66 and 39 reviews, both 20+ years in business, ranking in the map pack and on page one with town-focused pages for roughcasting and rendering.</p></div>
+    <div class="card reveal"><div class="tag"><span class="pill ok">Easy to beat</span></div><h3>West Lothian &amp; repairs</h3><p>"Rendering Livingston", "rendering West Lothian" and "render repair Edinburgh" are mostly directories and small sites. You're based in Broxburn, these should be yours.</p></div>
+  </div>
+</div></section>
+
+<section class="block" id="issues"><div class="wrap">
+  <div class="kicker">04 · What's holding you back</div>
+  <h2>Ten fixes, <b>biggest impact first</b>.</h2>
+  <div class="issues">
+    <div class="issue reveal"><div class="ix">1</div><div><h3>Three sites splitting one business</h3><p>Two of them are near copies, so Google ranks one and ignores the other. Every link, review and mention is split three ways instead of building one strong site.</p><div class="fix"><b>Fix:</b> one main site on renderscotland.com, 301 redirect the other two page by page.</div></div><span class="pill no">Critical</span></div>
+    <div class="issue reveal"><div class="ix">2</div><div><h3>No page for Edinburgh, Livingston or any town</h3><p>The site lists Edinburgh, Livingston, Glasgow, Aberdeen, Kelso, Dundee and Perth but has no page for any of them. Google needs a page per place to rank you there.</p><div class="fix"><b>Fix:</b> a proper page for each town with local jobs, photos and reviews, starting with Edinburgh, Livingston, Broxburn and West Lothian.</div></div><span class="pill no">Critical</span></div>
+    <div class="issue reveal"><div class="ix">3</div><div><h3>6 reviews vs 80</h3><p>Every review is 5 stars, and they mention Andrea, David, Paul and Chris by name. That's great. But Google ranks the map pack heavily on volume, so you show last.</p><div class="fix"><b>Fix:</b> automatic review request by text the day each job finishes. 10 a month takes you past 80 within the year.</div></div><span class="pill no">Critical</span></div>
+    <div class="issue reveal"><div class="ix">4</div><div><h3>Google Business Profile name is keyword stuffed</h3><p>It's listed as "Render Scotland - Exterior Rendering Services &amp; Roughcasting Edinburgh". Google's rules say extra keywords in the name aren't allowed and can get the profile suspended. Category is "Plasterer", not rendering.</p><div class="fix"><b>Fix:</b> rename to "Render Scotland", add rendering and insulation categories and services, post weekly with job photos.</div></div><span class="pill no">Critical</span></div>
+    <div class="issue reveal"><div class="ix">5</div><div><h3>Homepage tells Google nothing</h3><p>Title "Home - Render Scotland", H1 just "Render Scotland". No mention of Edinburgh, rendering or K-Rend where Google looks first.</p><div class="fix"><b>Fix:</b> e.g. "Rendering Edinburgh &amp; West Lothian | K-Rend &amp; Insulated Render | Render Scotland".</div></div><span class="pill mid">High</span></div>
+    <div class="issue m reveal"><div class="ix">6</div><div><h3>Your phone number is wrong online</h3><p>Facebook shows the mobile as "0770713722", one digit short. The site has no street address but Google Maps shows Thistle Industrial Estate, Broxburn. The site says "Boxburn".</p><div class="fix"><b>Fix:</b> one exact name, address and number on the site, Google, Facebook, Yell and directories.</div></div><span class="pill mid">High</span></div>
+    <div class="issue m reveal"><div class="ix">7</div><div><h3>Broken and duplicate links</h3><p>The "Render Systems" link points to http://Render-Systems, which goes nowhere. Service links mix capital and lowercase URLs, which makes duplicate pages. Blog posts sit under /uncategorized/.</p><div class="fix"><b>Fix:</b> clean lowercase URLs, a proper /guides/ section, fix the menu.</div></div><span class="pill mid">Medium</span></div>
+    <div class="issue m reveal"><div class="ix">8</div><div><h3>No proof on the page</h3><p>There's a "Safety accreditation's" heading with nothing under it. You're SSIP and Acclaim accredited and use Sto, Parex, Dryvit, Knauf and Enewall systems, but none of that is spelled out as text Google can read.</p><div class="fix"><b>Fix:</b> accreditations, systems, guarantees and years trading written out on every service page.</div></div><span class="pill mid">Medium</span></div>
+    <div class="issue m reveal"><div class="ix">9</div><div><h3>Google can't read your images or your business</h3><p>Most images have empty alt text. There's no LocalBusiness schema telling Google your address, area and reviews. The footer still says 2023.</p><div class="fix"><b>Fix:</b> LocalBusiness, Service and FAQ schema, alt text that describes each job and town.</div></div><span class="pill mid">Medium</span></div>
+    <div class="issue m reveal"><div class="ix">10</div><div><h3>No answers to the questions people search</h3><p>"How much does it cost to re-render a house", "does render devalue a house", "how long does insulated render last" all show up in Google's People Also Ask for your name. You have no page answering them.</p><div class="fix"><b>Fix:</b> 2 short guides a month, each linking to the matching service page.</div></div><span class="pill mid">Medium</span></div>
+  </div>
+</div></section>
+
+<section class="block" id="system" style="border-top:0;padding-top:0"><div class="wrap">
+  <div class="adv reveal">
+    <div class="kicker" style="color:#a6aba7">05 · The system</div>
+    <h2>Ranking gets the enquiry. <b>The system books the job.</b></h2>
+    <p class="sub">You told us nothing has hit so far. Most agencies stop at the website. This is what runs behind it so every lead is answered, chased and turned into a review, without you on the phone.</p>
+    <div class="sys">
+      <div><b>01</b><strong>Enquiry</strong><span>Quote form or call from Google</span></div>
+      <div><b>02</b><strong>Instant reply</strong><span>Missed call or form gets a text back in seconds</span></div>
+      <div><b>03</b><strong>Survey booked</strong><span>Customer picks a slot, lands in your CRM</span></div>
+      <div><b>04</b><strong>Follow up</strong><span>Quotes chased automatically until yes or no</span></div>
+      <div><b>05</b><strong>Review</strong><span>Job done, review request goes out the same day</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="keywords"><div class="wrap">
+  <div class="kicker">06 · Keyword plan</div>
+  <h2>One page for <b>every search that pays</b>.</h2>
+  <div class="kmap reveal">
+    <div class="krow"><div>Target search</div><div>Page</div><div>Difficulty</div></div>
+    <div class="group">Edinburgh core</div>
+    <div class="krow"><div>rendering edinburgh · house rendering edinburgh</div><div><code>/edinburgh/</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>external rendering edinburgh</div><div><code>/edinburgh/external-rendering/</code></div><div><span class="pill ok">Hold #1</span></div></div>
+    <div class="krow"><div>k rend edinburgh · silicone render edinburgh</div><div><code>/k-rend/</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>roughcasting edinburgh · dry dash</div><div><code>/roughcasting/</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>insulated render edinburgh · external wall insulation</div><div><code>/insulated-render/</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>render repair edinburgh · cracked render</div><div><code>/render-repairs/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>monocouche render edinburgh</div><div><code>/monocouche/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="group">West Lothian (home turf)</div>
+    <div class="krow"><div>rendering livingston · rendering west lothian</div><div><code>/livingston/</code> · <code>/west-lothian/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>rendering broxburn · linlithgow · bathgate</div><div><code>/{town}/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="group">Wider Scotland</div>
+    <div class="krow"><div>rendering scotland · commercial rendering scotland</div><div><code>/ (homepage)</code> · <code>/commercial/</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>rendering glasgow · dundee · perth</div><div><code>/{city}/</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="group">Guides</div>
+    <div class="krow"><div>how much to re-render a house scotland</div><div><code>/guides/render-cost/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>k rend vs roughcast · how long does render last</div><div><code>/guides/…</code></div><div><span class="pill ok">Low</span></div></div>
+  </div>
+  <p class="note">Next step: confirm monthly search volumes in Google Keyword Planner to lock the order.</p>
+  <div class="towns reveal">
+    <span class="top">Edinburgh</span><span class="top">Livingston</span><span class="top">Broxburn</span><span class="top">West Lothian</span><span class="top">Linlithgow</span><span class="top">Bathgate</span><span>Musselburgh</span><span>Dalkeith</span><span>Penicuik</span><span>South Queensferry</span><span>Kirkliston</span><span>Falkirk</span><span>Dunfermline</span><span>Glasgow</span><span>Dundee</span><span>Perth</span><span>Aberdeen</span><span>Kelso</span>
+  </div>
+</div></section>
+
+<section class="block" id="plan"><div class="wrap">
+  <div class="kicker">07 · The 90-day plan</div>
+  <h2>How we get you to <b>number one</b>.</h2>
+  <div class="road">
+    <div class="phase reveal"><div class="when">Weeks 1 to 2</div><h3>Stop the leaks</h3><ul>
+      <li>Fix the Google Business Profile name and categories</li>
+      <li>Correct the phone number on Facebook and directories</li>
+      <li>One address and number everywhere</li>
+      <li>Fix broken menu links and titles</li>
+      <li>Missed call text back and quote form into a CRM</li>
+    </ul></div>
+    <div class="phase reveal"><div class="when">Weeks 2 to 6</div><h3>One strong site</h3><ul>
+      <li>Launch the new renderscotland.com</li>
+      <li>Edinburgh, Livingston, Broxburn and West Lothian pages</li>
+      <li>A page per service: K-Rend, roughcast, insulated, repairs</li>
+      <li>Redirect renderingedinburgh.co.uk</li>
+      <li>LocalBusiness, Service and FAQ schema</li>
+    </ul></div>
+    <div class="phase reveal"><div class="when">Weeks 6 to 12</div><h3>Build authority</h3><ul>
+      <li>Automatic review request after every job</li>
+      <li>Before and after case studies per town</li>
+      <li>2 guides a month (cost, K-Rend vs roughcast)</li>
+      <li>Redirect externalrenderingedinburgh.co.uk, track it</li>
+      <li>Monthly ranking report</li>
+    </ul></div>
+  </div>
+  <div class="targets">
+    <div class="target reveal"><div class="from">Page 1 searches · now 4</div><div class="to">10+ of 12</div><div class="what">By day 90</div></div>
+    <div class="target reveal"><div class="from">Google reviews · now 6</div><div class="to">35+</div><div class="what">By day 90, then 80+ for the top spot</div></div>
+    <div class="target reveal"><div class="from">Maps "rendering Edinburgh" · now 5th</div><div class="to">Top 3</div><div class="what">The map pack where calls come from</div></div>
+    <div class="target reveal"><div class="from">Websites · now 3</div><div class="to">1</div><div class="what">One site holding all the authority</div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Prepared for Render Scotland Ltd by Azends.</span>
+  <span>Data: live Google UK searches and Google Maps, renderscotland.com crawl, 20 Nov 2026.</span>
+</div></footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const bars=document.getElementById('bars');
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){bars.querySelectorAll('i').forEach(i=>i.style.width=(i.dataset.w/80*100)+'%');o.disconnect()}},{threshold:.3}).observe(bars);
+</script>
+</body>
+</html>
