@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download images from the current site
         run: |
-          set -e
+          mkdir -p surrey-construction-live/img
           cd surrey-construction-live/img
           SRC='https://www.surrey-constructionltd.com/wp-content/uploads/go-x/u'
-          get(){ curl -fsSL --retry 3 "https://wsrv.nl/?url=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1],safe=''))" "$SRC/$1/image.jpg")&w=$2&output=webp&q=$3" -o "$4"; }
+          get(){ curl -fsSL --retry 3 "https://wsrv.nl/?url=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1],safe=''))" "$SRC/$1/image.jpg")&w=$2&output=webp&q=$3" -o "$4" || echo "FAILED $4"; }
           for id in 271a5bf4-1b85-46f1-a7b6-d9edb0407a2f 38e93840-1240-4965-9f43-4b477a004092 3ce81ddf-08a5-4738-9d93-56bc2ecae3d0 56c73baf-0328-4acb-8e91-cac54bc6998f 5da41416-7c4f-4158-aa3d-78480331cfb3 60d110bc-04aa-4883-8d8e-dff1dbe085f7 77efb756-d6d2-40e5-b551-2139a44e607e 83568da4-bc7a-48c3-9426-4665b92d4a9c 995f332e-ea80-4a08-a783-4dee939ee396 af0e7c08-5864-47d8-8c5e-4a6e8fdfdfaf c4a9b594-bfcf-41ad-92ec-09e19cc9d91c d0601da9-0722-46df-bad8-794a18e82265 d695d8fe-c6d3-4119-b0f6-c69f59a364f0 db884ea6-aac2-4ecd-ae05-b55f9a26c1da de964507-2a48-4ccc-84bb-a493160206d7 ec487d00-5b05-4a1c-9ea1-607108a32bb4 f1680278-ecf4-4c28-96da-a846d1c63674 f8d871fc-46f4-40aa-9442-2a14bd0d186a ; do
             get $id 900 78 "$id-900.webp"
             get $id 1800 76 "$id-1800.webp"
