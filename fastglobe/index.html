@@ -781,7 +781,7 @@ panels.forEach((p,i)=>{
   p.addEventListener('click',()=>{auto=false;openP(i)});
   p.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover) and (min-width:761px)').matches){auto=false;openP(i)}});
 });
-setInterval(()=>{if(auto)openP((pi+1)%panels.length)},5200);
+setInterval(()=>{if(auto&&innerWidth>760)openP((pi+1)%panels.length)},5200);
 
 /* quote form */
 const form=document.getElementById('qform');const steps=[...form.querySelectorAll('.qstep')];const bars=[...form.querySelectorAll('.steps i')];let cur=1;const ans={};
