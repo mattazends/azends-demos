@@ -66,7 +66,7 @@ nav.main .wrap{display:flex;align-items:center;justify-content:space-between;hei
 .hero{padding:70px 0 40px}
 .hgrid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:stretch}
 .hl{display:flex;flex-direction:column;justify-content:center;padding:20px 0}
-.hl .h1{margin:18px 0 24px}
+.hl .h1{margin:18px 0 24px;font-size:clamp(42px,5.2vw,76px)}
 .hctas{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}
 .hproof{display:flex;gap:30px;margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
 .hproof div b{display:block;font-size:30px;font-weight:600;letter-spacing:-.04em;line-height:1}
@@ -191,7 +191,7 @@ nav.main .wrap{display:flex;align-items:center;justify-content:space-between;hei
 /* layers (insulated render) */
 .layers{background:var(--ink);color:#fff;position:relative}
 .ltrack{height:300vh;position:relative}
-.lsticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
+.lsticky{position:sticky;top:76px;height:calc(100vh - 76px);display:flex;align-items:center;overflow:hidden}
 .lgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center;width:100%}
 .layers .h2 span{color:var(--g2)}
 .layers .lead{color:#a9ada6}
@@ -262,7 +262,9 @@ nav.main .wrap{display:flex;align-items:center;justify-content:space-between;hei
 .qa:last-child{border-bottom:1px solid #cfcbc1}
 .qa button{width:100%;display:flex;justify-content:space-between;gap:20px;text-align:left;padding:24px 0;font-size:19px;font-weight:500;letter-spacing:-.02em;align-items:center}
 .qa button i{width:34px;height:34px;flex:none;display:grid;place-items:center;border:1px solid #bdb9ae;transition:transform .4s var(--ease),background .3s,color .3s}
-.qa.open button i{transform:rotate(45deg);background:var(--ink);color:#fff;border-color:var(--ink)}
+.qa button i b{display:block;font-weight:500;transition:transform .4s var(--ease)}
+.qa.open button i{background:var(--ink);color:#fff;border-color:var(--ink)}
+.qa.open button i b{transform:rotate(45deg)}
 .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
 .qa.open .ans{grid-template-rows:1fr}
 .ans>div{overflow:hidden}
@@ -590,12 +592,12 @@ footer a:hover{color:#fff}
 <section class="faq" id="faq"><div class="wrap fgrid">
   <div><div class="kick up">FAQs</div><h2 class="h2 up" style="margin-top:14px">Questions we <span>get asked.</span></h2></div>
   <div>
-    <div class="qa open"><button>How much does it cost to render a house?<i>+</i></button><div class="ans"><div><p>It depends on the size of the house, the state of the walls, access and the system you choose. We'll survey for free and give you a fixed written price, so there are no surprises.</p></div></div></div>
-    <div class="qa"><button>What's the difference between K-Rend and roughcast?<i>+</i></button><div class="ans"><div><p>K-Rend and silicone renders are coloured all the way through and give a smooth or lightly scraped modern finish. Roughcast and drydash are the traditional textured Scottish finishes. We'll show you samples of both.</p></div></div></div>
-    <div class="qa"><button>Is insulated render worth it?<i>+</i></button><div class="ans"><div><p>If your walls are solid or poorly insulated, insulated render makes the house warmer and changes the look in one job. We'll tell you honestly on the survey whether it suits your property.</p></div></div></div>
-    <div class="qa"><button>Can you repair cracked render without redoing the whole house?<i>+</i></button><div class="ans"><div><p>Often, yes. We cut back the damaged areas, repair them and match the finish. If the render has failed across the wall, we'll explain why a re-render is the better option.</p></div></div></div>
-    <div class="qa"><button>Do you work in winter?<i>+</i></button><div class="ans"><div><p>Render needs the right temperature and dry conditions to cure, so we plan jobs around the weather and protect the work while it sets.</p></div></div></div>
-    <div class="qa"><button>Do you do commercial work?<i>+</i></button><div class="ans"><div><p>Yes. We render and plaster commercial buildings and new builds as well as homes, and we're SSIP and Acclaim accredited.</p></div></div></div>
+    <div class="qa open"><button>How much does it cost to render a house?<i><b>+</b></i></button><div class="ans"><div><p>It depends on the size of the house, the state of the walls, access and the system you choose. We'll survey for free and give you a fixed written price, so there are no surprises.</p></div></div></div>
+    <div class="qa"><button>What's the difference between K-Rend and roughcast?<i><b>+</b></i></button><div class="ans"><div><p>K-Rend and silicone renders are coloured all the way through and give a smooth or lightly scraped modern finish. Roughcast and drydash are the traditional textured Scottish finishes. We'll show you samples of both.</p></div></div></div>
+    <div class="qa"><button>Is insulated render worth it?<i><b>+</b></i></button><div class="ans"><div><p>If your walls are solid or poorly insulated, insulated render makes the house warmer and changes the look in one job. We'll tell you honestly on the survey whether it suits your property.</p></div></div></div>
+    <div class="qa"><button>Can you repair cracked render without redoing the whole house?<i><b>+</b></i></button><div class="ans"><div><p>Often, yes. We cut back the damaged areas, repair them and match the finish. If the render has failed across the wall, we'll explain why a re-render is the better option.</p></div></div></div>
+    <div class="qa"><button>Do you work in winter?<i><b>+</b></i></button><div class="ans"><div><p>Render needs the right temperature and dry conditions to cure, so we plan jobs around the weather and protect the work while it sets.</p></div></div></div>
+    <div class="qa"><button>Do you do commercial work?<i><b>+</b></i></button><div class="ans"><div><p>Yes. We render and plaster commercial buildings and new builds as well as homes, and we're SSIP and Acclaim accredited.</p></div></div></div>
   </div>
 </div></section>
 
