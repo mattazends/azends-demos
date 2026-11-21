@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bucks Tree Surgeons · Aylesbury SEO Report</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16140f;--mute:#6d6a62;--line:#e8e5dd;--bg:#fbfaf6;--card:#fff;--acc:#5e8a22;--acc-soft:#eef4e2;--brown:#6b4a1f;--red:#c8442f;--red-soft:#fbece8;--amber:#b57d10;--amber-soft:#fcf3df}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Geist,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.top{position:sticky;top:0;z-index:20;background:rgba(251,250,246,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px}
+.toc{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.toc a{font-size:13px;text-decoration:none;color:var(--mute);padding:6px 10px;border-radius:99px;white-space:nowrap}
+.toc a:hover{background:#fff;color:var(--ink)}
+.hero{padding:88px 0 56px;text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-40% -10% auto;height:120%;background:radial-gradient(closest-side,rgba(94,138,34,.12),transparent 70%);pointer-events:none}
+.eyebrow{font-size:13px;color:var(--acc);font-weight:500}
+h1{font-size:clamp(34px,5.6vw,60px);font-weight:500;letter-spacing:-.035em;line-height:1.04;margin:14px auto 18px;max-width:880px}
+h1 b,h2 b{font-weight:600;color:var(--acc)}
+.lede{font-size:18px;color:var(--mute);max-width:650px;margin:0 auto;font-weight:300}
+.lede strong{color:var(--ink);font-weight:500}
+.meta{margin-top:22px;font-size:12.5px;color:var(--mute)}
+.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.score{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;text-align:left}
+.score .n{font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1}
+.score .n small{font-size:18px;color:var(--mute);font-weight:400}
+.score .l{font-size:13.5px;color:var(--mute);margin-top:8px}
+.score.bad .n{color:var(--red)}
+.score.good .n{color:var(--acc)}
+section.block{padding:72px 0;border-top:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:500}
+h2{font-size:clamp(26px,3.6vw,38px);font-weight:500;letter-spacing:-.03em;line-height:1.1;margin:10px 0 12px}
+.sub{color:var(--mute);max-width:660px;font-size:16px}
+/* split visual */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.half{border-radius:22px;padding:28px;border:1px solid var(--line);background:#fff}
+.half.win{background:var(--acc-soft);border-color:#d8e6bf}
+.half.lose{background:var(--red-soft);border-color:#f1d3cb}
+.half .big{font-size:56px;font-weight:600;letter-spacing:-.05em;line-height:1}
+.half.win .big{color:var(--acc)}.half.lose .big{color:var(--red)}
+.half h3{font-size:18px;font-weight:600;margin-top:10px;letter-spacing:-.01em}
+.half p{font-size:14.5px;color:#4c4a44;margin-top:6px}
+.serp{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.serp-row{display:grid;grid-template-columns:1.2fr 1.9fr .7fr .7fr;gap:14px;padding:15px 22px;border-top:1px solid var(--line);align-items:center;font-size:14.5px}
+.serp-row:first-child{border-top:0;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;padding:12px 22px;background:#fcfcfa}
+.kw{font-weight:500}
+.who{color:var(--mute);font-size:13.5px}
+.who span{color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.pill.no{background:var(--red-soft);color:var(--red)}
+.pill.ok{background:var(--acc-soft);color:var(--acc)}
+.pill.mid{background:var(--amber-soft);color:var(--amber)}
+.note{font-size:12.5px;color:var(--mute);margin-top:14px}
+.bars{margin-top:30px;display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:210px 1fr 70px;align-items:center;gap:14px;font-size:14px}
+.bar .t{height:12px;background:#efede6;border-radius:99px;overflow:hidden}
+.bar .t i{display:block;height:100%;width:0;background:var(--ink);border-radius:99px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.bar.us .t i{background:var(--acc)}
+.bar.us{font-weight:600}
+.bar .v{text-align:right;color:var(--mute);font-variant-numeric:tabular-nums}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.card p{font-size:14.5px;color:var(--mute)}
+.card .tag{margin-bottom:12px}
+.issues{margin-top:30px;display:grid;gap:12px}
+.issue{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.issue .ix{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:600;font-size:15px;background:var(--red-soft);color:var(--red)}
+.issue.m .ix{background:var(--amber-soft);color:var(--amber)}
+.issue h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.issue p{font-size:14.5px;color:var(--mute);margin-top:4px;max-width:660px}
+.issue .fix{font-size:13.5px;margin-top:10px}
+.issue .fix b{color:var(--acc);font-weight:600}
+.adv{background:var(--ink);color:#fff;border-radius:28px;padding:48px;position:relative;overflow:hidden}
+.adv:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(closest-side,rgba(127,163,58,.45),transparent)}
+.adv h2{color:#fff}.adv h2 b{color:#a9cf62}
+.adv .sub{color:#aaa79e}
+.adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;position:relative;z-index:1}
+.adv-grid div{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px}
+.adv-grid strong{display:block;font-size:26px;font-weight:600;letter-spacing:-.03em}
+.adv-grid span{font-size:13px;color:#aaa79e}
+.kmap{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.krow{display:grid;grid-template-columns:1.4fr 1.3fr .8fr;gap:14px;padding:14px 22px;border-top:1px solid var(--line);font-size:14px;align-items:center}
+.krow:first-child{border-top:0;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;background:#fcfcfa;padding:12px 22px}
+.krow code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--mute)}
+.group{padding:12px 22px;background:#f6f5ef;font-size:12.5px;font-weight:600;border-top:1px solid var(--line)}
+.towns{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.towns span{font-size:13.5px;padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:#fff}
+.towns span.top{background:var(--ink);color:#fff;border-color:var(--ink)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--mute);margin-top:16px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.road{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.phase{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.phase .when{font-size:12px;color:var(--acc);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.phase h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin:6px 0 14px}
+.phase ul{list-style:none;display:grid;gap:9px}
+.phase li{font-size:14px;color:#3b3934;padding-left:22px;position:relative}
+.phase li:before{content:"";position:absolute;left:0;top:7px;width:10px;height:10px;border-radius:3px;border:1.5px solid var(--acc)}
+.targets{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.target{border:1px solid var(--line);background:#fff;border-radius:18px;padding:20px}
+.target .from{font-size:13px;color:var(--mute)}
+.target .to{font-size:28px;font-weight:600;letter-spacing:-.03em;margin-top:4px}
+.target .what{font-size:13.5px;color:var(--mute);margin-top:6px}
+footer{padding:48px 0 64px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:860px){
+  .scores,.targets,.adv-grid{grid-template-columns:1fr 1fr}
+  .grid3,.road,.split{grid-template-columns:1fr}
+  .serp-row{grid-template-columns:1fr 1fr;gap:6px}
+  .serp-row .who{grid-column:1/-1}
+  .serp-row:first-child,.krow:first-child{display:none}
+  .krow{grid-template-columns:1fr 1fr}
+  .bar{grid-template-columns:120px 1fr 60px;font-size:13px}
+  .adv{padding:30px 22px;border-radius:22px}
+  .issue{grid-template-columns:1fr}
+  .toc{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="brand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="7" fill="#7fa33a"/><path d="M12 9v13" stroke="#6b4a1f" stroke-width="2.4" stroke-linecap="round"/></svg>Bucks Tree Surgeons · SEO report</div>
+  <nav class="toc"><a href="#now">Where you rank</a><a href="#competitors">Competitors</a><a href="#issues">What's holding you back</a><a href="#keywords">Keyword plan</a><a href="#plan">90-day plan</a></nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Prepared by Azends · 21 November 2026</div>
+  <h1>Google Maps already loves you. <b>Your website is holding you back.</b></h1>
+  <p class="lede">With 216 five-star reviews you're top of the Google map for "tree surgeon Aylesbury". <strong>But your website isn't in the top 10 for any of the 10 local searches we checked.</strong> Fix the website and you own both halves of page one.</p>
+  <div class="meta">Live Google UK searches and Google Maps, 21 Nov 2026. Positions shift with where someone searches from, so treat them as a snapshot.</div>
+  <div class="scores">
+    <div class="score good reveal"><div class="n">216</div><div class="l">Google reviews at 5.0. The most in Aylesbury</div></div>
+    <div class="score good reveal"><div class="n">#1</div><div class="l">On the Maps pack for "tree surgeon Aylesbury"</div></div>
+    <div class="score bad reveal"><div class="n">0<small>/10</small></div><div class="l">Local searches where your website is on page 1</div></div>
+    <div class="score bad reveal"><div class="n">9</div><div class="l">Pages Google has of your site. No town pages at all</div></div>
+  </div>
+</div></header>
+
+<section class="block" id="now"><div class="wrap">
+  <div class="kicker">01 · Where you rank today</div>
+  <h2>Two halves of page one. <b>You only own one.</b></h2>
+  <div class="split">
+    <div class="half win reveal"><div class="big">Maps</div><h3>Winning</h3><p>Your Google listing shows on page one for Aylesbury, Buckinghamshire, Wendover, Thame, hedge trimming and emergency searches. The 216 reviews are doing the work.</p></div>
+    <div class="half lose reveal"><div class="big">Website</div><h3>Missing</h3><p>Under the map, the normal results go to P Kernan Tree Surgeon, Checkatrade and directories. Your website doesn't appear for any of them, so every click there goes to someone else.</p></div>
+  </div>
+  <div class="serp reveal">
+    <div class="serp-row"><div>Search</div><div>Top website right now</div><div>Your listing</div><div>Your site</div></div>
+    <div class="serp-row"><div class="kw">tree surgeon aylesbury</div><div class="who"><span>P Kernan Tree Surgeon</span>, Checkatrade, Arbortek</div><div><span class="pill ok">#1</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">tree surgeon buckinghamshire</div><div class="who"><span>South Bucks Tree Surgeons</span>, Checkatrade, Pinewood</div><div><span class="pill ok">#1</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">emergency tree surgeon aylesbury</div><div class="who"><span>P Kernan Tree Surgeon</span>, Checkatrade, ELATS</div><div><span class="pill ok">Showing</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">hedge trimming aylesbury</div><div class="who"><span>Checkatrade</span>, P Kernan, Smiths Garden Services</div><div><span class="pill ok">Showing</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">tree surgeon wendover</div><div class="who"><span>P Kernan Tree Surgeon</span>, Checkatrade, Yell</div><div><span class="pill ok">Showing</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">tree surgeon thame</div><div class="who"><span>4 Seasons Tree Care</span>, Checkatrade, Devey Tree Care</div><div><span class="pill ok">Showing</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">tree removal aylesbury</div><div class="who"><span>Checkatrade</span>, P Kernan, Go Call Tree Care</div><div><span class="pill mid">Not shown</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">stump grinding aylesbury</div><div class="who"><span>P Kernan Tree Surgeon</span>, Simply Stumps, Checkatrade</div><div><span class="pill mid">Not shown</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">tree surgeon high wycombe</div><div class="who"><span>Checkatrade</span>, Pinewood Tree Care, Dickinson</div><div><span class="pill mid">Not shown</span></div><div><span class="pill no">Not top 10</span></div></div>
+    <div class="serp-row"><div class="kw">tree surgeon tring</div><div class="who"><span>Checkatrade</span>, Collison Tree Care, Tree Monkey</div><div><span class="pill mid">Not shown</span></div><div><span class="pill no">Not top 10</span></div></div>
+  </div>
+  <p class="note">Tree removal and stump grinding are two of your main services, and neither your listing nor your website shows for them in Aylesbury.</p>
+</div></section>
+
+<section class="block" id="competitors"><div class="wrap">
+  <div class="kicker">02 · Who you're up against</div>
+  <h2>Nobody has your reviews. <b>One rival has your clicks.</b></h2>
+  <p class="sub">Google reviews from the same day. You're miles ahead, which is exactly why the website gap hurts.</p>
+  <div class="bars reveal" id="bars">
+    <div class="bar us"><span>Bucks Tree Surgeons</span><div class="t"><i data-w="216"></i></div><span class="v">216 · 5.0</span></div>
+    <div class="bar"><span>Chalfont Trees</span><div class="t"><i data-w="81"></i></div><span class="v">81 · 4.9</span></div>
+    <div class="bar"><span>WestSide Tree Surgery</span><div class="t"><i data-w="67"></i></div><span class="v">67 · 5.0</span></div>
+    <div class="bar"><span>P Kernan Tree Surgeon</span><div class="t"><i data-w="42"></i></div><span class="v">42 · 4.8</span></div>
+    <div class="bar"><span>R B Tree Masters</span><div class="t"><i data-w="24"></i></div><span class="v">24 · 5.0</span></div>
+  </div>
+  <div class="grid3">
+    <div class="card reveal"><div class="tag"><span class="pill mid">Biggest threat</span></div><h3>P Kernan Tree Surgeon</h3><p>#1 website for Aylesbury, Wendover, stump grinding and emergency work with only 42 reviews. A proper website with service and town pages is all that's beating you.</p></div>
+    <div class="card reveal"><div class="tag"><span class="pill mid">Name confusion</span></div><h3>South Bucks Tree Surgeons</h3><p>#1 website for "tree surgeon Buckinghamshire". buckstreesurgeon.co.uk (a Buckingham firm) also ranks. People searching for you can land on them.</p></div>
+    <div class="card reveal"><div class="tag"><span class="pill ok">Easy wins</span></div><h3>Checkatrade &amp; directories</h3><p>Checkatrade sits in the top 3 for almost every search. Directories beat a business website that has no local pages. With good pages, you outrank them.</p></div>
+  </div>
+</div></section>
+
+<section class="block" style="border-top:0;padding-top:0"><div class="wrap">
+  <div class="adv reveal">
+    <div class="kicker" style="color:#aaa79e">03 · Your unfair advantage</div>
+    <h2>You have the proof. <b>The website just isn't showing it.</b></h2>
+    <p class="sub">Google rewards trust and experience. You have more of both than anyone ranking above you.</p>
+    <div class="adv-grid">
+      <div><strong>216</strong><span>Five-star Google reviews</span></div>
+      <div><strong>10/10</strong><span>On Checkatrade from 35 reviews</span></div>
+      <div><strong>NPTC</strong><span>Qualified and fully insured</span></div>
+      <div><strong>24/7</strong><span>Listed as open for emergencies</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="issues"><div class="wrap">
+  <div class="kicker">04 · What's holding the website back</div>
+  <h2>Ten fixes, <b>biggest impact first</b>.</h2>
+  <div class="issues">
+    <div class="issue reveal"><div class="ix">1</div><div><h3>No page for Aylesbury, or any town</h3><p>The site only says "Buckinghamshire". Google has nothing to rank for Aylesbury, Wendover, Tring or Thame, so it ranks the sites that do.</p><div class="fix"><b>Fix:</b> a proper page per town with real jobs, photos and reviews from that town, starting with Aylesbury, Wendover, Tring, Thame and Princes Risborough.</div></div><span class="pill no">Critical</span></div>
+    <div class="issue reveal"><div class="ix">2</div><div><h3>Service pages don't mention where you work</h3><p>Titles like "Expert Tree Pruning Services" and "Efficient Stump Grinding Solutions" have no location. They compete with every tree surgeon in the country.</p><div class="fix"><b>Fix:</b> e.g. "Stump Grinding Aylesbury | Bucks Tree Surgeons" with local copy and FAQs on each.</div></div><span class="pill no">Critical</span></div>
+    <div class="issue reveal"><div class="ix">3</div><div><h3>Your homepage headline is "Make an Appointment..."</h3><p>The H1, the line Google reads first, is the form title. There's no meta description and the page title is just "Bucks Tree Surgeons".</p><div class="fix"><b>Fix:</b> "Tree Surgeon in Aylesbury &amp; Buckinghamshire" as the H1, with a title and description that sell the click.</div></div><span class="pill no">Critical</span></div>
+    <div class="issue reveal"><div class="ix">4</div><div><h3>The site undersells you</h3><p>It says 149 reviews, Google shows 216. It says nothing about NPTC qualifications or insurance, which your Instagram does. It says "over 10 years", Checkatrade says "over 5".</p><div class="fix"><b>Fix:</b> live review count, qualifications and insurance on every page, one consistent story everywhere.</div></div><span class="pill mid">High</span></div>
+    <div class="issue reveal"><div class="ix">5</div><div><h3>No address on the website</h3><p>Google Maps has you on Burcott Lane, Bierton. The website has no address at all, so Google can't connect the two.</p><div class="fix"><b>Fix:</b> name, address and phone in the footer of every page, matching Google exactly.</div></div><span class="pill mid">High</span></div>
+    <div class="issue m reveal"><div class="ix">6</div><div><h3>Google can't read your reviews or your business</h3><p>Structured data is just "WebSite" and "Organization". No LocalBusiness, no service area, no review rating, so you miss the gold stars in normal results.</p><div class="fix"><b>Fix:</b> LocalBusiness, Service, FAQ and review schema.</div></div><span class="pill mid">Medium</span></div>
+    <div class="issue m reveal"><div class="ix">7</div><div><h3>Dead links in the footer</h3><p>Blog, Safety Guidelines and Tree Care Tips all go nowhere. Google sees a half-finished site.</p><div class="fix"><b>Fix:</b> build them as real guides or remove them.</div></div><span class="pill mid">Medium</span></div>
+    <div class="issue m reveal"><div class="ix">8</div><div><h3>Slow on phones</h3><p>The homepage loads about 4MB, with one photo at 1.7MB. Most people searching for a tree surgeon are on their phone.</p><div class="fix"><b>Fix:</b> compressed WebP photos under 200KB, lazy loading.</div></div><span class="pill mid">Medium</span></div>
+    <div class="issue m reveal"><div class="ix">9</div><div><h3>Zoom is switched off on mobile</h3><p>The site blocks pinch to zoom, which hurts accessibility and Google's mobile checks. 8 images have no alt text.</p><div class="fix"><b>Fix:</b> allow zoom, describe every photo with the job and town.</div></div><span class="pill mid">Medium</span></div>
+    <div class="issue m reveal"><div class="ix">10</div><div><h3>No answers to the questions people ask</h3><p>Google shows "How much does a tree surgeon cost?" and "How do I check a tree surgeon is qualified?" for your name. You have no page answering them.</p><div class="fix"><b>Fix:</b> 2 short guides a month: costs, TPOs in Buckinghamshire, best time to prune.</div></div><span class="pill mid">Medium</span></div>
+  </div>
+</div></section>
+
+<section class="block" id="keywords"><div class="wrap">
+  <div class="kicker">05 · Keyword plan</div>
+  <h2>One page for <b>every search that pays</b>.</h2>
+  <div class="kmap reveal">
+    <div class="krow"><div>Target search</div><div>Page</div><div>Difficulty</div></div>
+    <div class="group">Core</div>
+    <div class="krow"><div>tree surgeon aylesbury</div><div><code>/ (homepage)</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="krow"><div>tree surgeon buckinghamshire</div><div><code>/buckinghamshire/</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="group">Services (Aylesbury)</div>
+    <div class="krow"><div>tree removal · tree felling aylesbury</div><div><code>/tree-removal-aylesbury/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>stump grinding aylesbury</div><div><code>/stump-grinding-aylesbury/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>crown reduction · tree pruning aylesbury</div><div><code>/tree-pruning-aylesbury/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>hedge trimming · hedge reduction aylesbury</div><div><code>/hedge-trimming-aylesbury/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>emergency tree surgeon aylesbury</div><div><code>/emergency-tree-work/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>dead wooding · tree survey</div><div><code>/dead-wooding/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="group">Towns</div>
+    <div class="krow"><div>tree surgeon + town</div><div><code>/tree-surgeon-{town}/</code></div><div><span class="pill mid">Medium</span></div></div>
+    <div class="group">Guides</div>
+    <div class="krow"><div>tree surgeon cost buckinghamshire</div><div><code>/guides/tree-surgeon-cost/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>tree preservation order buckinghamshire</div><div><code>/guides/tpo-buckinghamshire/</code></div><div><span class="pill ok">Low</span></div></div>
+    <div class="krow"><div>best time to prune trees uk</div><div><code>/guides/when-to-prune/</code></div><div><span class="pill ok">Low</span></div></div>
+  </div>
+  <p class="note">Next step: confirm monthly search volumes in Google Keyword Planner to lock the order.</p>
+  <div class="towns reveal">
+    <span class="top">Aylesbury</span><span class="top">Wendover</span><span class="top">Tring</span><span class="top">Thame</span><span class="top">Princes Risborough</span><span class="top">Aston Clinton</span><span>Bierton</span><span>Weston Turville</span><span>Stoke Mandeville</span><span>Haddenham</span><span>Waddesdon</span><span>Wing</span><span>Winslow</span><span>Leighton Buzzard</span><span>Buckingham</span><span>Great Missenden</span><span>Amersham</span><span>Chesham</span><span>Berkhamsted</span><span>High Wycombe</span>
+  </div>
+  <div class="legend"><span><i style="background:var(--ink)"></i>Build first</span><span><i style="background:#dcd9d0"></i>Next wave</span></div>
+</div></section>
+
+<section class="block" id="plan"><div class="wrap">
+  <div class="kicker">06 · The 90-day plan</div>
+  <h2>How we get the website <b>to number one</b>.</h2>
+  <div class="road">
+    <div class="phase reveal"><div class="when">Weeks 1 to 2</div><h3>Quick fixes</h3><ul>
+      <li>New homepage headline, title and description</li>
+      <li>Address, phone and live review count on every page</li>
+      <li>NPTC and insurance on every page</li>
+      <li>Allow zoom, compress photos, fix dead links</li>
+      <li>Search Console: submit sitemap</li>
+    </ul></div>
+    <div class="phase reveal"><div class="when">Weeks 2 to 6</div><h3>New website</h3><ul>
+      <li>Launch the new fast site</li>
+      <li>6 service pages, each targeting Aylesbury</li>
+      <li>6 town pages: Aylesbury, Wendover, Tring, Thame, Princes Risborough, Aston Clinton</li>
+      <li>LocalBusiness, review and FAQ schema</li>
+    </ul></div>
+    <div class="phase reveal"><div class="when">Weeks 6 to 12</div><h3>Pull further ahead</h3><ul>
+      <li>Job case studies with before and after photos per town</li>
+      <li>2 guides a month (cost, TPOs, when to prune)</li>
+      <li>Keep the review requests going after every job</li>
+      <li>Second wave of town pages</li>
+      <li>Monthly ranking report</li>
+    </ul></div>
+  </div>
+  <div class="targets">
+    <div class="target reveal"><div class="from">Website on page 1 · now 0</div><div class="to">7+ of 10</div><div class="what">Local searches by day 90</div></div>
+    <div class="target reveal"><div class="from">Pages in Google · now 9</div><div class="to">25+</div><div class="what">Service, town and guide pages</div></div>
+    <div class="target reveal"><div class="from">Maps for removal &amp; stumps</div><div class="to">Top 3</div><div class="what">Your two biggest services</div></div>
+    <div class="target reveal"><div class="from">Google reviews · now 216</div><div class="to">250+</div><div class="what">Keep the lead growing</div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Prepared for Bucks Tree Surgeons by Azends.</span>
+  <span>Data: live Google UK searches and Google Maps, buckstreesurgeons.com crawl, 21 Nov 2026.</span>
+</div></footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const bars=document.getElementById('bars');
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){bars.querySelectorAll('i').forEach(i=>i.style.width=(i.dataset.w/216*100)+'%');o.disconnect()}},{threshold:.3}).observe(bars);
+</script>
+</body>
+</html>
