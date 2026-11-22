@@ -36,6 +36,19 @@ button,input{font:inherit;color:inherit}button{cursor:pointer;touch-action:manip
 #knob svg{width:26px;height:26px}
 .tagL,.tagR{position:absolute;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:9px;color:#fff;white-space:nowrap}
 .tagL{right:12px;background:#9A3B2A}.tagR{left:12px;background:var(--good)}
+/* photo mode */
+#photo{position:fixed;left:0;right:0;top:0;bottom:var(--sh,46vh);z-index:4;background:#111;overflow:hidden;touch-action:none}
+#photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none}
+#warp{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none;transition:opacity .45s;filter:saturate(.92) brightness(.97)}
+#photo.before #warp{opacity:0}
+.hd{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:3px solid #fff;background:rgba(219,123,46,.35);box-shadow:0 4px 14px rgba(0,0,0,.45);touch-action:none;cursor:grab}
+.hd::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff}
+#photo.before .hd,#photo.locked .hd{opacity:0;pointer-events:none}
+.pbar{position:absolute;left:12px;right:12px;top:calc(env(safe-area-inset-top,0px) + 66px);display:flex;gap:8px;align-items:center;z-index:2}
+.pbar p{flex:1;margin:0;font-size:12.5px;font-weight:500;color:#fff;background:rgba(22,24,26,.82);padding:9px 12px;border-radius:12px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pbar button{height:40px;padding:0 14px;border-radius:12px;font-weight:600;font-size:13.5px;background:#fff;color:var(--ink);flex:none;box-shadow:0 6px 16px -8px rgba(0,0,0,.5)}
+.pbar button.dk{background:var(--amber);color:#fff}
+body.photo .rail .rb:not(#bPhoto){display:none}
 /* sheet */
 #sheet{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--sheet);border-radius:26px 26px 0 0;box-shadow:0 -14px 40px -18px rgba(0,0,0,.45);height:min(46vh,420px);display:flex;flex-direction:column;transition:height .45s cubic-bezier(.2,.8,.2,1);max-width:640px;margin:0 auto}
 #sheet.min{height:118px}
@@ -92,12 +105,17 @@ form input:focus{border-color:var(--ink)}form input.bad{border-color:#B4432F}
   <div class="pill pricepill" id="pricepill"><small>Fixed price</small><b id="price">£0</b></div>
 </div>
 <div class="rail hint" id="rail">
+  <button class="rb" id="bPhoto" aria-label="On my drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h3l2-3h8l2 3h3v12H3z"/><circle cx="12" cy="13.5" r="3.5"/></svg><span>On my drive</span></button>
   <button class="rb" id="bCompare" aria-pressed="false" aria-label="Before and after"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M12 3v18"/><path d="M7 10l-2 2 2 2M17 10l2 2-2 2"/></svg><span>Before / after</span></button>
   <button class="rb" id="bCar" aria-label="Park the car"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V11l2-5h10l2 5v5"/><path d="M3 16h18v3H3z"/><circle cx="7.5" cy="13.2" r="1"/><circle cx="16.5" cy="13.2" r="1"/></svg><span>Park the car</span></button>
   <button class="rb" id="bMood" aria-pressed="false" aria-label="Evening"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Evening</span></button>
   <button class="rb" id="bView" aria-label="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg><span>Reset view</span></button>
 </div>
 <div id="split" hidden><div class="tagL">Before</div><div class="tagR">After</div><div id="knob"><svg viewBox="0 0 24 24" fill="none" stroke="#16181A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+<div id="photo" hidden><img id="pImg" alt="Your drive"><canvas id="warp" width="900" height="900"></canvas>
+  <div class="hd" data-i="0"></div><div class="hd" data-i="1"></div><div class="hd" data-i="2"></div><div class="hd" data-i="3"></div>
+  <div class="pbar"><p id="pMsg">Drag the 4 dots onto the corners of your drive</p><button id="pBefore">Before</button><button class="dk" id="pDone">Done</button></div></div>
+<input type="file" id="pFile" accept="image/*" hidden>
 <div class="toast off" id="toast"></div>
 <section id="sheet">
   <div class="grab" id="grab"><i></i></div>
@@ -418,7 +436,7 @@ function sheetPx(){return $('sheet').getBoundingClientRect().height}
 function resize(){if(!renderer)return;const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w/h<.8?58:46;
   const off=Math.min(sheetPx(),h*.5)*.5;camera.setViewOffset(w,h,0,off,w,h);camera.updateProjectionMatrix();dirty=Math.max(dirty,2);placeRail()}
 addEventListener('resize',resize);
-function placeRail(){$('rail').style.bottom=(sheetPx()+14)+'px'}
+function placeRail(){$('rail').style.bottom=(sheetPx()+14)+'px';document.documentElement.style.setProperty('--sh',sheetPx()+'px')}
 
 /* ===================== LOOP ===================== */
 let last=performance.now();
@@ -427,7 +445,7 @@ function render(){const w=innerWidth,h=innerHeight;
     oldG.visible=true;newG.visible=false;renderer.setScissor(0,0,sx,h);renderer.setViewport(0,0,w,h);renderer.render(scene,camera);
     oldG.visible=false;newG.visible=true;renderer.setScissor(sx,0,w-sx,h);renderer.render(scene,camera);renderer.setScissorTest(false)}
   else{const before=split>=.999;oldG.visible=before;newG.visible=!before;renderer.render(scene,camera)}}
-function loop(now){requestAnimationFrame(loop);const dt=Math.min(.05,(now-last)/1000);last=now;if(!renderer||document.hidden||!newG)return;let anim=false;
+function loop(now){requestAnimationFrame(loop);const dt=Math.min(.05,(now-last)/1000);last=now;if(!renderer||document.hidden||!newG||photoOn)return;let anim=false;
   if(tween){const q=Math.min(1,(now-tween.s)/tween.d),e=q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;camera.position.lerpVectors(tween.fp,tween.tp,e);controls.target.lerpVectors(tween.ft,tween.tt,e);if(q>=1)tween=null;anim=true}
   else if(!touched&&!carAnim){const c=CAMS.wide,a=Math.sin((now-t0)/1000*.22)*.22;const v=new THREE.Vector3(...c.p).sub(new THREE.Vector3(...c.t));v.applyAxisAngle(new THREE.Vector3(0,1,0),a);camera.position.copy(v.add(new THREE.Vector3(...c.t)));controls.target.set(...c.t);anim=true}
   if(wipe){const q=Math.min(1,(now-wipe.s)/wipe.d),e=q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;split=wipe.a+(wipe.b-wipe.a)*e;placeSplit();if(q>=1){wipe=null;if(!compare)$('split').hidden=true}anim=true}
@@ -503,14 +521,14 @@ function renderSheet(){$('tabs').innerHTML=tabsHTML();$('stitle').textContent=(T
 function submit(e){e.preventDefault();const n=$('f-name'),ph=$('f-phone'),pc=$('f-pc');[n,ph,pc].forEach(i=>i.classList.remove('bad'));let msg='';
   if(!/^\+?[\d\s]{10,14}$/.test(ph.value.trim())){ph.classList.add('bad');msg='Add a UK mobile so we can text you.'}if(pc.value.trim().length<5){pc.classList.add('bad');msg=msg||'Add your postcode so we know you are local.'}
   if(n.value.trim().length<2){n.classList.add('bad');msg='Add your name so we know who to ask for.'}$('err').textContent=msg;if(msg)return;sentName=n.value.trim().split(' ')[0];quoteDone=true;renderSheet()}
-function setTab(t){tab=t;$('sheet').classList.remove('min');renderSheet();setTimeout(()=>{resize();placeSplit()},460);if(!carAnim)flyTo(tabCam[t])}
+function setTab(t){tab=t;$('sheet').classList.remove('min');renderSheet();setTimeout(()=>{resize();placeSplit()},460);if(!carAnim&&!photoOn)flyTo(tabCam[t])}
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b){buzz();setTab(b.dataset.tab)}});
 $('sbody').addEventListener('click',e=>{const b=e.target.closest('[data-k],[data-t]');if(!b||b.disabled)return;buzz();
   if(b.dataset.k){const k=b.dataset.k,v=b.dataset.v;if(k==='col')S.col[S.surf]=v;else S[k]=v;
     if(k==='surf'&&tab==='surface'){}b.parentElement.querySelectorAll(`[data-k="${k}"]`).forEach(x=>x.setAttribute('aria-pressed',x===b));
     if(k==='surf'||k==='size'||k==='wall'||k==='border'||k==='pattern'){const keep=tab;setTimeout(()=>{$('tabs').innerHTML=tabsHTML()},0)}}
   else{const set=S[b.dataset.t],v=b.dataset.v;set.has(v)?set.delete(v):set.add(v);b.setAttribute('aria-pressed',set.has(v));if(b.dataset.t==='lights'&&set.has(v)&&!moodT)toast('Tap the moon to see them at night')}
-  buildNew();specLine()});
+  buildNew();specLine();if(photoOn){drawWarp()}});
 $('grab').addEventListener('click',()=>{$('sheet').classList.toggle('min');setTimeout(()=>{resize();placeSplit()},460)});
 function specLine(){}
 let tt;function toast(m,ms=2000){const t=$('toast');t.textContent=m;t.classList.remove('off');clearTimeout(tt);tt=setTimeout(()=>t.classList.add('off'),ms)}
@@ -521,6 +539,37 @@ $('bView').addEventListener('click',()=>{buzz();flyTo('wide')});
 $('bCar').addEventListener('click',()=>{buzz();if(compare)setCompare(false);const hasG=R.gates.length>0;gateT=hasG?1:0;carAnim={t:0,wait:hasG?1.1:.1,d:6.5,path:carPath()};flyTo('car');toast(hasG?'Gates opening…':'Here it comes',1600)});
 canvas.addEventListener('pointerdown',()=>{if(!touched){touched=true;$('rail').classList.remove('hint')}tween=null});
 setTimeout(()=>$('rail').classList.remove('hint'),5200);
+
+
+/* ===================== PHOTO MODE (your own drive) ===================== */
+let photoOn=false,pts=[],locked=false;
+const SIZE_M={resin:.5,gravel:.7,tarmac:.35,porcelain:1.8,block:.8};
+function drawWarp(){const cvs=$('warp'),g=cvs.getContext('2d'),W=cvs.width,ppm=W/6;g.clearRect(0,0,W,W);
+  const fill=(t,size,rot,x,y,w,h)=>{const src=t.c||t.image;const pat=g.createPattern(src,'repeat');pat.setTransform(new DOMMatrix().rotate(rot*180/PI).scale(ppm*size/src.width));g.fillStyle=pat;g.fillRect(x,y,w,h)};
+  const st=surfTex();fill(st,SIZE_M[S.surf],S.surf==='block'&&S.pattern==='herring45'?PI/4:0,0,0,W,W);
+  if(S.border!=='none'){const b=find(BORDERS,S.border),t=setts(b.id,b.c),bw=.3*ppm;[[0,0,W,bw],[0,W-bw,W,bw],[0,0,bw,W],[W-bw,0,bw,W]].forEach(r=>fill(t,.6,0,...r))}
+  // light falloff so it sits in the photo
+  const gr=g.createLinearGradient(0,0,0,W);gr.addColorStop(0,'rgba(0,0,0,.18)');gr.addColorStop(.5,'rgba(0,0,0,0)');gr.addColorStop(1,'rgba(255,255,255,.05)');g.fillStyle=gr;g.fillRect(0,0,W,W);
+  g.strokeStyle='rgba(0,0,0,.35)';g.lineWidth=4;g.strokeRect(2,2,W-4,W-4)}
+function adj(m){return[m[4]*m[8]-m[5]*m[7],m[2]*m[7]-m[1]*m[8],m[1]*m[5]-m[2]*m[4],m[5]*m[6]-m[3]*m[8],m[0]*m[8]-m[2]*m[6],m[2]*m[3]-m[0]*m[5],m[3]*m[7]-m[4]*m[6],m[1]*m[6]-m[0]*m[7],m[0]*m[4]-m[1]*m[3]]}
+function mm(a,b){const c=Array(9);for(let i=0;i<3;i++)for(let j=0;j<3;j++){let v=0;for(let k=0;k<3;k++)v+=a[3*i+k]*b[3*k+j];c[3*i+j]=v}return c}
+function mv(m,v){return[m[0]*v[0]+m[1]*v[1]+m[2]*v[2],m[3]*v[0]+m[4]*v[1]+m[5]*v[2],m[6]*v[0]+m[7]*v[1]+m[8]*v[2]]}
+function basis(p){const m=[p[0][0],p[1][0],p[2][0],p[0][1],p[1][1],p[2][1],1,1,1];const v=mv(adj(m),[p[3][0],p[3][1],1]);return mm(m,[v[0],0,0,0,v[1],0,0,0,v[2]])}
+function placeWarp(){const W=$('warp').width;const src=[[0,0],[W,0],[0,W],[W,W]];const dst=[pts[0],pts[1],pts[3],pts[2]];let t=mm(basis(dst),adj(basis(src)));t=t.map(v=>v/t[8]);
+  $('warp').style.transform=`matrix3d(${t[0]},${t[3]},0,${t[6]},${t[1]},${t[4]},0,${t[7]},0,0,1,0,${t[2]},${t[5]},0,${t[8]})`;
+  document.querySelectorAll('.hd').forEach(h=>{const p=pts[+h.dataset.i];h.style.left=p[0]+'px';h.style.top=p[1]+'px'})}
+function setSh(){document.documentElement.style.setProperty('--sh',sheetPx()+'px')}
+function enterPhotoMode(url){photoOn=true;locked=false;document.body.classList.add('photo');if(compare)setCompare(false);$('pImg').src=url;const ph=$('photo');ph.hidden=false;ph.classList.remove('before','locked');setSh();
+  const r=ph.getBoundingClientRect(),w=r.width,h=r.height;pts=[[w*.26,h*.52],[w*.74,h*.52],[w*.8,h*.86],[w*.08,h*.86]];drawWarp();placeWarp();
+  $('pMsg').textContent='Drag the 4 dots onto the corners of your drive';$('pDone').textContent='Done';$('pBefore').textContent='Before';setTab('surface')}
+function exitPhotoMode(){photoOn=false;document.body.classList.remove('photo');$('photo').hidden=true;dirty=30}
+$('bPhoto').addEventListener('click',()=>{buzz();if(photoOn){exitPhotoMode();return}$('pFile').click()});
+$('pFile').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;enterPhotoMode(URL.createObjectURL(f));e.target.value=''});
+$('pDone').addEventListener('click',()=>{buzz();if(!locked){locked=true;$('photo').classList.add('locked');$('pMsg').textContent='Now change the surface, colour and border below';$('pDone').textContent='Exit'}else exitPhotoMode()});
+$('pBefore').addEventListener('click',()=>{buzz();const b=$('photo').classList.toggle('before');$('pBefore').textContent=b?'After':'Before'});
+let dragH=null;document.querySelectorAll('.hd').forEach(h=>{h.addEventListener('pointerdown',e=>{dragH=+h.dataset.i;h.setPointerCapture(e.pointerId);e.stopPropagation()});
+  h.addEventListener('pointermove',e=>{if(dragH===null)return;const r=$('photo').getBoundingClientRect();pts[dragH]=[Math.max(0,Math.min(r.width,e.clientX-r.left)),Math.max(0,Math.min(r.height,e.clientY-r.top))];placeWarp()});
+  h.addEventListener('pointerup',()=>dragH=null);h.addEventListener('pointercancel',()=>dragH=null)});
 
 /* ===================== START ===================== */
 if(scene){buildHouse();buildStreet();buildOld();buildNew();resize();flyTo('wide',true);renderSheet();
