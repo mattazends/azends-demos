@@ -9,7 +9,7 @@
   function onScroll() {
     var y = window.scrollY;
     if (nav) nav.classList.toggle('solid', y > window.innerHeight * (isHome ? 0.75 : 0.5));
-    if (!isHome) document.querySelectorAll('.mbar').forEach(function (m) { m.classList.toggle('show', y > window.innerHeight * 0.5); });
+    if (!isHome) { var q = document.getElementById('quote'), r = q ? q.getBoundingClientRect() : null, inForm = r && r.top < window.innerHeight * 0.8 && r.bottom > 0; document.querySelectorAll('.mbar').forEach(function (m) { m.classList.toggle('show', y > window.innerHeight * 0.5 && !inForm); }); }
   }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   function setMenu(open) {
@@ -21,7 +21,7 @@
   if (burger) burger.addEventListener('click', function () { setMenu(!mm.classList.contains('open')); });
   if (mm) mm.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
-  if (isHome) { if (window.initNovus) window.initNovus({}); return; }
+  if (isHome) { if (window.initNovus) window.initNovus({}); initForm(); return; }
 
   /* REVEAL */
   var els = document.querySelectorAll('.rv,.words');
@@ -81,57 +81,154 @@
     items.forEach(function (b) { b.addEventListener('click', function () { b.classList.toggle('on'); b.setAttribute('aria-pressed', b.classList.contains('on')); upd(); }); });
   });
 
-  /* QUOTE FORM (demo: no backend on this preview link) */
-  var fs = document.querySelectorAll('.fs'); if (!fs.length) return;
-  var fi = 0, data = { type: [], locs: [], where: [], needs: [] };
-  var next = document.getElementById('fNext'), back = document.getElementById('fBack');
-  var pre = document.body.getAttribute('data-need'), preW = document.body.getAttribute('data-where');
-  fs.forEach(function (f) {
-    var key = f.dataset.key, mode = f.dataset.mode;
-    f.querySelectorAll('.cardopt').forEach(function (b) {
-      var v = b.childNodes[0].textContent.trim();
-      if ((key === 'needs' && v === pre) || (key === 'where' && v === preW)) { b.classList.add('on'); data[key].push(v); }
-      b.addEventListener('click', function () {
-        if (mode === 'single') {
-          f.querySelectorAll('.cardopt').forEach(function (x) { x.classList.remove('on'); });
-          b.classList.add('on'); data[key] = [v]; setTimeout(function () { go(1); }, 260);
-        } else {
-          b.classList.toggle('on');
-          var i = data[key].indexOf(v); if (i > -1) data[key].splice(i, 1); else data[key].push(v);
-        }
-      });
+  initForm();
+
+  function initForm() {
+  /* QUOTE FORM (demo port of the React form; no backend on this preview link) */
+  var host = document.getElementById('form'); if (!host) return;
+  var SVGP = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"';
+  var ICON = {
+    store:'<path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a2.5 2.5 0 0 1-4.5 1.5 2.5 2.5 0 0 1-4.5 0 2.5 2.5 0 0 1-4.5 0A2.5 2.5 0 0 1 3 10.5z"/><path d="M5 12v8h14v-8M10 20v-5h4v5"/>',
+    mall:'<path d="M3 20h18M5 20V8l7-4 7 4v12"/><path d="M9 20v-6h6v6M9 10h.01M15 10h.01"/>',
+    hotel:'<path d="M4 20V4h11v16M15 9h5v11M2 20h20"/><path d="M7.5 8h.01M11.5 8h.01M7.5 12h.01M11.5 12h.01M8 20v-4h3v4"/>',
+    health:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 8v8M8 12h8"/>',
+    office:'<path d="M5 20V3h10v17M15 8h4v12M3 20h18"/><path d="M8 7h4M8 11h4M8 15h4"/>',
+    warehouse:'<path d="M2 20V9l10-5 10 5v11"/><path d="M6 20v-8h12v8M6 15h12"/>',
+    factory:'<path d="M3 20V10l5 3V10l5 3V6h3l1 14M3 20h18"/><path d="M17 6h2l1 14"/>',
+    apartment:'<rect x="5" y="3" width="14" height="17" rx="1"/><path d="M9 7h.01M15 7h.01M9 11h.01M15 11h.01M10 20v-4h4v4M3 20h18"/>',
+    lot:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/>',
+    crane:'<path d="M6 21V4h1l13 4H7M6 8H3M17 8v5M15 13h4M4 21h6"/>',
+    gym:'<path d="M3 10v4M6 7v10M18 7v10M21 10v4M6 12h12"/>',
+    more:'<circle cx="6" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18" cy="12" r="1.2"/>'
+  };
+  var TYPES = [['Retail / storefront','store'],['Shopping center','mall'],['Hotel','hotel'],['Hospital / healthcare','health'],['Office / bank','office'],['Warehouse / distribution','warehouse'],['Industrial site','factory'],['Apartment building','apartment'],['Parking lot','lot'],['Construction site','crane'],['Gym / fitness','gym'],['Something else','more']];
+  var LOCS = ['1 location','2–5 locations','6–20 locations','20+ locations'];
+  var WHERE = ['Manhattan','Brooklyn','Queens','The Bronx','Staten Island','Outside NYC'];
+  var PLANS = {
+    included: ['Pre-storm anti-icing','Plowing for lots and access roads','Sidewalk and entrance clearing','De-icing and re-treating against refreeze','Hand crews for stairs, ramps and doorways'],
+    s: ['Seasonal pricing','One fixed price for the whole season, split into five monthly payments.',['Every storm covered, however many there are','A budget you know in November','Crews assigned to your site before the first flake']],
+    v: ['Per-visit pricing','You sign up for the season and pay for each visit as it snows.',['Same crews and same site plan','Billed per storm, by the visit','Suits sites that only need the big storms']]
+  };
+  var NOUN = {'Retail / storefront':'storefronts','Shopping center':'shopping centers','Hotel':'hotels','Hospital / healthcare':'hospitals and care sites','Office / bank':'offices and banks','Warehouse / distribution':'warehouses','Industrial site':'industrial sites','Apartment building':'apartment buildings','Parking lot':'parking lots','Construction site':'construction sites','Gym / fitness':'gyms and studios'};
+  function rec(type, locs) {
+    var why = "You open on a schedule. One fixed price means a crew is booked for your site before every storm, not called in after it.";
+    if (['Hotel','Hospital / healthcare','Apartment building'].indexOf(type) > -1) why = "Your site needs clearing at every hour. One fixed price means every storm is covered, with nobody waiting on a sign-off at 3 AM.";
+    if (['Warehouse / distribution','Industrial site','Parking lot','Construction site','Shopping center'].indexOf(type) > -1) why = "Big surfaces need plows on every storm. One fixed price keeps the cost the same, even in a heavy winter.";
+    if (locs && !/^1 /.test(locs)) why += ' Across ' + locs.replace(' locations', ' sites') + ', it also keeps every location on one standard and one budget.';
+    return { tag: 'Recommended for ' + (NOUN[type] || 'sites like yours'), why: why };
+  }
+  var TICK = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 6 3 3 5-6"/></svg>';
+  var STEPS = [['Property','What are we ','clearing?','Commercial and multi-unit properties only.'],['Locations','How many ','locations?','Multi-site contracts are welcome.'],['Boroughs','Where are your ','sites?','Select all that apply.'],['Plan','How do you want to ','cover the season?',''],['Details','Where should we ','send your plan?','Add each site so we can price it accurately.']];
+  var preW = document.body.getAttribute('data-where');
+  var st = { i: 0, type: '', locs: '', where: preW ? [preW] : [], plan: 'Seasonal pricing', haul: false, addrs: [{ label: '', picked: false }], f: { name: '', co: '', email: '', phone: '', notes: '' }, err: {}, done: false };
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function render() {
+    if (st.done) {
+      var first = st.f.name.trim().split(' ')[0];
+      host.innerHTML = '<div class="f-done"><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5 9-10"/></svg></div><h3 class="h2" style="font-size:clamp(28px,3vw,40px)">Thanks' + (first ? ', ' + esc(first) : '') + '. <b>Your quote is being prepared.</b></h3><p class="lead" style="margin:14px auto 0">A Novus snow specialist is pricing your ' + (st.addrs.filter(function (a) { return a.label; }).length > 1 ? 'sites' : 'site') + ' now and will be in touch shortly. Need us now? Call (917) 970-2960, any time.</p><div class="f-sum">' + [st.type, st.locs].concat(st.where, [st.plan], st.haul ? ['Snow hauling'] : [], st.addrs.filter(function (a) { return a.label; }).map(function (a) { return a.street || a.label; })).filter(Boolean).map(function (v) { return '<span>' + esc(v) + '</span>'; }).join('') + '</div></div>';
+      return;
+    }
+    var s = STEPS[st.i], h = '';
+    h += '<div class="f-prog"><span>Step ' + (st.i + 1) + ' of 5 · ' + s[0] + '</span><span class="f-comm">Commercial properties only</span></div>';
+    h += '<div class="f-dots">' + STEPS.map(function (_, k) { return '<i class="' + (k < st.i ? 'done' : k === st.i ? 'on' : '') + '"></i>'; }).join('') + '</div>';
+    h += '<div class="fs on"><h3>' + s[1] + '<b>' + s[2] + '</b></h3>' + (s[3] ? '<p class="hint">' + s[3] + '</p>' : '');
+    if (st.i === 0) h += '<div class="tiles">' + TYPES.map(function (t) { return '<button type="button" class="tile' + (st.type === t[0] ? ' on' : '') + '" data-type="' + t[0] + '"><svg ' + SVGP + '>' + ICON[t[1]] + '</svg><span>' + t[0] + '</span></button>'; }).join('') + '</div>';
+    if (st.i === 1) h += '<div class="cards">' + LOCS.map(function (o) { return '<button type="button" class="cardopt' + (st.locs === o ? ' on' : '') + '" data-locs="' + o + '">' + o + '<span class="tick">' + TICK + '</span></button>'; }).join('') + '</div>';
+    if (st.i === 2) h += '<div class="cards c3">' + WHERE.map(function (o) { return '<button type="button" class="cardopt' + (st.where.indexOf(o) > -1 ? ' on' : '') + '" data-where="' + o + '">' + o + '<span class="tick">' + TICK + '</span></button>'; }).join('') + '</div>';
+    if (st.i === 3) {
+      var r = rec(st.type, st.locs);
+      h += '<div class="pcards">' + [[PLANS.s, true], [PLANS.v, false]].map(function (x) { var p = x[0]; return '<button type="button" class="pcard' + (x[1] ? ' rec' : '') + (st.plan === p[0] ? ' on' : '') + '" data-plan="' + p[0] + '">' + (x[1] ? '<span class="pc-tag">' + r.tag + '</span>' : '') + '<span class="pc-top"><b>' + p[0] + '</b><span class="pc-radio">' + TICK + '</span></span><span class="pc-line">' + p[1] + '</span><span class="pc-pts">' + p[2].map(function (t) { return '<span>' + TICK + t + '</span>'; }).join('') + '</span></button>'; }).join('') + '</div>';
+      h += '<p class="pc-why"><b>Why we suggest seasonal:</b> ' + r.why + '</p>';
+      h += '<div class="pc-inc"><span>Both include</span>' + PLANS.included.map(function (t) { return '<em>' + t + '</em>'; }).join('') + '</div>';
+      h += '<button type="button" class="addon' + (st.haul ? ' on' : '') + '" data-haul="1"><span class="sw"><i></i></span><span><b>Add snow hauling</b><small>Optional. For sites with nowhere to stack.</small></span></button>';
+    }
+    if (st.i === 4) {
+      var F = function (k, id, lab, ph, type, ac, err) { return '<div class="fld' + (err ? ' err' : '') + '"><label for="' + id + '">' + lab + '</label><input id="' + id + '" data-f="' + k + '" type="' + type + '" autocomplete="' + ac + '" placeholder="' + ph + '" value="' + esc(st.f[k]) + '"/></div>'; };
+      h += '<div class="fields">' + F('name', 'qName', 'Your name', 'Jane Smith', 'text', 'name', st.err.name) + F('co', 'qCo', 'Company', 'Company name', 'text', 'organization') + F('email', 'qEmail', 'Work email', 'jane@company.com', 'email', 'email', st.err.email) + F('phone', 'qPhone', 'Phone', '(212) 555-0123', 'tel', 'tel', st.err.phone);
+      h += '<div class="fld full"><label>Site ' + (st.addrs.length > 1 ? 'addresses' : 'address') + '</label><div class="addrs">' + st.addrs.map(function (a, k) { return '<div class="addr' + (k === 0 && st.err.addr ? ' err' : '') + (a.picked ? ' ok' : '') + '" data-k="' + k + '"><span class="addr-pin">' + (k + 1) + '</span><input data-addr="' + k + '" autocomplete="off" placeholder="' + (k ? 'Next site address' : 'Start typing the site address') + '" value="' + esc(a.label) + '"/>' + (a.picked ? '<span class="addr-ok">' + TICK + '</span>' : '') + (k ? '<button type="button" class="addr-x" data-rm="' + k + '">×</button>' : '') + '</div>'; }).join('') + '</div><button type="button" class="addr-add" data-add="1">+ Add another location</button></div>';
+      h += '<div class="fld full"><label for="qNotes">Anything we should know? (optional)</label><textarea id="qNotes" data-f="notes" rows="2" placeholder="e.g. loading bay at the back, opens at 6 AM">' + esc(st.f.notes) + '</textarea></div></div>';
+    }
+    h += '</div><div class="f-nav"><button type="button" class="f-back' + (st.i > 0 ? ' show' : '') + '" data-back="1">← Back</button>' + (st.i > 0 ? '<button type="button" class="btn btn-ice" data-next="1">' + (st.i === 4 ? 'Get my quote' : 'Continue') + ' <span class="arr">→</span></button>' : '') + '</div>';
+    host.innerHTML = h;
+  }
+  function shake() { var f = host.querySelector('.fs'); if (f && f.animate) f.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }], { duration: 300 }); }
+  function next() {
+    if (st.i === 0 && !st.type || st.i === 1 && !st.locs || st.i === 2 && !st.where.length) return shake();
+    if (st.i === 4) {
+      st.err = { name: st.f.name.trim().length < 2, email: !/.+@.+\..+/.test(st.f.email.trim()), phone: st.f.phone.replace(/\D/g, '').length < 7, addr: st.addrs[0].label.trim().length < 5 };
+      if (st.err.name || st.err.email || st.err.phone || st.err.addr) { render(); return shake(); }
+      st.done = true; render(); return;
+    }
+    st.i++; render();
+  }
+  function auto() { setTimeout(function () { st.i++; render(); }, 260); }
+  host.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.type) { st.type = b.dataset.type; render(); auto(); }
+    else if (b.dataset.locs) { st.locs = b.dataset.locs; render(); auto(); }
+    else if (b.dataset.where) { var w = b.dataset.where, k = st.where.indexOf(w); if (k > -1) st.where.splice(k, 1); else st.where.push(w); render(); }
+    else if (b.dataset.plan) { st.plan = b.dataset.plan; render(); }
+    else if (b.dataset.haul) { st.haul = !st.haul; render(); }
+    else if (b.dataset.add) { st.addrs.push({ label: '', picked: false }); render(); var ins = host.querySelectorAll('[data-addr]'); ins[ins.length - 1].focus(); }
+    else if (b.dataset.rm) { st.addrs.splice(+b.dataset.rm, 1); render(); }
+    else if (b.dataset.back) { st.i = Math.max(0, st.i - 1); render(); }
+    else if (b.dataset.next) next();
+  });
+  /* address search (Photon / OpenStreetMap) */
+  var COUNTY = { 'Kings County': 'Brooklyn', 'New York County': 'Manhattan', 'Queens County': 'Queens', 'Bronx County': 'The Bronx', 'Richmond County': 'Staten Island' };
+  function toAddr(f) {
+    var p = f.properties || {}, c = (f.geometry && f.geometry.coordinates) || [];
+    var street = [p.housenumber, p.street || (p.housenumber ? '' : p.name)].filter(Boolean).join(' ');
+    var borough = COUNTY[p.county] || p.district || p.city || '';
+    var stt = p.state === 'New York' ? 'NY' : p.state === 'New Jersey' ? 'NJ' : p.state;
+    return { label: [street || p.name, borough, [stt, p.postcode].filter(Boolean).join(' ')].filter(Boolean).join(', '), street: street || p.name || '', borough: borough, zip: p.postcode || '', lat: c[1], lon: c[0], picked: true };
+  }
+  var tmr, dd = null, list = [], hi = 0, activeK = -1;
+  function closeDd() { if (dd) { dd.remove(); dd = null; } }
+  function pick(a) { st.addrs[activeK] = a; closeDd(); render(); }
+  function showDd(box) {
+    closeDd(); if (!list.length) return;
+    dd = document.createElement('div'); dd.className = 'addr-dd';
+    dd.innerHTML = list.map(function (a, k) { return '<button type="button" class="' + (k === hi ? 'on' : '') + '" data-pick="' + k + '"><svg ' + SVGP + '><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b>' + esc(a.street) + '</b><small>' + esc([a.borough, a.zip].filter(Boolean).join(' · ')) + '</small></span></button>'; }).join('');
+    dd.addEventListener('mousedown', function (e) { var b = e.target.closest('[data-pick]'); if (b) { e.preventDefault(); pick(list[+b.dataset.pick]); } });
+    box.appendChild(dd);
+  }
+  host.addEventListener('input', function (e) {
+    var t = e.target;
+    if (t.dataset.f) { st.f[t.dataset.f] = t.value; return; }
+    if (t.dataset.addr == null) return;
+    var k = +t.dataset.addr, v = t.value, box = t.parentNode; activeK = k;
+    st.addrs[k] = { label: v, picked: false };
+    box.classList.remove('ok'); var okEl = box.querySelector('.addr-ok'); if (okEl) okEl.remove();
+    clearTimeout(tmr); if (v.trim().length < 3) { closeDd(); return; }
+    tmr = setTimeout(function () {
+      fetch('https://photon.komoot.io/api/?limit=6&lang=en&lat=40.73&lon=-73.95&bbox=-75.6,39.6,-72.6,41.4&q=' + encodeURIComponent(v)).then(function (r) { return r.json(); }).then(function (j) {
+        list = (j.features || []).filter(function (f) { return f.properties && f.properties.countrycode === 'US'; }).map(toAddr).filter(function (a) { return a.street; });
+        hi = 0; if (document.activeElement === t) showDd(box);
+      }).catch(function () {});
+    }, 220);
+  });
+  host.addEventListener('keydown', function (e) {
+    if (!dd || e.target.dataset.addr == null) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); hi = (hi + (e.key === 'ArrowDown' ? 1 : list.length - 1)) % list.length; showDd(e.target.parentNode); }
+    if (e.key === 'Enter') { e.preventDefault(); pick(list[hi]); }
+  });
+  host.addEventListener('focusout', function (e) { if (e.target.dataset.addr != null) setTimeout(closeDd, 160); });
+  /* prefill from the hero card and the pricing cards */
+  window.addEventListener('novus:prefill', function (e) {
+    var d = e.detail || {};
+    if (d.type) st.type = d.type; if (d.locs) st.locs = d.locs; if (d.plan) st.plan = d.plan;
+    st.i = d.type && d.locs ? 2 : d.type ? 1 : d.plan ? Math.max(st.i, 0) : 0;
+    st.done = false; render();
+  });
+  document.querySelectorAll('.plans .btn').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      var q = document.getElementById('quote'); if (!q) return;
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent('novus:prefill', { detail: { plan: /per-visit/i.test(b.textContent) ? 'Per-visit pricing' : 'Seasonal pricing' } }));
+      q.scrollIntoView({ behavior: 'smooth' });
     });
   });
-  function show(i) {
-    fi = i; fs.forEach(function (f, j) { f.classList.toggle('on', j === i); });
-    document.getElementById('fStep').textContent = 'Step ' + (i + 1) + ' of 5';
-    document.getElementById('fBar').style.width = ((i + 1) / 5 * 100) + '%';
-    back.classList.toggle('show', i > 0);
-    next.innerHTML = i === 4 ? 'Get my snow plan <span class="arr">→</span>' : 'Continue <span class="arr">→</span>';
-  }
-  function valid() {
-    var key = fs[fi].dataset.key;
-    if (key !== 'contact') return data[key].length > 0;
-    var ok = true;
-    [['fName', function (v) { return v.length > 1; }], ['fEmail', function (v) { return /.+@.+\..+/.test(v); }], ['fPhone', function (v) { return v.replace(/\D/g, '').length >= 7; }]].forEach(function (r) {
-      var el = document.getElementById(r[0]), good = r[1](el.value.trim());
-      el.parentNode.classList.toggle('err', !good); if (!good) ok = false;
-    });
-    return ok;
-  }
-  function go(d) {
-    if (d > 0 && !valid()) { fs[fi].animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }], { duration: 300 }); return; }
-    if (d > 0 && fi === 4) { finish(); return; }
-    show(Math.max(0, Math.min(4, fi + d)));
-  }
-  next.addEventListener('click', function () { go(1); });
-  back.addEventListener('click', function () { go(-1); });
-  function finish() {
-    var hp = document.getElementById('fHp'); if (hp && hp.value) return;
-    var name = document.getElementById('fName').value.trim().split(' ')[0];
-    document.getElementById('fDoneName').textContent = name ? ', ' + name : '';
-    var sum = document.getElementById('fSum'); sum.innerHTML = '';
-    [].concat(data.type, data.locs, data.where, data.needs).forEach(function (v) { var sp = document.createElement('span'); sp.textContent = v; sum.appendChild(sp); });
-    document.getElementById('fWrap').hidden = true; document.getElementById('fDone').hidden = false;
+  render();
   }
 })();

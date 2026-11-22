@@ -7,7 +7,9 @@ window.initNovus = function initNovus(opts){
   var nav=document.getElementById('nav'),mbar=document.getElementById('mbar');
   function onScroll(){
     var y=window.scrollY;
-    mbar.classList.toggle('show',y>window.innerHeight*0.6);
+    var q=document.getElementById('quote'),r=q?q.getBoundingClientRect():null;
+    var inForm=r&&r.top<window.innerHeight*0.8&&r.bottom>0;
+    mbar.classList.toggle('show',y>window.innerHeight*0.6&&!inForm);
   }
   window.addEventListener('scroll',onScroll,{passive:true,signal:__sig});onScroll();
   void nav; /* the shared SiteNav component handles the nav and mobile menu */
@@ -112,14 +114,14 @@ window.initNovus = function initNovus(opts){
   function setT(i){ti=i;tq.forEach(function(q,j){q.classList.toggle('on',j===i)});tt.forEach(function(t,j){t.classList.remove('on');void t.offsetWidth;if(j===i)t.classList.add('on')});clearTimeout(tTimer);tTimer=setTimeout(function(){setT((ti+1)%tq.length)},6000);}
   tt.forEach(function(t,i){t.addEventListener('click',function(){setT(i)})});setT(0);
 
-  /* HERO quick quote */
+  /* HERO quick quote: picks are handed to the React quote form */
   var heroSel={type:null,locs:null};
   document.querySelectorAll('[data-hero]').forEach(function(g){
     g.querySelectorAll('.opt').forEach(function(b){
       b.addEventListener('click',function(){
         g.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});
-        b.classList.add('on');heroSel[g.dataset.hero]=b.textContent.trim();
-      });
+        b.classList.add('on');heroSel[g.dataset.hero]=b.dataset.v||null;
+      },{signal:__sig});
     });
   });
 
@@ -178,82 +180,10 @@ window.initNovus = function initNovus(opts){
   }
   window.addEventListener('scroll',stormScroll,{passive:true,signal:__sig});stormScroll();
 
-  /* QUOTE FORM */
-  var fs=document.querySelectorAll('.fs'),fi=0,data={type:[],locs:[],where:[],needs:[]};
-  var next=document.getElementById('fNext'),back=document.getElementById('fBack');
-  fs.forEach(function(f){
-    var key=f.dataset.key,mode=f.dataset.mode;
-    f.querySelectorAll('.cardopt').forEach(function(b){
-      b.addEventListener('click',function(){
-        var v=b.childNodes[0].textContent.trim();
-        if(mode==='single'){
-          f.querySelectorAll('.cardopt').forEach(function(x){x.classList.remove('on')});
-          b.classList.add('on');data[key]=[v];
-          setTimeout(function(){go(1)},260);
-        }else{
-          b.classList.toggle('on');
-          var i=data[key].indexOf(v);if(i>-1)data[key].splice(i,1);else data[key].push(v);
-        }
-      });
-    });
-  });
-  function preselect(key,val){
-    if(!val)return;
-    var f=document.querySelector('.fs[data-key="'+key+'"]');
-    f.querySelectorAll('.cardopt').forEach(function(b){
-      var t=b.childNodes[0].textContent.trim();
-      var match=key==='locs'?t.indexOf(val)===0:t===val;
-      b.classList.toggle('on',match);if(match)data[key]=[t];
-    });
-  }
-  function show(i){
-    fi=i;fs.forEach(function(f,j){f.classList.toggle('on',j===i)});
-    document.getElementById('fStep').textContent='Step '+(i+1)+' of 5';
-    document.getElementById('fBar').style.width=((i+1)/5*100)+'%';
-    back.classList.toggle('show',i>0);
-    next.innerHTML=i===4?'Get my snow plan <span class="arr">→</span>':'Continue <span class="arr">→</span>';
-  }
-  function valid(){
-    var key=fs[fi].dataset.key;
-    if(key!=='contact')return data[key].length>0;
-    var ok=true;
-    [['fName',function(v){return v.length>1}],['fEmail',function(v){return /.+@.+\..+/.test(v)}],['fPhone',function(v){return v.replace(/\D/g,'').length>=7}]].forEach(function(r){
-      var el=document.getElementById(r[0]),good=r[1](el.value.trim());
-      el.parentNode.classList.toggle('err',!good);if(!good)ok=false;
-    });
-    return ok;
-  }
-  function go(d){
-    if(d>0&&!valid()){fs[fi].animate([{transform:'translateX(0)'},{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(0)'}],{duration:300});return;}
-    if(d>0&&fi===4){finish();return;}
-    show(Math.max(0,Math.min(4,fi+d)));
-  }
-  next.addEventListener('click',function(){go(1)});
-  back.addEventListener('click',function(){go(-1)});
-  function finish(){
-    var hp=document.getElementById('fHp');if(hp&&hp.value)return;
-    var val=function(id){var el=document.getElementById(id);return el?el.value.trim():''};
-    var payload={name:val('fName'),company:val('fCo'),email:val('fEmail'),phone:val('fPhone'),notes:val('fNotes'),
-      property_type:data.type[0]||'',locations:data.locs[0]||'',boroughs:data.where.slice(),services:data.needs.slice(),source_page:location.pathname};
-    next.disabled=true;next.innerHTML='Sending&hellip;';
-    var hint=fs[4].querySelector('.hint'),hintTxt=hint.textContent;
-    Promise.resolve(opts.onSubmit?opts.onSubmit(payload):null).then(function(){
-      var name=payload.name.split(' ')[0];
-      document.getElementById('fDoneName').textContent=name?', '+name:'';
-      var sum=document.getElementById('fSum');sum.innerHTML='';
-      [].concat(data.type,data.locs,data.where,data.needs).forEach(function(v){var sp=document.createElement('span');sp.textContent=v;sum.appendChild(sp)});
-      document.getElementById('fWrap').hidden=true;document.getElementById('fDone').hidden=false;
-    }).catch(function(){
-      next.disabled=false;next.innerHTML='Try again <span class="arr">→</span>';
-      hint.textContent='That didn\'t send. Please try again, or call (917) 970-2960.';hint.style.color='#E11D48';
-      setTimeout(function(){hint.textContent=hintTxt;hint.style.color=''},6000);
-    });
-  }
+  /* HERO -> quote form */
   document.getElementById('heroGo').addEventListener('click',function(){
-    if(heroSel.type)preselect('type',heroSel.type);
-    if(heroSel.locs)preselect('locs',heroSel.locs);
-    show(heroSel.type&&heroSel.locs?2:heroSel.type?1:0);
-  });
+    window.dispatchEvent(new CustomEvent('novus:prefill',{detail:{type:heroSel.type,locs:heroSel.locs}}));
+  },{signal:__sig});
 
   return function(){__dead=true;__ac.abort();};
 }
