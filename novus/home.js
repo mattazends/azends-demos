@@ -114,17 +114,6 @@ window.initNovus = function initNovus(opts){
   function setT(i){ti=i;tq.forEach(function(q,j){q.classList.toggle('on',j===i)});tt.forEach(function(t,j){t.classList.remove('on');void t.offsetWidth;if(j===i)t.classList.add('on')});clearTimeout(tTimer);tTimer=setTimeout(function(){setT((ti+1)%tq.length)},6000);}
   tt.forEach(function(t,i){t.addEventListener('click',function(){setT(i)})});setT(0);
 
-  /* HERO quick quote: picks are handed to the React quote form */
-  var heroSel={type:null,locs:null};
-  document.querySelectorAll('[data-hero]').forEach(function(g){
-    g.querySelectorAll('.opt').forEach(function(b){
-      b.addEventListener('click',function(){
-        g.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});
-        b.classList.add('on');heroSel[g.dataset.hero]=b.dataset.v||null;
-      },{signal:__sig});
-    });
-  });
-
   /* CLOCK */
   var rng=document.getElementById('ccRange');
   function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60,ap=h>=12?'PM':'AM',hh=h%12||12;return {t:hh+':'+(mi<10?'0':'')+mi,ap:ap};}
@@ -179,11 +168,6 @@ window.initNovus = function initNovus(opts){
     prog.style.height=(p*(r.height-16))+'px';
   }
   window.addEventListener('scroll',stormScroll,{passive:true,signal:__sig});stormScroll();
-
-  /* HERO -> quote form */
-  document.getElementById('heroGo').addEventListener('click',function(){
-    window.dispatchEvent(new CustomEvent('novus:prefill',{detail:{type:heroSel.type,locs:heroSel.locs}}));
-  },{signal:__sig});
 
   return function(){__dead=true;__ac.abort();};
 }

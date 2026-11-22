@@ -1,6 +1,6 @@
 /* Novus static site behaviour (all pages). The homepage also loads home.js for its own sections. */
 (function () {
-  var isHome = !!document.getElementById('heroGo');
+  var isHome = !!document.getElementById('plow');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var html = document.documentElement;
 
@@ -84,8 +84,24 @@
   initForm();
 
   function initForm() {
+    document.querySelectorAll('[data-qf]').forEach(mount);
+    /* pricing section: read more */
+    document.querySelectorAll('.plan .pc-rm').forEach(function (b) {
+      b.addEventListener('click', function () { var m = b.previousElementSibling, o = !m.classList.contains('open'); m.classList.toggle('open', o); b.setAttribute('aria-expanded', o); b.firstChild.textContent = o ? 'Show less' : 'Read more'; });
+    });
+    document.querySelectorAll('.plans .btn').forEach(function (b) {
+      b.addEventListener('click', function (e) {
+        var q = document.getElementById('quote'); if (!q) return;
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('novus:prefill', { detail: { plan: /per-visit/i.test(b.textContent) ? 'Per-visit pricing' : 'Seasonal pricing' } }));
+        q.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  }
+
+  function mount(host) {
+    var hero = host.getAttribute('data-qf') === 'hero';
   /* QUOTE FORM (demo port of the React form; no backend on this preview link) */
-  var host = document.getElementById('form'); if (!host) return;
   var SVGP = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"';
   var ICON = {
     store:'<path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a2.5 2.5 0 0 1-4.5 1.5 2.5 2.5 0 0 1-4.5 0 2.5 2.5 0 0 1-4.5 0A2.5 2.5 0 0 1 3 10.5z"/><path d="M5 12v8h14v-8M10 20v-5h4v5"/>',
@@ -106,8 +122,8 @@
   var WHERE = ['Manhattan','Brooklyn','Queens','The Bronx','Staten Island','Outside NYC'];
   var PLANS = {
     included: ['Pre-storm anti-icing','Plowing for lots and access roads','Sidewalk and entrance clearing','De-icing and re-treating against refreeze','Hand crews for stairs, ramps and doorways'],
-    s: ['Seasonal pricing','One fixed price for the whole season, split into five monthly payments.',['Every storm covered, however many there are','A budget you know in November','Crews assigned to your site before the first flake']],
-    v: ['Per-visit pricing','You sign up for the season and pay for each visit as it snows.',['Same crews and same site plan','Billed per storm, by the visit','Suits sites that only need the big storms']]
+    s: ['Seasonal pricing','One fixed price for the whole season, split into five monthly payments.',['Every storm covered, however many there are','A budget you know in November','Crews assigned to your site before the first flake'],[['How you pay','One price for the whole season, paid in five equal monthly payments. A heavy winter costs you the same as a quiet one.'],["What's covered",'Every storm, start to finish: pre-treatment before it, plowing and sidewalks during it, re-treating against refreeze after it.'],['Why we recommend it','Your crew is booked for your site before the season starts, so nothing waits on a call or a sign-off mid-storm.'],['Best for','Hotels, hospitals, retail chains, warehouses and anyone with several sites who needs every storm handled.']]],
+    v: ['Per-visit pricing','You sign up for the season and pay for each visit as it snows.',['Same crews and same site plan','Billed per storm, by the visit','Suits sites that only need the big storms'],[['How you pay','You sign up for the season, then each visit is billed as it happens. A quiet winter costs less, a heavy one costs more.'],["What's covered",'The same site plan and the same crews. We go out as it snows, at the depths agreed in your plan.'],['Good to know','You still sign up before the season, so your site is walked, planned and on the route before the first storm.'],['Best for','Sites that only need clearing on the bigger storms, or owners who prefer to pay as they go.']]]
   };
   var NOUN = {'Retail / storefront':'storefronts','Shopping center':'shopping centers','Hotel':'hotels','Hospital / healthcare':'hospitals and care sites','Office / bank':'offices and banks','Warehouse / distribution':'warehouses','Industrial site':'industrial sites','Apartment building':'apartment buildings','Parking lot':'parking lots','Construction site':'construction sites','Gym / fitness':'gyms and studios'};
   function rec(type, locs) {
@@ -120,6 +136,7 @@
   var TICK = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 6 3 3 5-6"/></svg>';
   var STEPS = [['Property','What are we ','clearing?','Commercial and multi-unit properties only.'],['Locations','How many ','locations?','Multi-site contracts are welcome.'],['Boroughs','Where are your ','sites?','Select all that apply.'],['Plan','How do you want to ','cover the season?',''],['Details','Where should we ','send your plan?','Add each site so we can price it accurately.']];
   var preW = document.body.getAttribute('data-where');
+  var more = {};
   var st = { i: 0, type: '', locs: '', where: preW ? [preW] : [], plan: 'Seasonal pricing', haul: false, addrs: [{ label: '', picked: false }], f: { name: '', co: '', email: '', phone: '', notes: '' }, err: {}, done: false };
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function render() {
@@ -128,7 +145,7 @@
       host.innerHTML = '<div class="f-done"><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5 9-10"/></svg></div><h3 class="h2" style="font-size:clamp(28px,3vw,40px)">Thanks' + (first ? ', ' + esc(first) : '') + '. <b>Your quote is being prepared.</b></h3><p class="lead" style="margin:14px auto 0">A Novus snow specialist is pricing your ' + (st.addrs.filter(function (a) { return a.label; }).length > 1 ? 'sites' : 'site') + ' now and will be in touch shortly. Need us now? Call (917) 970-2960, any time.</p><div class="f-sum">' + [st.type, st.locs].concat(st.where, [st.plan], st.haul ? ['Snow hauling'] : [], st.addrs.filter(function (a) { return a.label; }).map(function (a) { return a.street || a.label; })).filter(Boolean).map(function (v) { return '<span>' + esc(v) + '</span>'; }).join('') + '</div></div>';
       return;
     }
-    var s = STEPS[st.i], h = '';
+    var s = STEPS[st.i], h = hero ? '<div class="hf-h">Price your site in <b>60 seconds</b></div>' : '';
     h += '<div class="f-prog"><span>Step ' + (st.i + 1) + ' of 5 · ' + s[0] + '</span><span class="f-comm">Commercial properties only</span></div>';
     h += '<div class="f-dots">' + STEPS.map(function (_, k) { return '<i class="' + (k < st.i ? 'done' : k === st.i ? 'on' : '') + '"></i>'; }).join('') + '</div>';
     h += '<div class="fs on"><h3>' + s[1] + '<b>' + s[2] + '</b></h3>' + (s[3] ? '<p class="hint">' + s[3] + '</p>' : '');
@@ -137,7 +154,8 @@
     if (st.i === 2) h += '<div class="cards c3">' + WHERE.map(function (o) { return '<button type="button" class="cardopt' + (st.where.indexOf(o) > -1 ? ' on' : '') + '" data-where="' + o + '">' + o + '<span class="tick">' + TICK + '</span></button>'; }).join('') + '</div>';
     if (st.i === 3) {
       var r = rec(st.type, st.locs);
-      h += '<div class="pcards">' + [[PLANS.s, true], [PLANS.v, false]].map(function (x) { var p = x[0]; return '<button type="button" class="pcard' + (x[1] ? ' rec' : '') + (st.plan === p[0] ? ' on' : '') + '" data-plan="' + p[0] + '">' + (x[1] ? '<span class="pc-tag">' + r.tag + '</span>' : '') + '<span class="pc-top"><b>' + p[0] + '</b><span class="pc-radio">' + TICK + '</span></span><span class="pc-line">' + p[1] + '</span><span class="pc-pts">' + p[2].map(function (t) { return '<span>' + TICK + t + '</span>'; }).join('') + '</span></button>'; }).join('') + '</div>';
+      var CHEV = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 4.5 3 3 3-3"/></svg>';
+      h += '<div class="pcards" role="radiogroup">' + [[PLANS.s, true], [PLANS.v, false]].map(function (x) { var p = x[0], op = !!more[p[0]]; return '<div role="radio" tabindex="0" aria-checked="' + (st.plan === p[0]) + '" class="pcard' + (x[1] ? ' rec' : '') + (st.plan === p[0] ? ' on' : '') + (op ? ' open' : '') + '" data-plan="' + p[0] + '">' + (x[1] ? '<span class="pc-tag">' + r.tag + '</span>' : '') + '<span class="pc-top"><b>' + p[0] + '</b><span class="pc-radio">' + TICK + '</span></span><span class="pc-line">' + p[1] + '</span><span class="pc-pts">' + p[2].map(function (t) { return '<span>' + TICK + t + '</span>'; }).join('') + '</span><div class="pc-more"><div>' + p[3].map(function (m) { return '<p><b>' + m[0] + '</b>' + m[1] + '</p>'; }).join('') + '</div></div><button type="button" class="pc-rm" data-rmore="' + p[0] + '" aria-expanded="' + op + '">' + (op ? 'Show less' : 'Read more') + CHEV + '</button></div>'; }).join('') + '</div>';
       h += '<p class="pc-why"><b>Why we suggest seasonal:</b> ' + r.why + '</p>';
       h += '<div class="pc-inc"><span>Both include</span>' + PLANS.included.map(function (t) { return '<em>' + t + '</em>'; }).join('') + '</div>';
       h += '<button type="button" class="addon' + (st.haul ? ' on' : '') + '" data-haul="1"><span class="sw"><i></i></span><span><b>Add snow hauling</b><small>Optional. For sites with nowhere to stack.</small></span></button>';
@@ -148,8 +166,10 @@
       h += '<div class="fld full"><label>Site ' + (st.addrs.length > 1 ? 'addresses' : 'address') + '</label><div class="addrs">' + st.addrs.map(function (a, k) { return '<div class="addr' + (k === 0 && st.err.addr ? ' err' : '') + (a.picked ? ' ok' : '') + '" data-k="' + k + '"><span class="addr-pin">' + (k + 1) + '</span><input data-addr="' + k + '" autocomplete="off" placeholder="' + (k ? 'Next site address' : 'Start typing the site address') + '" value="' + esc(a.label) + '"/>' + (a.picked ? '<span class="addr-ok">' + TICK + '</span>' : '') + (k ? '<button type="button" class="addr-x" data-rm="' + k + '">×</button>' : '') + '</div>'; }).join('') + '</div><button type="button" class="addr-add" data-add="1">+ Add another location</button></div>';
       h += '<div class="fld full"><label for="qNotes">Anything we should know? (optional)</label><textarea id="qNotes" data-f="notes" rows="2" placeholder="e.g. loading bay at the back, opens at 6 AM">' + esc(st.f.notes) + '</textarea></div></div>';
     }
-    h += '</div><div class="f-nav"><button type="button" class="f-back' + (st.i > 0 ? ' show' : '') + '" data-back="1">← Back</button>' + (st.i > 0 ? '<button type="button" class="btn btn-ice" data-next="1">' + (st.i === 4 ? 'Get my quote' : 'Continue') + ' <span class="arr">→</span></button>' : '') + '</div>';
-    host.innerHTML = h;
+    h += '</div><div class="f-nav' + (st.i === 0 ? ' f-nav-0' : '') + '"><button type="button" class="f-back' + (st.i > 0 ? ' show' : '') + '" data-back="1">← Back</button>' + (st.i > 0 ? '<button type="button" class="btn btn-ice" data-next="1">' + (st.i === 4 ? 'Get my quote' : 'Continue') + ' <span class="arr">→</span></button>' : '') + '</div>';
+    var stepChanged = host.getAttribute('data-step') !== String(st.i);
+    host.innerHTML = h; host.setAttribute('data-step', st.i);
+    if (hero && stepChanged && host.parentElement && host.parentElement.scrollTop) host.parentElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
   function shake() { var f = host.querySelector('.fs'); if (f && f.animate) f.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }], { duration: 300 }); }
   function next() {
@@ -163,11 +183,14 @@
   }
   function auto() { setTimeout(function () { st.i++; render(); }, 260); }
   host.addEventListener('click', function (e) {
+    var rm = e.target.closest('[data-rmore]');
+    if (rm) { var k0 = rm.dataset.rmore, card = rm.closest('.pcard'), o = !more[k0]; more[k0] = o; card.classList.toggle('open', o); rm.setAttribute('aria-expanded', o); rm.firstChild.textContent = o ? 'Show less' : 'Read more'; return; }
+    var pc = e.target.closest('.pcard');
+    if (pc) { var k1 = pc.dataset.plan; st.plan = k1; host.querySelectorAll('.pcard').forEach(function (c) { var on = c === pc; c.classList.toggle('on', on); c.setAttribute('aria-checked', on); }); if (!more[k1]) { more[k1] = true; pc.classList.add('open'); var bb = pc.querySelector('.pc-rm'); bb.setAttribute('aria-expanded', true); bb.firstChild.textContent = 'Show less'; } return; }
     var b = e.target.closest('button'); if (!b) return;
     if (b.dataset.type) { st.type = b.dataset.type; render(); auto(); }
     else if (b.dataset.locs) { st.locs = b.dataset.locs; render(); auto(); }
     else if (b.dataset.where) { var w = b.dataset.where, k = st.where.indexOf(w); if (k > -1) st.where.splice(k, 1); else st.where.push(w); render(); }
-    else if (b.dataset.plan) { st.plan = b.dataset.plan; render(); }
     else if (b.dataset.haul) { st.haul = !st.haul; render(); }
     else if (b.dataset.add) { st.addrs.push({ label: '', picked: false }); render(); var ins = host.querySelectorAll('[data-addr]'); ins[ins.length - 1].focus(); }
     else if (b.dataset.rm) { st.addrs.splice(+b.dataset.rm, 1); render(); }
@@ -213,21 +236,13 @@
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); hi = (hi + (e.key === 'ArrowDown' ? 1 : list.length - 1)) % list.length; showDd(e.target.parentNode); }
     if (e.key === 'Enter') { e.preventDefault(); pick(list[hi]); }
   });
+  host.addEventListener('keydown', function (e) { var pc = e.target.closest && e.target.closest('.pcard'); if (pc && e.target === pc && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pc.click(); } });
   host.addEventListener('focusout', function (e) { if (e.target.dataset.addr != null) setTimeout(closeDd, 160); });
-  /* prefill from the hero card and the pricing cards */
-  window.addEventListener('novus:prefill', function (e) {
+  /* prefill from the pricing section (bottom form only) */
+  if (!hero) window.addEventListener('novus:prefill', function (e) {
     var d = e.detail || {};
-    if (d.type) st.type = d.type; if (d.locs) st.locs = d.locs; if (d.plan) st.plan = d.plan;
-    st.i = d.type && d.locs ? 2 : d.type ? 1 : d.plan ? Math.max(st.i, 0) : 0;
+    if (d.plan) st.plan = d.plan;
     st.done = false; render();
-  });
-  document.querySelectorAll('.plans .btn').forEach(function (b) {
-    b.addEventListener('click', function (e) {
-      var q = document.getElementById('quote'); if (!q) return;
-      e.preventDefault();
-      window.dispatchEvent(new CustomEvent('novus:prefill', { detail: { plan: /per-visit/i.test(b.textContent) ? 'Per-visit pricing' : 'Seasonal pricing' } }));
-      q.scrollIntoView({ behavior: 'smooth' });
-    });
   });
   render();
   }
