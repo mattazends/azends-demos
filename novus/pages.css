@@ -347,3 +347,59 @@ a.boro:hover{color:var(--ice)}
 .inds a{color:var(--ink);background-image:linear-gradient(var(--ice),var(--ice));background-size:0 1px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .4s var(--ease)}
 .inds a:hover{background-size:100% 1px}
 #prevent{background:#fff;border-bottom:1px solid var(--line)}
+
+/* ---------- fixes: overflow + less boxy mobile ---------- */
+.novus-root{overflow-x:clip}
+.art>*,.split>*,.chk>*,.plan-grid>*,.never>*,.ph-split-in>*{min-width:0}
+@media (max-width:640px){
+  .sub .sec{padding:68px 0}
+  .sub .sec-head{margin-bottom:30px}
+  .st-sec.sec{padding:56px 0}
+  .st-big{font-size:28px;line-height:1.12}
+  .tl-list,.tl-list.six{gap:0}
+  .tl-i{display:grid;grid-template-columns:44px 1fr;column-gap:12px;padding:22px 0;border-top-color:rgba(255,255,255,.12)}
+  .tl-n{font-size:26px;margin:0;grid-row:1/4;line-height:1.1}
+  .tl-i h3{font-size:21px;margin-top:6px}
+  .tl-i p{font-size:15px;margin-top:6px}
+  .cmp-h{display:none}
+  .cmp-r{display:block;padding:18px 0;border-top:1px solid var(--line)}
+  .cmp-r:last-child{border-bottom:1px solid var(--line)}
+  .cmp-r>span{display:block;padding:0;border:0;background:none!important;border-radius:0!important}
+  .cmp-r .k{font-size:12.5px;padding:0 0 8px;border:0}
+  .cmp-r .l{font-size:14.5px;color:#9AA3B2;text-decoration:line-through;text-decoration-color:rgba(154,163,178,.6)}
+  .cmp-r .r{font-size:17px;color:var(--ink);font-weight:500;margin-top:4px;display:flex;align-items:center;gap:8px}
+  .cmp-r .r:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ice);flex:none}
+  .inc,.signs{border-top:0}
+  .inc-i{grid-template-columns:1fr;padding:16px 0;border-bottom:1px solid var(--line)}
+  .inc-i .no{display:none}
+  .inc-i h3,.sign h3{font-size:19px}
+  .inc-i p,.sign p{font-size:14.5px}
+  .sign{grid-template-columns:36px 1fr;gap:2px 12px;padding:18px 0}
+  .sign .sn{width:30px;height:30px;font-size:13px}
+  .why-grid.c3{gap:0}
+  .pains-sec .wcard{border-top:0;padding:16px 0;border-bottom:1px solid #DDE3EC}
+  .pains-sec .wcard h4{padding-top:4px;font-size:19px}
+  .split-media{border-radius:22px}
+  .ticks{border-top:0}.ticks li{padding:11px 0;font-size:15px;border-bottom:0}
+  .srow{gap:18px}.srow h3{font-size:20px}
+  .phase{padding:18px 0}.phase .pk{font-size:42px}
+  .lc{gap:22px}.lc-img{aspect-ratio:16/9;border-radius:18px}.lc-t h3{font-size:19px}
+  .facts-sec{padding:44px 0}.big-facts .n{font-size:36px}
+  .plan-list li,.never-list li{font-size:17px;padding:15px 0}
+  .plan-list .pn{width:30px;height:30px;font-size:12.5px}
+  .tq blockquote{font-size:28px}.tq .mark{font-size:64px}
+  .chk-meter{border-radius:22px;padding:22px}.chk-n{font-size:52px}.chk-meter p{min-height:0}
+  .chk-i{padding:14px 0;font-size:15.5px}
+  .prose h2{font-size:26px}.prose p{font-size:16px}.prose li{font-size:15px;padding:11px 0 11px 24px}.prose li:before{top:19px}
+  .tbl{min-width:0;font-size:14px}.tbl th,.tbl td{padding:12px 12px}
+  .toc{display:none}
+  .cards,.cards.c3{grid-template-columns:1fr 1fr;gap:8px}
+  .cardopt{padding:13px 12px;font-size:14px;border-radius:12px}
+  .cardopt .tick{display:none}
+  .cardopt.on{box-shadow:inset 0 0 0 1.5px var(--ice)}
+  .form{padding:22px 18px;border-radius:22px}
+  .fs h3{font-size:22px}
+  .hoods-sec .boros{gap:10px 18px}.hoods-sec .boro{font-size:15px}
+  .locs .loc{padding:16px 0}
+  .ph-badge{left:12px;right:12px;bottom:12px;padding:12px 14px}
+}
