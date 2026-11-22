@@ -1,1 +1,0 @@
-import{J as e}from"./Shell-C4yICh_z.js";import{o as t}from"./index-whF6XhKC.js";var n=e(),r=()=>(0,n.jsx)(t,{slug:`modification`});export{r as component};

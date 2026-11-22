@@ -1,0 +1,1 @@
+import{Y as e}from"./Shell-DhH-0Xw9.js";import{o as t}from"./index-DPkh_GWA.js";var n=e(),r=()=>(0,n.jsx)(t,{slug:`modification`});export{r as component};
