@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Novus Maintenance · Azends Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C0D10;--panel:#131418;--panel2:#18191E;--line:#24262C;--line2:#2E3038;
+  --tx:#ECEDF0;--tx2:#A3A7B3;--tx3:#6B7080;--blue:#2F7BFF;--blue2:#5B97FF;--purple:#A879FF;--green:#34D399;--amber:#FBBF24;--red:#F87171;--yellow:#FFE600;
+  --r:12px;--ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Geist,system-ui,sans-serif;background:var(--bg);color:var(--tx);font-size:13px;-webkit-font-smoothing:antialiased;overflow:hidden}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"Geist Mono",ui-monospace,monospace}
+svg{display:block}
+
+/* ---------- top bar ---------- */
+.top{height:52px;display:flex;align-items:center;gap:14px;padding:0 12px 0 14px;border-bottom:1px solid var(--line);background:var(--panel);position:relative;z-index:30}
+.brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;letter-spacing:-.02em;white-space:nowrap}
+.brand i{width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 10px 2px rgba(255,230,0,.55);display:inline-block;margin-left:1px;transform:translateY(3px)}
+.brand small{font-weight:400;color:var(--tx3);font-size:12px;margin-left:4px}
+.crumb{display:flex;align-items:center;gap:8px;color:var(--tx2);padding-left:14px;border-left:1px solid var(--line);white-space:nowrap}
+.crumb b{color:var(--tx);font-weight:500}
+.proj-dot{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#1F5EFF,#0A0F1C);display:flex;align-items:center;justify-content:center}
+.modes{display:flex;gap:2px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px;margin:0 auto}
+.modes button{padding:6px 13px;border-radius:7px;color:var(--tx2);font-weight:500;display:flex;align-items:center;gap:7px;white-space:nowrap;transition:all .2s}
+.modes button:hover{color:var(--tx)}
+.modes button.on{background:var(--panel2);color:var(--tx);box-shadow:0 0 0 1px var(--line2)}
+.modes svg{width:14px;height:14px;opacity:.8}
+.top-r{display:flex;align-items:center;gap:8px}
+.bp{display:flex;gap:2px;padding:3px;border-radius:9px;border:1px solid var(--line)}
+.bp button{width:30px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--tx3)}
+.bp button.on{background:var(--panel2);color:var(--tx)}
+.bp svg{width:15px;height:15px}
+.slop-chip{display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(52,211,153,.1);color:var(--green);font-weight:500;font-size:12px;white-space:nowrap;border:1px solid rgba(52,211,153,.25)}
+.slop-chip.bad{background:rgba(248,113,113,.1);color:var(--red);border-color:rgba(248,113,113,.3)}
+.slop-chip i{width:6px;height:6px;border-radius:50%;background:currentColor}
+.avs{display:flex}
+.av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;border:2px solid var(--panel);margin-left:-6px}
+.btn{height:32px;padding:0 13px;border-radius:8px;font-weight:500;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;transition:all .2s}
+.btn-ghost{background:var(--panel2);border:1px solid var(--line2)}
+.btn-ghost:hover{border-color:#3A3D47}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue2)}
+
+/* ---------- layout ---------- */
+.app{height:calc(100% - 52px);display:grid;grid-template-columns:264px 1fr 312px}
+.app.full{grid-template-columns:1fr}
+.side{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.side.r{border-right:0;border-left:1px solid var(--line)}
+.tabs{display:flex;gap:2px;padding:10px 10px 0;border-bottom:1px solid var(--line)}
+.tabs button{padding:8px 10px 10px;color:var(--tx3);font-weight:500;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--tx);border-color:var(--tx)}
+.scroll{overflow-y:auto;flex:1;min-height:0;padding:10px}
+.scroll::-webkit-scrollbar{width:8px}.scroll::-webkit-scrollbar-thumb{background:#2A2C33;border-radius:8px}
+.grp{font-size:11px;color:var(--tx3);font-weight:500;text-transform:uppercase;letter-spacing:.06em;padding:12px 8px 6px;display:flex;justify-content:space-between;align-items:center}
+.row{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:7px;color:var(--tx2);cursor:pointer;position:relative;user-select:none}
+.row:hover{background:var(--panel2);color:var(--tx)}
+.row.on{background:rgba(47,123,255,.14);color:#fff}
+.row svg{width:14px;height:14px;flex:none;opacity:.75}
+.row .sub{margin-left:auto;font-size:11px;color:var(--tx3)}
+.row.ind{padding-left:28px}
+.badge{font-size:10px;font-weight:500;padding:2px 6px;border-radius:5px;background:rgba(168,121,255,.14);color:var(--purple);margin-left:auto}
+.badge.g{background:rgba(52,211,153,.12);color:var(--green)}
+.badge.b{background:rgba(47,123,255,.15);color:var(--blue2)}
+.layer .grip{opacity:0;color:var(--tx3);margin-left:auto;cursor:grab}
+.layer:hover .grip{opacity:1}
+.layer.drag-over-top{box-shadow:inset 0 2px 0 var(--blue)}
+.layer.drag-over-bot{box-shadow:inset 0 -2px 0 var(--blue)}
+.layer .mv{display:none;gap:2px;margin-left:auto}
+.layer .mv button{width:22px;height:22px;border-radius:5px;background:var(--panel2);color:var(--tx2)}
+.ins{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px}
+.ins-i{border:1px solid var(--line);border-radius:10px;padding:8px;cursor:grab;background:var(--panel2);transition:border-color .2s,transform .2s}
+.ins-i:hover{border-color:var(--blue);transform:translateY(-1px)}
+.ins-i .th{height:54px;border-radius:6px;background:#F5F7FA;margin-bottom:7px;position:relative;overflow:hidden}
+.ins-i span{font-size:12px;color:var(--tx2)}
+.th i{position:absolute;display:block;border-radius:2px}
+
+/* ---------- canvas ---------- */
+.canvas{position:relative;overflow:auto;background-color:#0F1013;background-image:radial-gradient(#23252B 1px,transparent 1px);background-size:18px 18px;min-height:0}
+.board-wrap{padding:48px 40px 140px;display:flex;flex-direction:column;align-items:center}
+.board-label{align-self:stretch;display:flex;justify-content:space-between;color:var(--tx3);font-size:12px;margin-bottom:10px}
+.board-label b{color:var(--tx2);font-weight:500}
+.board-hold{position:relative}
+.board{transform-origin:0 0;background:#fff;box-shadow:0 30px 80px -20px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04);container-type:inline-size;position:absolute;left:0;top:0}
+.zoom{position:absolute;right:16px;bottom:16px;display:flex;gap:2px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:3px;z-index:5}
+.zoom button{padding:5px 9px;border-radius:7px;color:var(--tx2);font-size:12px}
+.zoom button.on{background:var(--panel2);color:var(--tx)}
+.drop-line{position:absolute;left:0;right:0;height:calc(4px*var(--inv));background:var(--blue);z-index:50;pointer-events:none;display:none;box-shadow:0 0 0 calc(2px*var(--inv)) rgba(47,123,255,.25)}
+.drop-line:before{content:attr(data-l);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--blue);color:#fff;font:500 calc(12px*var(--inv)) Geist;padding:calc(4px*var(--inv)) calc(10px*var(--inv));border-radius:calc(6px*var(--inv));white-space:nowrap}
+.blk{position:relative}
+.blk:hover{outline:calc(1.5px*var(--inv)) dashed rgba(47,123,255,.7);outline-offset:calc(-1.5px*var(--inv));z-index:3}
+.blk.sel{outline:calc(2.5px*var(--inv)) solid var(--blue);outline-offset:calc(-2.5px*var(--inv));z-index:4}
+.blk-tag{position:absolute;left:0;top:0;z-index:20;transform:translateY(-100%);background:var(--blue);color:#fff;font:500 calc(11.5px*var(--inv)) Geist;padding:calc(4px*var(--inv)) calc(9px*var(--inv));border-radius:calc(5px*var(--inv)) calc(5px*var(--inv)) 0 0;display:none;align-items:center;gap:calc(6px*var(--inv));cursor:grab;white-space:nowrap}
+.blk-tag em{font-style:normal;opacity:.7}
+.blk:first-child .blk-tag{transform:none;border-radius:0 0 calc(5px*var(--inv)) 0}
+.blk.sel .blk-tag,.blk:hover .blk-tag{display:flex}
+.bound{box-shadow:0 calc(2px*var(--inv)) 0 0 var(--purple);background:rgba(168,121,255,.08);border-radius:2px}
+.flash{animation:flash 1.2s var(--ease)}
+@keyframes flash{0%{background:rgba(47,123,255,.25)}100%{background:transparent}}
+
+/* ---------- inspector ---------- */
+.insp-h{padding:14px 14px 12px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.insp-h .ic{width:30px;height:30px;border-radius:8px;background:rgba(47,123,255,.14);color:var(--blue2);display:flex;align-items:center;justify-content:center}
+.insp-h .ic svg{width:16px;height:16px}
+.insp-h b{font-weight:500;font-size:14px;display:block}
+.insp-h small{color:var(--tx3);font-size:11.5px}
+.field{margin-bottom:14px}
+.field label{display:flex;justify-content:space-between;font-size:11.5px;color:var(--tx3);margin-bottom:6px;font-weight:500}
+.field input,.field textarea,.field select{width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:8px 10px;outline:none;transition:border-color .2s;resize:vertical;line-height:1.45}
+.field input:focus,.field textarea:focus{border-color:var(--blue)}
+.cnt{font-variant-numeric:tabular-nums}.cnt.ok{color:var(--green)}.cnt.warn{color:var(--amber)}
+.seg{display:flex;gap:2px;background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:3px}
+.seg button{flex:1;padding:6px 0;border-radius:6px;color:var(--tx2);font-size:12px}
+.seg button.on{background:var(--panel2);color:var(--tx);box-shadow:0 0 0 1px var(--line2)}
+input[type=range]{width:100%;accent-color:var(--blue)}
+.fw{border:1px solid var(--line2);border-radius:10px;padding:12px;margin-bottom:14px;background:linear-gradient(180deg,rgba(168,121,255,.07),transparent)}
+.fw-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.fw-top .who{width:26px;height:26px;border-radius:50%;background:#262033;color:var(--purple);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:11px;flex:none}
+.fw-top b{font-weight:500;font-size:13px;display:block}
+.fw-top small{color:var(--tx3);font-size:11px}
+.fw p{color:var(--tx2);font-size:12px;line-height:1.5}
+.tpl{font-family:"Geist Mono",monospace;font-size:11.5px;line-height:1.7;color:var(--tx2);background:var(--bg);border:1px dashed var(--line2);border-radius:8px;padding:8px 10px;margin-bottom:6px}
+.slot{background:rgba(168,121,255,.16);color:#CDB4FF;border-radius:4px;padding:1px 5px}
+.slot.n{background:rgba(47,123,255,.18);color:#AFCBFF}
+.chk{border:1px solid var(--line2);border-radius:10px;padding:10px 12px}
+.chk-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:500}
+.chk-l{display:grid;gap:6px}
+.chk-l div{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--tx2);line-height:1.4}
+.chk-l .d{width:14px;height:14px;border-radius:50%;flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.d.ok{background:rgba(52,211,153,.18);color:var(--green)}
+.d.no{background:rgba(248,113,113,.18);color:var(--red)}
+.bind{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--line2);border-radius:8px;margin-bottom:8px;font-size:12px}
+.bind .mono{color:var(--purple);margin-left:auto;font-size:11px}
+.serp{background:#fff;border-radius:10px;padding:14px;color:#202124;font-family:Arial,sans-serif}
+.serp .u{font-size:12px;color:#4d5156;display:flex;align-items:center;gap:8px}
+.serp .u i{width:22px;height:22px;border-radius:50%;background:#0A0F1C;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:11px}
+.serp .t{color:#1a0dab;font-size:17px;margin:6px 0 3px;line-height:1.3}
+.serp .d{font-size:13px;color:#4d5156;line-height:1.5}
+.empty{padding:22px 16px;color:var(--tx3);font-size:12.5px;line-height:1.6}
+
+/* ---------- data views ---------- */
+.view{display:none;height:100%;min-height:0}
+.view.on{display:grid}
+.dv{grid-template-columns:240px 1fr;height:100%}
+.dv-main{overflow:auto;padding:26px 30px 120px;min-width:0}
+.dv-main h1{font-size:24px;font-weight:500;letter-spacing:-.03em}
+.dv-main .lead{color:var(--tx2);margin-top:6px;font-size:13.5px;max-width:720px;line-height:1.55}
+.banner{display:flex;align-items:center;gap:14px;margin:18px 0 20px;padding:14px 16px;border-radius:12px;background:linear-gradient(90deg,rgba(168,121,255,.12),rgba(47,123,255,.08));border:1px solid rgba(168,121,255,.25)}
+.banner b{font-weight:500}
+.banner .big{font-size:26px;font-weight:600;letter-spacing:-.03em;color:#fff}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tbl th{text-align:left;font-weight:500;color:var(--tx3);padding:10px 12px;background:var(--panel);border-bottom:1px solid var(--line);white-space:nowrap;font-size:11.5px}
+.tbl td{padding:11px 12px;border-bottom:1px solid var(--line);color:var(--tx2);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tbody tr{cursor:pointer;transition:background .15s}
+.tbl tbody tr:hover td{background:rgba(255,255,255,.02)}
+.tbl tbody tr.on td{background:rgba(47,123,255,.08)}
+.tbl td b{color:var(--tx);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:2px 8px;border-radius:999px;background:rgba(52,211,153,.12);color:var(--green);white-space:nowrap}
+.pill i{width:5px;height:5px;border-radius:50%;background:currentColor}
+.pill.p{background:rgba(168,121,255,.14);color:var(--purple)}
+.pill.b{background:rgba(47,123,255,.14);color:var(--blue2)}
+.pill.y{background:rgba(251,191,36,.12);color:var(--amber)}
+.drawer{border-left:1px solid var(--line);background:var(--panel);overflow:auto;padding:0 0 60px;min-width:0}
+.dv3{grid-template-columns:240px 1fr 340px}
+
+/* copy lab */
+.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;margin-top:22px}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px;display:flex;flex-direction:column;gap:12px}
+.card-h{display:flex;align-items:center;gap:10px}
+.card-h .who{width:34px;height:34px;border-radius:50%;background:#221C30;color:var(--purple);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:12px;flex:none}
+.card-h b{font-weight:500;font-size:14px;display:block}
+.card-h small{color:var(--tx3);font-size:11.5px}
+.card p.why{color:var(--tx2);font-size:12.5px;line-height:1.55}
+.card .out{font-size:15px;line-height:1.45;color:#fff;letter-spacing:-.01em;padding:10px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line2)}
+.card .out .sw{background:rgba(47,123,255,.18);color:#BFD5FF;border-radius:4px;padding:0 4px}
+.card .used{display:flex;flex-wrap:wrap;gap:6px}
+.card .used span{font-size:11px;color:var(--tx3);border:1px solid var(--line2);border-radius:999px;padding:3px 8px}
+.flip{align-self:flex-start;font-size:11.5px;color:var(--blue2);font-weight:500}
+.rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:14px}
+.rule{display:flex;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.rule b{font-weight:500;display:block;margin-bottom:2px}
+.rule small{color:var(--tx3);font-size:11.5px;line-height:1.45}
+.voc{display:grid;gap:8px;margin-top:14px}
+.voc div{display:grid;grid-template-columns:1fr 24px 1fr;gap:10px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.voc q{color:var(--tx2);font-style:italic}
+.voc span{color:#fff}
+.h2{font-size:17px;font-weight:500;margin-top:34px;letter-spacing:-.02em}
+.h2 small{color:var(--tx3);font-weight:400;font-size:12.5px;margin-left:8px}
+.try{display:flex;gap:8px;margin-top:14px}
+.try textarea{flex:1;background:var(--bg);border:1px solid var(--line2);border-radius:10px;padding:10px 12px;min-height:64px;outline:none}
+.try-out{margin-top:10px}
+
+/* leads */
+.flow{display:flex;align-items:stretch;gap:0;margin:20px 0 26px;flex-wrap:wrap}
+.node{flex:1;min-width:150px;border:1px solid var(--line2);border-radius:12px;padding:12px 14px;background:var(--panel)}
+.node small{color:var(--tx3);font-size:11px}
+.node b{display:block;font-weight:500;margin-top:3px}
+.arrow{width:34px;display:flex;align-items:center;justify-content:center;color:var(--tx3)}
+.note{font-size:11.5px;color:var(--tx3);margin-top:10px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;background:#fff;color:#0A0F1C;padding:10px 16px;border-radius:10px;font-weight:500;box-shadow:0 20px 50px -10px rgba(0,0,0,.5);transition:all .35s var(--ease);z-index:100;display:flex;gap:8px;align-items:center;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- mini site (inside the artboard) ---------- */
+.site{--ink:#0A0F1C;--paper:#F5F7FA;--line:#E2E7EF;--mute:#5E6878;--ice:#1F5EFF;--ice-soft:#EAF0FF;font-family:Geist,sans-serif;color:var(--ink);font-size:17px;line-height:1.5;font-weight:400}
+.site b{font-weight:600}
+.site .w{max-width:1240px;margin:0 auto;padding:0 64px}
+.s-sec{padding:var(--pad,130px) 0;background:var(--sbg,#fff);color:var(--sfg,var(--ink))}
+.s-eb{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--mute)}
+.s-eb:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ice);box-shadow:0 0 0 4px rgba(31,94,255,.15)}
+.s-h2{font-size:64px;line-height:1.02;letter-spacing:-.045em;font-weight:300;margin-top:18px;max-width:900px}
+.s-lead{font-size:19px;color:var(--mute);max-width:560px;font-weight:300;margin-top:20px}
+.s-btn{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;font-weight:500;font-size:16px}
+.s-btn.wh{background:#fff;color:var(--ink)}
+.s-btn.g{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.s-btn.i{background:var(--ice);color:#fff}
+.s-btn.k{background:var(--ink);color:#fff}
+.dark{--sbg:var(--ink);--sfg:#fff}.dark .s-lead,.dark .s-eb{color:rgba(255,255,255,.62)}
+.paper{--sbg:var(--paper)}
+/* nav */
+.s-nav{position:absolute;left:24px;right:24px;top:20px;z-index:10;display:flex;align-items:center;gap:30px;padding:12px 14px 12px 24px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(10px)}
+.s-nav .lg{display:flex;align-items:center;gap:10px;font-weight:600;font-size:19px}
+.s-nav .lg small{display:block;font-size:11px;font-weight:400;opacity:.7}
+.s-nav nav{display:flex;gap:28px;margin:0 auto;font-size:15px;opacity:.9}
+.s-nav .s-btn{height:44px;padding:0 20px;font-size:14px}
+.nav-solid .s-nav{position:relative;left:auto;right:auto;top:auto;margin:20px 24px;background:#0A0F1C}
+/* hero */
+.s-hero{position:relative;min-height:880px;color:#fff;overflow:hidden;background:#0A0F1C}
+.s-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,28,.55),rgba(10,15,28,.15) 40%,rgba(10,15,28,.8)),linear-gradient(90deg,rgba(10,15,28,.55),transparent 70%)}
+.s-hero .in{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:end;padding:200px 64px 70px;max-width:1360px;margin:0 auto}
+.s-chip{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);font-size:14px}
+.s-chip:before{content:"";width:8px;height:8px;border-radius:50%;background:#34D399;box-shadow:0 0 0 4px rgba(52,211,153,.25)}
+.s-kw{display:block;font-size:15px;font-weight:500;opacity:.8;margin:26px 0 14px}
+.s-big{font-size:112px;line-height:.95;letter-spacing:-.055em;font-weight:300}
+.s-sub{font-size:20px;max-width:560px;color:rgba(255,255,255,.86);font-weight:300;margin-top:26px}
+.s-ctas{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.s-card{background:rgba(255,255,255,.94);color:var(--ink);border-radius:30px;padding:30px;box-shadow:0 40px 80px -30px rgba(0,0,0,.5)}
+.s-card h4{font-size:24px;font-weight:400;letter-spacing:-.03em}
+.s-card p{font-size:14px;color:var(--mute);margin-top:4px}
+.s-opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.s-opts span{padding:9px 15px;border-radius:999px;border:1px solid var(--line);font-size:14px;background:#fff}
+.s-opts span.on{border-color:var(--ice);background:var(--ice-soft);color:var(--ice)}
+.s-card .s-btn{width:100%;justify-content:center;margin-top:20px}
+.s-trust{position:relative;z-index:2;display:flex;gap:34px;padding:22px 64px;border-top:1px solid rgba(255,255,255,.14);font-size:14px;color:rgba(255,255,255,.8);max-width:1360px;margin:0 auto}
+.s-trust span:before{content:"✓";margin-right:8px;color:#8FB0FF}
+/* logos */
+.s-logos{padding:34px 0;text-align:center;border-bottom:1px solid var(--line);background:#fff}
+.s-logos p{font-size:13px;color:var(--mute)}
+.s-logos .r{display:flex;justify-content:center;align-items:center;gap:60px;margin-top:18px;font-size:22px;font-weight:600;color:#9AA1AE;letter-spacing:-.02em}
+/* statement */
+.s-stmt{font-size:56px;line-height:1.08;letter-spacing:-.045em;font-weight:300;max-width:1080px}
+/* phases */
+.s-phases{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);margin-top:56px}
+.s-phases div{padding:30px 34px 0;border-left:1px solid var(--line)}
+.s-phases div:first-child{border-left:0;padding-left:0}
+.s-phases .k{font-size:84px;font-weight:200;letter-spacing:-.06em;line-height:1;color:var(--ice)}
+.s-phases h5{font-size:23px;font-weight:500;margin-top:20px;letter-spacing:-.02em}
+.s-phases p{color:var(--mute);margin-top:8px;font-size:16px;font-weight:300}
+/* clock */
+.s-clock{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.s-cc{background:#fff;border-radius:30px;padding:30px;box-shadow:0 30px 70px -30px rgba(10,15,28,.3)}
+.s-cc .t{font-size:64px;font-weight:600;letter-spacing:-.04em;margin:8px 0 14px}
+.s-cc .t small{font-weight:300;font-size:40px}
+.s-cc .bar{height:6px;border-radius:9px;background:linear-gradient(90deg,var(--ice),#CFDDFF);position:relative}
+.s-cc .bar:after{content:"";position:absolute;left:55%;top:50%;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.25);transform:translate(-50%,-50%)}
+.s-cc .out{margin-top:26px;background:var(--ink);color:#fff;border-radius:18px;padding:20px 22px;display:flex;justify-content:space-between;align-items:flex-end}
+.s-cc .out small{display:block;font-size:13px;opacity:.6}
+.s-cc .out b{font-size:28px}
+.s-facts{display:flex;gap:40px;margin-top:34px}
+.s-facts div{border-left:1px solid var(--line);padding-left:16px}
+.s-facts b{font-size:40px;letter-spacing:-.04em;display:block}
+.s-facts span{font-size:14px;color:var(--mute)}
+/* services */
+.s-svc{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:56px;align-items:start}
+.s-svc ol{list-style:none;border-top:1px solid var(--line)}
+.s-svc li{display:flex;gap:22px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);font-size:30px;font-weight:300;letter-spacing:-.03em;color:#9AA1AE}
+.s-svc li:first-child{color:var(--ink)}
+.s-svc li small{font-size:13px;color:var(--mute);font-weight:400}
+.s-svc .img{border-radius:30px;overflow:hidden;aspect-ratio:4/4.3;position:relative}
+.s-svc .img img{width:100%;height:100%;object-fit:cover}
+.s-svc .img span{position:absolute;left:20px;bottom:20px;right:20px;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);color:#fff;border-radius:16px;padding:14px 18px;font-size:18px;border:1px solid rgba(255,255,255,.3)}
+/* timeline */
+.s-tl{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:56px}
+.s-tl div{border-top:1px solid rgba(255,255,255,.18);padding-top:24px}
+.s-tl .n{font-size:56px;font-weight:200;color:#8FB0FF;letter-spacing:-.05em;line-height:1}
+.s-tl small{display:block;margin-top:20px;font-size:13px;color:rgba(255,255,255,.55)}
+.s-tl h5{font-size:24px;font-weight:300;letter-spacing:-.03em;margin-top:6px;line-height:1.15}
+.s-tl p{font-size:15px;color:rgba(255,255,255,.6);margin-top:10px;font-weight:300}
+/* coverage */
+.s-cov{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.s-cov .img{border-radius:30px;overflow:hidden;aspect-ratio:16/12}
+.s-cov .img img{width:100%;height:100%;object-fit:cover}
+.s-boros{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:28px;font-size:19px}
+.s-boros span:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ice);margin-right:10px;transform:translateY(-2px)}
+/* reviews */
+.s-rev{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;margin-top:50px;align-items:start}
+.s-rev blockquote{font-size:48px;line-height:1.06;letter-spacing:-.045em;font-weight:300}
+.s-rev blockquote:before{content:"“";display:block;color:var(--ice);font-size:90px;line-height:.6;font-weight:600;margin-bottom:14px}
+.s-rev ul{list-style:none;border-top:1px solid var(--line)}
+.s-rev li{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--line);font-size:16px;color:var(--mute)}
+.s-rev li:first-child{color:var(--ink);font-weight:500}
+/* compare */
+.s-cmp{margin-top:50px;display:grid}
+.s-cmp div{display:grid;grid-template-columns:1fr 1.2fr 1.2fr}
+.s-cmp span{padding:18px 22px;border-top:1px solid var(--line);font-size:17px}
+.s-cmp span:nth-child(1){color:var(--mute);font-size:14px;padding-left:0}
+.s-cmp span:nth-child(2){color:#9AA1AE;font-weight:300}
+.s-cmp span:nth-child(3){background:var(--ink);color:#fff}
+.s-cmp div:first-child span{border-top:0;font-size:14px;font-weight:500}
+.s-cmp div:first-child span:nth-child(3){border-radius:20px 20px 0 0}
+.s-cmp div:last-child span:nth-child(3){border-radius:0 0 20px 20px}
+/* stats */
+.s-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.s-stats div{border-left:1px solid var(--line);padding-left:20px}
+.s-stats b{font-size:60px;letter-spacing:-.05em;display:block;line-height:1}
+.s-stats span{color:var(--mute);font-size:15px;display:block;margin-top:10px}
+/* form */
+.s-quote{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+.s-form{background:#fff;border-radius:30px;padding:34px;box-shadow:0 40px 90px -40px rgba(10,15,28,.35)}
+.s-form .pr{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.s-form .pb{height:4px;border-radius:9px;background:var(--line);margin:12px 0 26px;overflow:hidden}
+.s-form .pb i{display:block;width:20%;height:100%;background:var(--ice)}
+.s-form h4{font-size:28px;font-weight:300;letter-spacing:-.03em}
+.s-form .cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.s-form .cards span{border:1px solid var(--line);border-radius:16px;padding:17px 18px;font-size:15px}
+.s-form .s-btn{float:right;margin-top:22px;height:50px}
+.s-form:after{content:"";display:block;clear:both}
+/* faq */
+.s-faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.s-faq ul{list-style:none;border-top:1px solid var(--line)}
+.s-faq li{padding:22px 0;border-bottom:1px solid var(--line);font-size:18px;display:flex;justify-content:space-between}
+.s-faq li:after{content:"+";color:var(--mute)}
+.s-faq li.o{display:block}
+.s-faq li.o:after{content:none}
+.s-faq li.o p{font-size:15px;color:var(--mute);margin-top:10px;font-weight:300}
+/* cta */
+.s-cta{position:relative;padding:170px 0;text-align:center;color:#fff;background:var(--ink);overflow:hidden}
+.s-cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.s-cta .w{position:relative}
+.s-cta h2{font-size:96px;letter-spacing:-.055em;font-weight:300;line-height:1}
+.s-cta p{font-size:19px;color:rgba(255,255,255,.75);margin-top:20px}
+.s-cta .s-ctas{justify-content:center}
+/* footer */
+.s-foot{background:var(--ink);color:rgba(255,255,255,.6);padding:80px 0 60px;font-size:14px}
+.s-foot .g{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:30px}
+.s-foot h6{color:#fff;font-size:14px;font-weight:500;margin-bottom:14px}
+.s-foot li{list-style:none;margin-bottom:9px}
+.s-foot .tel{font-size:30px;color:#fff;font-weight:300;letter-spacing:-.03em;margin-top:18px}
+/* template hero */
+.s-th{position:relative;min-height:760px;display:flex;align-items:flex-end;color:#fff;background:var(--ink);overflow:hidden}
+.s-th>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s-th:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,28,.5),rgba(10,15,28,.2) 40%,rgba(10,15,28,.9)),linear-gradient(90deg,rgba(10,15,28,.6),transparent 70%)}
+.s-th .w{position:relative;z-index:2;padding-bottom:80px;width:100%}
+.s-crumb{font-size:14px;opacity:.65;margin-bottom:20px}
+.s-th h1{font-weight:300}
+.s-th .s-big{font-size:96px;max-width:15ch;display:block}
+/* steps row */
+.s-row{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:56px;position:relative}
+.s-row:before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:linear-gradient(90deg,var(--ice),#CFDDFF)}
+.s-row div{position:relative;padding-top:42px}
+.s-row div:before{content:"";position:absolute;left:0;top:0;width:19px;height:19px;border-radius:50%;background:#fff;border:6px solid #fff;box-shadow:inset 0 0 0 30px var(--ice),0 0 0 1px var(--ice)}
+.s-row small{font-size:13px;color:var(--mute)}
+.s-row h5{font-size:26px;font-weight:400;letter-spacing:-.03em;margin-top:6px}
+.s-row p{color:var(--mute);margin-top:8px;font-size:15px;font-weight:300}
+/* phone (container queries) */
+@container (max-width:700px){
+  .site .w{padding:0 22px}
+  .s-sec{padding:72px 0}
+  .s-h2{font-size:36px}
+  .s-nav{left:12px;right:12px;top:12px;padding:10px 10px 10px 18px}
+  .s-nav nav,.s-nav .s-btn{display:none}
+  .s-nav:after{content:"";width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);margin-left:auto}
+  .nav-solid .s-nav{margin:12px}
+  .s-hero{min-height:0}
+  .s-hero .in{grid-template-columns:1fr;padding:120px 22px 40px;gap:28px}
+  .s-big,.s-th .s-big{font-size:48px}
+  .s-sub{font-size:17px}
+  .s-ctas{flex-direction:column}.s-ctas .s-btn{justify-content:center}
+  .s-trust{flex-direction:column;gap:10px;padding:22px}
+  .s-logos .r{flex-wrap:wrap;gap:16px 30px;font-size:17px;padding:0 20px}
+  .s-stmt{font-size:30px}
+  .s-phases,.s-tl,.s-row,.s-stats{grid-template-columns:1fr;gap:0}
+  .s-phases div,.s-tl div,.s-row div,.s-stats div{border-left:0;padding:18px 0;border-bottom:1px solid var(--line)}
+  .s-phases .k{font-size:44px}
+  .s-tl div{border-bottom-color:rgba(255,255,255,.14)}
+  .s-row:before{display:none}.s-row div:before{display:none}
+  .s-clock,.s-svc,.s-cov,.s-rev,.s-quote,.s-faq{grid-template-columns:1fr;gap:34px}
+  .s-cc .t{font-size:44px}
+  .s-facts{flex-direction:column;gap:14px}
+  .s-svc li{font-size:22px;padding:16px 0}
+  .s-rev blockquote{font-size:30px}
+  .s-cmp div{grid-template-columns:1fr}
+  .s-cmp div:first-child{display:none}
+  .s-cmp span{border-top:0;padding:4px 0;background:none!important;color:var(--ink)!important}
+  .s-cmp span:nth-child(1){padding-top:16px;border-top:1px solid var(--line)}
+  .s-cmp span:nth-child(2){text-decoration:line-through;color:#9AA1AE!important}
+  .s-form{padding:22px}.s-form .cards span{padding:13px 12px;font-size:14px}
+  .s-cta{padding:90px 0}.s-cta h2{font-size:44px}
+  .s-foot .g{grid-template-columns:1fr 1fr}
+  .s-th{min-height:640px}
+}
+
+/* ---------- mobile editor ---------- */
+.dock{display:none}
+.sheet-x{display:none}
+@media (max-width:980px){
+  .crumb,.avs,.bp,#previewBtn,.slop-chip .t1{display:none}
+  .slop-chip{padding:6px 9px}
+  .banner{flex-wrap:wrap}.banner .btn{margin-left:0!important}
+  .top{gap:8px;padding:0 10px}
+  .brand small{display:none}
+  .modes{overflow-x:auto;margin:0;flex:1;scrollbar-width:none}
+  .modes::-webkit-scrollbar{display:none}
+  .modes button{padding:6px 10px}
+  .modes svg{display:none}
+  .top-r .btn-blue{padding:0 10px}
+  .app{grid-template-columns:1fr}
+  .side{position:fixed;left:0;right:0;bottom:0;height:72vh;z-index:40;border:0;border-top:1px solid var(--line2);border-radius:18px 18px 0 0;transform:translateY(105%);transition:transform .4s var(--ease);box-shadow:0 -30px 60px rgba(0,0,0,.5)}
+  .side.r{border-left:0}
+  .side.open{transform:none}
+  .sheet-x{display:flex;justify-content:center;padding:8px 0 0}
+  .sheet-x span{width:40px;height:4px;border-radius:9px;background:#3A3D47}
+  .board-wrap{padding:30px 14px 140px}
+  .dock{display:flex;position:fixed;left:12px;right:12px;bottom:max(14px,env(safe-area-inset-bottom));z-index:35;background:rgba(24,25,30,.92);backdrop-filter:blur(12px);border:1px solid var(--line2);border-radius:16px;padding:6px;gap:4px}
+  .dock button{flex:1;padding:10px 0;border-radius:11px;color:var(--tx2);font-weight:500;font-size:12.5px}
+  .dock button.on{background:var(--blue);color:#fff}
+  .layer .mv{display:flex}.layer .grip{display:none}
+  .zoom{display:none}
+  .dv,.dv3{grid-template-columns:1fr}
+  .dv>.side,.dv3>.side{display:none}
+  .dv3 .drawer{position:fixed;inset:auto 0 0 0;height:70vh;z-index:40;border-radius:18px 18px 0 0;transform:translateY(105%);transition:transform .4s var(--ease);border-left:0;border-top:1px solid var(--line2)}
+  .dv3 .drawer.open{transform:none}
+  .dv-main{padding:20px 16px 120px}
+  .coll-m{display:flex!important}
+  .tbl .hide-m{display:none}
+  .voc div{grid-template-columns:1fr}.voc div>i{display:none}
+  .fw-grid{grid-template-columns:1fr}
+  .flow{flex-direction:column}.arrow{width:auto;height:22px;transform:rotate(90deg)}
+}
+.coll-m{display:none;gap:6px;overflow-x:auto;margin-top:14px}
+.coll-m button{padding:7px 12px;border-radius:999px;border:1px solid var(--line2);color:var(--tx2);white-space:nowrap}
+.coll-m button.on{background:var(--panel2);color:#fff;border-color:#3A3D47}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">Azends<i></i><small>Studio</small></div>
+  <div class="crumb"><span class="proj-dot"><svg width="12" height="12" viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13"/></svg></span><b>Novus Maintenance</b><span>/</span><span id="crumbPage">Home</span></div>
+  <nav class="modes" id="modes">
+    <button data-m="design" class="on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M2 6h12M6 6v8"/></svg>Design</button>
+    <button data-m="cms"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="8" cy="4" rx="5.5" ry="2"/><path d="M2.5 4v8c0 1.1 2.5 2 5.5 2s5.5-.9 5.5-2V4M2.5 8c0 1.1 2.5 2 5.5 2s5.5-.9 5.5-2"/></svg>CMS</button>
+    <button data-m="copy"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13l2-.5L13 4.5 11.5 3 3.5 11 3 13zM10 4.5 11.5 6"/></svg>Copy Lab</button>
+    <button data-m="seo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>SEO</button>
+    <button data-m="leads"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 3h12l-4.5 5.5V13l-3-1.5V8.5L2 3z"/></svg>Leads</button>
+  </nav>
+  <div class="top-r">
+    <div class="slop-chip" id="slopChip"><i></i><span class="t1">Slop check</span><span class="t2" id="slopN">0 flags</span></div>
+    <div class="bp" id="bp">
+      <button data-bp="desktop" title="Desktop"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1.5" y="2.5" width="13" height="9" rx="1.5"/><path d="M5.5 14h5"/></svg></button>
+      <button data-bp="phone" title="Phone"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4.5" y="1.5" width="7" height="13" rx="1.8"/><path d="M7.3 12.3h1.4"/></svg></button>
+    </div>
+    <div class="avs"><span class="av" style="background:#FFE600;color:#0A0F1C">M</span><span class="av" style="background:#1F5EFF;color:#fff">N</span></div>
+    <a class="btn btn-ghost" id="previewBtn" href="https://azends-demos.vercel.app/novus" target="_blank" rel="noopener">Preview</a>
+    <button class="btn btn-blue" id="publishBtn">Publish</button>
+  </div>
+</header>
+
+<div class="app" id="app">
+  <!-- DESIGN -->
+  <aside class="side" id="left">
+    <div class="sheet-x"><span></span></div>
+    <div class="tabs" id="ltabs"><button data-t="pages" class="on">Pages</button><button data-t="layers">Layers</button><button data-t="insert">Insert</button></div>
+    <div class="scroll" id="lbody"></div>
+  </aside>
+  <main class="canvas" id="canvas">
+    <div class="board-wrap" id="boardWrap">
+      <div class="board-label"><b id="boardName">Home</b><span id="boardSize">Desktop · 1440</span></div>
+      <div class="board-hold" id="hold"><div class="board site" id="board"></div><div class="drop-line" id="dropLine" data-l="Drop here"></div></div>
+    </div>
+    <div class="zoom" id="zoom"><button data-z="fit" class="on">Fit</button><button data-z="0.5">50%</button><button data-z="1">100%</button></div>
+  </main>
+  <aside class="side r" id="right">
+    <div class="sheet-x"><span></span></div>
+    <div id="insp" style="display:flex;flex-direction:column;min-height:0;flex:1"></div>
+  </aside>
+</div>
+
+<!-- DATA VIEWS -->
+<div class="app full" id="views" style="display:none">
+  <section class="view dv3" id="v-cms">
+    <aside class="side"><div class="scroll" id="cmsSide"></div></aside>
+    <div class="dv-main" id="cmsMain"></div>
+    <aside class="drawer" id="cmsDrawer"></aside>
+  </section>
+  <section class="view" id="v-copy"><div class="dv-main" id="copyMain"></div></section>
+  <section class="view dv3" id="v-seo" style="grid-template-columns:1fr 380px"><div class="dv-main" id="seoMain"></div><aside class="drawer" id="seoDrawer"></aside></section>
+  <section class="view" id="v-leads"><div class="dv-main" id="leadsMain"></div></section>
+</div>
+
+<div class="dock" id="dock"><button data-d="pages">Pages</button><button data-d="layers">Layers</button><button data-d="insert">Insert</button><button data-d="edit">Edit</button></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================ DATA */
+const PX = id => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1400`;
+const HERO = "https://d8j0ntlcm91z4.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/hf_20261118_110720_a75cebf1-54cc-4e1c-8870-61380373448a.png";
+const IMG = { spreader:PX(35540158), plow:PX(29210013), avenue:PX(6675103), walkers:PX(38428261), steam:PX(35422450), bridge:PX(36278805), night:PX(36278804), bkStreet:PX(36278806), stoop:PX(36275919), bkShovel:PX(36275911), crossing:PX(9708527), mnNight:PX(30640275), construction:PX(14822653), lot:PX(7582404), yard:PX(7329704), handCrew:PX(19374522), queens:PX(10585386), blower:PX(10930882) };
+
+const CMS = {
+  services: { label:"Services", path:"/services/", tpl:"Service page", fields:["Name","Hero title","Hero sub","SEO title","Image","FAQ"], items:[
+    {name:"Pre-storm anti-icing",slug:"pre-storm-anti-icing",title:"The time to beat ice is *before it forms.*",sub:"We treat your lots, sidewalks and entrances ahead of the storm. Snow lands on a surface it can't grip, crews lift it clean, and your doors open on time.",seo:"Pre-Storm Anti-Icing & Pre-Treatment NYC | Novus Maintenance",desc:"Commercial anti-icing across NYC. Novus pre-treats lots, sidewalks and entrances before the storm so snow and ice can't bond to the pavement.",kw:"commercial anti-icing nyc",img:"spreader"},
+    {name:"Commercial snow plowing",slug:"commercial-snow-plowing",title:"Plowed before your *first shift arrives.*",sub:"Parking lots, loading bays and access roads pushed clear on a plan we set before the season, so deliveries land and staff park on time.",seo:"Commercial Snow Plowing NYC | Parking Lots, Loading Docks & Access Roads | Novus",desc:"Commercial snow plowing in NYC for parking lots, loading docks and access roads. Pre-treated lanes and a stacking plan set before the season.",kw:"commercial snow plowing nyc",img:"lot"},
+    {name:"Sidewalk snow removal",slug:"sidewalk-snow-removal",title:"Your sidewalk, clear *inside the city's window.*",sub:"Frontages, corners and curb cuts cleared to a safe path, and pre-treated before the storm so the clock is never against you.",seo:"Commercial Sidewalk Snow Removal NYC | Beat the DSNY Deadline | Novus",desc:"Frontages, corners and curb cuts pre-treated and cleared to a 4-foot path inside the DSNY deadline. 24/7, all five boroughs.",kw:"sidewalk snow removal nyc",img:"bkShovel"},
+    {name:"De-icing & salting",slug:"de-icing-salting",title:"Ice control that *protects the ground* it's on.",sub:"Premium, less corrosive de-icing for walkways, entrances and lots. Applied before, during and after the storm.",seo:"Commercial De-Icing & Salting NYC | Less-Corrosive Ice Control | Novus",desc:"Premium, less corrosive ice control for walkways, entrances and lots, applied before, during and after every storm.",kw:"commercial de-icing nyc",img:"avenue"},
+    {name:"Hand shoveling crews",slug:"snow-shoveling",title:"The tight spots *machines can't reach.*",sub:"Fully trained hand crews for stairs, ramps, doorways and fire exits. The small places where people actually slip.",seo:"Commercial Snow Shoveling NYC | Hand Crews for Stairs, Ramps & Exits | Novus",desc:"Fully trained hand crews clear and treat stairs, ramps, doorways and fire exits, the tight spots machines can't reach.",kw:"commercial snow shoveling nyc",img:"handCrew"},
+    {name:"Snow hauling & relocation",slug:"snow-hauling",title:"No room to stack it? *We take it away.*",sub:"When piles eat your parking, block sightlines or start to melt and refreeze, we load it, haul it off site and manage every step.",seo:"Commercial Snow Hauling & Removal NYC | Off-Site Snow Relocation | Novus",desc:"When piles take your parking or refreeze across walkways, Novus loads and hauls snow off site and manages every step.",kw:"snow hauling nyc",img:"yard"},
+    {name:"Seasonal & multi-site contracts",slug:"seasonal-snow-contracts",title:"One plan. One contact. *Every site covered.*",sub:"Lock in your winter before the first storm: a written plan for each site, crews staged in your borough and one person to call.",seo:"Seasonal Snow Removal Contracts NYC | Multi-Site Snow Management | Novus",desc:"A site plan, crews staged in your borough and one point of contact for every location you manage. Sign before the first storm.",kw:"seasonal snow removal contract nyc",img:"bridge"},
+  ]},
+  areas: { label:"Areas", path:"/areas/", tpl:"Borough page", fields:["Borough","Hero title","Hero sub","Neighborhoods","Nearest base"], items:[
+    {name:"Manhattan",slug:"manhattan",title:"Manhattan sidewalks, *clear before the doors open.*",sub:"Storefronts, office lobbies and corner properties from the Financial District to Harlem, pre-treated before the storm by crews based in Midtown.",seo:"Commercial Snow Removal Manhattan | Pre-Storm Treatment & Sidewalks | Novus",desc:"Storefronts, office entrances and corner properties pre-treated and cleared. Crews based in Midtown, 24/7.",kw:"snow removal manhattan",img:"mnNight"},
+    {name:"Brooklyn",slug:"brooklyn",title:"Brooklyn sites treated *before the storm rolls in.*",sub:"Retail corridors, warehouses and commercial buildings across the borough, served from our office on St. Marks Avenue.",seo:"Commercial Snow Removal Brooklyn | Retail, Warehouses & Offices | Novus",desc:"Retail corridors, warehouses and mixed-use sites pre-treated and cleared before the storm. 24/7.",kw:"snow removal brooklyn",img:"bkStreet"},
+    {name:"Queens",slug:"queens",title:"Queens lots and frontages, *ready before the first flake.*",sub:"From Long Island City warehouses to Jamaica retail, served from our warehouse on 35th Street in LIC.",seo:"Commercial Snow Removal Queens | Lots, Warehouses & Retail | Novus",desc:"Parking lots, warehouses and retail sites pre-treated and plowed, served from our LIC warehouse. 24/7.",kw:"snow removal queens",img:"queens"},
+    {name:"The Bronx",slug:"bronx",title:"Bronx sites kept open *through the whole storm.*",sub:"Retail, distribution and institutional sites across the borough, with crews staged ahead of every forecast.",seo:"Commercial Snow Removal Bronx | Retail, Distribution & Institutions | Novus",desc:"Retail, distribution and institutional sites pre-treated, plowed and cleared before and during the storm.",kw:"snow removal bronx",img:"avenue"},
+    {name:"Staten Island",slug:"staten-island",title:"Staten Island lots *plowed and treated before opening.*",sub:"Shopping centers, office parks and industrial yards with more pavement than most of the city, planned and pre-treated before every storm.",seo:"Commercial Snow Removal Staten Island | Parking Lots & Shopping Centers | Novus",desc:"Shopping centers, office parks and industrial yards planned, pre-treated and plowed before opening.",kw:"snow removal staten island",img:"plow"},
+  ]},
+  industries: { label:"Industries", path:"/industries/", tpl:"Industry page", fields:["Industry","Hero title","Hero sub","Stakes","Plan"], items:[
+    {name:"Retail & storefronts",slug:"retail-storefronts",title:"Customers walk in. *Nobody slips on the way.*",sub:"Storefronts and retail chains pre-treated and cleared before opening, so the first customer of the day finds a safe, clear entrance.",seo:"Snow Removal for Retail Stores NYC | Storefront Snow & Ice Management | Novus",desc:"Entrances and frontages pre-treated and cleared before opening, so customers walk in and nobody slips.",kw:"retail snow removal nyc",img:"bkStreet"},
+    {name:"Corporate offices & banks",slug:"corporate-offices",title:"Your team gets in *on time, on dry ground.*",sub:"Office entrances, plazas, garages and bank branches pre-treated and cleared before the workday starts.",seo:"Office Building Snow Removal NYC | Corporate Offices & Banks | Novus",desc:"Entrances, plazas and garages pre-treated and clear before the workday starts.",kw:"office building snow removal nyc",img:"steam"},
+    {name:"Property & facilities managers",slug:"property-managers",title:"Stop chasing your snow contractor *at 3 AM.*",sub:"One written plan for every building, one point of contact, and crews on site before the storm instead of after it.",seo:"Snow Removal for Property Managers NYC | Facilities Snow Management | Novus",desc:"One written plan per building, one point of contact and crews on site before the storm.",kw:"property management snow removal nyc",img:"crossing"},
+    {name:"Construction sites",slug:"construction-sites",title:"Keep the site *working through winter.*",sub:"Gates, haul roads, laydown areas and pedestrian paths pre-treated and cleared, so deliveries land and crews work instead of digging out.",seo:"Construction Site Snow Removal NYC | Keep Sites Working Through Winter | Novus",desc:"Gates, haul roads, laydown areas and pedestrian paths pre-treated and cleared.",kw:"construction site snow removal nyc",img:"construction"},
+    {name:"Museums & cultural venues",slug:"cultural-venues",title:"Steps, plazas and entrances *safe for every visitor.*",sub:"Museums, galleries and cultural venues cleared and treated with less corrosive materials that are kinder to stone and historic entrances.",seo:"Snow Removal for Museums & Cultural Venues NYC | Novus Maintenance",desc:"Steps, plazas and accessible entrances treated with less corrosive materials.",kw:"museum snow removal nyc",img:"stoop"},
+    {name:"Gyms & fitness studios",slug:"gyms-fitness",title:"Members show up. *Your entrance is ready.*",sub:"Entrances and sidewalks pre-treated and cleared before the first early class, at every location you run.",seo:"Snow Removal for Gyms & Fitness Studios NYC | Early-Morning Clearing | Novus",desc:"Entrances and sidewalks pre-treated and cleared before the first early-morning class.",kw:"gym snow removal nyc",img:"mnNight"},
+  ]},
+  guides: { label:"Guides", path:"/guides/", tpl:"Guide article", fields:["Title","Intro","Sections","Sources"], items:[
+    {name:"NYC sidewalk snow law",slug:"nyc-sidewalk-snow-removal-law",title:"NYC sidewalk snow law, *in plain English.*",sub:"The deadlines, the fines and what 'clear' actually means, from current DSNY guidance.",seo:"NYC Sidewalk Snow Removal Law 2026: Deadlines, Fines & Rules | Novus",desc:"The 4-hour, 14-hour and 11 AM deadlines, the 4-foot path, corners, hydrants and DSNY fines from $100 to $250.",kw:"nyc sidewalk snow removal law",img:"walkers"},
+    {name:"Anti-icing vs de-icing",slug:"anti-icing-vs-de-icing",title:"Anti-icing vs de-icing: *why timing beats tonnage.*",sub:"Two ways to fight ice. One of them works before the problem exists.",seo:"Anti-Icing vs De-Icing: What's the Difference? | Commercial Guide | Novus",desc:"How pre-storm treatment stops ice bonding, why it uses far less salt, and what to ask your snow contractor.",kw:"anti-icing vs deicing",img:"spreader"},
+    {name:"Winter readiness checklist",slug:"commercial-winter-readiness-checklist",title:"Is your site *ready for the first storm?*",sub:"Tick through what most facility managers wish they'd sorted before the first snow.",seo:"Commercial Winter Readiness Checklist for NYC Facility Managers | Novus",desc:"An interactive winter readiness checklist: site maps, priorities, contracts, de-icing language and contacts.",kw:"winter readiness checklist commercial",img:"bridge"},
+  ]},
+};
+
+/* Copywriting frameworks: the templates every line is built from */
+const FW = {
+  schwartz:{who:"ES",name:"Eugene Schwartz",tag:"Breakthrough Advertising · new mechanism",why:"Buyers searching 'commercial snow removal' already know the solution. What moves them is a new mechanism: a reason this company gets a different result.",tpl:"[Where we are] before [the moment the problem starts].",out:"<span class=sw>There</span> before <span class=sw>the first flake.</span>",used:["Home hero","Anti-icing page","How it works"]},
+  hopkins:{who:"CH",name:"Claude Hopkins",tag:"Scientific Advertising · reason why",why:"Every claim earns belief with a physical reason behind it. No claim goes out without its 'because'.",tpl:"[What we do] [when], so [the physical reason it works] and [outcome].",out:"We <span class=sw>treat your lots, sidewalks and entrances</span> <span class=sw>before the storm</span>, so <span class=sw>snow can't bond</span> and <span class=sw>your site opens on time.</span>",used:["Home hero sub","Service heroes","Compare tables"]},
+  ogilvy:{who:"DO",name:"David Ogilvy",tag:"Ogilvy on Advertising · facts sell",why:"Specific facts beat adjectives. A real number with its source does more than 'fast' or 'reliable' ever can.",tpl:"[Number] [unit] [what it means for the reader]. Source: [who].",out:"<span class=sw>4</span> <span class=sw>hours</span> <span class=sw>to clear your sidewalk once the snow stops.</span> Source: <span class=sw>NYC DSNY.</span>",used:["Deadline calculator","Sidewalk law guide","Stats rows"]},
+  wiebe:{who:"JW",name:"Joanna Wiebe",tag:"Copyhackers · voice of customer",why:"The best copy is often lifted from the buyer. We write the pain in the words property managers already use, then answer it.",tpl:"\"[Exact phrase buyers use]\" → [What we do instead].",out:"\"<span class=sw>I never heard from them until it started snowing</span>\" → <span class=sw>Your borough crew is staged 24 to 48 hours out.</span>",used:["Property managers page","Pain sections"]},
+  hormozi:{who:"AH",name:"Alex Hormozi",tag:"$100M Offers · value equation",why:"Raise the dream outcome and how likely it feels. Cut the waiting and the effort. Every section has to do one of the four.",tpl:"You get [dream outcome]. You never [effort we remove].",out:"You get <span class=sw>a site that opens on time.</span> You never <span class=sw>chase a contractor at 3 AM.</span>",used:["How it works","CTA blocks","Contracts page"]},
+  sugarman:{who:"JS",name:"Joseph Sugarman",tag:"Adweek Copywriting Handbook · slippery slide",why:"The first sentence has one job: get the second one read. Short, true, slightly surprising.",tpl:"[Short surprising truth]. [Why it hurts]. [So we...].",out:"<span class=sw>Ice is a bond.</span> <span class=sw>Once snow freezes to the pavement, every hour after is spent breaking it.</span> <span class=sw>So we stop it forming.</span>",used:["Statements","Anti-icing page"]},
+  pas:{who:"PS",name:"Problem · Agitate · Solve",tag:"Direct-response staple",why:"Name the problem, show what it really costs, then give the fix. Used where buyers already feel the pain.",tpl:"[Problem]. [What it costs]. [How we fix it].",out:"<span class=sw>One pass, too late.</span> <span class=sw>Packed snow freezes into ruts by morning.</span> <span class=sw>We plow during the storm, not after it.</span>",used:["Plowing page","'What goes wrong' sections"]},
+};
+
+/* Slop rules */
+const HYPE = ["seamless","seamlessly","cutting-edge","cutting edge","unlock","elevate","world-class","world class","leverage","synergy","game-changer","game changer","revolutionize","revolutionise","best-in-class","state-of-the-art","one-stop","delve","tailored solutions","look no further","in today's","next-level","unparalleled","top-notch","hassle-free","solutions provider","we pride ourselves","passionate about"];
+const RULES = [
+  ["No hype words","Seamless, elevate, cutting-edge, world-class and 20 more are blocked."],
+  ["No em dashes","They read as machine-written. Commas and full stops only."],
+  ["No exclamation marks","Confidence doesn't shout."],
+  ["Every claim has a reason","Hopkins rule: no 'because', no claim."],
+  ["Every number has a source","DSNY, APWA or Novus itself. Nothing invented."],
+  ["Grade 7 reading level or lower","Facility managers read on a phone in a parking lot."],
+  ["Buyer's words first","Pain is written in the phrases buyers already use."],
+  ["No residential language","Commercial only: sites, frontages, tenants, not 'your home'."],
+];
+
+/* ============================================================ BLOCKS */
+const rich = s => String(s||"").replace(/\*(.+?)\*/g,"<b>$1</b>");
+const esc = s => String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const B = (k,v,ctx) => ctx && ctx.bound && ctx.bound.includes(k) ? `<span class="bound" data-k="${k}">${v}</span>` : `<span data-k="${k}">${v}</span>`;
+
+const BLOCKS = {
+  nav:{name:"Navigation",cat:"Layout",fw:null,render:(p)=>`<div class="s-nav"><div class="lg"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13"/></svg><div>Novus<small>Commercial snow &amp; ice</small></div></div><nav><span>Services ▾</span><span>Areas ▾</span><span>Industries ▾</span><span>How it works</span><span>Guides ▾</span></nav><span class="s-btn i">Get a quote</span></div>`,fields:[]},
+  hero:{name:"Hero",cat:"Hero",fw:["schwartz","hopkins"],defaults:{chip:"Pre-treating sites before every storm · 24/7",kw:"Commercial snow removal in New York City",h1:"There before",h1b:"the first flake.",sub:"We treat your lots, sidewalks and entrances before the storm, so snow can't bond and your site opens on time. Then we plow, clear and haul. Commercial only, all five boroughs.",cta:"Get your snow plan"},
+    fields:[["chip","Status chip","[What we're doing] · [availability]"],["h1","Headline, line 1","[Where we are] before"],["h1b","Headline, line 2 (bold)","[the moment the problem starts]."],["sub","Subheadline","We [action] [when], so [reason it works] and [outcome]. Then [rest]. [Qualifier].",1],["cta","Button","Get your [deliverable]"]],
+    render:(p)=>`<div class="s-hero"><img src="${HERO}" alt=""><div class="in"><div><span class="s-chip">${B("chip",esc(p.chip))}</span><span class="s-kw">${B("kw",esc(p.kw))}</span><div class="s-big">${B("h1",esc(p.h1))}<br><b>${B("h1b",esc(p.h1b))}</b></div><p class="s-sub">${B("sub",esc(p.sub))}</p><div class="s-ctas"><span class="s-btn wh">${B("cta",esc(p.cta))} →</span><span class="s-btn g">Call 24/7 · (917) 970-2960</span></div></div><div class="s-card"><h4>Price your site in <b>60 seconds</b></h4><p>Two taps here, the rest on the next screen.</p><div class="s-opts"><span class="on">Retail / storefront</span><span>Office</span><span>Parking lot</span><span>Construction site</span></div><div class="s-opts"><span>1</span><span class="on">2–5</span><span>6–20</span><span>20+</span></div><span class="s-btn i">Continue →</span></div></div><div class="s-trust"><span>Fully licensed, registered &amp; insured</span><span>Available 24/7</span><span>6 offices &amp; yards across NYC and NJ</span><span>Associated with SIMA</span></div></div>`},
+  logos:{name:"Logo strip",cat:"Proof",fw:null,render:()=>`<div class="s-logos"><p>Trusted through New York winters by teams at</p><div class="r"><span>Target</span><span>verizon</span><span>Charles Schwab</span><span>patagonia</span><span>PUMA</span><span>TD Ameritrade</span><span>Triton</span></div></div>`,fields:[]},
+  phases:{name:"Before · During · After",cat:"Story",fw:["schwartz","hopkins"],pad:130,defaults:{eb:"Prevention first",h:"We do our best work",hb:"before it snows.",lead:"Snow that never bonds to the pavement lifts clean. So every Novus storm starts hours before the first flake, not after the last one."},
+    fields:[["h","Headline","We do our best work"],["hb","Headline (bold)","before [the problem]."],["lead","Lead","[Mechanism in one line]. So [what we do differently].",1]],
+    render:(p)=>`<div class="w"><span class="s-eb">${esc(p.eb)}</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><p class="s-lead">${B("lead",esc(p.lead))}</p><div class="s-phases"><div><div class="k">Before</div><h5>Pre-treated</h5><p>Entrances, sidewalks and lot lanes treated ahead of the storm so snow and ice can't bond.</p></div><div><div class="k">During</div><h5>Cleared as it falls</h5><p>Plows and hand crews work the storm at the depths set in your plan.</p></div><div><div class="k">After</div><h5>Re-treated against refreeze</h5><p>Melt treated before overnight temperatures turn it into black ice.</p></div></div></div>`},
+  clock:{name:"Deadline calculator",cat:"Interactive",fw:["ogilvy"],pad:130,bg:"paper",defaults:{h:"In New York, the clock starts",hb:"when the snow stops.",lead:"City law gives every business a set window to clear the sidewalk outside its door. Drag the slider to see your deadline."},
+    fields:[["h","Headline","In New York, [the rule]"],["hb","Headline (bold)","[the trigger]."],["lead","Lead","[The rule in plain English]. [Interaction prompt].",1]],
+    render:(p)=>`<div class="w s-clock"><div><span class="s-eb">The NYC sidewalk rule</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><p class="s-lead">${B("lead",esc(p.lead))}</p><div class="s-facts"><div><b>4 hrs</b><span>to clear in the daytime</span></div><div><b>$250</b><span>max DSNY fine (3rd offense)</span></div><div><b>4 ft</b><span>minimum clear path</span></div></div></div><div class="s-cc"><small style="color:#5E6878;font-size:14px">When did the snow stop?</small><div class="t">2:00 <small>PM</small></div><div class="bar"></div><div class="out"><div><small>Your sidewalk must be clear by</small><b>6:00 PM today</b></div><div style="text-align:right"><small>Window</small><b>4 hrs</b></div></div></div></div>`},
+  services:{name:"Service list",cat:"Content",fw:["hopkins"],pad:130,defaults:{h:"It starts",hb:"before it snows.",lead:"One team for the whole storm, from the treatment that goes down before the first flake to the last pile hauled away."},
+    fields:[["h","Headline","It starts"],["hb","Headline (bold)","before [the problem]."],["lead","Lead","One team for [scope], from [first step] to [last step].",1]],
+    render:(p)=>`<div class="w"><span class="s-eb">Services</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><p class="s-lead">${B("lead",esc(p.lead))}</p><div class="s-svc"><ol><li><small>01</small>Pre-storm anti-icing</li><li><small>02</small>Snow plowing</li><li><small>03</small>De-icing</li><li><small>04</small>Sidewalk clearing</li><li><small>05</small>Hand shoveling</li><li><small>06</small>Snow hauling</li></ol><div class="img"><img src="${IMG.spreader}" alt=""><span>Ice stopped <b>before it forms</b></span></div></div></div>`},
+  timeline:{name:"Storm timeline",cat:"Story",fw:["hormozi"],pad:130,bg:"dark",defaults:{h:"How a storm runs",hb:"with Novus.",lead:"You don't chase anyone at 3 AM. Here's what happens at your site from the forecast to the final pass."},
+    fields:[["h","Headline","How [the event] runs"],["hb","Headline (bold)","with [us]."],["lead","Lead","You don't [effort removed]. Here's what happens [from] [to].",1]],
+    render:(p)=>`<div class="w"><span class="s-eb">How it works</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><p class="s-lead">${B("lead",esc(p.lead))}</p><div class="s-tl"><div><div class="n">01</div><small>Before the season</small><h5>We walk your site and <b>build the plan.</b></h5><p>Entrances, lots and stacking areas mapped.</p></div><div><div class="n">02</div><small>24 to 48 hours out</small><h5>Your crew is <b>on standby.</b></h5><p>Material and crews staged by borough.</p></div><div><div class="n">03</div><small>Before the first flake</small><h5>Surfaces get <b>pre-treated.</b></h5><p>Ice can't bond to the pavement.</p></div><div><div class="n">04</div><small>The morning after</small><h5>Re-treated, <b>open on time.</b></h5><p>Refreeze handled before you open.</p></div></div></div>`},
+  coverage:{name:"Coverage",cat:"Content",fw:["ogilvy"],pad:130,defaults:{h:"Crews in",hb:"every borough.",lead:"Local teams mean shorter routes and faster response. Whether it's one storefront or locations across the city, we're already nearby."},
+    fields:[["h","Headline","Crews in"],["hb","Headline (bold)","every [area]."],["lead","Lead","[Fact about locations] mean [benefit].",1]],
+    render:(p)=>`<div class="w s-cov"><div><span class="s-eb">Coverage</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><p class="s-lead">${B("lead",esc(p.lead))}</p><div class="s-boros"><span>Manhattan</span><span>Brooklyn</span><span>Queens</span><span>The Bronx</span><span>Staten Island</span><span>Long Island City</span></div></div><div class="img"><img src="${IMG.bridge}" alt=""></div></div>`},
+  reviews:{name:"Testimonials",cat:"Proof",fw:["wiebe"],pad:130,bg:"paper",defaults:{h:"The businesses we clear",hb:"keep coming back.",q:"Professional servicing of all our locations nationwide. Very reliable."},
+    fields:[["h","Headline","The [customers] we [serve]"],["hb","Headline (bold)","keep coming back."],["q","Featured quote (real review only)","[Client's own words, unedited]",1]],
+    render:(p)=>`<div class="w"><span class="s-eb">Clients</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><div class="s-rev"><blockquote>${B("q",esc(p.q))}</blockquote><ul><li><span>NakeFit USA</span><span>Multi-location</span></li><li><span>Cristina M.</span><span>Client</span></li><li><span>Yasin W.</span><span>Client for years</span></li><li><span>Kevin K.</span><span>Client</span></li></ul></div></div>`},
+  quote:{name:"Quote form",cat:"Conversion",fw:["hormozi"],pad:130,bg:"paper",defaults:{h:"Get your snow plan",hb:"before the first storm.",lead:"Tell us about your site in under a minute. A Novus manager comes back with a plan and a price for the season."},
+    fields:[["h","Headline","Get your [deliverable]"],["hb","Headline (bold)","before [deadline]."],["lead","Lead","Tell us [ask] in [short time]. [Who] comes back with [what].",1]],
+    render:(p)=>`<div class="w s-quote"><div><span class="s-eb">Get a quote</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><p class="s-lead">${B("lead",esc(p.lead))}</p></div><div class="s-form"><div class="pr"><span>Step 1 of 5</span><span>Commercial properties only</span></div><div class="pb"><i></i></div><h4>What kind of <b>property</b> is it?</h4><div class="cards"><span>Retail / storefront</span><span>Office</span><span>Parking lot</span><span>Construction site</span><span>Multi-site portfolio</span><span>Something else</span></div><span class="s-btn i">Continue →</span></div></div>`},
+  faq:{name:"FAQ",cat:"Content",fw:["ogilvy"],pad:130,defaults:{h:"Questions facility managers",hb:"ask us."},
+    fields:[["h","Headline","Questions [buyer] ask"],["hb","Headline (bold)","us."]],
+    render:(p)=>`<div class="w s-faq"><div><span class="s-eb">FAQ</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2></div><ul><li class="o">Do you treat before the storm?<p>Yes. Surfaces are pre-treated before the first flake so snow and ice can't bond to the pavement, then cleared during the storm and re-treated after it.</p></li><li>Do you clear residential properties?</li><li>Which areas do you cover?</li><li>What does the NYC sidewalk law require?</li><li>Are you licensed and insured?</li></ul></div>`},
+  cta:{name:"Closing CTA",cat:"Conversion",fw:["hormozi"],defaults:{h:"Be ready",hb:"before it snows.",t:"Lock in your snow plan now and spend this winter not thinking about it."},
+    fields:[["h","Headline","Be [state]"],["hb","Headline (bold)","before [trigger]."],["t","Line","Lock in [deliverable] now and [effort removed].",1]],
+    render:(p)=>`<div class="s-cta"><img src="${IMG.night}" alt=""><div class="w"><h2>${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><p>${B("t",esc(p.t))}</p><div class="s-ctas"><span class="s-btn wh">Get your snow plan →</span><span class="s-btn g">Call 24/7</span></div></div></div>`},
+  footer:{name:"Footer",cat:"Layout",fw:null,render:()=>`<div class="s-foot"><div class="w g"><div><div style="color:#fff;font-weight:600;font-size:19px">Novus</div><p style="margin-top:14px;max-width:280px">New York's commercial-only snow and ice team. We treat your site before the storm, clear it during and re-treat it after.</p><div class="tel">(917) 970-2960</div></div><ul><h6>Services</h6><li>Pre-storm anti-icing</li><li>Snow plowing</li><li>Sidewalks</li><li>De-icing</li></ul><ul><h6>Areas</h6><li>Manhattan</li><li>Brooklyn</li><li>Queens</li><li>The Bronx</li></ul><ul><h6>Industries</h6><li>Retail</li><li>Offices</li><li>Property managers</li><li>Construction</li></ul><ul><h6>Guides</h6><li>Sidewalk snow law</li><li>Anti-icing vs de-icing</li><li>Readiness checklist</li></ul></div></div>`,fields:[]},
+  statement:{name:"Statement",cat:"Story",fw:["sugarman"],pad:120,defaults:{t:"Ice is a bond. Once snow freezes to the pavement, every hour after is spent breaking it.",tb:"So we stop it forming."},
+    fields:[["t","Opening lines","[Short surprising truth]. [Why it hurts].",1],["tb","Turn (bold)","So we [what we do]."]],
+    render:(p)=>`<div class="w"><p class="s-stmt">${B("t",esc(p.t))} <b>${B("tb",esc(p.tb))}</b></p></div>`},
+  compare:{name:"Compare table",cat:"Proof",fw:["hopkins"],pad:130,defaults:{h:"Same storm.",hb:"Two very different mornings."},
+    fields:[["h","Headline","Same [event]."],["hb","Headline (bold)","Two very different [outcomes]."]],
+    render:(p)=>`<div class="w"><span class="s-eb">Why it matters</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><div class="s-cmp"><div><span></span><span>Wait and react</span><span>Treat before the storm</span></div><div><span>When crews arrive</span><span>After snow has packed down</span><span>Before the first flake</span></div><div><span>The ice bond</span><span>Already formed</span><span>Never gets the chance to form</span></div><div><span>Material used</span><span>More, spread onto ice</span><span>Far less, on bare pavement</span></div><div><span>The morning after</span><span>Refreeze and black ice</span><span>Re-treated overnight</span></div></div></div>`},
+  stats:{name:"Stats row",cat:"Proof",fw:["ogilvy"],pad:90,defaults:{a:"1/4",at:"the salt of reactive de-icing, per APWA research",b:"4 hrs",bt:"to clear a NYC sidewalk once daytime snow stops",c:"24/7",ct:"storm watch and dispatch all season"},
+    fields:[["a","Stat 1","[Number]"],["at","Stat 1 label","[What it means], per [source]"],["b","Stat 2","[Number]"],["bt","Stat 2 label","[What it means]"],["c","Stat 3","[Number]"],["ct","Stat 3 label","[What it means]"]],
+    render:(p)=>`<div class="w s-stats"><div><b>${B("a",esc(p.a))}</b><span>${B("at",esc(p.at))}</span></div><div><b>${B("b",esc(p.b))}</b><span>${B("bt",esc(p.bt))}</span></div><div><b>${B("c",esc(p.c))}</b><span>${B("ct",esc(p.ct))}</span></div></div>`},
+  steps:{name:"Steps row",cat:"Story",fw:["hormozi"],pad:120,bg:"paper",defaults:{h:"Before, during",hb:"and after."},
+    fields:[["h","Headline","Before, during"],["hb","Headline (bold)","and after."]],
+    render:(p)=>`<div class="w"><span class="s-eb">Storm day</span><h2 class="s-h2">${B("h",esc(p.h))} <b>${B("hb",esc(p.hb))}</b></h2><div class="s-row"><div><small>Step 1</small><h5>Staged</h5><p>Crew and material ready 24 to 48 hours out.</p></div><div><small>Step 2</small><h5>Pre-treated</h5><p>Surfaces treated before the first flake.</p></div><div><small>Step 3</small><h5>Cleared</h5><p>Plowed and shoveled during the storm.</p></div><div><small>Step 4</small><h5>Re-treated</h5><p>Refreeze handled before you open.</p></div></div></div>`},
+  thero:{name:"Page hero (CMS)",cat:"Hero",fw:["schwartz","hopkins"],render:(p,ctx)=>{const it=ctx.item;return `<div class="s-th"><img src="${IMG[it.img]||HERO}" alt=""><div class="w"><div class="s-crumb">Home / ${esc(ctx.coll.label)} / ${esc(it.name)}</div><h1><span class="s-big">${ctx.bound?'<span class="bound">':''}${rich(esc(it.title))}${ctx.bound?'</span>':''}</span></h1><p class="s-sub">${ctx.bound?'<span class="bound">':''}${esc(it.sub)}${ctx.bound?'</span>':''}</p><div class="s-ctas"><span class="s-btn wh">Get your snow plan →</span><span class="s-btn g">Call 24/7</span></div></div></div>`},fields:[]},
+};
+const INSERTABLE = ["hero","statement","phases","compare","stats","steps","timeline","services","clock","coverage","reviews","faq","quote","cta","logos"];
+const THUMB = {
+  hero:`<i style="inset:0;background:#0A0F1C"></i><i style="left:8px;top:16px;width:46px;height:6px;background:#fff"></i><i style="left:8px;top:25px;width:34px;height:6px;background:#fff"></i><i style="right:8px;top:12px;width:30px;height:30px;background:#fff;border-radius:5px"></i>`,
+  statement:`<i style="left:8px;top:14px;width:80%;height:5px;background:#0A0F1C"></i><i style="left:8px;top:23px;width:65%;height:5px;background:#0A0F1C"></i><i style="left:8px;top:32px;width:40%;height:5px;background:#1F5EFF"></i>`,
+  phases:`<i style="left:8px;top:12px;width:24%;height:14px;background:#1F5EFF;opacity:.5"></i><i style="left:38%;top:12px;width:24%;height:14px;background:#1F5EFF;opacity:.5"></i><i style="left:68%;top:12px;width:24%;height:14px;background:#1F5EFF;opacity:.5"></i><i style="left:8px;top:34px;width:85%;height:3px;background:#C9D1DD"></i>`,
+  compare:`<i style="left:8px;top:10px;width:40%;height:36px;background:#E2E7EF"></i><i style="right:8px;top:10px;width:40%;height:36px;background:#0A0F1C"></i>`,
+  stats:`<i style="left:8px;top:16px;width:22%;height:12px;background:#0A0F1C"></i><i style="left:38%;top:16px;width:22%;height:12px;background:#0A0F1C"></i><i style="left:68%;top:16px;width:22%;height:12px;background:#0A0F1C"></i>`,
+  steps:`<i style="left:8px;right:8px;top:14px;height:2px;background:#1F5EFF"></i><i style="left:8px;top:10px;width:10px;height:10px;border-radius:50%;background:#1F5EFF"></i><i style="left:38%;top:10px;width:10px;height:10px;border-radius:50%;background:#1F5EFF"></i><i style="left:68%;top:10px;width:10px;height:10px;border-radius:50%;background:#1F5EFF"></i>`,
+  timeline:`<i style="inset:0;background:#0A0F1C"></i><i style="left:8px;top:14px;width:18%;height:10px;background:#8FB0FF"></i><i style="left:30%;top:14px;width:18%;height:10px;background:#8FB0FF"></i><i style="left:52%;top:14px;width:18%;height:10px;background:#8FB0FF"></i><i style="left:74%;top:14px;width:18%;height:10px;background:#8FB0FF"></i>`,
+  services:`<i style="left:8px;top:10px;width:42%;height:4px;background:#0A0F1C"></i><i style="left:8px;top:20px;width:42%;height:4px;background:#C9D1DD"></i><i style="left:8px;top:30px;width:42%;height:4px;background:#C9D1DD"></i><i style="right:8px;top:8px;width:40%;height:38px;background:#9DB0CC;border-radius:5px"></i>`,
+  clock:`<i style="left:8px;top:14px;width:40%;height:6px;background:#0A0F1C"></i><i style="right:8px;top:8px;width:42%;height:38px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.15);border-radius:5px"></i><i style="right:14px;top:30px;width:34%;height:10px;background:#0A0F1C;border-radius:3px"></i>`,
+  coverage:`<i style="left:8px;top:14px;width:40%;height:6px;background:#0A0F1C"></i><i style="left:8px;top:26px;width:30%;height:4px;background:#1F5EFF"></i><i style="right:8px;top:8px;width:42%;height:38px;background:#7F8FA8;border-radius:5px"></i>`,
+  reviews:`<i style="left:8px;top:12px;width:50%;height:7px;background:#0A0F1C"></i><i style="left:8px;top:23px;width:40%;height:7px;background:#0A0F1C"></i><i style="right:8px;top:12px;width:34%;height:3px;background:#C9D1DD"></i><i style="right:8px;top:22px;width:34%;height:3px;background:#C9D1DD"></i>`,
+  faq:`<i style="right:8px;top:10px;width:55%;height:3px;background:#C9D1DD"></i><i style="right:8px;top:20px;width:55%;height:3px;background:#C9D1DD"></i><i style="right:8px;top:30px;width:55%;height:3px;background:#C9D1DD"></i><i style="left:8px;top:12px;width:30%;height:6px;background:#0A0F1C"></i>`,
+  quote:`<i style="left:8px;top:14px;width:36%;height:6px;background:#0A0F1C"></i><i style="right:8px;top:8px;width:46%;height:38px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.15);border-radius:5px"></i><i style="right:14px;top:34px;width:14px;height:6px;background:#1F5EFF;border-radius:3px"></i>`,
+  cta:`<i style="inset:0;background:#0A0F1C"></i><i style="left:25%;top:16px;width:50%;height:7px;background:#fff"></i><i style="left:38%;top:30px;width:24%;height:7px;background:#fff;border-radius:4px"></i>`,
+  logos:`<i style="left:8px;top:24px;width:14%;height:5px;background:#9AA1AE"></i><i style="left:28%;top:24px;width:14%;height:5px;background:#9AA1AE"></i><i style="left:48%;top:24px;width:14%;height:5px;background:#9AA1AE"></i><i style="left:68%;top:24px;width:14%;height:5px;background:#9AA1AE"></i>`,
+};
+
+/* ============================================================ STATE */
+let uidN = 0;
+const mk = (type, extra) => { const b = BLOCKS[type]; return Object.assign({ uid:"b"+(++uidN), type, props:Object.assign({}, b.defaults||{}), style:{ pad:b.pad||130, bg:b.bg||"white" } }, extra||{}); };
+const HOME = ["nav","hero","logos","phases","clock","services","timeline","coverage","reviews","quote","faq","cta","footer"].map(t => mk(t));
+const TPL = {}; // one template per collection
+function tplFor(c){
+  if (!TPL[c]) {
+    const base = c==="guides" ? ["nav","thero","statement","stats","faq","quote","cta","footer"] : c==="areas" ? ["nav","thero","statement","steps","coverage","reviews","faq","quote","cta","footer"] : ["nav","thero","statement","compare","steps","stats","faq","quote","cta","footer"];
+    TPL[c] = base.map(t => mk(t));
+  }
+  return TPL[c];
+}
+const STATIC = {
+  how:{name:"How it works",path:"/how-it-works",blocks:["nav","thero","timeline","phases","stats","faq","quote","cta","footer"].map(t=>mk(t)),item:{name:"How it works",title:"We start *before the snow does.*",sub:"Most contractors are called when it starts snowing. Novus crews have already treated your site by then.",img:"spreader"}},
+  quote:{name:"Get a quote",path:"/quote",blocks:["nav","thero","quote","logos","footer"].map(t=>mk(t)),item:{name:"Get a quote",title:"Your snow plan, *priced in a minute.*",sub:"Five quick taps. A Novus manager comes back with a written plan and a price for the season.",img:"night"}},
+};
+const S = { mode:"design", page:{kind:"home"}, sel:null, bp:(window.innerWidth<980?"phone":"desktop"), zoom:"fit", ltab:"pages", rtab:"copy", cmsColl:"services", cmsItem:0, seoSel:0, fwFlip:{} };
+
+function curBlocks(){ const p=S.page; if(p.kind==="home") return HOME; if(p.kind==="static") return STATIC[p.key].blocks; return tplFor(p.coll); }
+function curCtx(){ const p=S.page; if(p.kind==="cms") return { coll:CMS[p.coll], item:CMS[p.coll].items[p.idx], bound:true }; if(p.kind==="static") return { coll:{label:"Pages"}, item:STATIC[p.key].item, bound:false }; return {}; }
+function pageName(){ const p=S.page; if(p.kind==="home") return "Home"; if(p.kind==="static") return STATIC[p.key].name; return CMS[p.coll].items[p.idx].name; }
+function pagePath(){ const p=S.page; if(p.kind==="home") return "/"; if(p.kind==="static") return STATIC[p.key].path; return CMS[p.coll].path+CMS[p.coll].items[p.idx].slug; }
+
+/* ============================================================ ICONS */
+const IC = {
+  page:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 1.5h5.5L12.5 4.5v10h-8.5z"/><path d="M9.5 1.5v3h3"/></svg>',
+  home:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2.5 7.5 8 3l5.5 4.5V13.5h-11z"/></svg>',
+  cms:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="8" cy="4" rx="5.5" ry="2"/><path d="M2.5 4v8c0 1.1 2.5 2 5.5 2s5.5-.9 5.5-2V4"/></svg>',
+  blk:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 6.5h12"/></svg>',
+  grip:'<svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor"><circle cx="3" cy="3" r="1.2"/><circle cx="7" cy="3" r="1.2"/><circle cx="3" cy="7" r="1.2"/><circle cx="7" cy="7" r="1.2"/><circle cx="3" cy="11" r="1.2"/><circle cx="7" cy="11" r="1.2"/></svg>',
+  pen:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13l2-.5L13 4.5 11.5 3 3.5 11 3 13z"/></svg>',
+};
+
+/* ============================================================ SLOP CHECK */
+function sylls(w){ w=w.toLowerCase().replace(/[^a-z]/g,""); if(!w) return 0; if(w.length<=3) return 1; w=w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/,"").replace(/^y/,""); const m=w.match(/[aeiouy]{1,2}/g); return m?m.length:1; }
+function grade(t){ const s=Math.max(1,(t.match(/[.!?]+/g)||[]).length); const ws=t.split(/\s+/).filter(x=>/[a-z]/i.test(x)); if(!ws.length) return 0; const sy=ws.reduce((a,w)=>a+sylls(w),0); return Math.max(1,0.39*(ws.length/s)+11.8*(sy/ws.length)-15.59); }
+function scan(t){
+  const f=[], low=t.toLowerCase();
+  HYPE.forEach(h=>{ if(low.includes(h)) f.push(`Hype word: "${h}"`); });
+  if(/—|–/.test(t)) f.push("Em dash found");
+  if(t.includes("!")) f.push("Exclamation mark");
+  if(/\bisn'?t\b[^.]{0,40},\s*it'?s\b/i.test(t) || /\bnot just\b/i.test(t)) f.push("\"It isn't X, it's Y\" framing");
+  if(/\byour home\b|\bhomeowners?\b|\bdriveway at home\b/i.test(t)) f.push("Residential language");
+  return f;
+}
+function blockText(b){ return Object.values(b.props||{}).join(". "); }
+function pageText(){ const ctx=curCtx(); let t=curBlocks().map(blockText).join(". "); if(ctx.item) t+=". "+ctx.item.title.replace(/\*/g,"")+". "+ctx.item.sub; return t; }
+function updateSlop(){
+  const all = HOME.map(blockText).join(". ") + Object.values(CMS).map(c=>c.items.map(i=>i.title+". "+i.sub).join(". ")).join(". ");
+  const n = scan(all).length + scan(pageText()).length;
+  const chip=document.getElementById("slopChip");
+  chip.classList.toggle("bad", n>0);
+  document.getElementById("slopN").textContent = n ? n+" flag"+(n>1?"s":"") : "0 flags";
+}
+
+/* ============================================================ RENDER: CANVAS */
+const board=document.getElementById("board"), hold=document.getElementById("hold"), canvas=document.getElementById("canvas");
+function secHTML(b, ctx){
+  const def=BLOCKS[b.type];
+  const bg=b.style.bg==="dark"?"dark":b.style.bg==="paper"?"paper":"";
+  const wrapped = ["nav","hero","logos","cta","footer","thero"].includes(b.type) ? def.render(b.props, ctx) : `<div class="s-sec ${bg}" style="--pad:${b.style.pad}px">${def.render(b.props, ctx)}</div>`;
+  return `<section class="blk${S.sel===b.uid?" sel":""}${b.type==="nav"&&S.page.kind!=="never"?" nav-blk":""}" data-uid="${b.uid}"><div class="blk-tag" draggable="true" data-drag="${b.uid}">${IC.grip.replace('fill="currentColor"','fill="#fff"')}${def.name}${ctx.bound&&b.type==="thero"?' <em>· CMS</em>':''}</div>${wrapped}</section>`;
+}
+function renderBoard(){
+  const ctx=curCtx(), blocks=curBlocks();
+  const w = S.bp==="phone"?390:1440;
+  board.style.width=w+"px";
+  // nav floats over the first hero; if there's no hero after it, make it solid
+  const html = blocks.map((b,i)=>{
+    let h=secHTML(b,ctx);
+    if(b.type==="nav"){ const nx=blocks[i+1]; if(!nx||!["hero","thero"].includes(nx.type)) h=h.replace('class="blk','class="nav-solid blk'); }
+    return h;
+  }).join("");
+  board.innerHTML = html;
+  // nav block has zero height when it overlays the hero: give it a visible hit area
+  board.querySelectorAll('.blk[data-uid]').forEach(el=>{ if(el.querySelector(':scope > .s-nav') && !el.classList.contains('nav-solid')) { el.style.height="0"; el.style.zIndex="6"; } });
+  document.getElementById("boardName").textContent = pageName();
+  document.getElementById("boardSize").textContent = (S.bp==="phone"?"Phone · 390":"Desktop · 1440") + (S.page.kind==="cms"?"  ·  Template: "+CMS[S.page.coll].tpl:"");
+  document.getElementById("crumbPage").textContent = pageName();
+  fit();
+  updateSlop();
+}
+function fit(){
+  const w = S.bp==="phone"?390:1440;
+  const avail = canvas.clientWidth - (window.innerWidth<980?28:80);
+  let s = S.zoom==="fit" ? Math.min(1, avail/w) : +S.zoom;
+  if (S.bp==="phone" && S.zoom==="fit") s = Math.min(1, avail/w, 0.9);
+  board.style.transform=`scale(${s})`;
+  board.style.setProperty("--inv", (1/s).toFixed(3));
+  hold.style.setProperty("--inv", (1/s).toFixed(3));
+  requestAnimationFrame(()=>{ hold.style.width=(w*s)+"px"; hold.style.height=(board.scrollHeight*s)+"px"; });
+  hold.dataset.s=s;
+}
+window.addEventListener("resize", fit);
+new ResizeObserver(()=>fit()).observe(board);
+
+/* selection */
+board.addEventListener("click", e=>{
+  const el=e.target.closest(".blk"); if(!el) return;
+  select(el.dataset.uid);
+  const k=e.target.closest("[data-k]");
+  if(k){ setTimeout(()=>{ const inp=document.querySelector(`#insp [data-field="${k.dataset.k}"]`); if(inp){ inp.focus(); inp.classList.add("flash"); } },30); }
+});
+function select(uid, noOpen){
+  S.sel=uid;
+  board.querySelectorAll(".blk").forEach(el=>el.classList.toggle("sel", el.dataset.uid===uid));
+  renderLeft(); renderInspector();
+  if(window.innerWidth<980 && uid && !noOpen) openSheet("edit");
+}
+canvas.addEventListener("click", e=>{ if(e.target===canvas||e.target.id==="boardWrap"){ S.sel=null; board.querySelectorAll(".blk.sel").forEach(x=>x.classList.remove("sel")); renderLeft(); renderInspector(); } });
+
+/* ============================================================ DRAG & DROP */
+let DRAG=null;
+const dropLine=document.getElementById("dropLine");
+document.addEventListener("dragstart", e=>{
+  const t=e.target.closest("[data-drag],[data-new]"); if(!t) return;
+  DRAG = t.dataset.new ? {kind:"new",type:t.dataset.new} : {kind:"move",uid:t.dataset.drag};
+  e.dataTransfer.effectAllowed="move"; e.dataTransfer.setData("text/plain","x");
+});
+document.addEventListener("dragend", ()=>{ DRAG=null; dropLine.style.display="none"; document.querySelectorAll(".drag-over-top,.drag-over-bot").forEach(x=>x.classList.remove("drag-over-top","drag-over-bot")); });
+function dropTarget(clientY){
+  const s=+hold.dataset.s||1, els=[...board.querySelectorAll(".blk")].filter(el=>el.offsetHeight>0);
+  const rect=hold.getBoundingClientRect(), y=(clientY-rect.top)/s;
+  let idx=els.length, top=board.scrollHeight;
+  for(let i=0;i<els.length;i++){ const el=els[i]; if(y < el.offsetTop + el.offsetHeight/2){ idx=i; top=el.offsetTop; break; } }
+  const blocks=curBlocks(); const uid = idx<els.length ? els[idx].dataset.uid : null;
+  const bi = uid ? blocks.findIndex(b=>b.uid===uid) : blocks.length;
+  return { bi, top };
+}
+canvas.addEventListener("dragover", e=>{
+  if(!DRAG) return; e.preventDefault();
+  const t=dropTarget(e.clientY), s=+hold.dataset.s||1;
+  dropLine.style.display="block"; dropLine.style.top=(t.top*s-2)+"px";
+  dropLine.dataset.l = DRAG.kind==="new" ? "Insert "+BLOCKS[DRAG.type].name : "Move here";
+});
+canvas.addEventListener("dragleave", e=>{ if(!canvas.contains(e.relatedTarget)) dropLine.style.display="none"; });
+canvas.addEventListener("drop", e=>{
+  if(!DRAG) return; e.preventDefault(); dropLine.style.display="none";
+  const { bi } = dropTarget(e.clientY); applyDrop(bi);
+});
+function applyDrop(bi){
+  const blocks=curBlocks();
+  if(DRAG.kind==="new"){ const b=mk(DRAG.type); blocks.splice(bi,0,b); S.sel=b.uid; toast(`${BLOCKS[DRAG.type].name} added`); }
+  else { const from=blocks.findIndex(b=>b.uid===DRAG.uid); if(from<0) return; const [m]=blocks.splice(from,1); blocks.splice(bi>from?bi-1:bi,0,m); S.sel=m.uid; }
+  DRAG=null; renderBoard(); renderLeft(); renderInspector();
+  const el=board.querySelector(`[data-uid="${S.sel}"]`); if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+/* ============================================================ LEFT PANEL */
+const lbody=document.getElementById("lbody");
+function renderLeft(){
+  document.querySelectorAll("#ltabs button").forEach(b=>b.classList.toggle("on", b.dataset.t===S.ltab));
+  if(S.ltab==="pages"){
+    const on=(k)=>k?" on":"";
+    let h=`<div class="grp">Pages <span class="mono" style="font-size:10.5px">28</span></div>`;
+    h+=`<div class="row${on(S.page.kind==="home")}" data-pg="home">${IC.home}Home<span class="sub">/</span></div>`;
+    Object.entries(CMS).forEach(([k,c])=>{
+      h+=`<div class="grp" style="padding-top:14px">${c.label}<span class="badge">CMS · ${c.items.length}</span></div>`;
+      h+=`<div class="row" data-cmsgo="${k}" style="color:var(--purple)">${IC.cms}${c.tpl} <span class="sub">template</span></div>`;
+      c.items.forEach((it,i)=>{ h+=`<div class="row ind${on(S.page.kind==="cms"&&S.page.coll===k&&S.page.idx===i)}" data-pg="cms:${k}:${i}">${IC.page}${it.name}</div>`; });
+    });
+    h+=`<div class="grp" style="padding-top:14px">Static</div>`;
+    Object.entries(STATIC).forEach(([k,p])=>{ h+=`<div class="row${on(S.page.kind==="static"&&S.page.key===k)}" data-pg="static:${k}">${IC.page}${p.name}<span class="sub">${p.path}</span></div>`; });
+    lbody.innerHTML=h;
+  } else if(S.ltab==="layers"){
+    const blocks=curBlocks();
+    let h=`<div class="grp">${esc(pageName())}<span class="mono" style="font-size:10.5px">${blocks.length} sections</span></div>`;
+    blocks.forEach((b,i)=>{ h+=`<div class="row layer${S.sel===b.uid?" on":""}" draggable="true" data-drag="${b.uid}" data-layer="${b.uid}">${IC.blk}${BLOCKS[b.type].name}<span class="grip">${IC.grip}</span><span class="mv"><button data-up="${i}">↑</button><button data-dn="${i}">↓</button></span></div>`; });
+    h+=`<p class="empty" style="padding:14px 8px">Drag layers or the blue tab on the canvas to reorder. Drop new sections in from Insert.</p>`;
+    lbody.innerHTML=h;
+  } else {
+    const cats={};
+    INSERTABLE.forEach(t=>{ (cats[BLOCKS[t].cat]=cats[BLOCKS[t].cat]||[]).push(t); });
+    let h="";
+    Object.entries(cats).forEach(([c,ts])=>{ h+=`<div class="grp">${c}</div><div class="ins">${ts.map(t=>`<div class="ins-i" draggable="true" data-new="${t}" data-add="${t}"><div class="th">${THUMB[t]||""}</div><span>${BLOCKS[t].name}</span></div>`).join("")}</div>`; });
+    h+=`<p class="empty" style="padding:14px 8px">Drag onto the canvas, or tap to add below the selected section. Every block ships with its copy framework.</p>`;
+    lbody.innerHTML=h;
+  }
+}
+document.getElementById("ltabs").addEventListener("click", e=>{ const b=e.target.closest("button"); if(!b) return; S.ltab=b.dataset.t; renderLeft(); });
+lbody.addEventListener("click", e=>{
+  const pg=e.target.closest("[data-pg]"), go=e.target.closest("[data-cmsgo]"), ly=e.target.closest("[data-layer]"), add=e.target.closest("[data-add]"), up=e.target.closest("[data-up]"), dn=e.target.closest("[data-dn]");
+  if(up||dn){ e.stopPropagation(); const blocks=curBlocks(), i=+(up?up.dataset.up:dn.dataset.dn), j=up?i-1:i+1; if(j<0||j>=blocks.length) return; [blocks[i],blocks[j]]=[blocks[j],blocks[i]]; renderBoard(); renderLeft(); return; }
+  if(pg){ const v=pg.dataset.pg.split(":"); S.page = v[0]==="home"?{kind:"home"}: v[0]==="static"?{kind:"static",key:v[1]}:{kind:"cms",coll:v[1],idx:+v[2]}; S.sel=null; renderBoard(); renderLeft(); renderInspector(); canvas.scrollTop=0; closeSheets(); return; }
+  if(go){ S.cmsColl=go.dataset.cmsgo; S.cmsItem=0; setMode("cms"); return; }
+  if(ly){ select(ly.dataset.layer, true); const el=board.querySelector(`[data-uid="${ly.dataset.layer}"]`); if(el) el.scrollIntoView({behavior:"smooth",block:"center"}); return; }
+  if(add){ const blocks=curBlocks(); const i=S.sel?blocks.findIndex(b=>b.uid===S.sel)+1:blocks.length-1; DRAG={kind:"new",type:add.dataset.add}; applyDrop(Math.max(1,i)); closeSheets(); }
+});
+lbody.addEventListener("dragover", e=>{
+  if(!DRAG||DRAG.kind!=="move") return; const row=e.target.closest("[data-layer]"); if(!row) return; e.preventDefault();
+  document.querySelectorAll(".drag-over-top,.drag-over-bot").forEach(x=>x.classList.remove("drag-over-top","drag-over-bot"));
+  const r=row.getBoundingClientRect(); row.classList.add(e.clientY<r.top+r.height/2?"drag-over-top":"drag-over-bot");
+});
+lbody.addEventListener("drop", e=>{
+  const row=e.target.closest("[data-layer]"); if(!row||!DRAG) return; e.preventDefault();
+  const blocks=curBlocks(); let bi=blocks.findIndex(b=>b.uid===row.dataset.layer); if(row.classList.contains("drag-over-bot")) bi++;
+  applyDrop(bi);
+});
+
+/* ============================================================ INSPECTOR */
+const insp=document.getElementById("insp");
+function tplHTML(t){ return esc(t).replace(/\[([^\]]+)\]/g,'<span class="slot">$1</span>'); }
+function renderInspector(){
+  const blocks=curBlocks(), b=blocks.find(x=>x.uid===S.sel);
+  if(!b){ insp.innerHTML = pageSettings(); bindPageSettings(); return; }
+  const def=BLOCKS[b.type], ctx=curCtx();
+  const tabs=["copy","style","data"];
+  let h=`<div class="insp-h"><span class="ic">${IC.blk}</span><div><b>${def.name}</b><small>${def.cat} · Section ${blocks.indexOf(b)+1} of ${blocks.length}</small></div></div>`;
+  h+=`<div class="tabs" id="rtabs">${tabs.map(t=>`<button data-t="${t}" class="${S.rtab===t?"on":""}">${t[0].toUpperCase()+t.slice(1)}</button>`).join("")}</div><div class="scroll">`;
+  if(S.rtab==="copy"){
+    if(b.type==="thero"){
+      h+=fwCard(def.fw);
+      h+=`<div class="bind" style="border-color:rgba(168,121,255,.35)">This hero is bound to the <b>${ctx.coll.label}</b> collection. Edit it once, it updates on every page that uses the template.</div>`;
+      h+=`<div class="field"><label>Hero title <span class="mono" style="color:var(--purple)">{{${ctx.item?"item":""}.title}}</span></label><textarea rows="2" data-cms="title">${esc(ctx.item.title)}</textarea></div>`;
+      h+=`<div class="field"><label>Hero sub <span class="mono" style="color:var(--purple)">{{item.sub}}</span></label><textarea rows="4" data-cms="sub">${esc(ctx.item.sub)}</textarea></div>`;
+      h+=slopBox(ctx.item.title.replace(/\*/g,"")+". "+ctx.item.sub);
+    } else if(!def.fields.length){
+      h+=`<p class="empty">This is a layout component. It has no copy of its own. Its links come from the site map, so every page you add shows up here automatically.</p>`;
+    } else {
+      h+=fwCard(def.fw);
+      def.fields.forEach(([k,label,tpl,multi])=>{
+        const v=b.props[k]||"";
+        h+=`<div class="field"><label>${label}<span class="cnt">${v.length}</span></label><div class="tpl">${tplHTML(tpl)}</div>${multi?`<textarea rows="3" data-field="${k}">${esc(v)}</textarea>`:`<input data-field="${k}" value="${esc(v)}">`}</div>`;
+      });
+      h+=slopBox(blockText(b));
+    }
+  } else if(S.rtab==="style"){
+    const fixed=["nav","hero","logos","cta","footer","thero"].includes(b.type);
+    h+=`<div class="field"><label>Background</label><div class="seg" data-seg="bg">${["white","paper","dark"].map(v=>`<button data-v="${v}" class="${b.style.bg===v?"on":""}" ${fixed?"disabled":""}>${v[0].toUpperCase()+v.slice(1)}</button>`).join("")}</div></div>`;
+    h+=`<div class="field"><label>Vertical padding <span class="cnt mono">${b.style.pad}px</span></label><input type="range" min="60" max="200" step="10" value="${b.style.pad}" data-style="pad" ${fixed?"disabled":""}></div>`;
+    h+=`<div class="field"><label>Type</label><div class="tpl" style="border-style:solid">Geist · Light 300 / SemiBold 600 · tracking −4.5%</div></div>`;
+    h+=`<div class="field"><label>Entrance animation</label><select><option>Words rise, staggered 50 ms</option><option>Fade up</option><option>None</option></select></div>`;
+    h+=`<div class="field"><label>Visible on</label><div class="seg"><button class="on">Desktop</button><button class="on">Tablet</button><button class="on">Phone</button></div></div>`;
+    h+=`<div class="field"><label>Respects reduced motion</label><div class="pill"><i></i>On</div></div>`;
+    if(fixed) h+=`<p class="empty" style="padding:6px 0">This section manages its own background and spacing.</p>`;
+  } else {
+    if(b.type==="quote") h+=`<div class="bind">Form submits to<span class="mono">QuoteRequest</span></div><div class="bind">Alert<span class="mono">email + text to manager</span></div><div class="bind">Spam guard<span class="mono">honeypot + validation</span></div><div class="bind">Source page<span class="mono">{{page.path}}</span></div>`;
+    else if(b.type==="thero") h+=`<div class="bind">Title<span class="mono">{{item.title}}</span></div><div class="bind">Subheadline<span class="mono">{{item.sub}}</span></div><div class="bind">Background<span class="mono">{{item.image}}</span></div><div class="bind">Breadcrumb<span class="mono">{{collection}} / {{item.name}}</span></div><div class="bind">Schema<span class="mono">Service + BreadcrumbList</span></div>`;
+    else if(b.type==="faq") h+=`<div class="bind">Questions<span class="mono">{{page.faq[]}}</span></div><div class="bind">Schema<span class="mono">FAQPage (auto)</span></div>`;
+    else if(b.type==="clock") h+=`<div class="bind">Rules source<span class="mono">DSNY sidewalk rules</span></div><div class="bind">Logic<span class="mono">4h / 14h / 11 AM</span></div>`;
+    else h+=`<p class="empty" style="padding:6px 0">Static content. Lives with this page and is versioned with every publish.</p>`;
+  }
+  h+=`</div>`;
+  insp.innerHTML=h;
+}
+function fwCard(keys){ if(!keys) return ""; return keys.map(k=>{ const f=FW[k]; return `<div class="fw"><div class="fw-top"><span class="who">${f.who}</span><div><b>${f.name}</b><small>${f.tag}</small></div></div><p>${f.why}</p></div>`; }).join(""); }
+function slopBox(text){
+  const flags=scan(text), g=grade(text).toFixed(1);
+  const rows=[
+    [!flags.some(f=>f.startsWith("Hype")),"No hype words"],
+    [!flags.includes("Em dash found"),"No em dashes"],
+    [!flags.includes("Exclamation mark"),"No exclamation marks"],
+    [!flags.some(f=>f.includes("isn't")),"No \"it isn't X, it's Y\" lines"],
+    [g<=8,`Reading level: grade ${g}`],
+  ];
+  return `<div class="chk"><div class="chk-h"><span>Slop check</span><span class="pill ${flags.length?"y":""}"><i></i>${flags.length?flags.length+" to fix":"Clean"}</span></div><div class="chk-l">${rows.map(([ok,t])=>`<div><span class="d ${ok?"ok":"no"}">${ok?"✓":"!"}</span>${t}</div>`).join("")}${flags.filter(f=>f.startsWith("Hype")).map(f=>`<div><span class="d no">!</span>${esc(f)}</div>`).join("")}</div></div>`;
+}
+function pageSettings(){
+  const ctx=curCtx(), it=ctx.item, p=S.page;
+  const seo = p.kind==="cms"?it.seo: p.kind==="home"?"Commercial Snow Removal NYC | Novus Maintenance | 24/7, All 5 Boroughs":it.name+" | Novus Maintenance";
+  const desc = p.kind==="cms"?it.desc: p.kind==="home"?"Commercial snow and ice management across all five NYC boroughs. We pre-treat lots, sidewalks and entrances before the storm, then plow, clear and haul. 24/7.":it.sub;
+  return `<div class="insp-h"><span class="ic">${IC.page}</span><div><b>${esc(pageName())}</b><small>Page · ${pagePath()}</small></div></div><div class="scroll">
+    <p class="empty" style="padding:0 0 14px">Click any section on the canvas to edit its copy, style and data. Tap a highlighted line to jump straight to it.</p>
+    <div class="field"><label>SEO title<span class="cnt ${seo.length<=65?"ok":"warn"}" id="seoTc">${seo.length}/65</span></label><textarea rows="2" id="seoT">${esc(seo)}</textarea></div>
+    <div class="field"><label>Meta description<span class="cnt ${desc.length<=160?"ok":"warn"}" id="seoDc">${desc.length}/160</span></label><textarea rows="4" id="seoD">${esc(desc)}</textarea></div>
+    <div class="field"><label>Google preview</label><div class="serp"><div class="u"><i>N</i>novusmaintenance.com › ${pagePath().replace(/^\//,"").split("/").join(" › ")||""}</div><div class="t" id="serpT">${esc(seo)}</div><div class="d" id="serpD">${esc(desc)}</div></div></div>
+    <div class="field"><label>Structured data</label><div style="display:flex;flex-wrap:wrap;gap:6px"><span class="pill"><i></i>${p.kind==="home"?"LocalBusiness":"Service"}</span><span class="pill"><i></i>FAQPage</span><span class="pill"><i></i>BreadcrumbList</span>${p.kind==="home"?'<span class="pill"><i></i>Organization</span>':""}</div></div>
+    ${slopBox(pageText())}
+  </div>`;
+}
+function bindPageSettings(){
+  const t=document.getElementById("seoT"), d=document.getElementById("seoD"); if(!t) return;
+  const up=()=>{ document.getElementById("serpT").textContent=t.value; document.getElementById("serpD").textContent=d.value; const tc=document.getElementById("seoTc"), dc=document.getElementById("seoDc"); tc.textContent=t.value.length+"/65"; tc.className="cnt "+(t.value.length<=65?"ok":"warn"); dc.textContent=d.value.length+"/160"; dc.className="cnt "+(d.value.length<=160?"ok":"warn"); };
+  t.oninput=up; d.oninput=up;
+}
+insp.addEventListener("click", e=>{
+  const t=e.target.closest("#rtabs button"); if(t){ S.rtab=t.dataset.t; renderInspector(); return; }
+  const sg=e.target.closest("[data-seg] button"); if(sg&&!sg.disabled){ const b=curBlocks().find(x=>x.uid===S.sel); b.style.bg=sg.dataset.v; rerenderSel(); renderInspector(); }
+});
+insp.addEventListener("input", e=>{
+  const blocks=curBlocks(), b=blocks.find(x=>x.uid===S.sel);
+  const f=e.target.dataset.field, st=e.target.dataset.style, cm=e.target.dataset.cms;
+  if(f&&b){ b.props[f]=e.target.value; const c=e.target.closest(".field").querySelector(".cnt"); if(c) c.textContent=e.target.value.length; rerenderSel(); refreshSlopBox(blockText(b)); }
+  if(st&&b){ b.style[st]=+e.target.value; e.target.closest(".field").querySelector(".cnt").textContent=e.target.value+"px"; rerenderSel(); }
+  if(cm){ const ctx=curCtx(); ctx.item[cm]=e.target.value; rerenderSel(); refreshSlopBox(ctx.item.title.replace(/\*/g,"")+". "+ctx.item.sub); }
+});
+function refreshSlopBox(text){ const box=insp.querySelector(".chk"); if(box) box.outerHTML=slopBox(text); updateSlop(); }
+function rerenderSel(){
+  const blocks=curBlocks(), b=blocks.find(x=>x.uid===S.sel), el=board.querySelector(`[data-uid="${S.sel}"]`); if(!b||!el) return;
+  const tmp=document.createElement("div"); tmp.innerHTML=secHTML(b,curCtx()); el.replaceWith(tmp.firstChild); fit(); updateSlop();
+}
+
+/* ============================================================ MODES */
+const VIEWS=document.getElementById("views"), APP=document.getElementById("app");
+function setMode(m){
+  S.mode=m;
+  document.querySelectorAll("#modes button").forEach(b=>b.classList.toggle("on", b.dataset.m===m));
+  const design=m==="design";
+  APP.style.display=design?"":"none"; VIEWS.style.display=design?"none":"";
+  document.getElementById("dock").style.visibility=design?"":"hidden";
+  document.getElementById("bp").style.visibility=design?"":"hidden";
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on", v.id==="v-"+m));
+  closeSheets();
+  if(m==="cms") renderCMS(); if(m==="copy") renderCopy(); if(m==="seo") renderSEO(); if(m==="leads") renderLeads();
+  if(design) renderBoard();
+}
+document.getElementById("modes").addEventListener("click", e=>{ const b=e.target.closest("button"); if(b) setMode(b.dataset.m); });
+document.getElementById("bp").addEventListener("click", e=>{ const b=e.target.closest("button"); if(!b) return; S.bp=b.dataset.bp; document.querySelectorAll("#bp button").forEach(x=>x.classList.toggle("on",x===b)); renderBoard(); });
+document.getElementById("zoom").addEventListener("click", e=>{ const b=e.target.closest("button"); if(!b) return; S.zoom=b.dataset.z; document.querySelectorAll("#zoom button").forEach(x=>x.classList.toggle("on",x===b)); fit(); });
+
+/* ---------- CMS ---------- */
+function allPages(){
+  const out=[{name:"Home",path:"/",seo:"Commercial Snow Removal NYC | Novus Maintenance | 24/7, All 5 Boroughs",desc:"Commercial snow and ice management across all five NYC boroughs. We pre-treat lots, sidewalks and entrances before the storm, then plow, clear and haul. 24/7.",kw:"commercial snow removal nyc",schema:["LocalBusiness","FAQPage","Organization"],type:"Static"}];
+  Object.values(CMS).forEach(c=>c.items.forEach(i=>out.push({name:i.name,path:c.path+i.slug,seo:i.seo,desc:i.desc,kw:i.kw,schema:[c.label==="Guides"?"Article":"Service","FAQPage","BreadcrumbList"],type:c.label})));
+  out.push({name:"How it works",path:"/how-it-works",seo:"How Novus Works | Prevention-First Commercial Snow Management NYC",desc:"Pre-season site walk, forecast watch, pre-treatment before the first flake, clearing during the storm and re-treating against refreeze.",kw:"commercial snow management process",schema:["FAQPage","BreadcrumbList"],type:"Static"});
+  out.push({name:"Get a quote",path:"/quote",seo:"Get a Commercial Snow Removal Quote NYC | Novus Maintenance",desc:"Get a seasonal snow and ice plan and price for your NYC commercial site in under a minute.",kw:"snow removal quote nyc",schema:["BreadcrumbList"],type:"Static"});
+  ["Services","Areas","Industries","Guides"].forEach(n=>out.push({name:n+" (index)",path:"/"+n.toLowerCase(),seo:"",desc:"",kw:"",schema:["BreadcrumbList"],type:"Index"}));
+  return out;
+}
+function renderCMS(){
+  const c=CMS[S.cmsColl];
+  document.getElementById("cmsSide").innerHTML = `<div class="grp">Collections</div>${Object.entries(CMS).map(([k,v])=>`<div class="row${k===S.cmsColl?" on":""}" data-coll="${k}">${IC.cms}${v.label}<span class="sub">${v.items.length}</span></div>`).join("")}<div class="grp" style="padding-top:18px">Data</div><div class="row" data-goleads>${IC.blk}QuoteRequest<span class="sub">form</span></div><p class="empty" style="padding:12px 8px">Each collection feeds one template. Add a row and the page, sitemap entry, schema and internal links are made for you.</p>`;
+  document.getElementById("cmsMain").innerHTML = `<h1>${c.label}</h1><p class="lead">One <b style="color:#fff;font-weight:500">${c.tpl}</b> template, ${c.items.length} live pages. Every row below is a real page on the site, written from the same copy frameworks and checked by the slop filter before it can publish.</p>
+  <div class="coll-m">${Object.entries(CMS).map(([k,v])=>`<button data-coll="${k}" class="${k===S.cmsColl?"on":""}">${v.label}</button>`).join("")}</div>
+  <div class="banner"><div class="big">1 → ${c.items.length}</div><div><b>Template to pages.</b><br><span style="color:var(--tx2)">Change the template once and all ${c.items.length} pages update. Fields: ${c.fields.join(", ")}.</span></div><button class="btn btn-ghost" style="margin-left:auto" data-opentpl>Open template</button></div>
+  <table class="tbl"><thead><tr><th>Name</th><th class="hide-m">Slug</th><th class="hide-m">Hero title</th><th>Status</th></tr></thead><tbody>${c.items.map((it,i)=>`<tr class="${i===S.cmsItem?"on":""}" data-item="${i}"><td><b>${esc(it.name)}</b></td><td class="hide-m mono" style="font-size:11.5px">${c.path}${it.slug}</td><td class="hide-m">${rich(esc(it.title))}</td><td><span class="pill"><i></i>Published</span></td></tr>`).join("")}</tbody></table>
+  <p class="note">Showing ${c.items.length} of ${c.items.length} · Sorted by order on site</p>`;
+  renderDrawer();
+}
+function renderDrawer(){
+  const c=CMS[S.cmsColl], it=c.items[S.cmsItem], d=document.getElementById("cmsDrawer");
+  d.innerHTML=`<div class="sheet-x" style="display:${window.innerWidth<980?"flex":"none"}"><span></span></div><div class="insp-h"><span class="ic" style="background:rgba(168,121,255,.14);color:var(--purple)">${IC.cms}</span><div><b>${esc(it.name)}</b><small class="mono">${c.path}${it.slug}</small></div></div><div class="scroll" style="padding:14px">
+    <div class="field"><label>Name</label><input data-cf="name" value="${esc(it.name)}"></div>
+    <div class="field"><label>Hero title <span>*bold* supported</span></label><textarea rows="2" data-cf="title">${esc(it.title)}</textarea></div>
+    <div class="field"><label>Hero sub<span class="cnt">${it.sub.length}</span></label><textarea rows="4" data-cf="sub">${esc(it.sub)}</textarea></div>
+    <div class="field"><label>SEO title<span class="cnt ${it.seo.length<=65?"ok":"warn"}">${it.seo.length}/65</span></label><textarea rows="2" data-cf="seo">${esc(it.seo)}</textarea></div>
+    <div class="field"><label>Target keyword</label><input data-cf="kw" value="${esc(it.kw)}"></div>
+    <div class="field"><label>Hero image</label><div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9"><img src="${IMG[it.img]}" style="width:100%;height:100%;object-fit:cover" alt=""></div></div>
+    ${slopBox(it.title.replace(/\*/g,"")+". "+it.sub)}
+    <button class="btn btn-blue" style="width:100%;justify-content:center;margin-top:14px" data-openpage>Open page in Design</button>
+  </div>`;
+}
+document.getElementById("v-cms").addEventListener("click", e=>{
+  const coll=e.target.closest("[data-coll]"), item=e.target.closest("[data-item]");
+  if(coll){ S.cmsColl=coll.dataset.coll; S.cmsItem=0; renderCMS(); return; }
+  if(item){ S.cmsItem=+item.dataset.item; document.querySelectorAll("#cmsMain tr[data-item]").forEach(r=>r.classList.toggle("on", r===item)); renderDrawer(); if(window.innerWidth<980) document.getElementById("cmsDrawer").classList.add("open"); return; }
+  if(e.target.closest("[data-openpage]")||e.target.closest("[data-opentpl]")){ S.page={kind:"cms",coll:S.cmsColl,idx:S.cmsItem}; S.sel=null; S.ltab="pages"; setMode("design"); renderLeft(); renderInspector(); return; }
+  if(e.target.closest("[data-goleads]")) setMode("leads");
+  if(e.target.closest(".sheet-x")) document.getElementById("cmsDrawer").classList.remove("open");
+});
+document.getElementById("v-cms").addEventListener("input", e=>{
+  const k=e.target.dataset.cf; if(!k) return; const it=CMS[S.cmsColl].items[S.cmsItem]; it[k]=e.target.value;
+  const row=document.querySelector(`#cmsMain tr[data-item="${S.cmsItem}"]`); if(row){ row.cells[0].innerHTML=`<b>${esc(it.name)}</b>`; if(row.cells[2]) row.cells[2].innerHTML=rich(esc(it.title)); }
+  const box=document.querySelector("#cmsDrawer .chk"); if(box) box.outerHTML=slopBox(it.title.replace(/\*/g,"")+". "+it.sub);
+  updateSlop();
+});
+
+/* ---------- COPY LAB ---------- */
+function renderCopy(){
+  const voc=[["I never heard from them until it started snowing","Your borough crew is staged 24 to 48 hours out."],["They were stretched too thin","Commercial only, so crews aren't split across driveways."],["Tenants keep calling me about the entrance","Ready-by times written into every site plan."],["They just salted the ice the next morning","Surfaces treated before the first flake."]];
+  document.getElementById("copyMain").innerHTML=`<h1>Copy Lab</h1><p class="lead">Nothing on this site is written from a blank page. Every line starts from a framework used by the best direct-response copywriters, then we swap in Novus facts. Tap a card to flip between the framework and the line we shipped.</p>
+  <div class="fw-grid">${Object.entries(FW).map(([k,f])=>`<div class="card" data-fw="${k}"><div class="card-h"><span class="who">${f.who}</span><div><b>${f.name}</b><small>${f.tag}</small></div></div><p class="why">${f.why}</p><div class="out">${S.fwFlip[k]?`<span class="mono" style="font-size:12.5px;color:var(--tx2)">${tplHTML(f.tpl)}</span>`:f.out}</div><button class="flip">${S.fwFlip[k]?"Show the Novus line →":"Show the framework →"}</button><div class="used">${f.used.map(u=>`<span>${u}</span>`).join("")}</div></div>`).join("")}</div>
+  <div class="h2">Voice of customer bank<small>Pain written in the words property managers use online</small></div>
+  <div class="voc">${voc.map(([a,b])=>`<div><q>${esc(a)}</q><i style="color:var(--tx3);font-style:normal;text-align:center">→</i><span>${esc(b)}</span></div>`).join("")}</div>
+  <div class="h2">Slop filter<small>Runs on every field before anything can publish</small></div>
+  <div class="rules">${RULES.map(([t,d])=>`<div class="rule"><span class="d ok" style="width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex:none;margin-top:1px">✓</span><div><b>${t}</b><small>${d}</small></div></div>`).join("")}</div>
+  <div class="h2">Try it<small>Paste any line and run it through the filter</small></div>
+  <div class="try"><textarea id="tryIn">We provide seamless, world-class snow removal solutions — unlock peace of mind today!</textarea></div><div class="try-out" id="tryOut"></div>`;
+  runTry();
+}
+function runTry(){ const t=document.getElementById("tryIn"); if(!t) return; document.getElementById("tryOut").innerHTML=slopBox(t.value); }
+document.getElementById("copyMain").addEventListener("click", e=>{ const c=e.target.closest("[data-fw]"); if(!c) return; S.fwFlip[c.dataset.fw]=!S.fwFlip[c.dataset.fw]; const sc=document.getElementById("copyMain").scrollTop; renderCopy(); document.getElementById("copyMain").scrollTop=sc; });
+document.getElementById("copyMain").addEventListener("input", e=>{ if(e.target.id==="tryIn") runTry(); });
+
+/* ---------- SEO ---------- */
+function renderSEO(){
+  const P=allPages();
+  document.getElementById("seoMain").innerHTML=`<h1>SEO</h1><p class="lead">${P.length} pages, each with its own title, description and structured data. Sitemap, robots.txt and llms.txt are generated on every publish.</p>
+  <div class="banner" style="background:linear-gradient(90deg,rgba(52,211,153,.1),rgba(47,123,255,.06));border-color:rgba(52,211,153,.25)"><div class="big">${P.length}</div><div><b>Indexable pages</b><br><span style="color:var(--tx2)">Server-rendered, so Google reads the full page on the first visit.</span></div><div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap"><span class="pill"><i></i>sitemap.xml</span><span class="pill"><i></i>robots.txt</span><span class="pill"><i></i>llms.txt</span></div></div>
+  <table class="tbl"><thead><tr><th>Page</th><th class="hide-m">Target keyword</th><th>Title</th><th class="hide-m">Schema</th></tr></thead><tbody>${P.map((p,i)=>`<tr data-seo="${i}" class="${i===S.seoSel?"on":""}"><td><b>${esc(p.name)}</b><div class="mono" style="font-size:11px;color:var(--tx3);margin-top:2px">${p.path}</div></td><td class="hide-m">${esc(p.kw)||"<span style='color:var(--tx3)'>·</span>"}</td><td>${p.seo?`<span class="cnt ${p.seo.length<=65?"ok":"warn"} mono">${p.seo.length} ch</span>`:"<span class='pill b'><i></i>Index</span>"}</td><td class="hide-m">${p.schema.map(s=>`<span class="pill p" style="margin:0 4px 4px 0">${s}</span>`).join("")}</td></tr>`).join("")}</tbody></table>`;
+  const p=P[S.seoSel];
+  document.getElementById("seoDrawer").innerHTML=`<div class="insp-h"><span class="ic" style="background:rgba(52,211,153,.12);color:var(--green)">${IC.page}</span><div><b>${esc(p.name)}</b><small class="mono">${p.path}</small></div></div><div class="scroll" style="padding:14px"><div class="field"><label>Google preview</label><div class="serp"><div class="u"><i>N</i>novusmaintenance.com${p.path==="/"?"":" › "+p.path.replace(/^\//,"").split("/").join(" › ")}</div><div class="t">${esc(p.seo||p.name+" | Novus Maintenance")}</div><div class="d">${esc(p.desc||"Overview page linking to every "+p.name.replace(" (index)","").toLowerCase()+" page.")}</div></div></div><div class="field"><label>Target keyword</label><input value="${esc(p.kw)}"></div><div class="field"><label>Structured data</label><div style="display:flex;flex-wrap:wrap;gap:6px">${p.schema.map(s=>`<span class="pill p"><i></i>${s}</span>`).join("")}</div></div><div class="field"><label>Internal links in</label><div class="tpl" style="border-style:solid">Navigation · Footer · Related services · Breadcrumbs</div></div></div>`;
+}
+document.getElementById("v-seo").addEventListener("click", e=>{ const r=e.target.closest("[data-seo]"); if(!r) return; S.seoSel=+r.dataset.seo; const sc=document.getElementById("seoMain").scrollTop; renderSEO(); document.getElementById("seoMain").scrollTop=sc; if(window.innerWidth<980) document.getElementById("seoDrawer").scrollIntoView(); });
+
+/* ---------- LEADS ---------- */
+function renderLeads(){
+  document.getElementById("leadsMain").innerHTML=`<h1>Leads</h1><p class="lead">Every quote form on all ${allPages().length} pages feeds one place. Nothing goes to a shared inbox and gets lost.</p>
+  <div class="flow"><div class="node"><small>Trigger</small><b>Quote form submitted</b><small>any page, desktop or phone</small></div><div class="arrow">→</div><div class="node"><small>Save</small><b>QuoteRequest record</b><small>admin-only access</small></div><div class="arrow">→</div><div class="node"><small>Alert</small><b>Novus manager notified</b><small>with site, borough and needs</small></div><div class="arrow">→</div><div class="node"><small>Track</small><b>New → Contacted → Quoted → Won</b><small>pipeline status</small></div></div>
+  <div class="h2" style="margin-top:6px">What every lead arrives with</div>
+  <table class="tbl" style="margin-top:14px"><thead><tr><th>Field</th><th>Example</th><th class="hide-m">Why it's captured</th></tr></thead><tbody>
+  <tr><td><b>Property type</b></td><td>Retail / storefront</td><td class="hide-m">Decides crew type and equipment</td></tr>
+  <tr><td><b>Locations</b></td><td>2–5 locations</td><td class="hide-m">Single site or multi-site plan</td></tr>
+  <tr><td><b>Boroughs</b></td><td>Manhattan, Brooklyn</td><td class="hide-m">Which borough crew owns it</td></tr>
+  <tr><td><b>Services</b></td><td>Pre-storm anti-icing, Sidewalk clearing</td><td class="hide-m">Scope for the quote</td></tr>
+  <tr><td><b>Source page</b></td><td class="mono" style="font-size:11.5px">/services/pre-storm-anti-icing</td><td class="hide-m">Which page and keyword brought them in</td></tr>
+  <tr><td><b>Contact</b></td><td>Name, company, email, phone</td><td class="hide-m">Validated before it can send</td></tr>
+  </tbody></table>
+  <div class="h2">Pipeline<small>Example layout. Real leads appear here once the site is live.</small></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:14px">${["New","Contacted","Quoted","Won"].map((s,i)=>`<div class="card" style="padding:12px;gap:8px"><div style="display:flex;justify-content:space-between"><b style="font-weight:500">${s}</b><span class="pill ${["b","y","p",""][i]}"><i></i>0</span></div><div style="border:1px dashed var(--line2);border-radius:10px;padding:14px;color:var(--tx3);font-size:12px;text-align:center">${i===0?"New quote requests land here":"Drag cards here"}</div></div>`).join("")}</div>`;
+}
+
+/* ============================================================ MOBILE SHEETS */
+const left=document.getElementById("left"), right=document.getElementById("right");
+function openSheet(which){
+  closeSheets(true);
+  if(which==="edit"){ right.classList.add("open"); }
+  else { S.ltab=which; renderLeft(); left.classList.add("open"); }
+  document.querySelectorAll("#dock button").forEach(b=>b.classList.toggle("on", b.dataset.d===which));
+}
+function closeSheets(keepDock){ left.classList.remove("open"); right.classList.remove("open"); document.getElementById("cmsDrawer").classList.remove("open"); if(!keepDock) document.querySelectorAll("#dock button").forEach(b=>b.classList.remove("on")); }
+document.getElementById("dock").addEventListener("click", e=>{ const b=e.target.closest("button"); if(!b) return; if(b.classList.contains("on")) closeSheets(); else openSheet(b.dataset.d); });
+document.querySelectorAll(".sheet-x").forEach(x=>x.addEventListener("click", ()=>closeSheets()));
+canvas.addEventListener("touchstart", ()=>{ if(window.innerWidth<980 && (left.classList.contains("open"))) closeSheets(); }, {passive:true});
+
+/* ============================================================ MISC */
+let tt;
+function toast(msg){ const t=document.getElementById("toast"); t.innerHTML=`<span style="width:8px;height:8px;border-radius:50%;background:#34D399;display:inline-block"></span>${msg}`; t.classList.add("on"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("on"),2200); }
+document.getElementById("publishBtn").addEventListener("click", ()=>{ const n=scan(HOME.map(blockText).join(". ")).length; toast(n?`Fix ${n} slop flag${n>1?"s":""} before publishing`:`Preview updated · ${allPages().length} pages, 0 slop flags`); });
+
+document.querySelectorAll('#bp button').forEach(b=>b.classList.toggle('on',b.dataset.bp===S.bp));
+renderLeft(); renderInspector(); renderBoard();
+if(window.innerWidth>=980){ setTimeout(()=>{ select(HOME[1].uid, true); }, 400); }
+</script>
+</body>
+</html>
