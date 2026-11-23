@@ -794,6 +794,101 @@ main{background:var(--cr)}
  .nxb{flex-direction:column;align-items:flex-start;padding:26px 20px}
  .nxa{align-items:stretch;width:100%}.nxa .btn{justify-content:center}
 }
+
+/* ===== v6.1 refinements ===== */
+/* hero */
+.wds .wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.wds .wd i{display:inline-block;font-style:normal;transform:translateY(110%);transition:transform 1.3s var(--o)}
+.go .wds .wd i{transform:none}
+.wds .wd i.c{padding-right:.02em}
+.hcta{display:flex;gap:10px;justify-content:center;margin-top:clamp(18px,2.6vh,30px)}
+.hcta .btn{height:clamp(48px,3vw,56px)}
+.btn.hgh{background:rgba(255,255,255,.7);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(18,16,14,.1)}
+.btn.hgh:before{background:#fff}
+.ha6.on img{animation:kb 14s linear both}
+@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hpb{position:absolute;left:clamp(24px,2.6vw,52px);right:clamp(24px,2.6vw,52px);top:clamp(20px,2vw,34px);height:2px;border-radius:2px;background:rgba(255,255,255,.22);overflow:hidden;opacity:0;transition:opacity .5s}
+.hpb:after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0)}
+.ha6.on .hpb{opacity:1}.ha6.on .hpb:after{animation:hpb 6.5s linear forwards}
+#hacc:hover .ha6.on .hpb:after{animation-play-state:paused}
+@keyframes hpb{to{transform:scaleX(1)}}
+.hnn{position:absolute;top:clamp(30px,2.8vw,48px);left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.14em;opacity:.8}
+.hnn:before{content:attr(data-n)}
+.ha6 .hnn:before{content:none}
+.ha6.on .hnn{left:auto;right:clamp(24px,2.6vw,52px);transform:none;top:clamp(32px,3vw,52px)}
+.hfc{background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+
+/* parts: driven by scroll, no class jumps */
+.pt6{height:360vh}
+.ph{transition:none;opacity:0;will-change:opacity,transform,filter}
+.ph:first-child{opacity:1}
+.ptp span,.ptx span{transition:none;will-change:transform,opacity}
+.ptx span{opacity:0}
+.ptx small{opacity:var(--lb,0);transition:none}
+#cn circle{fill:var(--br);opacity:0}
+.ptd{position:absolute;right:clamp(20px,2.4vw,48px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:5}
+.ptd i{width:6px;height:6px;border-radius:50%;background:rgba(18,16,14,.18);transition:height .6s var(--o),background .4s}
+.ptd i.on{height:26px;border-radius:4px;background:var(--br)}
+.ptcta{position:absolute;left:50%;bottom:clamp(30px,6vh,70px);z-index:5;display:inline-flex;align-items:center;gap:12px;font-size:15px;padding:13px 20px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px rgba(18,16,14,.08),0 20px 40px -24px rgba(60,40,20,.5);opacity:0}
+.ptcta svg{width:16px;height:9px;fill:none;stroke:currentColor;stroke-width:1.4}
+
+/* view: a window onto the house */
+.vw6 .pin{--vk:0;--vp:0;background:var(--cr)}
+.vwi,.vwc{position:absolute;inset:0;clip-path:none}
+.vwi img,.vwc img{width:100%;height:100%;object-fit:cover;transform:scale(var(--s,1.12))}
+.vwi{filter:blur(calc((1 - var(--vk)) * 6px)) brightness(.55) saturate(.85);opacity:calc(1 - var(--vk));transform:scale(1.02)}
+.vwi:after{display:none}
+.vwc:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,6,.35),rgba(10,8,6,0) 40%)}
+.vwf{box-shadow:inset 0 0 0 1px rgba(255,255,255,.75),0 40px 90px -30px rgba(0,0,0,.55);flex-direction:column;justify-content:space-between;align-items:center;padding:16px 0;overflow:hidden}
+.vwl,.vwn{font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.92);position:relative;z-index:1;opacity:calc(1 - var(--vk))}
+.vwl:before{content:"\2022  "}
+.vsh{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.14) 48%,transparent 56%);transform:translateX(calc(-60% + var(--vp) * 120%));pointer-events:none}
+.vwt p span{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(24px);transition:opacity .8s,filter .8s,transform 1s var(--o)}
+.vwt p.on span{opacity:1;filter:none;transform:none}
+.vwt p{opacity:1;filter:none;transform:none;transition:none;text-shadow:0 10px 40px rgba(0,0,0,.35)}
+.vwp{position:absolute;left:50%;bottom:clamp(30px,5vh,56px);width:min(240px,40vw);height:2px;transform:translateX(-50%);background:rgba(255,255,255,.25);border-radius:2px;overflow:hidden;z-index:3;opacity:calc(1 - var(--vk))}
+.vwp i{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0)}
+.vws small{display:block;font-size:12px;letter-spacing:.16em;color:var(--br);margin-bottom:10px}
+.vwcta{position:absolute;left:50%;bottom:clamp(30px,6vh,70px);transform:translate(-50%,16px);opacity:0;transition:opacity .6s,transform .9s var(--o);z-index:4;pointer-events:none}
+.vwcta.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+
+/* the frame that follows you */
+.ffw{position:fixed;left:0;top:0;z-index:60;pointer-events:none;border-radius:26px;box-shadow:inset 0 0 0 1px rgba(138,110,82,.28);opacity:0;will-change:transform,width,height;--fc:#8A6E52}
+.ffw.lt{--fc:rgba(255,255,255,.95);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.ffw>i{position:absolute;width:22px;height:22px;border:2px solid var(--fc);transition:border-color .5s}
+.ffw>i:nth-child(1){left:-1px;top:-1px;border-right:0;border-bottom:0;border-top-left-radius:26px}
+.ffw>i:nth-child(2){right:-1px;top:-1px;border-left:0;border-bottom:0;border-top-right-radius:26px}
+.ffw>i:nth-child(3){left:-1px;bottom:-1px;border-right:0;border-top:0;border-bottom-left-radius:26px}
+.ffw>i:nth-child(4){right:-1px;bottom:-1px;border-left:0;border-top:0;border-bottom-right-radius:26px}
+.vfl{position:absolute;left:22px;top:-13px;display:inline-flex;align-items:center;gap:8px;height:26px;padding:0 12px 0 6px;border-radius:999px;background:var(--ink);color:#fff;font-size:11.5px;white-space:nowrap;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.vfl b{display:grid;place-items:center;height:16px;min-width:22px;padding:0 4px;border-radius:999px;background:var(--br);font-weight:500;font-size:10px;letter-spacing:.04em}
+.vfl em{font-style:normal;letter-spacing:.02em}
+.ffw.lt .vfl{background:#fff;color:var(--ink)}
+
+/* who: richer hover */
+.ac6 p{max-height:0;opacity:0;overflow:hidden;transition:max-height .8s var(--o),opacity .6s}
+.ac6:hover p,.ac6:focus-visible p{max-height:120px;opacity:.88}
+.ac6 .hgo{transition:background .4s,color .4s}
+.ac6:hover .hgo{background:#fff;color:var(--ink)}
+
+@media (max-width:760px){
+ .hcta{flex-direction:column;width:100%;max-width:360px}.hcta .btn{justify-content:center;height:52px}
+ .hpb{left:18px;right:18px;top:16px}.ha6.on .hnn,.hnn{display:none}
+ .ptd,.ptcta{display:none}
+ .ptx span{opacity:1;transform:none}
+ .ffw{border-radius:20px}.ffw>i{width:16px;height:16px}.vfl{left:14px;font-size:10.5px}
+ .vwf{width:70vw}
+ .vwt{bottom:120px}
+ .vwcta{bottom:96px}
+ .vws.l{top:calc(var(--hh) + 22px)}
+ .ac6 p{display:none}
+ .pt6{height:auto!important;padding:80px 0 70px}
+ .pt6 .pin{height:auto!important}
+ .pth,.pth *{opacity:1!important;filter:none!important;transform:none!important}
+ .ptcta{order:9;display:inline-flex;position:relative;left:auto;bottom:auto;opacity:1!important;transform:none!important;margin-top:28px}
+ .vws.r{bottom:178px}
+ .vwcta{bottom:100px}.vwcta .btn,.vwcta{white-space:nowrap}
+}
 </style>
 </head>
 <body>
@@ -817,20 +912,21 @@ main{background:var(--cr)}
   <span class="hloc rv">Essex &middot; London &middot; Hertfordshire</span>
   <h1 class="rv r2">Architectural glazing, <span class="c">made for the view.</span></h1>
   <p class="rv r3">Slim-frame sliding doors, windows, rooflights and entrances. Designed, made to measure and fitted for distinctive homes and buildings.</p>
+  <div class="hcta rv r3"><a class="btn k" href="#start"><span>Start your project</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a><a class="btn hgh" href="tel:+441277402469"><span>Call 01277 402469</span></a></div>
  </div>
  <div class="hacc w rv r3" id="hacc">
-  <a class="ha6 on" href="#start" data-k="slide"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/19f6b161-d9c3-4626-9a9c-decbe12a9f49.webp" alt="Contemporary glass house at dusk with floor-to-ceiling sliding doors" fetchpriority="high">
-   <span class="vtt">Sliding doors</span>
+  <a class="ha6 on" href="#start" data-k="slide" data-n="01"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/19f6b161-d9c3-4626-9a9c-decbe12a9f49.webp" alt="Contemporary glass house at dusk with floor-to-ceiling sliding doors" fetchpriority="high">
+   <i class="hpb"></i><span class="hnn"></span><span class="vtt">Sliding doors</span>
    <div class="hat"><h2>Sliding and<br>bifold doors</h2><p>Floor-to-ceiling glass on slim frames, so the wall becomes the view.</p>
     <div class="hfc"><span><i>&#9634;</i>Slim frames</span><span><i>&#8776;</i>Thermally broken</span><span><i>&#8645;</i>Made to measure</span><span><i>&#10003;</i>Fitted by us</span></div>
     <span class="hgo">Start your project <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
-  <a class="ha6" href="#start" data-k="win"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/ac2398cd-947e-4761-b534-da3c016011cd.webp" alt="Living room with large aluminium windows overlooking water" loading="lazy"><span class="vtt">Windows</span>
+  <a class="ha6" href="#start" data-k="win" data-n="02"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/ac2398cd-947e-4761-b534-da3c016011cd.webp" alt="Living room with large aluminium windows overlooking water" loading="lazy"><i class="hpb"></i><span class="hnn"></span><span class="vtt">Windows</span>
    <div class="hat"><h2>Windows</h2><p>Flush, heritage and contemporary aluminium, for new builds and period homes.</p><span class="hgo">Start your project <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
-  <a class="ha6" href="#start" data-k="roof"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/d84ffaa9-ec53-4580-a5d0-f62e299461ae.webp" alt="Kitchen lit by rooflights" loading="lazy"><span class="vtt">Rooflights</span>
+  <a class="ha6" href="#start" data-k="roof" data-n="03"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/d84ffaa9-ec53-4580-a5d0-f62e299461ae.webp" alt="Kitchen lit by rooflights" loading="lazy"><i class="hpb"></i><span class="hnn"></span><span class="vtt">Rooflights</span>
    <div class="hat"><h2>Rooflights and lanterns</h2><p>Daylight from above, for the rooms that need it most.</p><span class="hgo">Start your project <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
-  <a class="ha6" href="#start" data-k="front"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/efdc70ef-b9ff-41dc-95e7-9f049bedfa95.webp" alt="Modern pivot front door" loading="lazy"><span class="vtt">Front doors</span>
+  <a class="ha6" href="#start" data-k="front" data-n="04"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/efdc70ef-b9ff-41dc-95e7-9f049bedfa95.webp" alt="Modern pivot front door" loading="lazy"><i class="hpb"></i><span class="hnn"></span><span class="vtt">Front doors</span>
    <div class="hat"><h2>Front doors</h2><p>Luxury entrance doors, including our partners at Spitfire.</p><span class="hgo">Start your project <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
-  <a class="ha6" href="#start" data-k="steel"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/b883ddc1-1af4-4cd4-a9c2-5b607ac4cf00.webp" alt="Black steel-look glazed internal door" loading="lazy"><span class="vtt">Steel-look doors</span>
+  <a class="ha6" href="#start" data-k="steel" data-n="05"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/b883ddc1-1af4-4cd4-a9c2-5b607ac4cf00.webp" alt="Black steel-look glazed internal door" loading="lazy"><i class="hpb"></i><span class="hnn"></span><span class="vtt">Steel-look doors</span>
    <div class="hat"><h2>Steel-look doors</h2><p>Slim internal screens and doors that let light travel through the home.</p><span class="hgo">Start your project <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
  </div>
  <ul class="htr w rv r4"><li>Design consultation</li><li>Measured survey</li><li>Made to measure</li><li>Professional installation</li><li>Aftercare</li></ul>
@@ -876,6 +972,8 @@ main{background:var(--cr)}
   <figure class="pti" id="pti"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8510ff6f-c437-4fef-bfec-a874aff8b1a8.webp" alt="Living room opening onto the garden through large glazed doors" loading="lazy"></figure>
   <div class="ptg" id="ptg">{LOGO}</div>
   <div class="ptp" id="ptp"><span>Measured survey</span><span>Made to measure</span><span>Fitted by our team</span></div>
+  <div class="ptd" id="ptd"><i></i><i></i><i></i></div>
+  <a class="ptcta" id="ptcta" href="#process">See how a project runs <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
   <div class="ptx l" id="ptxl"><small>Your project</small><span>Architect&rsquo;s drawings<i></i></span><span>Structural opening<i></i></span><span>Planning<i></i></span><span>Budget<i></i></span><span>Timeline<i></i></span><span>Finish and colour<i></i></span></div>
   <div class="ptx r" id="ptxr"><small>Our team</small><span><i></i>Design consultant</span><span><i></i>Surveyor</span><span><i></i>Project manager</span><span><i></i>Manufacturing</span><span><i></i>Installers</span><span><i></i>Aftercare</span></div>
  </div>
@@ -895,10 +993,13 @@ main{background:var(--cr)}
 
 <section class="vw6 dk" id="view">
  <div class="pin">
-  <div class="vwi" id="vwi"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8fad8741-821b-439a-b37f-3b163e3b9ed5.webp" alt="A glazed home lit up at night" loading="lazy"></div>
-  <div class="vwf" id="vwf"><span>&middot; Fenlux Design</span></div>
-  <div class="vwt" id="vwt"><p class="on">Less frame. More view.</p><p>Light, all year round.</p><p>Made for the way you live.</p></div>
-  <div class="vws l" id="vwl">Designed<br>with you.</div><div class="vws r" id="vwr">Fitted<br>properly.</div>
+  <div class="vwi" id="vwi"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8fad8741-821b-439a-b37f-3b163e3b9ed5.webp" alt="" aria-hidden="true" loading="lazy"></div>
+  <div class="vwc" id="vwc"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8fad8741-821b-439a-b37f-3b163e3b9ed5.webp" alt="A glazed home lit up at night" loading="lazy"></div>
+  <div class="vwf" id="vwf"><span class="vwl">Fenlux Design</span><span class="vwn" id="vwn">01 / 03</span><i class="vsh"></i></div>
+  <div class="vwt" id="vwt"><p>Less frame. More view.</p><p>Light, all year round.</p><p>Made for the way you live.</p></div>
+  <div class="vwp"><i id="vwpb"></i></div>
+  <div class="vws l" id="vwl"><small>01</small>Designed<br>with you.</div><div class="vws r" id="vwr"><small>02</small>Fitted<br>properly.</div>
+  <a class="vwcta btn k" id="vwcta" href="#start"><span>Start your project</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
  </div>
 </section>
 <section class="ex win" id="inside">
@@ -927,10 +1028,10 @@ main{background:var(--cr)}
  <div class="pin">
   <div class="hd2"><div><span class="lab" style="color:#8a7560">How it works</span><h2 style="margin-top:.4em">You make the decisions. <b>We bring the precision.</b></h2></div></div>
   <div class="trk" id="trk">
-   <article class="stp"><figure><img src="https://images.pexels.com/photos/31817155/pexels-photo-31817155.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bright living room with full-height glazing" loading="lazy"></figure><div><small>One</small><h3>Consult</h3><p>A call, then a visit to your home with samples. We review your plans, listen to what you want from the space, and send a tailored proposal.</p></div></article>
-   <article class="stp"><figure><img src="https://images.pexels.com/photos/11578141/pexels-photo-11578141.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Dark framed windows set in a white wall" loading="lazy"></figure><div><small>Two</small><h3>Design</h3><p>Opening styles, colours and hardware. You see and sign off the specification before anything is ordered.</p></div></article>
-   <article class="stp"><figure><img src="https://images.pexels.com/photos/1098982/pexels-photo-1098982.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Slim-framed sliding glass door" loading="lazy"></figure><div><small>Three</small><h3>Install</h3><p>Fitted by specialists with your floors and furniture protected. Every job is then quality checked to the Fenlux standard.</p></div></article>
-   <article class="stp"><figure><img src="https://images.pexels.com/photos/6303114/pexels-photo-6303114.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Living room surrounded by glass, looking out to a garden" loading="lazy"></figure><div><small>Four</small><h3>Aftercare</h3><p>We don't disappear at handover. Your warranty details stay in one place, and we come back at twelve months for a free service.</p></div></article>
+   <article class="stp"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/e0b5c6cf-0776-42fc-a65c-0a5efa11470d.webp" alt="Bright living room with full-height glazing" loading="lazy"></figure><div><small>One</small><h3>Consult</h3><p>A call, then a visit to your home with samples. We review your plans, listen to what you want from the space, and send a tailored proposal.</p></div></article>
+   <article class="stp"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/ac2398cd-947e-4761-b534-da3c016011cd.webp" alt="Dark framed windows set in a white wall" loading="lazy"></figure><div><small>Two</small><h3>Design</h3><p>Opening styles, colours and hardware. You see and sign off the specification before anything is ordered.</p></div></article>
+   <article class="stp"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/efdc70ef-b9ff-41dc-95e7-9f049bedfa95.webp" alt="Slim-framed sliding glass door" loading="lazy"></figure><div><small>Three</small><h3>Install</h3><p>Fitted by specialists with your floors and furniture protected. Every job is then quality checked to the Fenlux standard.</p></div></article>
+   <article class="stp"><figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7b2c596f-f56c-4d7a-848a-e54c3722416d.webp" alt="Living room surrounded by glass, looking out to a garden" loading="lazy"></figure><div><small>Four</small><h3>Aftercare</h3><p>We don't disappear at handover. Your warranty details stay in one place, and we come back at twelve months for a free service.</p></div></article>
   </div>
   <div class="pb"><i id="hwb"></i></div>
  </div>
@@ -964,8 +1065,8 @@ main{background:var(--cr)}
  </div></div>
 </section>
 <section class="en" id="end">
- <div class="im"><img id="enI" src="https://cdn.prod.website-files.com/6adca93b2d5dd8c8c7d9a129/6adca93d2d5dd8c8c7d9a1cf_Rectangle%201%20%281%29.webp" alt="Modern home with full-height glazing, seen across a garden" loading="lazy">
-  <div class="w"><h2>Framing your <b>vision.</b></h2><a class="btn" href="#start"><span>Arrange a consultation</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div></div>
+ <div class="im"><img id="enI" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/29bd958e-a931-4ec4-bfb3-eea1cb90657a.webp" alt="Modern home with full-height glazing, seen across a garden" loading="lazy">
+  <div class="w"><h2>Framing your <b>vision.</b></h2><a class="btn" href="#start"><span>Start your project</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div></div>
  <footer class="ft"><div class="w">
   <div class="g">
    <p class="tg">Framing Your Vision.<br>Premium by Design.</p>
@@ -978,6 +1079,7 @@ main{background:var(--cr)}
  </div></footer>
 </section>
 </main>
+<div class="ffw" id="ffw" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="vfl" id="vfl"><b id="vfn">01</b><em id="vft">Collections</em></span></div>
 
 <div class="mbar" id="mbar"><a href="tel:+441277402469">Call</a><a href="https://wa.me/447897794579">WhatsApp</a><a class="p" href="#start">Consultation</a></div>
 
@@ -1060,7 +1162,7 @@ function frame(){var y=lenis?lenis.scroll:scrollY,H=innerHeight,W=innerWidth;
  if(!bd.classList.contains('mo')){if(y>H*.9&&y>lastY+4)hd.classList.add('hide');else if(y<lastY-4||y<H*.9)hd.classList.remove('hide')}lastY=y;
  mbar.classList.toggle('on',y>H*.8);
  var m=mob();
- parts(y,H,W,m);view(H,W,m);
+ parts(y,H,W,m);view(H,W,m);follow(H,W,m);
  /* explode */
  var pE=prog(ex);exV=cl((pE-.06)/.62);
  var rE=ex.getBoundingClientRect();if(rE.bottom>0&&rE.top<H){xvC=scrub(xv,ezz(exV),xvC);xls.forEach(function(li,i){li.classList.toggle('on',exV>.12+i*.13)})}
@@ -1113,34 +1215,61 @@ $$('[data-pick]').forEach(function(a){a.addEventListener('click',function(e){e.p
 step(0);
 
 /* ---------- parts: ribbon, pills, connections ---------- */
-var pti=$('#pti'),ptl=$('#ptl'),rb=$('#rb'),cn=$('#cn'),ptg=$('#ptg'),ptp=$('#ptp'),pxl=$('#ptxl'),pxr=$('#ptxr'),phs=$$('#parts .ph'),pathsC=[],pW=0,pH0=0;
-function layoutParts(){var pin=$('.pin',pts),R=pin.getBoundingClientRect();pW=R.width;pH0=R.height;ptl.setAttribute('viewBox','0 0 '+pW+' '+pH0);
- var I=pti.getBoundingClientRect(),ix=I.left-R.left,iy=I.top-R.top,iw=I.width,ih=I.height;
- /* a loose loop that wraps the image like a ribbon */
- var sx=ix-iw*.85,sy=iy+ih*1.25;
- rb.setAttribute('d','M'+sx+','+sy+' C'+(ix-iw*.95)+','+(iy+ih*.35)+' '+(ix-iw*.55)+','+(iy-ih*.42)+' '+(ix-iw*.12)+','+(iy-ih*.05)+' S'+(ix+iw*.05)+','+(iy+ih*1.05)+' '+(ix-iw*.42)+','+(iy+ih*.78)+' S'+(ix+iw*.6)+','+(iy+ih*.55)+' '+(ix+iw*1.12)+','+(iy+ih*.62)+' S'+(ix+iw*1.5)+','+(iy+ih*.95)+' '+(ix+iw*1.62)+','+(iy+ih*1.1));
- cn.innerHTML='';pathsC=[];
- [[pxl,'l'],[pxr,'r']].forEach(function(g){$$('span',g[0]).forEach(function(s,i){var r=s.getBoundingClientRect();var x0=g[1]==='l'?r.right-R.left:r.left-R.left,y0=r.top-R.top+r.height/2;
-  var x1=g[1]==='l'?ix:ix+iw,y1=iy+ih*.38;var dx=(x1-x0)*.55;var p=document.createElementNS(NS,'path');p.setAttribute('d','M'+x0+','+y0+' C'+(x0+dx)+','+y0+' '+(x1-dx)+','+y1+' '+x1+','+y1);p.setAttribute('pathLength','1');cn.appendChild(p);pathsC.push(p)})})}
+var pti=$('#pti'),ptl=$('#ptl'),rb=$('#rb'),cn=$('#cn'),ptg=$('#ptg'),ptp=$('#ptp'),pxl=$('#ptxl'),pxr=$('#ptxr'),phs=$$('#parts .ph'),ptd=$$('#ptd i'),ptcta=$('#ptcta'),pathsC=[],dotsC=[];
+var ppl=$$('span',ptp),pxs=$$('span',pxl).concat($$('span',pxr));
+var sm=function(a,b,v){return ezz(cl((v-a)/(b-a)))};
+function layoutParts(){var pin=$('.pin',pts),R=pin.getBoundingClientRect();ptl.setAttribute('viewBox','0 0 '+R.width+' '+R.height);
+ var tr=pti.style.transform;pti.style.transform='translate(-50%,-50%) scale(.86)';var I=pti.getBoundingClientRect();var ix=I.left-R.left,iy=I.top-R.top,iw=I.width,ih=I.height;pti.style.transform='translate(-50%,-50%)';var J=pti.getBoundingClientRect();pti.style.transform=tr;
+ var jx=J.left-R.left,jy=J.top-R.top,jw=J.width,jh=J.height;
+ rb.setAttribute('d','M'+(jx-jw*.95)+','+(jy+jh*1.3)+' C'+(jx-jw*.98)+','+(jy+jh*.55)+' '+(jx-jw*.62)+','+(jy-jh*.38)+' '+(jx-jw*.2)+','+(jy-jh*.1)+' C'+(jx+jw*.12)+','+(jy+jh*.12)+' '+(jx+jw*.05)+','+(jy+jh*.95)+' '+(jx-jw*.36)+','+(jy+jh*.86)+' C'+(jx-jw*.7)+','+(jy+jh*.78)+' '+(jx-jw*.52)+','+(jy+jh*.46)+' '+(jx+jw*.25)+','+(jy+jh*.5)+' C'+(jx+jw*.9)+','+(jy+jh*.54)+' '+(jx+jw*1.25)+','+(jy+jh*.7)+' '+(jx+jw*1.55)+','+(jy+jh*1.18));
+ cn.innerHTML='';pathsC=[];dotsC=[];
+ [[pxl,'l'],[pxr,'r']].forEach(function(g){$$('span',g[0]).forEach(function(s,i){var st=s.style.transform;s.style.transform='none';var r=s.getBoundingClientRect();s.style.transform=st;var x0=g[1]==='l'?r.right-R.left:r.left-R.left,y0=r.top-R.top+r.height/2;
+  var x1=g[1]==='l'?ix:ix+iw,y1=iy+ih*(.3+i*.08);var dx=(x1-x0)*.6;var p=document.createElementNS(NS,'path');p.setAttribute('d','M'+x0+','+y0+' C'+(x0+dx)+','+y0+' '+(x1-dx)+','+y1+' '+x1+','+y1);p.setAttribute('pathLength','1');cn.appendChild(p);pathsC.push(p);
+  var d=document.createElementNS(NS,'circle');d.setAttribute('cx',x1);d.setAttribute('cy',y1);d.setAttribute('r',3.2);cn.appendChild(d);dotsC.push(d)})})}
 var pLaid=false;addEventListener('resize',function(){pLaid=false});
-function parts(y,H,W,m){var r=pts.getBoundingClientRect();if(r.bottom<0||r.top>H)return;if(!pLaid){layoutParts();pLaid=true}
- var p=m?1:prog(pts);var ph=p<.34?0:p<.64?1:2;phs.forEach(function(h,i){h.classList.toggle('on',i===ph)});
- var a=ezz(cl(p/.28));rb.style.strokeDashoffset=(1-a).toFixed(4);rb.style.opacity=(1-cl((p-.3)/.08)).toFixed(3);
- ptg.style.opacity=cl((p-.05)/.1)*(1-cl((p-.32)/.06));ptg.style.transform='translate(-50%,-50%) rotate('+(-8+p*30).toFixed(1)+'deg)';
- ptp.classList.toggle('on',p>.14&&p<.32);
- var s=cl((p-.34)/.12);pxl.style.setProperty('--k',s.toFixed(3));pxr.style.setProperty('--k',s.toFixed(3));pxl.classList.toggle('on',s>.5);pxr.classList.toggle('on',s>.5);
- var c=ezz(cl((p-.66)/.22));pathsC.forEach(function(pp,i){pp.style.strokeDashoffset=(1-c).toFixed(4)});
- pxl.classList.toggle('lb6',p>.62);pxr.classList.toggle('lb6',p>.62);
- pti.style.transform='translate(-50%,-50%) scale('+(1-.14*ezz(cl((p-.3)/.1))).toFixed(4)+')'}
+function parts(y,H,W,m){var r=pts.getBoundingClientRect();if(r.bottom<0||r.top>H)return;if(m){return}if(!pLaid){layoutParts();pLaid=true}
+ var p=prog(pts);
+ var o=[1-sm(.24,.32,p),sm(.27,.35,p)*(1-sm(.56,.64,p)),sm(.6,.68,p)];
+ phs.forEach(function(h,i){h.style.opacity=o[i].toFixed(3);h.style.transform='translateY('+((1-o[i])*(i===0||p>.5&&i===1?-1:1)*22).toFixed(1)+'px)';h.style.filter='blur('+((1-o[i])*6).toFixed(1)+'px)'});
+ var ph=p<.3?0:p<.62?1:2;ptd.forEach(function(d,i){d.classList.toggle('on',i===ph)});
+ rb.style.strokeDashoffset=(1-sm(.0,.26,p)).toFixed(4);rb.style.opacity=(1-sm(.26,.34,p)).toFixed(3);
+ var g=sm(.05,.14,p)*(1-sm(.26,.32,p));ptg.style.opacity=g.toFixed(3);ptg.style.transform='translate(-50%,-50%) translateY('+((1-g)*16).toFixed(1)+'px) rotate('+(-10+p*28).toFixed(1)+'deg)';
+ ppl.forEach(function(s,i){var k=sm(.1+i*.035,.18+i*.035,p)*(1-sm(.26,.31,p));s.style.opacity=k.toFixed(3);s.style.transform='translateX('+((1-k)*-14).toFixed(1)+'px)'});
+ var n=pxs.length/2;pxs.forEach(function(s,i){var j=i%n,left=i<n;var k=sm(.33+j*.022,.45+j*.022,p);s.style.opacity=k.toFixed(3);s.style.transform='translateX('+((1-k)*(left?-1:1)*16).toFixed(2)+'vw)'});
+ var lb=sm(.6,.66,p);pxl.style.setProperty('--lb',lb);pxr.style.setProperty('--lb',lb);
+ pathsC.forEach(function(pp,i){var j=i%n;var c=sm(.64+j*.018,.8+j*.018,p);pp.style.strokeDashoffset=(1-c).toFixed(4);dotsC[i].style.opacity=sm(.78+j*.018,.82+j*.018,p).toFixed(3)});
+ var sc=1-.14*sm(.28,.4,p);pti.style.transform='translate(-50%,-50%) scale('+sc.toFixed(4)+')';
+ var ct=sm(.82,.9,p);ptcta.style.opacity=ct.toFixed(3);ptcta.style.transform='translate(-50%,'+((1-ct)*14).toFixed(1)+'px)';ptcta.style.pointerEvents=ct>.5?'auto':'none'}
 
-/* ---------- view: words, then the frame takes the picture ---------- */
-var vwi=$('#vwi'),vwf=$('#vwf'),vwts=$$('#vwt p'),vwl=$('#vwl'),vwr=$('#vwr'),vk=0;
+/* ---------- view: a window onto the house, then it becomes the picture ---------- */
+var vwi=$('#vwi'),vwc=$('#vwc'),vwf=$('#vwf'),vwts=$$('#vwt p'),vwl=$('#vwl'),vwr=$('#vwr'),vwn=$('#vwn'),vwpb=$('#vwpb'),vwcta=$('#vwcta'),vk=0;
+vwts.forEach(function(t){t.innerHTML=t.textContent.split(' ').map(function(w,i){return '<span style="transition-delay:'+(i*.07).toFixed(2)+'s">'+w+'</span>'}).join(' ')});
 function view(H,W,m){var r=vws.getBoundingClientRect();if(r.bottom<0||r.top>H)return;var p=prog(vws);
- var i=p<.24?0:p<.46?1:2;vwts.forEach(function(t,j){t.classList.toggle('on',j===i&&p<.66)});
- vk=ezz(cl((p-.64)/.24));var F=vwf.getBoundingClientRect(),pr=$('.pin',vws).getBoundingClientRect();
- var t=(F.top-pr.top)*vk,l=(F.left-pr.left)*vk,b=(pr.bottom-F.bottom)*vk,rr=(pr.right-F.right)*vk,rad=24*vk;
- vwi.style.clipPath='inset('+t.toFixed(1)+'px '+rr.toFixed(1)+'px '+b.toFixed(1)+'px '+l.toFixed(1)+'px round '+rad.toFixed(1)+'px)';
- vws.style.setProperty('--vk',vk.toFixed(3));vwl.classList.toggle('on',vk>.9);vwr.classList.toggle('on',vk>.9)}
+ var i=p<.2?0:p<.4?1:2;vwts.forEach(function(t,j){t.classList.toggle('on',j===i&&p<.6)});var nn='0'+(i+1)+' / 03';if(vwn.textContent!==nn)vwn.textContent=nn;
+ vwpb.style.transform='scaleX('+cl(p/.6).toFixed(3)+')';
+ vk=ezz(cl((p-.62)/.24));var F=vwf.getBoundingClientRect(),pr=$('.pin',vws).getBoundingClientRect();
+ vwc.style.clipPath='inset('+(F.top-pr.top).toFixed(1)+'px '+(pr.right-F.right).toFixed(1)+'px '+(pr.bottom-F.bottom).toFixed(1)+'px '+(F.left-pr.left).toFixed(1)+'px round 24px)';
+ var sc=1.12-.12*cl(p/.6);vwc.style.setProperty('--s',sc.toFixed(4));vwi.style.setProperty('--s',sc.toFixed(4));
+ var vpin=$('.pin',vws);vpin.style.setProperty('--vk',vk.toFixed(3));vpin.style.setProperty('--vp',p.toFixed(3));var F7=$('#ffw'),T7=$('#vft');if(F7&&T7&&T7.textContent=='The view')F7.classList.toggle('lt',vk<.5);
+ vwl.classList.toggle('on',vk>.85);vwr.classList.toggle('on',vk>.85);vwcta.classList.toggle('on',vk>.9)}
+
+/* ---------- hero: words rise in, cards take turns ---------- */
+(function(){var h=$('#hero h1');function wrap(node,cls){Array.prototype.slice.call(node.childNodes).forEach(function(nd){if(nd.nodeType===3){var f=document.createDocumentFragment();nd.textContent.split(/(\s+)/).forEach(function(w){if(!w)return;if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(w));return}var s=document.createElement('span');s.className='wd';var i=document.createElement('i');if(cls)i.className=cls;i.textContent=w;s.appendChild(i);f.appendChild(s)});node.replaceChild(f,nd)}else if(nd.nodeType===1){var c=nd.classList.contains('c')?'c':cls;if(c==='c')nd.classList.remove('c');wrap(nd,c)}})}
+ wrap(h,'');$$('.wd i',h).forEach(function(i,k){i.style.transitionDelay=(.08+k*.07).toFixed(2)+'s'});h.classList.remove('rv');h.classList.add('wds')})();
+var hTimer=0,hHover=false,hIn=true;$('#hacc').addEventListener('mouseenter',function(){hHover=true});$('#hacc').addEventListener('mouseleave',function(){hHover=false});
+new IntersectionObserver(function(es){hIn=es[0].isIntersecting}).observe($('#hacc'));
+setInterval(function(){if(hHover||!hIn||mob()||SNAP)return;var i=has.findIndex(function(a){return a.classList.contains('on')});var nx=has[(i+1)%has.length];has.forEach(function(b){b.classList.toggle('on',b===nx)})},6500);
+
+/* ---------- the frame that follows you ---------- */
+var vf=$('#ffw'),vfn=$('#vfn'),vft=$('#vft'),FR={x:0,y:0,w:0,h:0,on:0},frT=null;
+var anchors=[['#hacc .ha6.on','Collections',0],['#start .qzr','Start your project',0],['#pti','How we work',0],['#who .aug','Who we help',0],['#vwf','The view',1],['#inside .xfm','Inside the glass',0],['#promise .w','Our promise',1],['#process .w','How it works',0],['#never .w','Our standards',0],['#trade .w','Who we work with',0],['#areas .w','Where we work',0],['#next .nxb','Your project',1]];
+function vpinK(){var e=$('#view .pin');return e?+(e.style.getPropertyValue('--vk')||0):0}
+function follow(H,W,m){var best=null,bd=1e9;for(var i=0;i<anchors.length;i++){var el=$(anchors[i][0]);if(!el)continue;var r=el.getBoundingClientRect();if(r.bottom<H*.12||r.top>H*.88||r.width<10)continue;var d=Math.abs(r.top+r.height/2-H/2);if(r.top<H*.5&&r.bottom>H*.5)d*=.3;if(d<bd){bd=d;best=[i,r]}}
+ var ldone=ld.classList.contains('done');
+ if(!best||!ldone){FR.on+=(0-FR.on)*.15}else{var r=best[1],pad=m?6:10;var t=Math.max(r.top-pad,(m?58:76)),b2=Math.min(r.bottom+pad,H-(m?84:14)),l=Math.max(r.left-pad,8),rt=Math.min(r.right+pad,W-8);
+  if(b2-t<60){FR.on+=(0-FR.on)*.15}else{var k=FR.w?.14:1;FR.x+=(l-FR.x)*k;FR.y+=(t-FR.y)*k;FR.w+=((rt-l)-FR.w)*k;FR.h+=((b2-t)-FR.h)*k;FR.on+=(1-FR.on)*.12;
+   if(frT!==best[0]){frT=best[0];vfn.textContent=(best[0]<9?'0':'')+(best[0]+1);vft.textContent=anchors[best[0]][1];vf.classList.toggle('lt',!!anchors[best[0]][2]&&!(best[0]==4&&vpinK()>=.5))}}}
+ vf.style.transform='translate3d('+FR.x.toFixed(1)+'px,'+FR.y.toFixed(1)+'px,0)';vf.style.width=FR.w.toFixed(1)+'px';vf.style.height=FR.h.toFixed(1)+'px';vf.style.opacity=FR.on.toFixed(3)}
 
 /* loader: real progress, then the glass doors slide open */
 var ld=$('#ld'),ldn=$('#ldn'),lxr=$('#lxr'),lt0=performance.now(),pv=0,lw=document.readyState==='complete';
