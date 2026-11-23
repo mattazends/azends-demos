@@ -772,15 +772,6 @@ main{background:var(--cr)}
  .qzr{min-height:0}
  .qnav{position:sticky;bottom:calc(70px + env(safe-area-inset-bottom));background:#fff;margin:0 -16px;padding:12px 16px;border-radius:0 0 26px 26px}
  .qnote{display:none}.qnx{margin-left:auto}
- .pt6{height:auto;padding:70px 0}
- .pt6 .pin{position:relative;height:auto;overflow:visible;display:flex;flex-direction:column;align-items:center;padding:0 16px}
- .ptc,.ptl,.ptg,.ptp{display:none}
- .pth{position:relative;top:auto;height:auto;font-size:36px;margin-bottom:24px}
- .ph{position:relative;display:none;opacity:1;filter:none;transform:none}.ph:nth-child(3){display:block}
- .pti{position:relative;left:auto;top:auto;transform:none!important;width:100%;aspect-ratio:4/3}
- .ptx{position:relative;top:auto;left:auto!important;right:auto!important;transform:none;width:100%;flex-direction:row;flex-wrap:wrap;gap:6px;margin-top:18px;align-items:flex-start!important}
- .ptx small{width:100%;opacity:1}
- .ptx span,.ptx.l span,.ptx.r span{opacity:1;transform:none;margin:0!important;font-size:13px;padding:9px 13px}
  .aug{grid-template-columns:1fr 1fr;gap:10px}
  .ac6{height:280px;padding:16px;border-radius:22px}.ac6 h3{font-size:24px}.ac6 p{display:none}.ac6 .hgo{display:none}
  .ac6.gl .ac6t{padding:12px}
@@ -874,18 +865,12 @@ main{background:var(--cr)}
 @media (max-width:760px){
  .hcta{flex-direction:column;width:100%;max-width:360px}.hcta .btn{justify-content:center;height:52px}
  .hpb{left:18px;right:18px;top:16px}.ha6.on .hnn,.hnn{display:none}
- .ptd,.ptcta{display:none}
- .ptx span{opacity:1;transform:none}
  .ffw{border-radius:20px}.ffw>i{width:16px;height:16px}.vfl{left:14px;font-size:10.5px}
  .vwf{width:70vw}
  .vwt{bottom:120px}
  .vwcta{bottom:96px}
  .vws.l{top:calc(var(--hh) + 22px)}
  .ac6 p{display:none}
- .pt6{height:auto!important;padding:80px 0 70px}
- .pt6 .pin{height:auto!important}
- .pth,.pth *{opacity:1!important;filter:none!important;transform:none!important}
- .ptcta{order:9;display:inline-flex;position:relative;left:auto;bottom:auto;opacity:1!important;transform:none!important;margin-top:28px}
  .vws.r{bottom:178px}
  .vwcta{bottom:100px}.vwcta .btn,.vwcta{white-space:nowrap}
 }
@@ -914,19 +899,6 @@ main{background:var(--cr)}
 }
 
 /* ===== v6.3 ===== */
-/* loader: clean cream, logo reveal, line, curtain lift */
-.lx{background:#F4EFE8;opacity:1;visibility:visible;display:grid;place-items:center;clip-path:inset(0 0 0 0);transition:clip-path 1.05s cubic-bezier(.77,0,.18,1) .12s,visibility 0s 1.3s}
-.lx:after{display:none}
-.lxc{width:min(300px,64vw);display:flex;flex-direction:column;align-items:stretch;gap:22px;transition:opacity .45s,transform .9s var(--o)}
-.lx .lxl{width:62%;margin:0 auto;color:var(--ink);opacity:1;transform:none;-webkit-mask-image:linear-gradient(90deg,#000 45%,transparent 55%);mask-image:linear-gradient(90deg,#000 45%,transparent 55%);-webkit-mask-size:240% 100%;mask-size:240% 100%;-webkit-mask-position:calc(100% - var(--p,0)*100%) 0;mask-position:calc(100% - var(--p,0)*100%) 0}
-.lx .lxl svg{width:100%;height:auto;display:block}
-.lxb{height:1px;background:rgba(18,16,14,.12);overflow:hidden}
-.lxb i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
-.lxm{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(18,16,14,.5)}
-.lxm b{font-weight:400;color:var(--ink);font-variant-numeric:tabular-nums}
-.lx.out{clip-path:inset(0 0 100% 0);visibility:hidden;opacity:1}
-.lx.out .lxc{opacity:0;transform:translateY(-24px)}
-
 /* header gets a soft bar once you scroll on phones */
 @media (max-width:760px){
  .hd{transition:background .4s,box-shadow .4s,transform .6s var(--o)}
@@ -970,35 +942,6 @@ main{background:var(--cr)}
 .hr7e a:not(.btn){color:var(--ink)}
 
 @media (max-width:760px){
- .hr7{padding:84px 0 70px}
- .hr7h{margin-bottom:34px}.hr7h h2{font-size:40px}
- .hr7g{display:block}.hr7v,.hrl{display:none}
- .hr7s{padding:0;display:grid;gap:16px}
- .hrs{min-height:0;display:block;background:#fff;border-radius:22px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(18,16,14,.07),0 24px 40px -34px rgba(60,40,20,.5);opacity:0;transform:translateY(26px);transition:opacity .8s var(--e),transform 1s var(--o)}
- .hrs.in{opacity:1;transform:none}
- .hrs:before{display:none}
- .hrm{display:block;margin:0;aspect-ratio:16/10;overflow:hidden}.hrm img{width:100%;height:100%;object-fit:cover}
- .hrb{opacity:1;padding:20px 20px 22px}
- .hrb h3{font-size:32px}
- .hrw{flex-direction:column;gap:4px}.hrw b{text-align:left}
- .hr7e{flex-direction:column;align-items:stretch;text-align:center;gap:14px}.hr7e .btn{justify-content:center;height:54px}
-
- /* view: no pinning on phones */
- .vw6{height:auto!important;background:var(--cr)}
- .vw6 .pin{position:relative!important;height:auto!important;overflow:visible;padding:80px var(--g) 70px;display:flex;flex-direction:column;gap:22px}
- .vwi,.vwf,.vwp{display:none!important}
- .vwc{position:relative!important;inset:auto!important;clip-path:none!important;transform:none!important;order:2;aspect-ratio:4/5;border-radius:24px;overflow:hidden;box-shadow:0 34px 60px -40px rgba(30,20,10,.6)}
- .vwc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:none!important;filter:none!important}
- .vwt{position:relative!important;inset:auto!important;height:auto!important;padding:0!important;font-size:36px!important;order:1;display:flex;flex-direction:column;gap:2px;text-align:left!important;transform:none!important}
- .vwt p{position:relative!important;inset:auto!important;opacity:1!important;transform:none!important;filter:none!important;color:var(--ink)!important;font-size:36px!important;line-height:1.05;letter-spacing:-.04em;margin:0;text-shadow:none!important}
- .vwt p:nth-child(2){color:var(--br)!important}.vwt p:nth-child(3){color:rgba(18,16,14,.4)!important}
- .vwt p *{opacity:1!important;transform:none!important;filter:none!important}
- .vws{position:relative!important;inset:auto!important;top:auto!important;bottom:auto!important;opacity:1!important;transform:none!important;font-size:26px!important;text-align:left!important;order:3}
- .vws.l,.vws.r{left:auto!important;right:auto!important}
- .vw6 .pin{display:grid;grid-template-columns:1fr 1fr;column-gap:18px}
- .vwt,.vwc,.vwcta{grid-column:1/-1}
- .vwcta{position:relative!important;left:auto!important;bottom:auto!important;opacity:1!important;transform:none!important;pointer-events:auto!important;order:4;justify-content:center;height:54px;margin-top:6px}
-
  /* inside the glass: text first, video loops underneath */
  .ex{height:auto!important}
  .ex .pin{position:relative!important;height:auto!important;display:flex;flex-direction:column;padding:80px 0 40px}
@@ -1010,16 +953,144 @@ main{background:var(--cr)}
  .xl li{font-size:13.5px;color:var(--ink);transform:none}
 }
 @media (max-width:760px){.dsk{display:none}}
+
+/* ===== v6.4 ===== */
+/* loader: blurred real photo, outline draws, frame opens to full screen */
+.lx{background:#211a14;transition:opacity .8s var(--e) 1.05s,visibility 0s 2s}
+.lx:after{display:none}
+.lxbg{position:absolute;inset:0;overflow:hidden}
+.lxbg img{width:100%;height:100%;object-fit:cover;filter:blur(26px) brightness(.58) saturate(.9);transform:scale(1.18);transition:filter 1.3s var(--e),transform 1.6s var(--o)}
+.lxf{width:min(28vw,40vh);height:calc(min(28vw,40vh) * 4 / 3);aspect-ratio:auto;transition:width 1.1s cubic-bezier(.77,0,.18,1) .1s,height 1.1s cubic-bezier(.77,0,.18,1) .1s;transform:none!important}
+.lxg{opacity:calc(var(--p,0) * .9);border-radius:24px;transition:border-radius 1.1s cubic-bezier(.77,0,.18,1) .1s,opacity .6s}
+.lxf rect{transition:opacity .4s}
+.lxl{color:#fff;width:46%}
+.lx.out .lxf{width:100vw;height:100lvh}
+.lx.out .lxg{border-radius:0;opacity:.35}
+.lx.out .lxf rect{opacity:0}
+.lx.out .lxbg img{filter:blur(0) brightness(.9) saturate(1);transform:scale(1)}
+.lx.out .lxl{opacity:0;transform:scale(.94)}
+.lx.out{opacity:0;visibility:hidden}
+@media (max-width:760px){.lxf{width:58vw;height:calc(58vw * 4 / 3)}}
+
+/* who we help: a deck that deals itself as you scroll */
+.au7{position:relative;height:420vh;background:var(--cr)}
+.au7 .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(40px,6vw,120px);padding:0 var(--g)}
+.auL h2{font-size:clamp(40px,4.4vw,92px);line-height:1;letter-spacing:-.045em;font-weight:300;margin:.35em 0 0;max-width:9em}
+.auN{list-style:none;margin:clamp(30px,5vh,60px) 0 0;padding:0;display:grid;gap:4px}
+.auN li{display:flex;align-items:baseline;gap:16px;font-size:clamp(18px,1.5vw,28px);letter-spacing:-.02em;color:rgba(18,16,14,.28);padding:10px 0;border-top:1px solid rgba(18,16,14,.08);transition:color .5s,padding .6s var(--o)}
+.auN li b{font-weight:400;font-size:12px;letter-spacing:.16em;color:rgba(18,16,14,.3);transition:color .5s}
+.auN li.on{color:var(--ink);padding-left:12px}.auN li.on b{color:var(--br)}
+.auD{position:relative;height:min(76vh,720px)}
+.aud{position:absolute;inset:0;border-radius:clamp(24px,2vw,34px);overflow:hidden;color:#fff;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(22px,2.2vw,38px);box-shadow:0 40px 80px -40px rgba(30,20,10,.55);transform-origin:50% 0;will-change:transform;transform:translate3d(0,118%,0)}
+.aud:first-child{transform:none}
+.aud img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.08);transition:transform 2s var(--o)}
+.aud.on img{transform:none}
+.aud:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(14,11,8,.82),rgba(14,11,8,.1) 58%,rgba(14,11,8,.25))}
+.aud:after{content:"";position:absolute;inset:0;background:#0e0b08;opacity:calc(var(--dim,0) * .32);pointer-events:none}
+.aud small{position:absolute;left:clamp(22px,2.2vw,38px);top:clamp(22px,2.2vw,38px);font-size:13px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.adn{position:absolute;right:clamp(22px,2.2vw,38px);top:clamp(16px,1.8vw,30px);font-size:clamp(40px,4vw,80px);font-weight:200;letter-spacing:-.05em;opacity:.85}
+.adt h3{font-size:clamp(34px,3.2vw,64px);line-height:1;letter-spacing:-.045em;font-weight:400;margin:0 0 .3em}
+.adt p{font-size:clamp(14px,1vw,17px);line-height:1.5;opacity:.86;margin:0 0 20px;max-width:26em}
+.adt>*{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .9s var(--o)}
+.aud.on .adt>*{opacity:1;transform:none}.aud.on .adt p{transition-delay:.08s}.aud.on .adg{transition-delay:.16s}
+.adg{display:inline-flex;align-items:center;gap:12px;height:48px;padding:0 20px;border-radius:999px;background:#fff;color:var(--ink);font-size:14.5px}
+.adg svg{width:16px;height:9px;fill:none;stroke:currentColor;stroke-width:1.4}
+.auB{position:absolute;left:var(--g);right:var(--g);bottom:clamp(22px,4vh,44px);height:1px;background:rgba(18,16,14,.1)}
+.auB i{position:absolute;inset:0;background:var(--br);transform-origin:left;transform:scaleX(0)}
+
+@media (max-width:760px){
+ /* parts: same scene, laid out for a phone */
+ .pt6{height:380vh}
+ .pt6 .pin{height:100svh}
+ .pth{top:calc(var(--hh) + 8px);font-size:29px;height:2.2em;padding:0 16px}
+ .ph{max-width:10em}
+ .pti{top:55%;width:58vw;border-radius:18px}
+ .ptg{left:21vw;top:calc(55% - 21.75vw);width:58px;border-radius:15px}
+ .ptp{left:auto;right:16px;top:calc(55% + 21.75vw + 14px);align-items:flex-end;gap:6px}
+ .ptp span{font-size:12px;padding:8px 12px}
+ .ptx{left:14px!important;right:14px!important;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:7px;align-items:center!important;transform:none}
+ .ptx.l{top:auto;bottom:calc(45% + 18.7vw + 24px)}
+ .ptx.r{top:calc(55% + 18.7vw + 24px)}
+ .ptx small{width:100%;text-align:center;margin:0 0 2px}
+ .ptx span,.ptx.l span,.ptx.r span{font-size:11.5px;padding:7px 11px;margin:0!important;gap:7px}
+ .ptx i{width:10px;height:10px;box-shadow:inset 0 0 0 2.5px rgba(255,255,255,.75)}
+ .ptx{gap:6px}
+ .ptx small{font-size:10px}
+ .ptd{display:none}
+ .ptcta{bottom:calc(92px + env(safe-area-inset-bottom));font-size:14px;padding:12px 18px;white-space:nowrap}
+
+ /* view: keep the scroll scene, fit it to a phone */
+ .vw6 .pin{height:100lvh}
+ .vwf{width:68vw;top:46%}
+ .vwt{font-size:34px!important;bottom:calc(118px + env(safe-area-inset-bottom));padding:0 18px;height:2.2em}
+ .vwt p{line-height:1.02}
+ .vwp{bottom:calc(96px + env(safe-area-inset-bottom))}
+ .vws{font-size:24px!important;top:calc(var(--hh) + 10px)!important;bottom:auto!important;transform:none!important}
+ .vws.l{left:18px!important;right:auto!important;text-align:left}
+ .vws.r{right:18px!important;left:auto!important;text-align:right}
+ .vws small{font-size:11px;margin-bottom:6px}
+ .vwcta{bottom:calc(92px + env(safe-area-inset-bottom))!important}
+
+ /* who: deck on a phone */
+ .au7{height:400vh}
+ .au7 .pin{display:block;padding:0}
+ .auL{position:absolute;left:16px;right:16px;top:calc(var(--hh) + 10px)}
+ .auL h2{font-size:31px;max-width:11em}
+ .auN{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+ .auN li{font-size:12.5px;border:0;padding:7px 11px;border-radius:999px;background:rgba(18,16,14,.05);gap:6px}
+ .auN li b{display:none}
+ .auN li.on{padding-left:11px;background:var(--ink);color:#fff}
+ .auD{position:absolute;left:16px;right:16px;top:calc(var(--hh) + 168px);bottom:calc(88px + env(safe-area-inset-bottom));height:auto}
+ .aud{padding:20px;border-radius:24px}
+ .aud small{left:18px;top:18px;font-size:12px}
+ .adn{right:18px;top:12px;font-size:40px}
+ .adt h3{font-size:32px}
+ .adt p{font-size:14px;margin-bottom:16px}
+ .adg{height:46px;font-size:14px}
+ .auB{display:none}
+
+ /* how a project runs: sticky photo, steps scroll under it */
+ .hr7{padding:80px 0 60px}
+ .hr7h{margin-bottom:26px}.hr7h h2{font-size:38px}
+ .hr7g{display:block}
+ .hr7v{position:sticky;top:calc(var(--hh) + 6px);z-index:3;background:var(--cr);margin:0 -16px;padding:0 16px 14px;box-shadow:0 18px 18px -14px var(--cr)}
+ .hr7f{height:36svh;border-radius:22px}
+ .hr7c{left:12px;bottom:12px;padding:9px 14px;font-size:12px}
+ .hrl,.hrm,.hrs:before{display:none}
+ .hr7s{padding:0}
+ .hrs{min-height:46svh;display:flex;align-items:flex-start;padding-top:22px}
+ .hrs:last-child{min-height:52svh}
+ .hrb{opacity:.18;transform:translateY(14px)}
+ .hrs.on .hrb{opacity:1;transform:none}
+ .hrb h3{font-size:32px}
+ .hrw{flex-direction:column;gap:4px}.hrw b{text-align:left}
+ .hr7e{flex-direction:column;align-items:stretch;text-align:center;gap:14px;margin-top:10px}.hr7e .btn{justify-content:center;height:54px}
+}
+
+/* loader: sharp photo grows inside the frame */
+.lx{--fw:min(28vw,40vh);--fh:calc(var(--fw) * 4 / 3)}
+.lxf{width:var(--fw);height:var(--fh);z-index:2}
+.lxs{position:absolute;inset:0;z-index:1;clip-path:inset(calc(50% - var(--fh) / 2) calc(50% - var(--fw) / 2) round 24px);opacity:calc(.15 + var(--p,0) * .85);transition:clip-path 1.1s cubic-bezier(.77,0,.18,1) .1s}
+.lxs img{width:100%;height:100%;object-fit:cover;filter:brightness(.82);transform:scale(1.06);transition:transform 1.6s var(--o),filter 1s}
+.lxg{opacity:calc(var(--p,0) * .28)}
+.lxl{width:56%;filter:drop-shadow(0 6px 20px rgba(0,0,0,.35))}
+.lx.out .lxs{clip-path:inset(0 0 0 0 round 0)}
+.lx.out .lxs img{transform:none;filter:none}
+.lx.out .lxg{opacity:0}
+@media (max-width:760px){.lx{--fw:58vw}.lxf{width:var(--fw);height:var(--fh)}}
+@media (max-width:760px){.ptcta{display:none!important}}
 </style>
 </head>
 <body>
 <div class="lx" id="ld" aria-hidden="true">
- <div class="lxc"><div class="lxl"><svg class="lg" xmlns="http://www.w3.org/2000/svg" viewBox="60 172 378 128" aria-hidden="true"><path fill="currentColor" d="M163.863 224.782L163.684 216.25L132 216.25L132 217.384C136.415 217.742 137.191 218.577 137.191 222.754L137.191 248.59C137.191 253.542 136.535 254.318 132 254.616L132 255.75L148.707 255.75L148.707 254.616C144.113 254.378 143.277 253.542 143.277 249.246L143.277 236.239L151.929 236.239C156.762 236.239 157.776 237.134 158.492 241.967L159.865 241.967L159.865 228.124L158.492 228.124C157.776 232.897 156.702 233.792 151.929 233.792L143.277 233.792L143.277 220.546C143.277 218.875 143.576 218.517 145.187 218.517L153.301 218.517C160.044 218.517 161.356 219.412 162.371 224.782ZM200.173 245.666L198.502 245.666C195.519 252.11 192.953 253.542 184.421 253.542L182.81 253.542C179.946 253.542 177.559 253.304 177.022 252.886C176.664 252.647 176.545 252.11 176.545 250.977L176.545 236.239L185.733 236.239C190.626 236.239 191.521 237.014 192.297 241.967L193.669 241.967L193.669 228.124L192.297 228.124C191.521 233.017 190.566 233.792 185.733 233.792L176.545 233.792L176.545 220.546C176.545 218.875 176.903 218.517 178.514 218.517L186.569 218.517C193.311 218.517 194.624 219.412 195.638 224.782L197.13 224.782L196.951 216.25L165.267 216.25L165.267 217.384C169.683 217.742 170.458 218.517 170.458 222.754L170.458 249.246C170.458 253.483 169.623 254.318 165.267 254.616L165.267 255.75L197.488 255.75ZM243.285 217.384L243.285 216.25L229.264 216.25L229.264 217.384C231.531 217.563 232.366 217.801 233.261 218.338C234.455 219.174 234.992 221.322 234.992 225.021L234.992 245.129L212.02 216.25L201.816 216.25L201.816 217.384C204.382 217.384 205.218 217.861 207.604 220.665L207.604 246.979C207.604 253.125 206.769 254.258 201.816 254.616L201.816 255.75L215.838 255.75L215.838 254.616C211.244 254.378 210.23 253.005 210.23 246.979L210.23 223.589L236.603 256.406L237.617 256.406L237.617 225.021C237.617 221.441 238.214 219.233 239.347 218.458C240.183 217.861 241.018 217.622 243.285 217.384ZM279.954 245.368L278.462 245.368C277.508 247.456 276.732 248.829 275.897 249.783C273.808 252.289 270.526 253.423 265.395 253.423L261.397 253.423C257.042 253.423 256.266 253.065 256.266 250.977L256.266 222.754C256.266 218.517 257.101 217.682 261.815 217.384L261.815 216.25L244.989 216.25L244.989 217.384C249.404 217.742 250.18 218.517 250.18 222.754L250.18 249.246C250.18 253.483 249.344 254.318 244.989 254.616L244.989 255.75L277.09 255.75ZM322.887 217.384L322.887 216.25L309.045 216.25L309.045 217.384C313.699 217.742 314.653 219.054 314.653 225.021L314.653 241.131C314.653 245.189 314.236 247.456 313.281 249.246C311.67 252.11 307.851 253.96 303.376 253.96C299.14 253.96 296.216 252.528 294.605 249.724C293.531 247.814 293.113 245.606 293.113 241.847L293.113 222.754C293.113 218.458 293.77 217.801 298.543 217.384L298.543 216.25L281.657 216.25L281.657 217.384C286.371 217.742 287.027 218.398 287.027 222.754L287.027 241.37C287.027 251.693 291.86 256.585 302.004 256.585C308.508 256.585 312.983 254.497 315.31 250.44C316.742 247.934 317.279 245.189 317.279 240.594L317.279 225.021C317.279 218.935 317.995 217.98 322.887 217.384ZM366 255.75L366 254.616C362.838 254.258 361.943 253.662 359.377 250.201L347.921 233.852L356.632 222.992C360.511 218.338 361.704 217.622 365.523 217.384L365.523 216.25L351.322 216.25L351.322 217.384C354.544 217.503 355.498 217.921 355.498 219.293C355.498 220.188 354.842 221.262 353.112 223.41L346.369 231.644L343.863 228.124C340.224 223.052 338.792 220.486 338.792 219.174C338.792 217.98 339.687 217.503 341.656 217.443L343.326 217.384L343.326 216.25L325.307 216.25L325.307 217.384C329.185 217.563 330.259 218.458 336.106 226.752L342.61 236.298L333.242 247.814C327.932 254.139 327.634 254.378 324.591 254.616L324.591 255.75L338.493 255.75L338.493 254.616C335.032 254.378 333.958 253.9 333.958 252.528C333.958 251.633 334.853 250.141 337.061 247.397L344.162 238.566L349.83 246.919C351.799 249.843 352.873 251.872 352.873 252.767C352.873 253.841 351.918 254.437 349.89 254.497C349.651 254.497 348.995 254.557 348.279 254.616L348.279 255.75ZM64 176h120v2h-120ZM64 294h120v2h-120ZM64 176h2v120h-2ZM182 176h2v22h-2ZM182 274h2v22h-2ZM189 176h120v2h-120ZM189 294h120v2h-120ZM189 176h2v22h-2ZM189 274h2v22h-2ZM307 176h2v22h-2ZM307 274h2v22h-2ZM314 176h120v2h-120ZM314 294h120v2h-120ZM314 176h2v22h-2ZM314 274h2v22h-2ZM432 176h2v120h-2Z"/></svg></div><div class="lxb"><i id="lxr"></i></div><div class="lxm"><span>Architectural glazing</span><span><b id="ldn">0</b>%</span></div></div>
+ <div class="lxbg"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/19f6b161-d9c3-4626-9a9c-decbe12a9f49.webp" alt=""></div><div class="lxs"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/19f6b161-d9c3-4626-9a9c-decbe12a9f49.webp" alt=""></div>
+ <div class="lxf" id="lxf"><svg viewBox="0 0 300 400" preserveAspectRatio="none"><rect x="1" y="1" width="298" height="398" rx="24" ry="24" pathLength="1" id="lxr"/></svg><i class="lxg"></i><div class="lxl"><svg class="lg" xmlns="http://www.w3.org/2000/svg" viewBox="60 172 378 128" aria-hidden="true"><path fill="currentColor" d="M163.863 224.782L163.684 216.25L132 216.25L132 217.384C136.415 217.742 137.191 218.577 137.191 222.754L137.191 248.59C137.191 253.542 136.535 254.318 132 254.616L132 255.75L148.707 255.75L148.707 254.616C144.113 254.378 143.277 253.542 143.277 249.246L143.277 236.239L151.929 236.239C156.762 236.239 157.776 237.134 158.492 241.967L159.865 241.967L159.865 228.124L158.492 228.124C157.776 232.897 156.702 233.792 151.929 233.792L143.277 233.792L143.277 220.546C143.277 218.875 143.576 218.517 145.187 218.517L153.301 218.517C160.044 218.517 161.356 219.412 162.371 224.782ZM200.173 245.666L198.502 245.666C195.519 252.11 192.953 253.542 184.421 253.542L182.81 253.542C179.946 253.542 177.559 253.304 177.022 252.886C176.664 252.647 176.545 252.11 176.545 250.977L176.545 236.239L185.733 236.239C190.626 236.239 191.521 237.014 192.297 241.967L193.669 241.967L193.669 228.124L192.297 228.124C191.521 233.017 190.566 233.792 185.733 233.792L176.545 233.792L176.545 220.546C176.545 218.875 176.903 218.517 178.514 218.517L186.569 218.517C193.311 218.517 194.624 219.412 195.638 224.782L197.13 224.782L196.951 216.25L165.267 216.25L165.267 217.384C169.683 217.742 170.458 218.517 170.458 222.754L170.458 249.246C170.458 253.483 169.623 254.318 165.267 254.616L165.267 255.75L197.488 255.75ZM243.285 217.384L243.285 216.25L229.264 216.25L229.264 217.384C231.531 217.563 232.366 217.801 233.261 218.338C234.455 219.174 234.992 221.322 234.992 225.021L234.992 245.129L212.02 216.25L201.816 216.25L201.816 217.384C204.382 217.384 205.218 217.861 207.604 220.665L207.604 246.979C207.604 253.125 206.769 254.258 201.816 254.616L201.816 255.75L215.838 255.75L215.838 254.616C211.244 254.378 210.23 253.005 210.23 246.979L210.23 223.589L236.603 256.406L237.617 256.406L237.617 225.021C237.617 221.441 238.214 219.233 239.347 218.458C240.183 217.861 241.018 217.622 243.285 217.384ZM279.954 245.368L278.462 245.368C277.508 247.456 276.732 248.829 275.897 249.783C273.808 252.289 270.526 253.423 265.395 253.423L261.397 253.423C257.042 253.423 256.266 253.065 256.266 250.977L256.266 222.754C256.266 218.517 257.101 217.682 261.815 217.384L261.815 216.25L244.989 216.25L244.989 217.384C249.404 217.742 250.18 218.517 250.18 222.754L250.18 249.246C250.18 253.483 249.344 254.318 244.989 254.616L244.989 255.75L277.09 255.75ZM322.887 217.384L322.887 216.25L309.045 216.25L309.045 217.384C313.699 217.742 314.653 219.054 314.653 225.021L314.653 241.131C314.653 245.189 314.236 247.456 313.281 249.246C311.67 252.11 307.851 253.96 303.376 253.96C299.14 253.96 296.216 252.528 294.605 249.724C293.531 247.814 293.113 245.606 293.113 241.847L293.113 222.754C293.113 218.458 293.77 217.801 298.543 217.384L298.543 216.25L281.657 216.25L281.657 217.384C286.371 217.742 287.027 218.398 287.027 222.754L287.027 241.37C287.027 251.693 291.86 256.585 302.004 256.585C308.508 256.585 312.983 254.497 315.31 250.44C316.742 247.934 317.279 245.189 317.279 240.594L317.279 225.021C317.279 218.935 317.995 217.98 322.887 217.384ZM366 255.75L366 254.616C362.838 254.258 361.943 253.662 359.377 250.201L347.921 233.852L356.632 222.992C360.511 218.338 361.704 217.622 365.523 217.384L365.523 216.25L351.322 216.25L351.322 217.384C354.544 217.503 355.498 217.921 355.498 219.293C355.498 220.188 354.842 221.262 353.112 223.41L346.369 231.644L343.863 228.124C340.224 223.052 338.792 220.486 338.792 219.174C338.792 217.98 339.687 217.503 341.656 217.443L343.326 217.384L343.326 216.25L325.307 216.25L325.307 217.384C329.185 217.563 330.259 218.458 336.106 226.752L342.61 236.298L333.242 247.814C327.932 254.139 327.634 254.378 324.591 254.616L324.591 255.75L338.493 255.75L338.493 254.616C335.032 254.378 333.958 253.9 333.958 252.528C333.958 251.633 334.853 250.141 337.061 247.397L344.162 238.566L349.83 246.919C351.799 249.843 352.873 251.872 352.873 252.767C352.873 253.841 351.918 254.437 349.89 254.497C349.651 254.497 348.995 254.557 348.279 254.616L348.279 255.75ZM64 176h120v2h-120ZM64 294h120v2h-120ZM64 176h2v120h-2ZM182 176h2v22h-2ZM182 274h2v22h-2ZM189 176h120v2h-120ZM189 294h120v2h-120ZM189 176h2v22h-2ZM189 274h2v22h-2ZM307 176h2v22h-2ZM307 274h2v22h-2ZM314 176h120v2h-120ZM314 294h120v2h-120ZM314 176h2v22h-2ZM314 274h2v22h-2ZM432 176h2v120h-2Z"/></svg></div></div>
+ <div class="lxn"><b id="ldn">0</b>%</div>
 </div>
 <div class="grain" aria-hidden="true"></div><div class="cur" id="cur"><span id="curT">Drag</span></div>
 <header class="hd" id="hd"><div class="w">
  <a class="lgw" href="#top" aria-label="Fenlux home"><svg class="lg" xmlns="http://www.w3.org/2000/svg" viewBox="60 172 378 128" aria-hidden="true"><path fill="currentColor" d="M163.863 224.782L163.684 216.25L132 216.25L132 217.384C136.415 217.742 137.191 218.577 137.191 222.754L137.191 248.59C137.191 253.542 136.535 254.318 132 254.616L132 255.75L148.707 255.75L148.707 254.616C144.113 254.378 143.277 253.542 143.277 249.246L143.277 236.239L151.929 236.239C156.762 236.239 157.776 237.134 158.492 241.967L159.865 241.967L159.865 228.124L158.492 228.124C157.776 232.897 156.702 233.792 151.929 233.792L143.277 233.792L143.277 220.546C143.277 218.875 143.576 218.517 145.187 218.517L153.301 218.517C160.044 218.517 161.356 219.412 162.371 224.782ZM200.173 245.666L198.502 245.666C195.519 252.11 192.953 253.542 184.421 253.542L182.81 253.542C179.946 253.542 177.559 253.304 177.022 252.886C176.664 252.647 176.545 252.11 176.545 250.977L176.545 236.239L185.733 236.239C190.626 236.239 191.521 237.014 192.297 241.967L193.669 241.967L193.669 228.124L192.297 228.124C191.521 233.017 190.566 233.792 185.733 233.792L176.545 233.792L176.545 220.546C176.545 218.875 176.903 218.517 178.514 218.517L186.569 218.517C193.311 218.517 194.624 219.412 195.638 224.782L197.13 224.782L196.951 216.25L165.267 216.25L165.267 217.384C169.683 217.742 170.458 218.517 170.458 222.754L170.458 249.246C170.458 253.483 169.623 254.318 165.267 254.616L165.267 255.75L197.488 255.75ZM243.285 217.384L243.285 216.25L229.264 216.25L229.264 217.384C231.531 217.563 232.366 217.801 233.261 218.338C234.455 219.174 234.992 221.322 234.992 225.021L234.992 245.129L212.02 216.25L201.816 216.25L201.816 217.384C204.382 217.384 205.218 217.861 207.604 220.665L207.604 246.979C207.604 253.125 206.769 254.258 201.816 254.616L201.816 255.75L215.838 255.75L215.838 254.616C211.244 254.378 210.23 253.005 210.23 246.979L210.23 223.589L236.603 256.406L237.617 256.406L237.617 225.021C237.617 221.441 238.214 219.233 239.347 218.458C240.183 217.861 241.018 217.622 243.285 217.384ZM279.954 245.368L278.462 245.368C277.508 247.456 276.732 248.829 275.897 249.783C273.808 252.289 270.526 253.423 265.395 253.423L261.397 253.423C257.042 253.423 256.266 253.065 256.266 250.977L256.266 222.754C256.266 218.517 257.101 217.682 261.815 217.384L261.815 216.25L244.989 216.25L244.989 217.384C249.404 217.742 250.18 218.517 250.18 222.754L250.18 249.246C250.18 253.483 249.344 254.318 244.989 254.616L244.989 255.75L277.09 255.75ZM322.887 217.384L322.887 216.25L309.045 216.25L309.045 217.384C313.699 217.742 314.653 219.054 314.653 225.021L314.653 241.131C314.653 245.189 314.236 247.456 313.281 249.246C311.67 252.11 307.851 253.96 303.376 253.96C299.14 253.96 296.216 252.528 294.605 249.724C293.531 247.814 293.113 245.606 293.113 241.847L293.113 222.754C293.113 218.458 293.77 217.801 298.543 217.384L298.543 216.25L281.657 216.25L281.657 217.384C286.371 217.742 287.027 218.398 287.027 222.754L287.027 241.37C287.027 251.693 291.86 256.585 302.004 256.585C308.508 256.585 312.983 254.497 315.31 250.44C316.742 247.934 317.279 245.189 317.279 240.594L317.279 225.021C317.279 218.935 317.995 217.98 322.887 217.384ZM366 255.75L366 254.616C362.838 254.258 361.943 253.662 359.377 250.201L347.921 233.852L356.632 222.992C360.511 218.338 361.704 217.622 365.523 217.384L365.523 216.25L351.322 216.25L351.322 217.384C354.544 217.503 355.498 217.921 355.498 219.293C355.498 220.188 354.842 221.262 353.112 223.41L346.369 231.644L343.863 228.124C340.224 223.052 338.792 220.486 338.792 219.174C338.792 217.98 339.687 217.503 341.656 217.443L343.326 217.384L343.326 216.25L325.307 216.25L325.307 217.384C329.185 217.563 330.259 218.458 336.106 226.752L342.61 236.298L333.242 247.814C327.932 254.139 327.634 254.378 324.591 254.616L324.591 255.75L338.493 255.75L338.493 254.616C335.032 254.378 333.958 253.9 333.958 252.528C333.958 251.633 334.853 250.141 337.061 247.397L344.162 238.566L349.83 246.919C351.799 249.843 352.873 251.872 352.873 252.767C352.873 253.841 351.918 254.437 349.89 254.497C349.651 254.497 348.995 254.557 348.279 254.616L348.279 255.75ZM64 176h120v2h-120ZM64 294h120v2h-120ZM64 176h2v120h-2ZM182 176h2v22h-2ZM182 274h2v22h-2ZM189 176h120v2h-120ZM189 294h120v2h-120ZM189 176h2v22h-2ZM189 274h2v22h-2ZM307 176h2v22h-2ZM307 274h2v22h-2ZM314 176h120v2h-120ZM314 294h120v2h-120ZM314 176h2v22h-2ZM314 274h2v22h-2ZM432 176h2v120h-2Z"/></svg></a>
- <nav class="nv" aria-label="Main"><a href="#hero">Collections</a><a href="#who">Who we help</a><a href="#parts">How we work</a><a href="#inside">Inside the glass</a><a href="#trade">Trade</a></nav>
+ <nav class="nv" aria-label="Main"><a href="#hero">Collections</a><a href="#who">Who we help</a><a href="#parts">How we work</a><a href="#inside">Inside the glass</a><a href="#process">Process</a><a href="#trade">Trade</a></nav>
  <div class="hr"><a class="tel" href="tel:+441277402469">01277 402469</a><a class="btn" href="#start"><span>Start your project</span><svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a></div>
  <button class="mb" id="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
 </div></header>
@@ -1084,26 +1155,26 @@ main{background:var(--cr)}
  </div>
 </section>
 
-<section class="hr7" id="parts">
- <div class="hr7w">
-  <div class="hr7h"><span class="lab">How a project runs</span><h2>You make the decisions. <span class="c">We bring the precision.</span></h2><p class="lead">Four stages, one team, from the first call to the twelve-month service.</p></div>
-  <div class="hr7g">
-   <div class="hr7v"><div class="hr7f" id="hrf"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8510ff6f-c437-4fef-bfec-a874aff8b1a8.webp" alt="Living room opening onto the garden through large glazed doors" loading="lazy" class="on"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/ac2398cd-947e-4761-b534-da3c016011cd.webp" alt="Dark framed windows set in a white wall" loading="lazy"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/efdc70ef-b9ff-41dc-95e7-9f049bedfa95.webp" alt="Slim-framed sliding glass door" loading="lazy"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7b2c596f-f56c-4d7a-848a-e54c3722416d.webp" alt="Living room surrounded by glass, looking out to a garden" loading="lazy"><div class="hr7c"><b id="hrn">01</b><span>/ 04</span><em id="hrt">Consult</em></div></div></div>
-   <ol class="hr7s" id="hrs"><i class="hrl"><b id="hrp"></b></i><li class="hrs on"><figure class="hrm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8510ff6f-c437-4fef-bfec-a874aff8b1a8.webp" alt="Living room opening onto the garden through large glazed doors" loading="lazy"></figure><div class="hrb"><span class="hrn">01</span><h3>Consult</h3><p>A call, then a visit to your home with samples. We review your plans, listen to what you want from the space, and send a tailored proposal.</p><div class="hrw"><small>Who&rsquo;s on it</small><b>Design consultant</b></div><div class="hrk"><span>Architect's drawings</span><span>Budget</span><span>Timeline</span></div></div></li><li class="hrs"><figure class="hrm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/ac2398cd-947e-4761-b534-da3c016011cd.webp" alt="Dark framed windows set in a white wall" loading="lazy"></figure><div class="hrb"><span class="hrn">02</span><h3>Design</h3><p>Opening styles, colours and hardware. You see and sign off the specification before anything is ordered.</p><div class="hrw"><small>Who&rsquo;s on it</small><b>Surveyor and design consultant</b></div><div class="hrk"><span>Measured survey</span><span>Finish and colour</span><span>Made to measure</span></div></div></li><li class="hrs"><figure class="hrm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/efdc70ef-b9ff-41dc-95e7-9f049bedfa95.webp" alt="Slim-framed sliding glass door" loading="lazy"></figure><div class="hrb"><span class="hrn">03</span><h3>Install</h3><p>Fitted by specialists with your floors and furniture protected. Every job is then quality checked to the Fenlux standard.</p><div class="hrw"><small>Who&rsquo;s on it</small><b>Project manager and installers</b></div><div class="hrk"><span>Structural opening</span><span>Protected floors</span><span>Quality check</span></div></div></li><li class="hrs"><figure class="hrm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7b2c596f-f56c-4d7a-848a-e54c3722416d.webp" alt="Living room surrounded by glass, looking out to a garden" loading="lazy"></figure><div class="hrb"><span class="hrn">04</span><h3>Aftercare</h3><p>We don't disappear at handover. Your warranty details stay in one place, and we come back at twelve months for a free service.</p><div class="hrw"><small>Who&rsquo;s on it</small><b>Aftercare team</b></div><div class="hrk"><span>Warranty in one place</span><span>Twelve-month service</span></div></div></li></ol>
-  </div>
-  <div class="hr7e"><a class="btn k" href="#start"><span>Start your project</span><svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 1l4 3.5L11 8"/></svg></a><span>Or call <a href="tel:01277402469">01277 402469</a></span></div>
+<section class="pt6" id="parts">
+ <div class="pin">
+  <svg class="ptc" aria-hidden="true" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice"><circle cx="500" cy="520" r="250"/><circle cx="500" cy="520" r="360"/><circle cx="500" cy="520" r="480"/></svg>
+  <div class="pth"><h2 class="ph on">What makes a <span class="c">perfect opening?</span></h2><h2 class="ph">Not one part <span class="c">working alone.</span></h2><h2 class="ph">Every part <span class="c">working together.</span></h2></div>
+  <svg class="ptl" id="ptl" aria-hidden="true"><defs><linearGradient id="rbg" x1="0" x2="1"><stop offset="0" stop-color="#6E5640"/><stop offset=".55" stop-color="#A88866"/><stop offset="1" stop-color="#D8C3A6"/></linearGradient></defs><path id="rb" pathLength="1"/><g id="cn"></g></svg>
+  <figure class="pti" id="pti"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8510ff6f-c437-4fef-bfec-a874aff8b1a8.webp" alt="Living room opening onto the garden through large glazed doors" loading="lazy"></figure>
+  <div class="ptg" id="ptg"><svg class="lg" xmlns="http://www.w3.org/2000/svg" viewBox="60 172 378 128" aria-hidden="true"><path fill="currentColor" d="M163.863 224.782L163.684 216.25L132 216.25L132 217.384C136.415 217.742 137.191 218.577 137.191 222.754L137.191 248.59C137.191 253.542 136.535 254.318 132 254.616L132 255.75L148.707 255.75L148.707 254.616C144.113 254.378 143.277 253.542 143.277 249.246L143.277 236.239L151.929 236.239C156.762 236.239 157.776 237.134 158.492 241.967L159.865 241.967L159.865 228.124L158.492 228.124C157.776 232.897 156.702 233.792 151.929 233.792L143.277 233.792L143.277 220.546C143.277 218.875 143.576 218.517 145.187 218.517L153.301 218.517C160.044 218.517 161.356 219.412 162.371 224.782ZM200.173 245.666L198.502 245.666C195.519 252.11 192.953 253.542 184.421 253.542L182.81 253.542C179.946 253.542 177.559 253.304 177.022 252.886C176.664 252.647 176.545 252.11 176.545 250.977L176.545 236.239L185.733 236.239C190.626 236.239 191.521 237.014 192.297 241.967L193.669 241.967L193.669 228.124L192.297 228.124C191.521 233.017 190.566 233.792 185.733 233.792L176.545 233.792L176.545 220.546C176.545 218.875 176.903 218.517 178.514 218.517L186.569 218.517C193.311 218.517 194.624 219.412 195.638 224.782L197.13 224.782L196.951 216.25L165.267 216.25L165.267 217.384C169.683 217.742 170.458 218.517 170.458 222.754L170.458 249.246C170.458 253.483 169.623 254.318 165.267 254.616L165.267 255.75L197.488 255.75ZM243.285 217.384L243.285 216.25L229.264 216.25L229.264 217.384C231.531 217.563 232.366 217.801 233.261 218.338C234.455 219.174 234.992 221.322 234.992 225.021L234.992 245.129L212.02 216.25L201.816 216.25L201.816 217.384C204.382 217.384 205.218 217.861 207.604 220.665L207.604 246.979C207.604 253.125 206.769 254.258 201.816 254.616L201.816 255.75L215.838 255.75L215.838 254.616C211.244 254.378 210.23 253.005 210.23 246.979L210.23 223.589L236.603 256.406L237.617 256.406L237.617 225.021C237.617 221.441 238.214 219.233 239.347 218.458C240.183 217.861 241.018 217.622 243.285 217.384ZM279.954 245.368L278.462 245.368C277.508 247.456 276.732 248.829 275.897 249.783C273.808 252.289 270.526 253.423 265.395 253.423L261.397 253.423C257.042 253.423 256.266 253.065 256.266 250.977L256.266 222.754C256.266 218.517 257.101 217.682 261.815 217.384L261.815 216.25L244.989 216.25L244.989 217.384C249.404 217.742 250.18 218.517 250.18 222.754L250.18 249.246C250.18 253.483 249.344 254.318 244.989 254.616L244.989 255.75L277.09 255.75ZM322.887 217.384L322.887 216.25L309.045 216.25L309.045 217.384C313.699 217.742 314.653 219.054 314.653 225.021L314.653 241.131C314.653 245.189 314.236 247.456 313.281 249.246C311.67 252.11 307.851 253.96 303.376 253.96C299.14 253.96 296.216 252.528 294.605 249.724C293.531 247.814 293.113 245.606 293.113 241.847L293.113 222.754C293.113 218.458 293.77 217.801 298.543 217.384L298.543 216.25L281.657 216.25L281.657 217.384C286.371 217.742 287.027 218.398 287.027 222.754L287.027 241.37C287.027 251.693 291.86 256.585 302.004 256.585C308.508 256.585 312.983 254.497 315.31 250.44C316.742 247.934 317.279 245.189 317.279 240.594L317.279 225.021C317.279 218.935 317.995 217.98 322.887 217.384ZM366 255.75L366 254.616C362.838 254.258 361.943 253.662 359.377 250.201L347.921 233.852L356.632 222.992C360.511 218.338 361.704 217.622 365.523 217.384L365.523 216.25L351.322 216.25L351.322 217.384C354.544 217.503 355.498 217.921 355.498 219.293C355.498 220.188 354.842 221.262 353.112 223.41L346.369 231.644L343.863 228.124C340.224 223.052 338.792 220.486 338.792 219.174C338.792 217.98 339.687 217.503 341.656 217.443L343.326 217.384L343.326 216.25L325.307 216.25L325.307 217.384C329.185 217.563 330.259 218.458 336.106 226.752L342.61 236.298L333.242 247.814C327.932 254.139 327.634 254.378 324.591 254.616L324.591 255.75L338.493 255.75L338.493 254.616C335.032 254.378 333.958 253.9 333.958 252.528C333.958 251.633 334.853 250.141 337.061 247.397L344.162 238.566L349.83 246.919C351.799 249.843 352.873 251.872 352.873 252.767C352.873 253.841 351.918 254.437 349.89 254.497C349.651 254.497 348.995 254.557 348.279 254.616L348.279 255.75ZM64 176h120v2h-120ZM64 294h120v2h-120ZM64 176h2v120h-2ZM182 176h2v22h-2ZM182 274h2v22h-2ZM189 176h120v2h-120ZM189 294h120v2h-120ZM189 176h2v22h-2ZM189 274h2v22h-2ZM307 176h2v22h-2ZM307 274h2v22h-2ZM314 176h120v2h-120ZM314 294h120v2h-120ZM314 176h2v22h-2ZM314 274h2v22h-2ZM432 176h2v120h-2Z"/></svg></div>
+  <div class="ptp" id="ptp"><span>Measured survey</span><span>Made to measure</span><span>Fitted by our team</span></div>
+  <div class="ptd" id="ptd"><i></i><i></i><i></i></div>
+  <a class="ptcta" id="ptcta" href="#process">See how a project runs <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></a>
+  <div class="ptx l" id="ptxl"><small>Your project</small><span>Architect&rsquo;s drawings<i></i></span><span>Structural opening<i></i></span><span>Planning<i></i></span><span>Budget<i></i></span><span>Timeline<i></i></span><span>Finish and colour<i></i></span></div>
+  <div class="ptx r" id="ptxr"><small>Our team</small><span><i></i>Design consultant</span><span><i></i>Surveyor</span><span><i></i>Project manager</span><span><i></i>Manufacturing</span><span><i></i>Installers</span><span><i></i>Aftercare</span></div>
  </div>
 </section>
 
-<section class="au" id="who">
- <div class="w">
-  <div class="auh"><span class="lab rv">Who we help</span><h2 class="rv r2">One studio, <span class="c">every kind of project.</span></h2></div>
-  <div class="aug">
-   <a class="ac6 im rv" href="#start" data-pick="home"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/e0b5c6cf-0776-42fc-a65c-0a5efa11470d.webp" alt="" loading="lazy"><small>Homeowners</small><div class="ac6t"><h3>Your home,<br>opened up</h3><p>Extensions, renovations and new builds, designed around the way you live.</p><span class="hgo">Start as a homeowner <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
-   <a class="ac6 br rv r2" href="#start" data-pick="dev"><small>Developers</small><div class="ac6t"><h3>Schemes that<br>sell faster</h3><p>Consistent specification across every unit, delivered to your programme.</p><span class="hgo">Start as a developer <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
-   <a class="ac6 im gl rv r3" href="#start" data-pick="arch"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7b2c596f-f56c-4d7a-848a-e54c3722416d.webp" alt="" loading="lazy"><small>Architects</small><div class="ac6t"><h3>Specified<br>with you</h3><p>Technical support from concept to tender, so the design you drew is the one that gets built.</p><span class="hgo">Start as an architect <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
-   <a class="ac6 gr rv r4" href="#start" data-pick="con"><small>Contractors</small><div class="ac6t"><h3>On site<br>when you need us</h3><p>Supply, or supply and fit, coordinated with your build.</p><span class="hgo">Start as a contractor <svg viewBox="0 0 18 10"><path d="M0 5h17M12.5.5 17 5l-4.5 4.5"/></svg></span></div></a>
-  </div>
+<section class="au7" id="who">
+ <div class="pin">
+  <div class="auL"><span class="lab">Who we help</span><h2>One studio, <span class="c">every kind of project.</span></h2><ol class="auN" id="auN"><li class="on"><b>01</b>Homeowners</li><li><b>02</b>Developers</li><li><b>03</b>Architects</li><li><b>04</b>Contractors</li></ol></div>
+  <div class="auD" id="auD"><a class="aud" href="#start" data-pick="home"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/e0b5c6cf-0776-42fc-a65c-0a5efa11470d.webp" alt="" loading="lazy"><span class="adn">01</span><small>Homeowners</small><div class="adt"><h3>Your home,<br>opened up</h3><p>Extensions, renovations and new builds, designed around the way you live.</p><span class="adg">Start as a homeowner <svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 1l4 3.5L11 8"/></svg></span></div></a><a class="aud" href="#start" data-pick="dev"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/3faf516d-754c-4a99-bd6e-867172f8f490.webp" alt="" loading="lazy"><span class="adn">02</span><small>Developers</small><div class="adt"><h3>Schemes that<br>sell faster</h3><p>Consistent specification across every unit, delivered to your programme.</p><span class="adg">Start as a developer <svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 1l4 3.5L11 8"/></svg></span></div></a><a class="aud" href="#start" data-pick="arch"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7b2c596f-f56c-4d7a-848a-e54c3722416d.webp" alt="" loading="lazy"><span class="adn">03</span><small>Architects</small><div class="adt"><h3>Specified<br>with you</h3><p>Technical support from concept to tender, so the design you drew is the one that gets built.</p><span class="adg">Start as an architect <svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 1l4 3.5L11 8"/></svg></span></div></a><a class="aud" href="#start" data-pick="con"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/69d6d601-7464-419c-8e89-e034ec31176c.webp" alt="" loading="lazy"><span class="adn">04</span><small>Contractors</small><div class="adt"><h3>On site<br>when you need us</h3><p>Supply, or supply and fit, coordinated with your build.</p><span class="adg">Start as a contractor <svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 1l4 3.5L11 8"/></svg></span></div></a></div>
+  <div class="auB"><i id="auB"></i></div>
  </div>
 </section>
 
@@ -1123,7 +1194,17 @@ main{background:var(--cr)}
   <div class="tx"><span class="lab" style="color:#8a7560">Inside the glass</span><h2>Not one part working well. <b>Every layer working together.</b></h2><p class="lead">A glazed opening is built in layers.<span class="dsk"> Scroll to take one apart.</span></p><ol class="xl" id="xl"><li>Aluminium outer frame</li><li>Thermal break</li><li>Toughened safety glass</li><li>Warm-edge spacer</li><li>Low-E coated glass</li><li>Aluminium inner frame</li></ol></div>
   <p class="nt">Illustrative. Every specification is confirmed for your opening before anything is ordered.</p>
  </div>
-</section><section class="pr dk" id="promise">
+</section><section class="hr7" id="process">
+ <div class="hr7w">
+  <div class="hr7h"><span class="lab">How a project runs</span><h2>You make the decisions. <span class="c">We bring the precision.</span></h2><p class="lead">Four stages, one team, from the first call to the twelve-month service.</p></div>
+  <div class="hr7g">
+   <div class="hr7v"><div class="hr7f" id="hrf"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8510ff6f-c437-4fef-bfec-a874aff8b1a8.webp" alt="Living room opening onto the garden through large glazed doors" loading="lazy" class="on"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/ac2398cd-947e-4761-b534-da3c016011cd.webp" alt="Dark framed windows set in a white wall" loading="lazy"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/efdc70ef-b9ff-41dc-95e7-9f049bedfa95.webp" alt="Slim-framed sliding glass door" loading="lazy"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7b2c596f-f56c-4d7a-848a-e54c3722416d.webp" alt="Living room surrounded by glass, looking out to a garden" loading="lazy"><div class="hr7c"><b id="hrn">01</b><span>/ 04</span><em id="hrt">Consult</em></div></div></div>
+   <ol class="hr7s" id="hrs"><i class="hrl"><b id="hrp"></b></i><li class="hrs on"><figure class="hrm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/8510ff6f-c437-4fef-bfec-a874aff8b1a8.webp" alt="Living room opening onto the garden through large glazed doors" loading="lazy"></figure><div class="hrb"><span class="hrn">01</span><h3>Consult</h3><p>A call, then a visit to your home with samples. We review your plans, listen to what you want from the space, and send a tailored proposal.</p><div class="hrw"><small>Who&rsquo;s on it</small><b>Design consultant</b></div><div class="hrk"><span>Architect's drawings</span><span>Budget</span><span>Timeline</span></div></div></li><li class="hrs"><figure class="hrm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/ac2398cd-947e-4761-b534-da3c016011cd.webp" alt="Dark framed windows set in a white wall" loading="lazy"></figure><div class="hrb"><span class="hrn">02</span><h3>Design</h3><p>Opening styles, colours and hardware. You see and sign off the specification before anything is ordered.</p><div class="hrw"><small>Who&rsquo;s on it</small><b>Surveyor and design consultant</b></div><div class="hrk"><span>Measured survey</span><span>Finish and colour</span><span>Made to measure</span></div></div></li><li class="hrs"><figure class="hrm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/efdc70ef-b9ff-41dc-95e7-9f049bedfa95.webp" alt="Slim-framed sliding glass door" loading="lazy"></figure><div class="hrb"><span class="hrn">03</span><h3>Install</h3><p>Fitted by specialists with your floors and furniture protected. Every job is then quality checked to the Fenlux standard.</p><div class="hrw"><small>Who&rsquo;s on it</small><b>Project manager and installers</b></div><div class="hrk"><span>Structural opening</span><span>Protected floors</span><span>Quality check</span></div></div></li><li class="hrs"><figure class="hrm"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7b2c596f-f56c-4d7a-848a-e54c3722416d.webp" alt="Living room surrounded by glass, looking out to a garden" loading="lazy"></figure><div class="hrb"><span class="hrn">04</span><h3>Aftercare</h3><p>We don't disappear at handover. Your warranty details stay in one place, and we come back at twelve months for a free service.</p><div class="hrw"><small>Who&rsquo;s on it</small><b>Aftercare team</b></div><div class="hrk"><span>Warranty in one place</span><span>Twelve-month service</span></div></div></li></ol>
+  </div>
+  <div class="hr7e"><a class="btn k" href="#start"><span>Start your project</span><svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 1l4 3.5L11 8"/></svg></a><span>Or call <a href="tel:01277402469">01277 402469</a></span></div>
+ </div>
+</section>
+<section class="pr dk" id="promise">
  <div class="prp"><div class="w">
   <span class="lab rv">Our On Time Promise</span>
   <h2 class="rv r2">The hardest part of buying glazing is <b>the not knowing.</b> So we've removed it.</h2>
@@ -1175,7 +1256,7 @@ main{background:var(--cr)}
   <div class="g">
    <p class="tg">Framing Your Vision.<br>Premium by Design.</p>
    <div><h3>Collections</h3><a href="#hero">Sliding and bifold doors</a><a href="#hero">Windows</a><a href="#hero">Rooflights and lanterns</a><a href="#hero">Front doors</a><a href="#hero">Internal steel-look doors</a></div>
-   <div><h3>Studio</h3><a href="#promise">Our On Time Promise</a><a href="#parts">How it works</a><a href="#trade">Architects and builders</a><a href="#areas">Where we work</a></div>
+   <div><h3>Studio</h3><a href="#promise">Our On Time Promise</a><a href="#process">How it works</a><a href="#trade">Architects and builders</a><a href="#areas">Where we work</a></div>
    <div><h3>Speak to us</h3><a href="tel:+441277402469">01277 402469</a><a href="https://wa.me/447897794579">WhatsApp</a><a href="https://instagram.com/fenluxdesign">Instagram</a><a href="https://facebook.com/fenluxdesign">Facebook</a></div>
   </div>
   <svg class="lgb" xmlns="http://www.w3.org/2000/svg" viewBox="60 172 378 128" aria-hidden="true"><path fill="currentColor" d="M163.863 224.782L163.684 216.25L132 216.25L132 217.384C136.415 217.742 137.191 218.577 137.191 222.754L137.191 248.59C137.191 253.542 136.535 254.318 132 254.616L132 255.75L148.707 255.75L148.707 254.616C144.113 254.378 143.277 253.542 143.277 249.246L143.277 236.239L151.929 236.239C156.762 236.239 157.776 237.134 158.492 241.967L159.865 241.967L159.865 228.124L158.492 228.124C157.776 232.897 156.702 233.792 151.929 233.792L143.277 233.792L143.277 220.546C143.277 218.875 143.576 218.517 145.187 218.517L153.301 218.517C160.044 218.517 161.356 219.412 162.371 224.782ZM200.173 245.666L198.502 245.666C195.519 252.11 192.953 253.542 184.421 253.542L182.81 253.542C179.946 253.542 177.559 253.304 177.022 252.886C176.664 252.647 176.545 252.11 176.545 250.977L176.545 236.239L185.733 236.239C190.626 236.239 191.521 237.014 192.297 241.967L193.669 241.967L193.669 228.124L192.297 228.124C191.521 233.017 190.566 233.792 185.733 233.792L176.545 233.792L176.545 220.546C176.545 218.875 176.903 218.517 178.514 218.517L186.569 218.517C193.311 218.517 194.624 219.412 195.638 224.782L197.13 224.782L196.951 216.25L165.267 216.25L165.267 217.384C169.683 217.742 170.458 218.517 170.458 222.754L170.458 249.246C170.458 253.483 169.623 254.318 165.267 254.616L165.267 255.75L197.488 255.75ZM243.285 217.384L243.285 216.25L229.264 216.25L229.264 217.384C231.531 217.563 232.366 217.801 233.261 218.338C234.455 219.174 234.992 221.322 234.992 225.021L234.992 245.129L212.02 216.25L201.816 216.25L201.816 217.384C204.382 217.384 205.218 217.861 207.604 220.665L207.604 246.979C207.604 253.125 206.769 254.258 201.816 254.616L201.816 255.75L215.838 255.75L215.838 254.616C211.244 254.378 210.23 253.005 210.23 246.979L210.23 223.589L236.603 256.406L237.617 256.406L237.617 225.021C237.617 221.441 238.214 219.233 239.347 218.458C240.183 217.861 241.018 217.622 243.285 217.384ZM279.954 245.368L278.462 245.368C277.508 247.456 276.732 248.829 275.897 249.783C273.808 252.289 270.526 253.423 265.395 253.423L261.397 253.423C257.042 253.423 256.266 253.065 256.266 250.977L256.266 222.754C256.266 218.517 257.101 217.682 261.815 217.384L261.815 216.25L244.989 216.25L244.989 217.384C249.404 217.742 250.18 218.517 250.18 222.754L250.18 249.246C250.18 253.483 249.344 254.318 244.989 254.616L244.989 255.75L277.09 255.75ZM322.887 217.384L322.887 216.25L309.045 216.25L309.045 217.384C313.699 217.742 314.653 219.054 314.653 225.021L314.653 241.131C314.653 245.189 314.236 247.456 313.281 249.246C311.67 252.11 307.851 253.96 303.376 253.96C299.14 253.96 296.216 252.528 294.605 249.724C293.531 247.814 293.113 245.606 293.113 241.847L293.113 222.754C293.113 218.458 293.77 217.801 298.543 217.384L298.543 216.25L281.657 216.25L281.657 217.384C286.371 217.742 287.027 218.398 287.027 222.754L287.027 241.37C287.027 251.693 291.86 256.585 302.004 256.585C308.508 256.585 312.983 254.497 315.31 250.44C316.742 247.934 317.279 245.189 317.279 240.594L317.279 225.021C317.279 218.935 317.995 217.98 322.887 217.384ZM366 255.75L366 254.616C362.838 254.258 361.943 253.662 359.377 250.201L347.921 233.852L356.632 222.992C360.511 218.338 361.704 217.622 365.523 217.384L365.523 216.25L351.322 216.25L351.322 217.384C354.544 217.503 355.498 217.921 355.498 219.293C355.498 220.188 354.842 221.262 353.112 223.41L346.369 231.644L343.863 228.124C340.224 223.052 338.792 220.486 338.792 219.174C338.792 217.98 339.687 217.503 341.656 217.443L343.326 217.384L343.326 216.25L325.307 216.25L325.307 217.384C329.185 217.563 330.259 218.458 336.106 226.752L342.61 236.298L333.242 247.814C327.932 254.139 327.634 254.378 324.591 254.616L324.591 255.75L338.493 255.75L338.493 254.616C335.032 254.378 333.958 253.9 333.958 252.528C333.958 251.633 334.853 250.141 337.061 247.397L344.162 238.566L349.83 246.919C351.799 249.843 352.873 251.872 352.873 252.767C352.873 253.841 351.918 254.437 349.89 254.497C349.651 254.497 348.995 254.557 348.279 254.616L348.279 255.75ZM64 176h120v2h-120ZM64 294h120v2h-120ZM64 176h2v120h-2ZM182 176h2v22h-2ZM182 274h2v22h-2ZM189 176h120v2h-120ZM189 294h120v2h-120ZM189 176h2v22h-2ZM189 274h2v22h-2ZM307 176h2v22h-2ZM307 274h2v22h-2ZM314 176h120v2h-120ZM314 294h120v2h-120ZM314 176h2v22h-2ZM314 274h2v22h-2ZM432 176h2v120h-2Z"/></svg>
@@ -1262,9 +1343,18 @@ function under(y){var els=document.elementsFromPoint(innerWidth/2,y);for(var i=0
 
 var hrS=$$('#hrs .hrs'),hrI=$$('#hrf img'),hrN=$('#hrn'),hrT=$('#hrt'),hrP=$('#hrp'),hrL=$('#hrs'),hrA=-1;
 function hr7(H,m){if(!hrL)return;var r=hrL.getBoundingClientRect();if(r.bottom<-H||r.top>H*2)return;var a=0;
- hrS.forEach(function(s,i){var q=s.getBoundingClientRect();if(q.top<H*(m?.8:.55))a=i;if(m&&q.top<H*.9)s.classList.add('in')});
+ hrS.forEach(function(s,i){var q=s.getBoundingClientRect();if(q.top<H*(m?.66:.55))a=i});
  if(a!==hrA){hrA=a;hrS.forEach(function(s,i){s.classList.toggle('on',i===a)});hrI.forEach(function(im,i){im.classList.toggle('on',i===a)});hrN.textContent='0'+(a+1);hrT.textContent=hrS[a].querySelector('h3').textContent}
  if(!m){var f=hrS[hrS.length-1].getBoundingClientRect(),t0=hrS[0].getBoundingClientRect();var tot=(f.top+f.height/2)-(t0.top+t0.height/2);var k=tot>0?cl((H*.55-(t0.top+t0.height/2))/tot):0;hrP.style.transform='scaleY('+k.toFixed(4)+')'}}
+
+var auS=$('#who'),auC=$$('#auD .aud'),auLs=$$('#auN li'),auBar=$('#auB'),auA=-1;
+function who(H,m){if(!auS)return;var r=auS.getBoundingClientRect();if(r.bottom<0||r.top>H)return;var p=prog(auS),n=auC.length,seg=.78/(n-1),arr=[],act=0;
+ for(var i=0;i<n;i++){var a=.06+(i-1)*seg;arr.push(i===0?1:sm(a,a+seg*.82,p))}
+ arr.forEach(function(t,i){if(t>.55)act=i});
+ auC.forEach(function(c,i){var t=arr[i],ab=0;for(var j=i+1;j<n;j++)ab+=arr[j];var y=(1-t)*118,rot=(1-t)*(i%2?6:-6),sc=1-ab*.05,dy=-ab*(m?11:16);
+  c.style.transform='translate3d(0,calc('+y.toFixed(2)+'% + '+dy.toFixed(1)+'px),0) rotate('+rot.toFixed(2)+'deg) scale('+sc.toFixed(4)+')';c.style.setProperty('--dim',Math.min(ab,1.5).toFixed(3))});
+ if(act!==auA){auA=act;auLs.forEach(function(l,i){l.classList.toggle('on',i===act)});auC.forEach(function(c,i){c.classList.toggle('on',i===act)})}
+ auBar.style.transform='scaleX('+cl(p/.86).toFixed(4)+')'}
 function frame(){var y=lenis?lenis.scroll:scrollY,H=innerHeight,W=innerWidth;
  px+=(cx-px)*.2;py+=(cy-py)*.2;cur.style.transform='translate('+px.toFixed(1)+'px,'+py.toFixed(1)+'px) translate(-50%,-50%)';
  /* header */
@@ -1272,7 +1362,7 @@ function frame(){var y=lenis?lenis.scroll:scrollY,H=innerHeight,W=innerWidth;
  if(!bd.classList.contains('mo')){if(y>H*.9&&y>lastY+4)hd.classList.add('hide');else if(y<lastY-4||y<H*.9)hd.classList.remove('hide')}lastY=y;
  mbar.classList.toggle('on',y>H*.8);
  var m=mob();
- hr7(H,m);view(H,W,m);hd.classList.toggle('sc',y>24);
+ parts(y,H,W,m);who(H,m);hr7(H,m);view(H,W,m);hd.classList.toggle('sc',y>24);
  /* explode */
  var pE=prog(ex);exV=cl((pE-.06)/.62);
  var rE=ex.getBoundingClientRect();if(m){if(rE.bottom>0&&rE.top<H){if(xv.paused){xv.loop=true;var pp=xv.play();pp&&pp.catch&&pp.catch(function(){})}}else if(!xv.paused)xv.pause();xls.forEach(function(li){li.classList.add('on')})}else if(rE.bottom>0&&rE.top<H){xvC=scrub(xv,ezz(exV),xvC);xls.forEach(function(li,i){li.classList.toggle('on',exV>.12+i*.13)})}
@@ -1328,16 +1418,16 @@ step(0);
 var pti=$('#pti'),ptl=$('#ptl'),rb=$('#rb'),cn=$('#cn'),ptg=$('#ptg'),ptp=$('#ptp'),pxl=$('#ptxl'),pxr=$('#ptxr'),phs=$$('#parts .ph'),ptd=$$('#ptd i'),ptcta=$('#ptcta'),pathsC=[],dotsC=[];
 var ppl=$$('span',ptp),pxs=$$('span',pxl).concat($$('span',pxr));
 var sm=function(a,b,v){return ezz(cl((v-a)/(b-a)))};
-function layoutParts(){return;var pin=$('.pin',pts),R=pin.getBoundingClientRect();ptl.setAttribute('viewBox','0 0 '+R.width+' '+R.height);
+function layoutParts(){var pin=$('.pin',pts),R=pin.getBoundingClientRect();ptl.setAttribute('viewBox','0 0 '+R.width+' '+R.height);
  var tr=pti.style.transform;pti.style.transform='translate(-50%,-50%) scale(.86)';var I=pti.getBoundingClientRect();var ix=I.left-R.left,iy=I.top-R.top,iw=I.width,ih=I.height;pti.style.transform='translate(-50%,-50%)';var J=pti.getBoundingClientRect();pti.style.transform=tr;
  var jx=J.left-R.left,jy=J.top-R.top,jw=J.width,jh=J.height;
- rb.setAttribute('d','M'+(jx-jw*.95)+','+(jy+jh*1.3)+' C'+(jx-jw*.98)+','+(jy+jh*.55)+' '+(jx-jw*.62)+','+(jy-jh*.38)+' '+(jx-jw*.2)+','+(jy-jh*.1)+' C'+(jx+jw*.12)+','+(jy+jh*.12)+' '+(jx+jw*.05)+','+(jy+jh*.95)+' '+(jx-jw*.36)+','+(jy+jh*.86)+' C'+(jx-jw*.7)+','+(jy+jh*.78)+' '+(jx-jw*.52)+','+(jy+jh*.46)+' '+(jx+jw*.25)+','+(jy+jh*.5)+' C'+(jx+jw*.9)+','+(jy+jh*.54)+' '+(jx+jw*1.25)+','+(jy+jh*.7)+' '+(jx+jw*1.55)+','+(jy+jh*1.18));
+ if(mob()){rb.setAttribute('d','M'+(jx-jw*.05)+','+(jy+jh*1.5)+' C'+(jx-jw*.15)+','+(jy+jh*.9)+' '+(jx+jw*.05)+','+(jy-jh*.55)+' '+(jx+jw*.45)+','+(jy-jh*.3)+' C'+(jx+jw*.82)+','+(jy-jh*.08)+' '+(jx+jw*.78)+','+(jy+jh*.62)+' '+(jx+jw*.5)+','+(jy+jh*.56)+' C'+(jx+jw*.24)+','+(jy+jh*.5)+' '+(jx+jw*.38)+','+(jy+jh*1.12)+' '+(jx+jw*1.05)+','+(jy+jh*1.45))}else rb.setAttribute('d','M'+(jx-jw*.95)+','+(jy+jh*1.3)+' C'+(jx-jw*.98)+','+(jy+jh*.55)+' '+(jx-jw*.62)+','+(jy-jh*.38)+' '+(jx-jw*.2)+','+(jy-jh*.1)+' C'+(jx+jw*.12)+','+(jy+jh*.12)+' '+(jx+jw*.05)+','+(jy+jh*.95)+' '+(jx-jw*.36)+','+(jy+jh*.86)+' C'+(jx-jw*.7)+','+(jy+jh*.78)+' '+(jx-jw*.52)+','+(jy+jh*.46)+' '+(jx+jw*.25)+','+(jy+jh*.5)+' C'+(jx+jw*.9)+','+(jy+jh*.54)+' '+(jx+jw*1.25)+','+(jy+jh*.7)+' '+(jx+jw*1.55)+','+(jy+jh*1.18));
  cn.innerHTML='';pathsC=[];dotsC=[];
- [[pxl,'l'],[pxr,'r']].forEach(function(g){$$('span',g[0]).forEach(function(s,i){var st=s.style.transform;s.style.transform='none';var r=s.getBoundingClientRect();s.style.transform=st;var x0=g[1]==='l'?r.right-R.left:r.left-R.left,y0=r.top-R.top+r.height/2;
-  var x1=g[1]==='l'?ix:ix+iw,y1=iy+ih*(.3+i*.08);var dx=(x1-x0)*.6;var p=document.createElementNS(NS,'path');p.setAttribute('d','M'+x0+','+y0+' C'+(x0+dx)+','+y0+' '+(x1-dx)+','+y1+' '+x1+','+y1);p.setAttribute('pathLength','1');cn.appendChild(p);pathsC.push(p);
+ [[pxl,'l'],[pxr,'r']].forEach(function(g){$$('span',g[0]).forEach(function(s,i){var st=s.style.transform;s.style.transform='none';var r=s.getBoundingClientRect();s.style.transform=st;var p=document.createElementNS(NS,'path'),x0,y0,x1,y1;if(mob()){var L=g[1]==='l';x0=r.left-R.left+r.width/2;y0=L?r.bottom-R.top:r.top-R.top;x1=ix+iw*Math.min(.9,Math.max(.1,(x0-ix)/iw))+(x0-ix-iw/2)*-.08;y1=L?iy:iy+ih;var my=(y0+y1)/2;p.setAttribute('d','M'+x0+','+y0+' C'+x0+','+my+' '+x1+','+my+' '+x1+','+y1)}else{x0=g[1]==='l'?r.right-R.left:r.left-R.left;y0=r.top-R.top+r.height/2;
+  x1=g[1]==='l'?ix:ix+iw;y1=iy+ih*(.3+i*.08);var dx=(x1-x0)*.6;p.setAttribute('d','M'+x0+','+y0+' C'+(x0+dx)+','+y0+' '+(x1-dx)+','+y1+' '+x1+','+y1)}p.setAttribute('pathLength','1');cn.appendChild(p);pathsC.push(p);
   var d=document.createElementNS(NS,'circle');d.setAttribute('cx',x1);d.setAttribute('cy',y1);d.setAttribute('r',3.2);cn.appendChild(d);dotsC.push(d)})})}
 var pLaid=false;addEventListener('resize',function(){pLaid=false});
-function parts(y,H,W,m){return;var r=pts.getBoundingClientRect();if(r.bottom<0||r.top>H)return;if(m){return}if(!pLaid){layoutParts();pLaid=true}
+function parts(y,H,W,m){var r=pts.getBoundingClientRect();if(r.bottom<-50||r.top>H+50)return;if(!pLaid){layoutParts();pLaid=true}
  var p=prog(pts);
  var o=[1-sm(.24,.32,p),sm(.27,.35,p)*(1-sm(.56,.64,p)),sm(.6,.68,p)];
  phs.forEach(function(h,i){h.style.opacity=o[i].toFixed(3);h.style.transform='translateY('+((1-o[i])*(i===0||p>.5&&i===1?-1:1)*22).toFixed(1)+'px)';h.style.filter='blur('+((1-o[i])*6).toFixed(1)+'px)'});
@@ -1345,7 +1435,7 @@ function parts(y,H,W,m){return;var r=pts.getBoundingClientRect();if(r.bottom<0||
  rb.style.strokeDashoffset=(1-sm(.0,.26,p)).toFixed(4);rb.style.opacity=(1-sm(.26,.34,p)).toFixed(3);
  var g=sm(.05,.14,p)*(1-sm(.26,.32,p));ptg.style.opacity=g.toFixed(3);ptg.style.transform='translate(-50%,-50%) translateY('+((1-g)*16).toFixed(1)+'px) rotate('+(-10+p*28).toFixed(1)+'deg)';
  ppl.forEach(function(s,i){var k=sm(.1+i*.035,.18+i*.035,p)*(1-sm(.26,.31,p));s.style.opacity=k.toFixed(3);s.style.transform='translateX('+((1-k)*-14).toFixed(1)+'px)'});
- var n=pxs.length/2;pxs.forEach(function(s,i){var j=i%n,left=i<n;var k=sm(.33+j*.022,.45+j*.022,p);s.style.opacity=k.toFixed(3);s.style.transform='translateX('+((1-k)*(left?-1:1)*16).toFixed(2)+'vw)'});
+ var n=pxs.length/2;pxs.forEach(function(s,i){var j=i%n,left=i<n;var k=sm(.33+j*.022,.45+j*.022,p);s.style.opacity=k.toFixed(3);s.style.transform=m?'translateY('+((1-k)*(left?-1:1)*26).toFixed(1)+'px)':'translateX('+((1-k)*(left?-1:1)*16).toFixed(2)+'vw)'});
  var lb=sm(.6,.66,p);pxl.style.setProperty('--lb',lb);pxr.style.setProperty('--lb',lb);
  pathsC.forEach(function(pp,i){var j=i%n;var c=sm(.64+j*.018,.8+j*.018,p);pp.style.strokeDashoffset=(1-c).toFixed(4);dotsC[i].style.opacity=sm(.78+j*.018,.82+j*.018,p).toFixed(3)});
  var sc=1-.14*sm(.28,.4,p);pti.style.transform='translate(-50%,-50%) scale('+sc.toFixed(4)+')';
@@ -1354,7 +1444,7 @@ function parts(y,H,W,m){return;var r=pts.getBoundingClientRect();if(r.bottom<0||
 /* ---------- view: a window onto the house, then it becomes the picture ---------- */
 var vwi=$('#vwi'),vwc=$('#vwc'),vwf=$('#vwf'),vwts=$$('#vwt p'),vwl=$('#vwl'),vwr=$('#vwr'),vwn=$('#vwn'),vwpb=$('#vwpb'),vwcta=$('#vwcta'),vk=0;
 vwts.forEach(function(t){t.innerHTML=t.textContent.split(' ').map(function(w,i){return '<span style="transition-delay:'+(i*.07).toFixed(2)+'s">'+w+'</span>'}).join(' ')});
-function view(H,W,m){if(m)return;var r=vws.getBoundingClientRect();if(r.bottom<0||r.top>H)return;var p=prog(vws);
+function view(H,W,m){var r=vws.getBoundingClientRect();if(r.bottom<0||r.top>H)return;var p=prog(vws);
  var i=p<.2?0:p<.4?1:2;vwts.forEach(function(t,j){t.classList.toggle('on',j===i&&p<.6)});var nn='0'+(i+1)+' / 03';if(vwn.textContent!==nn)vwn.textContent=nn;
  vwpb.style.transform='scaleX('+cl(p/.6).toFixed(3)+')';
  vk=ezz(cl((p-.62)/.24));var F=vwf.getBoundingClientRect(),pr=$('.pin',vws).getBoundingClientRect();
@@ -1385,9 +1475,9 @@ function follow(H,W,m){var best=null,bd=1e9;for(var i=0;i<anchors.length;i++){va
 var ld=$('#ld'),ldn=$('#ldn'),lxr=$('#lxr'),lt0=performance.now(),pv=0,lw=document.readyState==='complete';
 addEventListener('load',function(){lw=true});
 var lims=$$('#hero img'),ldone=0;lims.forEach(function(i){if(i.complete)ldone++;else{i.addEventListener('load',function(){ldone++});i.addEventListener('error',function(){ldone++})}});
-function opened(){ld.classList.add('out');lenis&&lenis.start();setTimeout(function(){root.classList.add('go')},380);setTimeout(function(){ld.classList.add('done')},1500)}
+function opened(){ld.classList.add('out');lenis&&lenis.start();setTimeout(function(){root.classList.add('go')},950);setTimeout(function(){ld.classList.add('done')},2100)}
 if(SNAP||reduce){ld.classList.add('done');root.classList.add('go')}
-else{lenis&&lenis.stop();scrollTo(0,0);(function lt(){var el=performance.now()-lt0;var tg=Math.min(.9,.08+(ldone/Math.max(1,lims.length))*.62+Math.min(el/3000,.2));if((lw&&el>1100)||el>4500)tg=1;pv+=(tg-pv)*(tg===1?.12:.06);if(tg===1&&pv>.994)pv=1;ldn.textContent=Math.round(pv*100);lxr.style.transform='scaleX('+pv.toFixed(4)+')';ld.style.setProperty('--p',pv.toFixed(4));if(pv<1)requestAnimationFrame(lt);else setTimeout(opened,180)})()}
+else{lenis&&lenis.stop();scrollTo(0,0);(function lt(){var el=performance.now()-lt0;var tg=Math.min(.9,.08+(ldone/Math.max(1,lims.length))*.62+Math.min(el/3000,.2));if((lw&&el>1100)||el>4500)tg=1;pv+=(tg-pv)*(tg===1?.12:.06);if(tg===1&&pv>.994)pv=1;ldn.textContent=Math.round(pv*100);lxr.style.strokeDashoffset=(1-pv).toFixed(4);ld.style.setProperty('--p',pv.toFixed(4));if(pv<1)requestAnimationFrame(lt);else setTimeout(opened,180)})()}
 })();
 
 (function(){var q=document.getElementById('start');if(!q)return;if(!('IntersectionObserver' in window)){q.classList.add('in');return}var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){q.classList.add('in');o.disconnect()}})},{threshold:.2});o.observe(q)})();
