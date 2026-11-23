@@ -889,6 +889,29 @@ main{background:var(--cr)}
  .vws.r{bottom:178px}
  .vwcta{bottom:100px}.vwcta .btn,.vwcta{white-space:nowrap}
 }
+
+/* v6.2 persona tiles: drawn, no photos */
+.qt6{background:linear-gradient(180deg,#FBF8F3,#F3EDE4);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(18,16,14,.08);transition:box-shadow .4s,transform .5s var(--o),background .4s}
+.qt6:after{display:none}
+.qt6:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(138,110,82,.35),0 24px 40px -28px rgba(60,40,20,.45)}
+.qdr{position:absolute;left:50%;top:20px;width:min(62%,180px);max-height:calc(100% - 96px);height:auto;transform:translateX(-50%);fill:none;stroke:#8A6E52;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.qdr path{stroke-dasharray:420;stroke-dashoffset:0;transition:stroke-dashoffset 1.6s var(--o)}
+.qdr .gd{stroke:rgba(18,16,14,.18)}
+.qdr .gl2{fill:rgba(138,110,82,.06);transition:fill .6s,stroke-dashoffset 1.6s var(--o)}
+.qdr .dsh{stroke-dasharray:3 4;stroke:rgba(138,110,82,.6)}
+.qt6:hover .qdr path:not(.dsh){animation:qdraw 1.4s var(--o)}
+@keyframes qdraw{from{stroke-dashoffset:420}to{stroke-dashoffset:0}}
+.qt6:hover .gl2,.qt6.on .gl2{fill:rgba(138,110,82,.16)}
+.qtt small{color:rgba(18,16,14,.55)}
+.qck{box-shadow:inset 0 0 0 1.5px rgba(18,16,14,.22)}
+.qt6.on{background:linear-gradient(180deg,#fff,#F7F1E8);box-shadow:inset 0 0 0 1.5px var(--br),0 22px 40px -26px rgba(60,40,20,.5)}
+.qz.in .qt6 .qdr path:not(.dsh){animation:qdraw 1.8s var(--o) both}
+.qz.in .qt6:nth-child(2) .qdr path{animation-delay:.12s}.qz.in .qt6:nth-child(3) .qdr path{animation-delay:.24s}.qz.in .qt6:nth-child(4) .qdr path{animation-delay:.36s}.qz.in .qt6:nth-child(5) .qdr path{animation-delay:.48s}
+@media (max-width:760px){
+ .qdr{top:16px;left:46%;width:min(64%,112px)}
+ .qtt{left:13px;right:13px;bottom:11px}.qtt small{display:none}
+ .qt6:nth-child(5) .qdr{width:120px}
+}
 </style>
 </head>
 <body>
@@ -944,7 +967,7 @@ main{background:var(--cr)}
     <a class="qzt" href="tel:+441277402469">Rather talk? <b>01277 402469</b></a>
    </div>
    <form class="qzr" id="qz" novalidate>
-    <div class="qs on" data-s="0"><p class="qq">I am a&hellip;</p><div class="qtg"><button type="button" class="qt6" data-p="home"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/e0b5c6cf-0776-42fc-a65c-0a5efa11470d.webp" alt="" loading="lazy"><span class="qtt"><b>Homeowner</b><small>Renovating, extending or building your own home</small></span><i class="qck"></i></button><button type="button" class="qt6" data-p="dev"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/3faf516d-754c-4a99-bd6e-867172f8f490.webp" alt="" loading="lazy"><span class="qtt"><b>Developer</b><small>Residential schemes, from a handful of units to large sites</small></span><i class="qck"></i></button><button type="button" class="qt6" data-p="arch"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/7b2c596f-f56c-4d7a-848a-e54c3722416d.webp" alt="" loading="lazy"><span class="qtt"><b>Architect or designer</b><small>Specifying glazing for a client project</small></span><i class="qck"></i></button><button type="button" class="qt6" data-p="con"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/69d6d601-7464-419c-8e89-e034ec31176c.webp" alt="" loading="lazy"><span class="qtt"><b>Builder or contractor</b><small>Supply, or supply and fit, for your build</small></span><i class="qck"></i></button><button type="button" class="qt6" data-p="com"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3ENLM0AKeKmvf4tDqddMsnHGEvu/70ef2d43-38ef-40cd-a6a4-b97011ed012a.webp" alt="" loading="lazy"><span class="qtt"><b>Commercial</b><small>Offices, retail, hospitality and public buildings</small></span><i class="qck"></i></button></div></div>
+    <div class="qs on" data-s="0"><p class="qq">I am a&hellip;</p><div class="qtg"><button type="button" class="qt6" data-p="home"><svg class="qdr" viewBox="0 0 160 100" aria-hidden="true"><path class="gd" d="M6 92H154"/><path d="M28 92V46L80 16l52 30v46"/><path class="gl2" d="M44 92V58h72v34"/><path d="M80 58v34M62 58v34M98 58v34"/><path class="gl2" d="M68 30h24v14H68z"/><path d="M80 30v14"/></svg><span class="qtt"><b>Homeowner</b><small>Renovating, extending or building your own home</small></span><i class="qck"></i></button><button type="button" class="qt6" data-p="dev"><svg class="qdr" viewBox="0 0 160 100" aria-hidden="true"><path class="gd" d="M6 92H154"/><path d="M14 92V40h36v52M50 92V28h44v64M94 92V48h40v44"/><path class="gl2" d="M20 48h10v10H20zM34 48h10v10H34zM20 64h10v10H20zM34 64h10v10H34zM58 36h12v12H58zM74 36h12v12H74zM58 54h12v12H58zM74 54h12v12H74zM58 72h12v12H58zM74 72h12v12H74zM102 56h10v10h-10zM116 56h10v10h-10zM102 72h10v10h-10zM116 72h10v10h-10z"/><path class="dsh" d="M140 92V20M136 20h12"/></svg><span class="qtt"><b>Developer</b><small>Residential schemes, from a handful of units to large sites</small></span><i class="qck"></i></button><button type="button" class="qt6" data-p="arch"><svg class="qdr" viewBox="0 0 160 100" aria-hidden="true"><path class="gd" d="M6 92H154"/><path d="M18 84V30h96v54z"/><path class="gl2" d="M30 84V44h34v40M74 44h28v24H74z"/><path d="M47 44v40M88 44v24"/><path class="dsh" d="M18 20h96M18 16v8M114 16v8M126 30v54M122 30h8M122 84h8"/><path d="M118 92l26-44 6 4-26 44z"/><path d="M118 92l3-8"/></svg><span class="qtt"><b>Architect or designer</b><small>Specifying glazing for a client project</small></span><i class="qck"></i></button><button type="button" class="qt6" data-p="con"><svg class="qdr" viewBox="0 0 160 100" aria-hidden="true"><path class="gd" d="M6 92H154"/><path d="M40 92V14M40 14h92M40 26l12-12M132 14v6"/><path d="M40 30l12-16M40 50l0 0"/><path class="dsh" d="M120 20v30"/><path d="M112 50h16v8h-16z"/><path d="M34 92h12"/><path d="M76 92V62h60v30M76 76h60M96 62v30M116 62v30"/><path class="gl2" d="M80 66h12v8H80zM100 66h12v8h-12zM120 66h12v8h-12z"/></svg><span class="qtt"><b>Builder or contractor</b><small>Supply, or supply and fit, for your build</small></span><i class="qck"></i></button><button type="button" class="qt6" data-p="com"><svg class="qdr" viewBox="0 0 160 100" aria-hidden="true"><path class="gd" d="M6 92H154"/><path d="M30 92V18h100v74"/><path class="gl2" d="M38 26h84v56H38z"/><path d="M38 40h84M38 54h84M38 68h84M59 26v56M80 26v56M101 26v56"/><path d="M70 92V84h20v8"/></svg><span class="qtt"><b>Commercial</b><small>Offices, retail, hospitality and public buildings</small></span><i class="qck"></i></button></div></div>
     <div class="qs" data-s="1"><div id="qsq"></div></div>
     <div class="qs" data-s="2">
      <p class="qq">Where should we send your <b>consultation details?</b></p>
@@ -1079,7 +1102,7 @@ main{background:var(--cr)}
  </div></footer>
 </section>
 </main>
-<div class="ffw" id="ffw" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="vfl" id="vfl"><b id="vfn">01</b><em id="vft">Collections</em></span></div>
+
 
 <div class="mbar" id="mbar"><a href="tel:+441277402469">Call</a><a href="https://wa.me/447897794579">WhatsApp</a><a class="p" href="#start">Consultation</a></div>
 
@@ -1162,7 +1185,7 @@ function frame(){var y=lenis?lenis.scroll:scrollY,H=innerHeight,W=innerWidth;
  if(!bd.classList.contains('mo')){if(y>H*.9&&y>lastY+4)hd.classList.add('hide');else if(y<lastY-4||y<H*.9)hd.classList.remove('hide')}lastY=y;
  mbar.classList.toggle('on',y>H*.8);
  var m=mob();
- parts(y,H,W,m);view(H,W,m);follow(H,W,m);
+ parts(y,H,W,m);view(H,W,m);
  /* explode */
  var pE=prog(ex);exV=cl((pE-.06)/.62);
  var rE=ex.getBoundingClientRect();if(rE.bottom>0&&rE.top<H){xvC=scrub(xv,ezz(exV),xvC);xls.forEach(function(li,i){li.classList.toggle('on',exV>.12+i*.13)})}
@@ -1279,5 +1302,7 @@ function opened(){ld.classList.add('out');lenis&&lenis.start();setTimeout(functi
 if(SNAP||reduce){ld.classList.add('done');root.classList.add('go')}
 else{lenis&&lenis.stop();scrollTo(0,0);(function lt(){var el=performance.now()-lt0;var tg=Math.min(.9,.08+(ldone/Math.max(1,lims.length))*.62+Math.min(el/3000,.2));if((lw&&el>1500)||el>5500)tg=1;pv+=(tg-pv)*(tg===1?.12:.06);if(tg===1&&pv>.994)pv=1;ldn.textContent=Math.round(pv*100);lxr.style.strokeDashoffset=(1-pv).toFixed(4);if(pv<1)requestAnimationFrame(lt);else setTimeout(opened,180)})()}
 })();
+
+(function(){var q=document.getElementById('start');if(!q)return;if(!('IntersectionObserver' in window)){q.classList.add('in');return}var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){q.classList.add('in');o.disconnect()}})},{threshold:.2});o.observe(q)})();
 </script>
 </body></html>
