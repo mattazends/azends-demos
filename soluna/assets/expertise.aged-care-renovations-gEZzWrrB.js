@@ -1,0 +1,1 @@
+import{Y as e}from"./Shell-DhH-0Xw9.js";import{n as t,r as n}from"./index-BzVxvBQK.js";var r=e(),i=()=>(0,r.jsx)(t,{page:n});export{i as component};

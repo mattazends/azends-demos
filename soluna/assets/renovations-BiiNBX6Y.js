@@ -1,0 +1,1 @@
+import{Y as e}from"./Shell-DhH-0Xw9.js";import{o as t}from"./index-BzVxvBQK.js";var n=e(),r=()=>(0,n.jsx)(t,{slug:`renovations`});export{r as component};
