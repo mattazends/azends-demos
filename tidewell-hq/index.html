@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F4F7F8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Tidewell HQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1A1F;--ink2:#3A474D;--mute:#6B7A80;--mute2:#9AA6AB;--bg:#F3F6F7;--card:#fff;--line:#E3EAEC;--line2:#EEF3F4;
+--brand:#0F4C5C;--brand2:#0A3742;--aqua:#5CE1E6;--aqua2:#2CC6CF;--aquabg:#DDF6F7;
+--blue:#2E6BE0;--bluebg:#E6EEFC;--violet:#7C5CFA;--violetbg:#EFEBFF;--amber:#E39A12;--amberbg:#FFF3DC;--green:#14955A;--greenbg:#E3F5EB;
+--rose:#E5484D;--rosebg:#FDE8E9;--pink:#D9539C;--pinkbg:#FCE9F3;--orange:#EB7430;--orangebg:#FDEDE2;--slate:#56656B;--slatebg:#EDF1F2;
+--r:16px;--sh:0 1px 2px rgba(14,26,31,.04),0 4px 16px rgba(14,26,31,.04);--sb:252px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'Figtree',-apple-system,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;font-size:14px;letter-spacing:-.011em;line-height:1.4;overflow:hidden}
+button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer;letter-spacing:inherit;font-size:inherit;text-align:inherit}
+input,textarea,select{font-family:inherit;letter-spacing:inherit;color:inherit;font-size:inherit}
+svg{flex-shrink:0}
+.num{font-variant-numeric:tabular-nums}
+/* ---------- shell ---------- */
+.app{display:flex;height:100vh;height:100dvh}
+.side{width:var(--sb);flex-shrink:0;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;height:100%;z-index:40}
+.sbtop{padding:18px 18px 12px;display:flex;align-items:center;gap:10px}
+.lmk{display:inline-grid;place-items:center;background:var(--brand);flex-shrink:0;width:34px;height:34px;border-radius:10px}
+.wm{font-weight:700;letter-spacing:-.03em;font-size:15.5px;line-height:1.05}.wm span{color:var(--brand)}.wm small{display:block;font-size:11px;color:var(--mute);font-weight:500;letter-spacing:0;margin-top:2px}
+.sbsearch{margin:4px 14px 8px;display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:10px;padding:8px 10px;color:var(--mute);font-size:13px}
+.sbsearch kbd{margin-left:auto;font-family:inherit;font-size:10.5px;background:#fff;border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+.nav{flex:1;overflow-y:auto;padding:4px 10px 14px;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+.ng{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mute2);padding:14px 10px 6px}
+.ni{display:flex;align-items:center;gap:10px;width:100%;padding:7px 10px;border-radius:10px;font-weight:500;color:var(--ink2);font-size:13.5px;transition:background .15s}
+.ni:hover{background:var(--bg)}
+.ni .dot{width:26px;height:26px;border-radius:8px;display:grid;place-items:center}
+.ni.on{background:var(--aquabg);color:var(--brand2);font-weight:650}
+.ni.off{opacity:.42;cursor:default}.ni.off:hover{background:none}
+.ni .bg{margin-left:auto;font-size:11px;font-weight:700;padding:1px 7px;border-radius:20px;background:var(--rose);color:#fff}
+.ni .bg.g{background:var(--line);color:var(--ink2)}
+.ni .lk{margin-left:auto;color:var(--mute2)}
+.sbme{border-top:1px solid var(--line);padding:12px 14px;display:flex;align-items:center;gap:10px}
+.main{flex:1;min-width:0;display:flex;flex-direction:column;height:100%}
+.top{height:64px;flex-shrink:0;display:flex;align-items:center;gap:12px;padding:0 26px;border-bottom:1px solid var(--line);background:rgba(243,246,247,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.top h1{font-size:20px;font-weight:700;letter-spacing:-.025em}
+.top .sub{color:var(--mute);font-size:13px;margin-left:4px}
+.top .sp{flex:1}
+.ib{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);position:relative;color:var(--ink2)}
+.ib .rd{position:absolute;top:8px;right:9px;width:8px;height:8px;border-radius:50%;background:var(--rose);border:2px solid #fff}
+.menu{display:none}
+.view{flex:1;overflow-y:auto;padding:24px 26px 60px;-webkit-overflow-scrolling:touch}
+.wrap{max-width:1320px;margin:0 auto}
+/* ---------- atoms ---------- */
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--line2)}
+.cp{padding:18px 20px}
+.ch{display:flex;align-items:center;gap:10px;padding:16px 20px 0}
+.ch h3{font-size:15px;font-weight:700;letter-spacing:-.02em}
+.ch .r{margin-left:auto;display:flex;gap:8px;align-items:center}
+.lnk{color:var(--brand);font-weight:600;font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;padding:0 15px;border-radius:11px;font-weight:600;font-size:13.5px;white-space:nowrap;transition:transform .1s,filter .15s}
+.btn:active{transform:scale(.97)}
+.btn.p{background:var(--brand);color:#fff}.btn.p:hover{filter:brightness(1.12)}
+.btn.a{background:var(--aqua);color:var(--brand2)}
+.btn.g{background:#fff;border:1px solid var(--line)}
+.btn.s{height:32px;padding:0 11px;font-size:12.5px;border-radius:9px}
+.pill{display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 9px;border-radius:20px;font-size:11.5px;font-weight:650;white-space:nowrap}
+.t-blue{background:var(--bluebg);color:var(--blue)}.t-violet{background:var(--violetbg);color:var(--violet)}.t-amber{background:var(--amberbg);color:#B87400}.t-green{background:var(--greenbg);color:var(--green)}
+.t-rose{background:var(--rosebg);color:var(--rose)}.t-pink{background:var(--pinkbg);color:var(--pink)}.t-orange{background:var(--orangebg);color:var(--orange)}.t-slate{background:var(--slatebg);color:var(--slate)}.t-aqua{background:var(--aquabg);color:var(--brand)}
+.av{display:inline-grid;place-items:center;border-radius:50%;font-weight:700;color:#fff;flex-shrink:0;letter-spacing:0}
+.avs{display:flex}.avs .av{border:2px solid #fff;margin-left:-7px}.avs .av:first-child{margin-left:0}
+.muted{color:var(--mute)}.small{font-size:12.5px}.tiny{font-size:11.5px}.b{font-weight:700}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g21{display:grid;grid-template-columns:1.65fr 1fr;gap:14px}
+.mt{margin-top:14px}.mt20{margin-top:20px}
+.kpi{padding:16px 18px;position:relative;overflow:hidden}
+.kpi .l{font-size:12.5px;color:var(--mute);font-weight:500;display:flex;align-items:center;gap:7px}
+.kpi .v{font-size:26px;font-weight:700;letter-spacing:-.035em;margin-top:8px}
+.kpi .d{font-size:12px;margin-top:4px;color:var(--mute)}
+.up{color:var(--green);font-weight:650}.dn{color:var(--rose);font-weight:650}
+.kpi .spark{position:absolute;right:14px;bottom:14px}
+.hero{border-radius:20px;background:linear-gradient(135deg,#0F4C5C 0%,#0A3742 60%,#082C35 100%);color:#fff;padding:22px 24px;position:relative;overflow:hidden}
+.hero .loop{position:absolute;right:-40px;top:-30px;width:300px;opacity:.22;pointer-events:none}
+.hero h2{font-size:24px;font-weight:700;letter-spacing:-.03em}
+.hero p{color:rgba(255,255,255,.72);margin-top:4px}
+.hstats{display:flex;gap:28px;margin-top:18px;flex-wrap:wrap;position:relative}
+.hstats div b{display:block;font-size:22px;font-weight:700;letter-spacing:-.03em}
+.hstats div span{font-size:12px;color:rgba(255,255,255,.62)}
+.seg{display:inline-flex;background:var(--bg);border-radius:10px;padding:3px}
+.seg button{height:28px;padding:0 11px;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--mute)}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+/* list rows */
+.rows .rw{display:grid;align-items:center;gap:12px;padding:12px 20px;border-top:1px solid var(--line2);cursor:pointer;transition:background .12s}
+.rows .rw:hover{background:#FAFCFC}
+.rows .hd{display:grid;gap:12px;padding:10px 20px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute2)}
+.who{display:flex;align-items:center;gap:10px;min-width:0}.who>div{min-width:0}
+.who .n{font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.who .s{font-size:12px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{height:6px;border-radius:6px;background:var(--line2);overflow:hidden}.bar i{display:block;height:100%;border-radius:6px;background:var(--aqua2)}
+.tog{width:40px;height:24px;border-radius:20px;background:#D5DDE0;position:relative;transition:background .2s;flex-shrink:0}
+.tog::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .25s cubic-bezier(.3,1.4,.6,1)}
+.tog.on{background:var(--green)}.tog.on::after{transform:translateX(16px)}
+.thumb{border-radius:12px;background:linear-gradient(135deg,#2A6E7E,#0A3742);overflow:hidden;flex-shrink:0}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:650;color:var(--green)}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pl 1.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(20,149,90,.45)}100%{box-shadow:0 0 0 8px rgba(20,149,90,0)}}
+.fade{animation:fd .35s ease both}@keyframes fd{from{opacity:0;transform:translateY(6px)}}
+/* feed */
+.feed .it{display:flex;gap:12px;padding:11px 20px;border-top:1px solid var(--line2)}
+.feed .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.feed .tx{flex:1;min-width:0;font-size:13px}.feed .tx b{font-weight:650}
+.feed .tm{font-size:11.5px;color:var(--mute2);white-space:nowrap}
+.feed .new{animation:nw 1.2s ease}@keyframes nw{from{background:var(--aquabg)}}
+/* kanban */
+.kb{display:flex;gap:12px;overflow-x:auto;padding-bottom:12px;align-items:flex-start;scroll-snap-type:x mandatory}
+.col{width:272px;flex-shrink:0;background:#E9EEF0;border-radius:16px;padding:10px;scroll-snap-align:start}
+.col.over{background:var(--aquabg);outline:2px dashed var(--aqua2)}
+.colh{display:flex;align-items:center;gap:8px;padding:4px 6px 10px}
+.colh .cd{width:8px;height:8px;border-radius:50%}
+.colh b{font-size:13px}.colh .c{font-size:12px;color:var(--mute);font-weight:600}.colh .v{margin-left:auto;font-size:12px;font-weight:650;color:var(--ink2)}
+.lc{background:#fff;border-radius:13px;padding:12px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.05);cursor:grab;transition:box-shadow .15s,transform .15s;border:1px solid transparent}
+.lc:hover{box-shadow:0 6px 18px rgba(14,26,31,.08)}
+.lc.drag{opacity:.4}
+.lc .tp{display:flex;align-items:center;gap:8px}
+.lc .nm{font-weight:650;font-size:13.5px}.lc .tw{font-size:12px;color:var(--mute)}
+.lc .val{margin-left:auto;font-weight:700;font-size:13.5px}
+.lc .mt8{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.lc .ft{display:flex;align-items:center;gap:7px;margin-top:10px;padding-top:9px;border-top:1px solid var(--line2);font-size:11.5px;color:var(--mute)}
+.lc .hot{color:var(--rose);font-weight:650}
+/* drawer */
+.ov{position:fixed;inset:0;background:rgba(10,20,24,.35);opacity:0;pointer-events:none;transition:opacity .3s;z-index:80}
+.ov.in{opacity:1;pointer-events:auto}
+.dr{position:fixed;top:0;right:0;bottom:0;width:520px;max-width:100%;background:var(--bg);z-index:90;transform:translateX(102%);transition:transform .42s cubic-bezier(.2,.9,.25,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.12)}
+.dr.in{transform:none}
+.drh{display:flex;align-items:center;gap:12px;padding:16px 20px;background:#fff;border-bottom:1px solid var(--line)}
+.drb{flex:1;overflow-y:auto;padding:18px 20px 40px}
+.drf{padding:14px 20px calc(14px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);display:flex;gap:8px}
+.drf .btn{flex:1}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2);border-radius:14px;overflow:hidden}
+.kv div{background:#fff;padding:11px 14px}.kv span{display:block;font-size:11.5px;color:var(--mute)}.kv b{font-weight:650;font-size:13.5px}
+.tl{position:relative;padding-left:22px}
+.tl::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl .e{position:relative;padding:0 0 14px}
+.tl .e::before{content:'';position:absolute;left:-20px;top:4px;width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid var(--aqua2)}
+.tl .e.k::before{background:var(--aqua2)}
+.tl .e b{font-weight:650}.tl .e .tm{font-size:11.5px;color:var(--mute2)}
+.stp{display:flex;gap:3px}.stp i{flex:1;height:5px;border-radius:4px;background:var(--line)}.stp i.d{background:var(--aqua2)}.stp i.c{background:linear-gradient(90deg,var(--aqua2) 50%,var(--line) 50%)}
+/* calendar */
+.calw{overflow-x:auto}
+.cal{min-width:980px;display:grid;grid-template-columns:168px repeat(7,1fr)}
+.cal .hc{padding:10px 8px;font-size:12px;font-weight:650;color:var(--mute);border-bottom:1px solid var(--line);text-align:center}
+.cal .hc.td{color:var(--brand)}.cal .hc.td b{background:var(--brand);color:#fff;border-radius:7px;padding:1px 7px}
+.cal .hc b{display:inline-block;font-size:15px;color:var(--ink);margin-top:2px}
+.cal .wx{padding:6px;font-size:11.5px;text-align:center;border-bottom:1px solid var(--line);color:var(--mute);display:flex;align-items:center;justify-content:center;gap:4px}
+.cal .wx.bad{background:#FFF7F7;color:var(--rose);font-weight:650}
+.cal .rh{padding:12px 14px;border-bottom:1px solid var(--line2);display:flex;align-items:center;gap:9px;font-weight:650;font-size:13px}
+.cal .cell{border-bottom:1px solid var(--line2);border-left:1px solid var(--line2);padding:5px;min-height:74px;position:relative}
+.cal .cell.td{background:#F6FDFD}
+.ev{border-radius:9px;padding:6px 8px;font-size:11.5px;line-height:1.3;margin-bottom:4px;cursor:pointer;border-left:3px solid}
+.ev b{display:block;font-weight:650;font-size:12px}
+/* inbox */
+.inb{display:grid;grid-template-columns:340px 1fr;height:calc(100dvh - 64px - 48px);min-height:520px}
+.thl{border-right:1px solid var(--line);overflow-y:auto}
+.th{display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--line2);cursor:pointer;position:relative}
+.th.on{background:var(--aquabg)}.th .un{position:absolute;right:16px;top:36px;width:9px;height:9px;border-radius:50%;background:var(--blue)}
+.th .tx{flex:1;min-width:0}.th .tx .n{display:flex;gap:6px;align-items:center;font-weight:650}.th .tx .n .tm{margin-left:auto;font-size:11.5px;color:var(--mute2);font-weight:500}
+.th .tx .p{font-size:12.5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.chan{width:16px;height:16px;border-radius:5px;display:grid;place-items:center;color:#fff}
+.tv{display:flex;flex-direction:column;min-width:0}
+.tvh{display:flex;align-items:center;gap:11px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.msgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:8px;background:#FAFCFC}
+.mg{max-width:74%;padding:9px 13px;border-radius:16px;font-size:13.5px;line-height:1.42}
+.mg.them{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px}
+.mg.me{background:var(--brand);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+.mg.bot{background:var(--violetbg);color:#3D2B99;align-self:flex-end;border-bottom-right-radius:5px}
+.mg .mt{display:block;font-size:10.5px;opacity:.6;margin-top:3px}
+.sysm{align-self:center;font-size:11.5px;color:var(--mute);background:#fff;border:1px solid var(--line);border-radius:20px;padding:4px 11px;display:flex;gap:6px;align-items:center}
+.cmp{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line);align-items:center}
+.cmp input{flex:1;height:40px;border-radius:12px;border:1px solid var(--line);padding:0 13px;outline:none;background:#fff}
+.cmp input:focus{border-color:var(--aqua2)}
+.aisug{margin:0 14px;padding:10px 12px;border-radius:12px;background:var(--violetbg);font-size:12.5px;color:#3D2B99;display:flex;gap:9px;align-items:flex-start;cursor:pointer}
+/* automations */
+.au{display:flex;align-items:center;gap:14px;padding:14px 20px;border-top:1px solid var(--line2);cursor:pointer}
+.au .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.au .tx{flex:1;min-width:0}.au .tx b{font-weight:650}
+.au .st{text-align:right;font-size:12px;color:var(--mute);min-width:110px}.au .st b{display:block;color:var(--ink);font-size:14px}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;padding:8px 0}
+.fn{width:100%;max-width:380px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;gap:11px;align-items:center}
+.fn .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.fn small{display:block;color:var(--mute);font-size:12px}
+.fl{width:2px;height:22px;background:var(--line);position:relative}
+.fl::after{content:'';position:absolute;left:-3px;bottom:-1px;border:4px solid transparent;border-top-color:var(--mute2)}
+.fl.go{background:linear-gradient(var(--aqua2),var(--aqua2)) no-repeat;background-size:2px 0;animation:fg 1.2s ease forwards}
+@keyframes fg{to{background-size:2px 100%}}
+/* pools */
+.pl{padding:14px;position:relative}
+.pl .tmp{font-size:30px;font-weight:700;letter-spacing:-.04em}
+.pl .tmp small{font-size:14px;color:var(--mute);font-weight:500}
+.pl .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.pl .mini div{background:var(--bg);border-radius:9px;padding:6px 8px;font-size:11px;color:var(--mute)}.pl .mini b{display:block;font-size:13px;color:var(--ink)}
+.pl.alert{box-shadow:0 0 0 2px var(--rose) inset,var(--sh)}
+.pl .wv{position:absolute;right:12px;top:12px}
+/* toast */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);opacity:0;background:var(--ink);color:#fff;padding:11px 16px 11px 12px;border-radius:14px;display:flex;align-items:center;gap:10px;z-index:200;transition:all .35s cubic-bezier(.2,.9,.3,1.2);box-shadow:0 12px 40px rgba(0,0,0,.25);max-width:calc(100% - 32px)}
+.toast.in{opacity:1;transform:translate(-50%,0)}
+.toast .ti{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--aqua);color:var(--brand2);flex-shrink:0}
+.toast b{font-weight:650;display:block;font-size:13.5px}.toast span{font-size:12px;opacity:.7}
+.bnav{display:none}
+.mtop{display:none}
+.ttl{display:flex;align-items:flex-end;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.ttl h2{font-size:24px;font-weight:700;letter-spacing:-.03em}
+.ttl p{color:var(--mute);margin-top:2px}
+.ttl .r{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.chip{height:32px;padding:0 12px;border-radius:20px;background:#fff;border:1px solid var(--line);font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.empty{padding:30px;text-align:center;color:var(--mute)}
+.stars{color:#F5B400;letter-spacing:1px}
+/* ---------- responsive ---------- */
+@media(max-width:1180px){.g4{grid-template-columns:repeat(2,1fr)}.g21{grid-template-columns:1fr}}
+@media(max-width:860px){
+  body{font-size:14.5px}
+  .side{position:fixed;left:0;top:0;bottom:0;transform:translateX(-102%);transition:transform .38s cubic-bezier(.2,.9,.25,1);box-shadow:20px 0 60px rgba(0,0,0,.14);width:286px;padding-top:env(safe-area-inset-top)}
+  .side.in{transform:none}
+  .top{display:none}
+  .mtop{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;background:rgba(243,246,247,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);flex-shrink:0}
+  .mtop h1{font-size:17px;font-weight:700;letter-spacing:-.02em}
+  .mtop .sp{flex:1}
+  .view{padding:16px 14px calc(96px + env(safe-area-inset-bottom))}
+  .g4,.g3{grid-template-columns:1fr 1fr;gap:10px}.g2{grid-template-columns:1fr}
+  .kpi{padding:14px}.kpi .v{font-size:22px}.kpi .spark{display:none}
+  .hm{display:none!important}
+  .g1m{grid-template-columns:1fr!important}.rows .rw.bx{grid-template-columns:52px 1fr auto!important}
+  .ttl h2{font-size:21px}.ttl .r{margin-left:0;width:100%}
+  .hero{padding:18px}.hero h2{font-size:21px}.hstats{gap:18px}
+  .col{width:84vw;max-width:320px}
+  .kb{margin:0 -14px;padding:0 14px 12px;scroll-padding:14px}
+  .dr{width:100%;border-radius:0}
+  .drh{padding-top:calc(16px + env(safe-area-inset-top))}
+  .inb{grid-template-columns:1fr;height:auto;min-height:0}
+  .inb .tv{display:none}.inb.open .thl{display:none}.inb.open .tv{display:flex;height:calc(100dvh - 190px)}
+  .rows .rw,.rows .hd{padding-left:14px;padding-right:14px}
+  .ch{padding:14px 14px 0}.cp{padding:14px}.feed .it,.au{padding-left:14px;padding-right:14px}
+  .au .st{min-width:0}
+  .bnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+  .bnav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:600;color:var(--mute2);padding:4px 0;position:relative}
+  .bnav button.on{color:var(--brand)}
+  .bnav .bg{position:absolute;top:0;left:calc(50% + 6px);background:var(--rose);color:#fff;font-size:10px;border-radius:9px;padding:0 5px;border:2px solid #fff}
+  .toast{bottom:calc(84px + env(safe-area-inset-bottom))}
+  input,select,textarea{font-size:16px}
+}
+@media(max-width:380px){.g4,.g3{grid-template-columns:1fr 1fr}.kpi .v{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side" id="side"></aside>
+  <div class="main">
+    <div class="top"><div><h1 id="ttl">Dashboard</h1></div><span class="sub" id="tsub"></span><div class="sp"></div>
+      <button class="btn g" onclick="A.search()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</button>
+      <button class="ib" onclick="A.go('inbox')" aria-label="Notifications"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i class="rd"></i></button>
+      <button class="btn p" onclick="A.newLead()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>New enquiry</button>
+    </div>
+    <div class="mtop"><button class="ib" onclick="A.side(1)" aria-label="Menu"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button><h1 id="mttl">Dashboard</h1><div class="sp"></div><button class="ib" onclick="A.newLead()" aria-label="New enquiry" style="background:var(--brand);color:#fff;border-color:var(--brand)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+    <div class="view" id="view"></div>
+  </div>
+</div>
+<nav class="bnav" id="bnav"></nav>
+<div class="ov" id="ov" onclick="A.close()"></div>
+<div class="dr" id="dr"></div>
+<div class="toast" id="toast"></div>
+<script>
+/* ================= CORE ================= */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const A={};
+const PX=(id,w=640)=>`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+const P={tudor:PX(18559627),brick:PX(8143681),suburb:PX(5306735),trees:PX(30463419),garden:PX(9056658),modern:PX(8134745),lush:PX(1692795),sunset:PX(17568056),dig:PX(9459174),dig2:PX(10421754),rebar:PX(37733179),pour:PX(37733176),mesh:PX(37475275),mosaic:PX(34990613),coping:PX(28271343),steps:PX(8974468),corner:PX(2876753)};
+const money=n=>'£'+Math.round(n).toLocaleString('en-GB');
+const mk=n=>n>=1e6?'£'+(n/1e6).toFixed(2).replace(/\.?0+$/,'')+'m':n>=1e3?'£'+(n/1e3).toFixed(n>=1e5?0:1).replace(/\.0$/,'')+'k':'£'+n;
+const img=(src,cls='',st='')=>`<div class="thumb ${cls}" style="${st}"><img src="${src}" alt="" loading="lazy" onerror="this.style.opacity=0"></div>`;
+const PATHS={
+home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+inbox:'<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+cal:'<rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+kanban:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 7v7M12 7v4M16 7v9"/>',
+users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>',
+ruler:'<path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/>',
+hammer:'<path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64M20.91 11.7l-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/>',
+layers:'<path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/>',
+swap:'<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',
+stamp:'<path d="M5 22h14M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1.5c0-.66-.26-1.3-.73-1.77"/><path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-6 0c0 2 1 2 1 3.5V13"/>',
+truck:'<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>',
+hat:'<path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5M4 15v-3a6 6 0 0 1 6-6M14 6a6 6 0 0 1 6 6v3"/>',
+pound:'<path d="M18 7c0-5.33-8-5.33-8 0M10 7v14M6 21h12M6 13h10"/>',
+receipt:'<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8M12 17.5v-11"/>',
+chart:'<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/>',
+heart:'<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+drop:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+star:'<path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>',
+zap:'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
+target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+gift:'<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
+cog:'<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+phone:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+missed:'<path d="m16 2 6 6M22 2l-6 6"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+msg:'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+mail:'<rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 6L2 7"/>',
+chev:'<path d="m9 18 6-6-6-6"/>',
+chevd:'<path d="m6 9 6 6 6-6"/>',
+x:'<path d="M18 6 6 18M6 6l12 12"/>',
+check:'<path d="M20 6 9 17l-5-5"/>',
+clock:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
+rain:'<path d="M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 2.5 8.24M16 14v6M8 14v6M12 16v6"/>',
+cloud:'<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>',
+lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+send:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+pin:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+cam:'<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/>',
+thermo:'<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>',
+sparkle:'<path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2z"/>',
+eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+pen:'<path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+alert:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/>',
+up:'<path d="m7 17 10-10M7 7h10v10"/>',
+play:'<path d="m6 3 14 9-14 9z"/>',
+star2:'<path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" fill="currentColor"/>',
+box:'<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/>',
+grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+link:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+wave:'<path d="M2 9c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5-1M2 15c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5-1"/>'
+};
+const ic=(n,s=18,w=2)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${PATHS[n]||''}</svg>`;
+const MARK=(s=34)=>`<span class="lmk" style="width:${s}px;height:${s}px;border-radius:${s*.3}px"><svg viewBox="0 0 40 40" width="${s*.7}" height="${s*.7}" fill="none" stroke-linecap="round"><path d="M6 17c4.7-4 9.3-4 14 0s9.3 4 14 0" stroke="#5CE1E6" stroke-width="3.6"/><path d="M6 26c4.7-4 9.3-4 14 0s9.3 4 14 0" stroke="#fff" stroke-width="3.6"/></svg></span>`;
+const LOOP=`<svg class="loop" viewBox="0 0 260 220" fill="none"><path d="M-20 170c30-22 55-22 85 0s55 22 85 0 55-22 85 0 55 22 85 0M-20 120c30-22 55-22 85 0s55 22 85 0 55-22 85 0 55 22 85 0" stroke="#5CE1E6" stroke-width="9" stroke-linecap="round"/></svg>`;
+const AVC=['#0F4C5C','#2E6BE0','#7C5CFA','#D9539C','#EB7430','#14955A','#2CC6CF','#56656B','#E39A12'];
+const ini=n=>n.split(' ').map(w=>w[0]).slice(0,2).join('');
+const hash=s=>[...s].reduce((a,c)=>a+c.charCodeAt(0),0);
+const av=(n,s=32)=>`<span class="av" style="width:${s}px;height:${s}px;font-size:${s*.38}px;background:${AVC[hash(n)%AVC.length]}">${ini(n)}</span>`;
+function toast(t,s='',i='check'){const el=$('#toast');el.innerHTML=`<span class="ti">${ic(i,16,2.4)}</span><div><b>${t}</b>${s?`<span>${s}</span>`:''}</div>`;el.classList.add('in');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('in'),2800)}
+const TONE={blue:'t-blue',violet:'t-violet',amber:'t-amber',green:'t-green',rose:'t-rose',pink:'t-pink',orange:'t-orange',slate:'t-slate',aqua:'t-aqua'};
+const COL={blue:'#2E6BE0',violet:'#7C5CFA',amber:'#E39A12',green:'#14955A',rose:'#E5484D',pink:'#D9539C',orange:'#EB7430',slate:'#56656B',aqua:'#2CC6CF',brand:'#0F4C5C'};
+
+/* ================= DATA ================= */
+const TEAM={tom:{n:'Tom Hale',r:'Founder & designer'},callum:{n:'Callum Price',r:'Site manager'},ryan:{n:'Ryan Doyle',r:'Build lead'},priya:{n:'Priya Shah',r:'Customer success'},jess:{n:'Jess Moore',r:'Office & accounts'},dan:{n:'Dan Ellis',r:'Service engineer'}};
+const SRC={google:['Google Ads','blue'],meta:['Meta Ads','violet'],seo:['Website','aqua'],ref:['Referral','pink'],insta:['Instagram','orange'],show:['Garden show','amber']};
+const STG=[
+ {k:'new',n:'New enquiry',c:'blue'},{k:'survey',n:'Survey booked',c:'violet'},{k:'design',n:'Design sent',c:'amber'},
+ {k:'won',n:'Accepted',c:'green'},{k:'build',n:'In build',c:'aqua'},{k:'done',n:'Complete',c:'slate'}];
+let LEADS=[
+ ['Hannah Clarke','Oxshott','new','google',96000,'Signature','10 min ago',1,'Missed call · auto text sent','Wants it ready for next summer'],
+ ['Marcus Webb','Cobham','new','meta',72000,'Classic','34 min ago',1,'Form · Meta lead ad','Two kids, wants it heated'],
+ ['Sophie Turner','Esher','new','seo',118000,'Resort','1 hr ago',0,'Website · pool cost calculator',"Saw a friend's pool"],
+ ['Daniel Okafor','Walton-on-Thames','new','ref',88000,'Signature','2 hrs ago',0,'Referral from Olivia Bennett','Referred by a past customer'],
+ ['Emma Lawson','Virginia Water','new','insta',134000,'Resort','Yesterday',0,'Instagram DM','Big garden, spa wanted'],
+ ['James Porter','Weybridge','survey','google',91000,'Signature','Thu 26 Nov · 10:00',0,'Survey with Tom','Slope at back of garden'],
+ ['Laura Fenwick','Ascot','survey','show',126000,'Resort','Fri 27 Nov · 14:00',0,'Survey with Tom','Met at Surrey garden show'],
+ ['Nick & Amy Shaw','Guildford','survey','meta',68000,'Classic','Mon 30 Nov · 11:00',0,'Survey with Tom','Budget conscious'],
+ ['Rachel Green','Reigate','design','seo',99500,'Signature','Viewed 6 times',1,'Proposal P-0231','Opened last night 22:14'],
+ ['Oliver Hart','Sunningdale','design','ref',142000,'Resort','Viewed 3 times',1,'Proposal P-0229','Asked about swim jets'],
+ ['Chloe Adams','Godalming','design','google',76500,'Classic','Viewed once',0,'Proposal P-0233','Sent Monday'],
+ ['Ben Mitchell','Leatherhead','design','meta',84900,'Signature','Not opened',0,'Proposal P-0234','Sent today'],
+ ['Grace Kim','Epsom','won','google',89000,'Signature','Deposit due',0,'Signed 20 Nov','Deposit chaser running'],
+ ['Tom & Lucy Reed','Farnham','won','ref',112000,'Resort','Deposit paid',0,'Signed 16 Nov','LDC applied 18 Nov'],
+ ['Olivia Bennett','Weybridge','done','google',86280,'Signature','Handed over 9 Nov',0,'Signed off in portal','Care plan active'],
+ ['Alex Novak','Haslemere','build','seo',94000,'Signature','Day 12 of 25',0,'Steel & shell','Pour booked Thu'],
+ ['Priya Desai','Woking','build','meta',71000,'Classic','Day 21 of 25',0,'Liner & coping','On track'],
+ ['William Ford','Camberley','build','google',128000,'Resort','Day 4 of 30',0,'Dig','Drain found, VO raised'],
+ ['Sarah Collins','Cobham','done','ref',102000,'Resort','Handed over 2 Oct',0,'Signed off','5 star review left'],
+];
+LEADS=LEADS.map((l,i)=>({id:i,name:l[0],town:l[1],st:l[2],src:l[3],val:l[4],pool:l[5],when:l[6],hot:l[7],note:l[8],ctx:l[9],own:['tom','tom','priya','tom','priya'][i%5]}));
+const BUILDS=[
+ {lead:15,img:P.rebar,stage:4,day:12,days:25,crew:['callum','ryan'],next:'Shell pour · Thu 26 Nov 08:00',paid:.7,margin:31,flag:'',upd:'Steel cage passed inspection'},
+ {lead:16,img:P.mosaic,stage:6,day:21,days:25,crew:['ryan','dan'],next:'Fill & balance · Mon 30 Nov',paid:.7,margin:34,flag:'',upd:'Coping laid, liner fitted'},
+ {lead:17,img:P.dig2,stage:2,day:4,days:30,crew:['callum'],next:'Customer to approve VO-02',paid:.2,margin:28,flag:'VO waiting',upd:'Old drain found under deep end'},
+ {lead:13,img:P.garden,stage:1,day:0,days:30,crew:['tom'],next:'LDC decision due 16 Dec',paid:.2,margin:33,flag:'',upd:'Council certificate applied for'},
+];
+const BSTG=['Survey','Council cert','Dig','Steel','Shell','Plant room','Finish','Fill & heat','Handover'];
+/* ================= NAV ================= */
+const NAV=[
+ ['Overview',[['dash','Dashboard','home','brand'],['inbox','Inbox','inbox','blue',4],['cal','Calendar','cal','violet']]],
+ ['Sales',[['pipe','Pipeline','kanban','amber'],['cust','Customers','users','pink'],['quotes','Proposals','file','orange'],['surv','Surveys','ruler','violet',0,1]]],
+ ['Builds',[['builds','Active builds','hammer','aqua',4],['council','Council certificates','stamp','slate'],['mat','Materials & deliveries','truck','orange'],['var','Variations','swap','amber',0,1],['crew','Crew & subcontractors','hat','slate',0,1]]],
+ ['Money',[['pay','Payments','pound','green'],['inv','Invoices','receipt','green',0,1],['fin','Job profit','chart','green',0,1]]],
+ ['Aftercare',[['pools','Connected pools','drop','aqua',2],['care','Care plans','heart','pink'],['svc','Service visits','wrench','blue',0,1],['rev','Reviews','star','amber']]],
+ ['Growth',[['auto','Automations','zap','violet'],['src','Lead sources','target','rose'],['refer','Referrals','gift','pink',0,1]]],
+ ['Company',[['team','Team','users','slate',0,1],['docs','Documents','file','slate',0,1],['set','Settings','cog','slate',0,1]]]];
+const TITLES={};NAV.forEach(g=>g[1].forEach(x=>TITLES[x[0]]=x[1]));
+let CUR='dash';
+function side(){
+  $('#side').innerHTML=`<div class="sbtop">${MARK()}<div class="wm">tidewell<span>pools</span><small>HQ · team workspace</small></div></div>
+  <button class="sbsearch" onclick="A.search()">${ic('search',15)}Search customers, jobs…<kbd>⌘K</kbd></button>
+  <div class="nav">${NAV.map(([g,items])=>`<div class="ng">${g}</div>${items.map(([k,n,i,c,b,off])=>`<button class="ni ${k===CUR?'on':''} ${off?'off':''}" ${off?'':`onclick="A.go('${k}')"`}><span class="dot" style="background:${COL[c]}1A;color:${COL[c]}">${ic(i,15,2.1)}</span>${n}${off?`<span class="lk">${ic('lock',12)}</span>`:b?`<span class="bg ${k==='builds'?'g':''}">${b}</span>`:''}</button>`).join('')}`).join('')}</div>
+  <div class="sbme">${av('Tom Hale',34)}<div style="min-width:0"><div class="b" style="font-size:13px">Tom Hale</div><div class="tiny muted">Founder · Tidewell Pools</div></div><button style="margin-left:auto;color:var(--mute)" onclick="toast('Settings','Locked in this demo','lock')">${ic('cog',17)}</button></div>`;
+  $('#bnav').innerHTML=[['dash','Home','home'],['pipe','Pipeline','kanban'],['builds','Builds','hammer'],['inbox','Inbox','inbox',4],['more','More','grid']].map(([k,n,i,b])=>`<button class="${k===CUR?'on':''}" onclick="${k==='more'?'A.side(1)':`A.go('${k}')`}">${ic(i,22,1.9)}${b?`<span class="bg">${b}</span>`:''}${n}</button>`).join('');
+}
+A.side=o=>{$('#side').classList.toggle('in',!!o);$('#ov').classList.toggle('in',!!o)};
+A.go=k=>{CUR=k;A.side(0);side();render();$('#view').scrollTop=0};
+function render(){
+  $('#ttl').textContent=TITLES[CUR];$('#mttl').textContent=TITLES[CUR];$('#tsub').textContent=CUR==='dash'?'· Tuesday 24 November':'';
+  const v=VIEWS[CUR]||VIEWS.dash;$('#view').innerHTML=`<div class="wrap fade">${v()}</div>`;
+  (AFTER[CUR]||(()=>{}))();
+}
+const AFTER={};
+
+/* ================= SHARED ================= */
+const stg=k=>STG.find(s=>s.k===k);
+const spark=(pts,c='#2CC6CF',w=86,h=30)=>{const mx=Math.max(...pts),mn=Math.min(...pts),sx=w/(pts.length-1),y=v=>h-3-(v-mn)/(mx-mn||1)*(h-6);const d=pts.map((v,i)=>`${i?'L':'M'}${(i*sx).toFixed(1)} ${y(v).toFixed(1)}`).join('');return `<svg class="spark" width="${w}" height="${h}"><path d="${d} L${w} ${h} L0 ${h}Z" fill="${c}" opacity=".12"/><path d="${d}" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`};
+const kpi=(l,v,d,i,c,pts)=>`<div class="card kpi"><div class="l"><span style="width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:${COL[c]}1A;color:${COL[c]}">${ic(i,14,2.2)}</span>${l}</div><div class="v num">${v}</div><div class="d">${d}</div>${pts?spark(pts,COL[c]):''}</div>`;
+function bars(data,o={}){ // data: [[label, v1, v2?]]
+  const W=o.w||640,H=o.h||210,pl=40,pb=24,mx=o.max||Math.max(...data.map(d=>Math.max(d[1],d[2]||0)))*1.12,bw=(W-pl)/data.length,step=o.step||mx/4;
+  let g='';for(let v=0;v<=mx;v+=step){const y=H-pb-(v/mx)*(H-pb-8);g+=`<line x1="${pl}" x2="${W}" y1="${y}" y2="${y}" stroke="#EEF3F4"/><text x="${pl-8}" y="${y+4}" text-anchor="end" font-size="10.5" fill="#9AA6AB" font-family="Figtree,-apple-system,Arial,sans-serif">${o.fmt?o.fmt(v):v}</text>`}
+  const two=data[0].length>2,b=two?bw*.28:bw*.46;
+  const r=data.map((d,i)=>{const x=pl+i*bw+bw/2,h1=(d[1]/mx)*(H-pb-8),h2=two?(d[2]/mx)*(H-pb-8):0,hl=o.hl===i;
+    return `${two?`<rect x="${x-b-2}" y="${H-pb-h1}" width="${b}" height="${h1}" rx="4" fill="${o.c1||'#0F4C5C'}" ${hl?'':'opacity=".9"'}><animate attributeName="height" from="0" to="${h1}" dur=".7s" fill="freeze"/><animate attributeName="y" from="${H-pb}" to="${H-pb-h1}" dur=".7s" fill="freeze"/></rect><rect x="${x+2}" y="${H-pb-h2}" width="${b}" height="${h2}" rx="4" fill="${o.c2||'#5CE1E6'}"><animate attributeName="height" from="0" to="${h2}" dur=".7s" fill="freeze"/><animate attributeName="y" from="${H-pb}" to="${H-pb-h2}" dur=".7s" fill="freeze"/></rect>`
+      :`<rect x="${x-b/2}" y="${H-pb-h1}" width="${b}" height="${h1}" rx="5" fill="${hl?(o.c2||'#5CE1E6'):(o.c1||'#0F4C5C')}" ${d[3]?`fill-opacity=".35"`:''}><animate attributeName="height" from="0" to="${h1}" dur=".7s" fill="freeze"/><animate attributeName="y" from="${H-pb}" to="${H-pb-h1}" dur=".7s" fill="freeze"/></rect>`}
+      <text x="${x}" y="${H-7}" text-anchor="middle" font-size="10.5" fill="${hl?'#0E1A1F':'#9AA6AB'}" font-weight="${hl?700:500}" font-family="Figtree,-apple-system,Arial,sans-serif">${d[0]}</text>`}).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block">${g}${r}</svg>`;
+}
+const leg=(items)=>`<div style="display:flex;gap:14px;font-size:12px;color:var(--mute)">${items.map(([c,t])=>`<span style="display:flex;align-items:center;gap:6px"><i style="width:9px;height:9px;border-radius:3px;background:${c}"></i>${t}</span>`).join('')}</div>`;
+function openDr(h,body,foot){$('#dr').innerHTML=`<div class="drh">${h}<button class="ib" style="margin-left:auto" onclick="A.close()">${ic('x',18)}</button></div><div class="drb">${body}</div>${foot?`<div class="drf">${foot}</div>`:''}`;$('#dr').classList.add('in');$('#ov').classList.add('in')}
+A.close=()=>{$('#dr').classList.remove('in');$('#ov').classList.remove('in');$('#side').classList.remove('in')};
+A.search=()=>{A.go('cust');setTimeout(()=>{const s=$('#csearch');if(s)s.focus()},60)};
+
+/* ================= DASHBOARD ================= */
+const FEED=[
+ ['eye','amber','<b>Rachel Green</b> opened her proposal again (6th time)','Proposal viewed nudge queued for 9am'],
+ ['missed','rose','Missed call from <b>Hannah Clarke</b>','Auto text sent in 4 seconds'],
+ ['pound','green','<b>Tom & Lucy Reed</b> paid their deposit · £22,400','Apple Pay · receipt sent'],
+ ['cam','aqua','Ryan posted 4 photos to <b>Alex Novak</b>\'s portal','Steel cage complete'],
+ ['star','amber','<b>Sarah Collins</b> left a 5 star Google review','Review request automation'],
+ ['msg','violet','<b>Marcus Webb</b> replied to speed to lead text','Booked a call for 5pm'],
+ ['drop','aqua','<b>Olivia Bennett</b>\'s pool reached 29.0°C','Heat pump eco mode on'],
+ ['pen','green','<b>Grace Kim</b> signed proposal P-0226','Deposit request sent'],
+ ['alert','rose','pH high at <b>Collins</b> pool · 7.9','Dan booked for Thu']];
+let FI=0;
+const VIEWS={};
+VIEWS.dash=()=>{
+  const months=[['Jan',62,48],['Feb',88,71],['Mar',142,96],['Apr',186,151],['May',224,198],['Jun',198,212],['Jul',176,184],['Aug',154,163],['Sep',131,140],['Oct',118,126],['Nov',96,84]];
+  return `<div class="hero">${LOOP}<div style="position:relative"><div class="small" style="color:var(--aqua);font-weight:650">Tuesday 24 November</div><h2>Good afternoon, Tom</h2><p>4 pools on site, 5 new enquiries and 3 things need you today.</p></div>
+  <div class="hstats"><div><b class="num">£1.36m</b><span>Open pipeline</span></div><div><b class="num">£2.14m</b><span>Won this year</span></div><div><b class="num">£184k</b><span>Collected this month</span></div><div><b class="num">48 sec</b><span>Avg reply to new leads</span></div></div></div>
+  <div class="g4 mt">${kpi('New enquiries','14','<span class="up">+27%</span> vs last week','inbox','blue',[4,6,5,8,7,9,14])}${kpi('Survey to sale','46%','<span class="up">+9 pts</span> since portal launch','target','green',[28,31,33,36,40,44,46])}${kpi('Average pool','£97k','Signature most popular','drop','aqua',[82,85,88,91,93,95,97])}${kpi('Outstanding','£62.4k','<span class="dn">1 overdue</span> · £3,200','pound','amber',[40,52,48,61,58,66,62])}</div>
+  <div class="g21 mt">
+    <div class="card"><div class="ch"><h3>Sales vs cash collected</h3><div class="r hm">${leg([['#0F4C5C','Won (£k)'],['#5CE1E6','Collected (£k)']])}</div></div><div class="cp">${bars(months,{fmt:v=>Math.round(v),step:50,max:250})}</div></div>
+    <div class="card"><div class="ch"><h3>Needs you today</h3><span class="pill t-rose r" style="margin-left:auto">5</span></div><div class="feed" style="margin-top:10px">${[
+      ['missed','rose','Call <b>Hannah Clarke</b> back','Missed call 10 min ago · Oxshott · £96k',"A.lead(0)"],
+      ['swap','amber','<b>William Ford</b> hasn\'t approved VO-02','Old drain reroute · £2,140 · dig paused',"A.build(2)"],
+      ['rain','blue','Rain Thursday at Haslemere','Shell pour for Alex Novak · move to Fri?',"A.go('cal')"],
+      ['eye','violet','<b>Rachel Green</b> viewed her proposal 6 times','Hot. Call her this afternoon',"A.lead(8)"],
+      ['pound','green','<b>Grace Kim</b> deposit due Friday','£17,800 · chaser sends tomorrow',"A.go('pay')"]].map(([i,c,t,s,f])=>`<div class="it" style="cursor:pointer" onclick="${f}"><span class="ic ${TONE[c]}">${ic(i,16)}</span><div class="tx">${t}<div class="small muted">${s}</div></div><span style="color:var(--mute2)">${ic('chev',16)}</span></div>`).join('')}</div></div>
+  </div>
+  <div class="g21 mt">
+    <div class="card"><div class="ch"><h3>On site this week</h3><button class="lnk r" style="margin-left:auto" onclick="A.go('builds')">All builds</button></div><div class="rows" style="margin-top:8px">${BUILDS.slice(0,3).map((b,i)=>{const l=LEADS[b.lead];return `<div class="rw bx" style="grid-template-columns:52px 1fr 1fr auto" onclick="A.build(${i})">${img(b.img,'','width:52px;height:52px')}<div class="who"><div><div class="n">${l.name}</div><div class="s">${l.town} · ${l.pool}</div></div></div><div class="hm"><div class="small" style="margin-bottom:6px"><b>${BSTG[b.stage]}</b> <span class="muted">· day ${b.day} of ${b.days}</span></div><div class="stp">${BSTG.map((_,j)=>`<i class="${j<b.stage?'d':j===b.stage?'c':''}"></i>`).join('')}</div></div><span>${b.flag?`<span class="pill t-amber">${b.flag}</span>`:`<span class="pill t-green">On track</span>`}</span></div>`}).join('')}</div></div>
+    <div class="card"><div class="ch"><h3>Live activity</h3><span class="live r" style="margin-left:auto"><i></i>Live</span></div><div class="feed" id="feed" style="margin-top:10px">${FEED.slice(0,5).map(feedIt).join('')}</div></div>
+  </div>
+  <div class="g3 g1m mt">
+    <div class="card cp"><div class="l small muted" style="display:flex;justify-content:space-between"><span>Pipeline by stage</span><span class="b" style="color:var(--ink)">£1.36m</span></div>${STG.slice(0,4).map(s=>{const v=LEADS.filter(l=>l.st===s.k).reduce((a,l)=>a+l.val,0);return `<div style="margin-top:12px"><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><span>${s.n}</span><b class="num">${mk(v)}</b></div><div class="bar"><i style="width:${v/5200}%;background:${COL[s.c]}"></i></div></div>`}).join('')}</div>
+    <div class="card cp" style="cursor:pointer" onclick="A.go('pools')"><div class="small muted" style="display:flex;justify-content:space-between"><span>Connected pools</span><span class="live"><i></i>38 online</span></div><div style="font-size:30px;font-weight:700;letter-spacing:-.04em;margin-top:10px">2 <span style="font-size:14px;color:var(--rose);font-weight:650">alerts</span></div><div class="small muted">pH high at Collins · Filter pressure at Patel</div><div class="g3" style="margin-top:12px;gap:6px">${[['27.8°','Avg temp'],['7.4','Avg pH'],['31','Covers shut']].map(([a,b])=>`<div style="background:var(--bg);border-radius:10px;padding:8px"><b>${a}</b><div class="tiny muted">${b}</div></div>`).join('')}</div></div>
+    <div class="card cp" style="cursor:pointer" onclick="A.go('care')"><div class="small muted" style="display:flex;justify-content:space-between"><span>Care plan income</span><span class="pill t-green">+£447 this month</span></div><div style="font-size:30px;font-weight:700;letter-spacing:-.04em;margin-top:10px" class="num">£4,862<span style="font-size:14px;color:var(--mute);font-weight:500"> /month</span></div><div class="small muted">37 members · 64% of new pools join</div>${spark([2.1,2.4,2.9,3.2,3.6,3.9,4.1,4.4,4.86],'#D9539C',260,44).replace('class="spark"','style="margin-top:10px;width:100%"')}</div>
+  </div>`;
+};
+function feedIt([i,c,t,s],k){return `<div class="it ${k==='new'?'new':''}"><span class="ic ${TONE[c]}">${ic(i,16)}</span><div class="tx">${t}<div class="small muted">${s}</div></div><span class="tm">${k==='new'?'Just now':['2m','9m','14m','22m','31m'][k]||'1h'}</span></div>`}
+AFTER.dash=()=>{FI=5};
+setInterval(()=>{const f=$('#feed');if(!f)return;const e=FEED[FI%FEED.length];FI++;f.insertAdjacentHTML('afterbegin',feedIt(e,'new'));if(f.children.length>5)f.lastElementChild.remove()},6500);
+
+/* ================= PIPELINE ================= */
+let PF='all';
+VIEWS.pipe=()=>{
+  const open=LEADS.filter(l=>['new','survey','design','won'].includes(l.st));
+  return `<div class="ttl"><div><h2>Pipeline</h2><p>${open.length} open deals · ${mk(open.reduce((a,l)=>a+l.val,0))} · drag a card to move it</p></div><div class="r">${[['all','Everyone'],['tom','Tom'],['priya','Priya']].map(([k,n])=>`<button class="chip ${PF===k?'on':''}" onclick="PF='${k}';render()">${n}</button>`).join('')}</div></div>
+  <div class="kb">${STG.map(s=>{const ls=LEADS.filter(l=>l.st===s.k&&(PF==='all'||l.own===PF)).sort((a,b)=>(b.top||0)-(a.top||0));return `<div class="col" data-st="${s.k}"><div class="colh"><span class="cd" style="background:${COL[s.c]}"></span><b>${s.n}</b><span class="c">${ls.length}</span><span class="v num">${mk(ls.reduce((a,l)=>a+l.val,0))}</span></div>${ls.map(lcard).join('')||'<div class="empty small">Nothing here</div>'}</div>`}).join('')}</div>`;
+};
+function lcard(l){const s=SRC[l.src];return `<div class="lc" draggable="true" data-id="${l.id}" onclick="A.lead(${l.id})"><div class="tp">${av(l.name,30)}<div style="min-width:0"><div class="nm">${l.name}</div><div class="tw">${l.town}</div></div><div class="val num">${mk(l.val)}</div></div><div class="mt8"><span class="pill ${TONE[s[1]]}">${s[0]}</span><span class="pill t-slate">${l.pool}</span></div><div class="ft">${ic(l.st==='survey'?'cal':l.st==='design'?'eye':'clock',13)}<span class="${l.hot?'hot':''}">${l.when}</span><span style="margin-left:auto">${av(TEAM[l.own].n,20)}</span></div></div>`}
+AFTER.pipe=()=>{let drag=null;
+  $$('.lc').forEach(c=>{c.ondragstart=e=>{drag=+c.dataset.id;c.classList.add('drag');e.dataTransfer.effectAllowed='move'};c.ondragend=()=>c.classList.remove('drag')});
+  $$('.col').forEach(col=>{col.ondragover=e=>{e.preventDefault();col.classList.add('over')};col.ondragleave=()=>col.classList.remove('over');
+    col.ondrop=e=>{e.preventDefault();col.classList.remove('over');if(drag==null)return;const l=LEADS[drag],to=col.dataset.st;if(l.st===to)return;l.st=to;render();toast(`${l.name} moved to ${stg(to).n}`,autoMsg(to),'zap')}});
+};
+const autoMsg=st=>({survey:'Survey confirmation and prep checklist sent',design:'Proposal sent to their portal',won:'Deposit request sent automatically',build:'Build portal switched on for the customer',done:'Review request and care plan offer queued',new:'Speed to lead text sent'})[st];
+A.lead=id=>{const l=LEADS[id],s=stg(l.st),src=SRC[l.src];const i=STG.indexOf(s);const nx=STG[i+1];
+  const views=l.st==='design'?(l.when.match(/\d+/)||[0])[0]:0;
+  openDr(`${av(l.name,42)}<div><div class="b" style="font-size:16px">${l.name}</div><div class="small muted">${l.town}, Surrey</div></div>`,
+  `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px"><span class="pill ${TONE[s.c]}">${s.n}</span><span class="pill ${TONE[src[1]]}">${src[0]}</span>${l.hot?'<span class="pill t-rose">Hot</span>':''}</div>
+  <div class="kv"><div><span>Pool value</span><b class="num">${money(l.val)}</b></div><div><span>Pool</span><b>${l.pool}</b></div><div><span>Owner</span><b>${TEAM[l.own].n.split(' ')[0]}</b></div><div><span>Latest</span><b>${l.when}</b></div></div>
+  <div class="card cp mt"><div class="b" style="margin-bottom:10px;display:flex;align-items:center;gap:8px">${ic('eye',16)} Customer portal activity</div>${l.st==='new'?'<div class="small muted">Portal opens once a survey is booked.</div>':`<div class="g3" style="gap:8px">${[[views||(l.st==='survey'?'1':'4'),'Proposal views'],[l.st==='survey'?'Yes':'Watched','Garden story'],[l.st==='new'?'·':l.hot?'22:14':'Today','Last seen']].map(([a,b])=>`<div style="background:var(--bg);border-radius:10px;padding:9px"><b>${a}</b><div class="tiny muted">${b}</div></div>`).join('')}</div>`}</div>
+  <div class="card cp mt"><div class="b" style="margin-bottom:12px">Timeline</div><div class="tl">${[
+    [`${l.note}`,l.when,1],[`Context: ${l.ctx}`,'Note by '+TEAM[l.own].n.split(' ')[0]],
+    ['Speed to lead WhatsApp sent','Automation · 48 sec after enquiry',1],[`Enquiry came in via ${src[0]}`,'Lead created']].map(([t,tm,k])=>`<div class="e ${k?'k':''}"><b>${t}</b><div class="tm">${tm}</div></div>`).join('')}</div></div>
+  <div class="card cp mt"><div class="b" style="margin-bottom:8px">Add a note</div><div style="display:flex;gap:8px"><input id="note" placeholder="e.g. Wants a quote with swim jets" style="flex:1;height:38px;border:1px solid var(--line);border-radius:10px;padding:0 12px;outline:none"><button class="btn p s" onclick="if($('#note').value){toast('Note saved','Shared with the team');$('#note').value=''}">Save</button></div></div>`,
+  `<button class="btn g" onclick="toast('Opening WhatsApp','${l.name.split(' ')[0]} · reply logged here','msg')">${ic('msg',16)} WhatsApp</button><button class="btn g" onclick="toast('Calling ${l.name.split(' ')[0]}','Call recorded and transcribed','phone')">${ic('phone',16)} Call</button>${nx?`<button class="btn p" onclick="LEADS[${id}].st='${nx.k}';A.close();render();toast('Moved to ${nx.n}',autoMsg('${nx.k}'),'zap')">${nx.n} ${ic('chev',15)}</button>`:''}`);
+};
+A.newLead=()=>{openDr(`<span class="lmk" style="background:var(--aquabg);color:var(--brand);width:42px;height:42px;border-radius:13px">${ic('plus',20)}</span><div><div class="b" style="font-size:16px">New enquiry</div><div class="small muted">Speed to lead fires the moment you save</div></div>`,
+  `${[['Name','nl_n','e.g. Jack Morris'],['Mobile','nl_p','07700 900 000'],['Town','nl_t','e.g. Esher']].map(([l,id,p])=>`<label class="small b" style="display:block;margin:12px 0 6px">${l}</label><input id="${id}" placeholder="${p}" style="width:100%;height:44px;border:1px solid var(--line);border-radius:12px;padding:0 13px;outline:none;background:#fff">`).join('')}
+  <label class="small b" style="display:block;margin:14px 0 6px">Source</label><div style="display:flex;gap:6px;flex-wrap:wrap">${Object.entries(SRC).map(([k,[n]],i)=>`<button class="chip ${i?'':'on'}" onclick="$$('.chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">${n}</button>`).join('')}</div>
+  <div class="card cp mt20" style="background:var(--violetbg);border:0"><div class="b" style="color:#3D2B99;display:flex;gap:8px;align-items:center">${ic('zap',16)} What happens next</div><div class="small" style="color:#3D2B99;margin-top:6px;line-height:1.6">WhatsApp in 60 seconds with a link to book a garden survey · lead lands in Pipeline · Tom gets a push notification · if no reply in 24 hours, a follow up goes out.</div></div>`,
+  `<button class="btn g" onclick="A.close()">Cancel</button><button class="btn p" onclick="A.saveLead()">Save enquiry</button>`)};
+A.saveLead=()=>{const n=$('#nl_n').value.trim()||'Jack Morris',t=$('#nl_t').value.trim()||'Esher';LEADS.push({id:LEADS.length,top:1,name:n,town:t,st:'new',src:'google',val:88000,pool:'Signature',when:'Just now',hot:1,note:'Added by Tom',ctx:'New enquiry',own:'tom'});A.close();A.go('pipe');toast('Enquiry saved',`WhatsApp sent to ${n.split(' ')[0]} in 4 seconds`,'zap')};
+
+/* ================= CUSTOMERS ================= */
+VIEWS.cust=()=>`<div class="ttl"><div><h2>Customers</h2><p>${LEADS.length} people · every enquiry, build and pool owner in one place</p></div><div class="r"><div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:0 12px;height:38px;flex:1;min-width:220px">${ic('search',16)}<input id="csearch" placeholder="Search name or town" oninput="A.cf(this.value)" style="border:0;outline:none;flex:1;background:none"></div></div></div>
+  <div class="card rows"><div class="hd" style="grid-template-columns:1.6fr 1fr 1fr .8fr .8fr"><span>Customer</span><span>Stage</span><span class="hm">Source</span><span>Value</span><span class="hm">Owner</span></div><div id="crows">${crows('')}</div></div>`;
+function crows(q){return LEADS.filter(l=>(l.name+l.town).toLowerCase().includes(q.toLowerCase())).map(l=>{const s=stg(l.st),src=SRC[l.src];return `<div class="rw" style="grid-template-columns:1.6fr 1fr 1fr .8fr .8fr" onclick="A.lead(${l.id})"><div class="who">${av(l.name)}<div><div class="n">${l.name}</div><div class="s">${l.town} · ${l.when}</div></div></div><span><span class="pill ${TONE[s.c]}">${s.n}</span></span><span class="hm"><span class="pill ${TONE[src[1]]}">${src[0]}</span></span><b class="num">${mk(l.val)}</b><span class="hm small">${TEAM[l.own].n}</span></div>`}).join('')||'<div class="empty">No one matches that</div>'}
+A.cf=q=>{$('#crows').innerHTML=crows(q)};
+
+/* ================= PROPOSALS ================= */
+VIEWS.quotes=()=>{const Q=[[8,'P-0231','Sent 19 Nov',6,'viewed'],[9,'P-0229','Sent 17 Nov',3,'viewed'],[10,'P-0233','Sent 23 Nov',1,'viewed'],[11,'P-0234','Sent today',0,'sent'],[12,'P-0226','Signed 20 Nov',4,'signed'],[13,'P-0222','Signed 16 Nov',5,'signed'],[14,'P-0217','Signed 14 Aug',7,'signed']];
+  return `<div class="ttl"><div><h2>Proposals</h2><p>Every proposal lives in the customer's portal, so you see exactly when they look</p></div><div class="r"><button class="btn p" onclick="toast('Proposal builder','Pick a pool, extras and a garden photo','file')">${ic('plus',16)} New proposal</button></div></div>
+  <div class="g4">${kpi('Sent this month','11','<span class="up">+3</span> vs October','send','orange')}${kpi('Acceptance rate','46%','Industry average 20 to 25%','check','green')}${kpi('Time to sign','6 days','Was 19 days on PDF + email','clock','blue')}${kpi('Open value','£502k','4 proposals out','pound','amber')}</div>
+  <div class="card rows mt"><div class="hd" style="grid-template-columns:1.5fr .8fr 1fr .8fr auto"><span>Customer</span><span class="hm">Proposal</span><span>Status</span><span>Value</span><span></span></div>${Q.map(([id,no,d,v,st])=>{const l=LEADS[id];return `<div class="rw" style="grid-template-columns:1.5fr .8fr 1fr .8fr auto" onclick="A.lead(${id})"><div class="who">${av(l.name)}<div><div class="n">${l.name}</div><div class="s">${l.pool} · ${d}</div></div></div><span class="hm small b">${no}</span><span>${st==='signed'?'<span class="pill t-green">'+ic('check',12,3)+' Signed</span>':st==='sent'?'<span class="pill t-slate">Not opened</span>':`<span class="pill ${v>2?'t-rose':'t-amber'}">${ic('eye',12)} Viewed ${v}×</span>`}</span><b class="num">${mk(l.val)}</b><span>${st==='signed'?'':`<button class="btn g s" onclick="event.stopPropagation();toast('Nudge sent to ${l.name.split(' ')[0]}','Friendly WhatsApp with a link to sign','send')">Nudge</button>`}</span></div>`}).join('')}</div>`};
+
+/* ================= BUILDS ================= */
+VIEWS.builds=()=>`<div class="ttl"><div><h2>Active builds</h2><p>4 pools on the go · ${mk(BUILDS.reduce((a,b)=>a+LEADS[b.lead].val,0))} contracted · customers see every update live</p></div></div>
+  <div class="g2">${BUILDS.map((b,i)=>{const l=LEADS[b.lead];return `<div class="card" style="overflow:hidden;cursor:pointer" onclick="A.build(${i})"><div style="display:flex;gap:14px;padding:16px">${img(b.img,'','width:84px;height:84px')}<div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:8px"><b style="font-size:15px">${l.name}</b>${b.flag?`<span class="pill t-amber" style="margin-left:auto">${b.flag}</span>`:'<span class="pill t-green" style="margin-left:auto">On track</span>'}</div><div class="small muted">${l.town} · ${l.pool} · ${money(l.val)}</div><div class="small" style="margin-top:8px"><b>${BSTG[b.stage]}</b> <span class="muted">· ${b.day?`day ${b.day} of ${b.days}`:'not started'}</span></div><div class="stp" style="margin-top:7px">${BSTG.map((_,j)=>`<i class="${j<b.stage?'d':j===b.stage?'c':''}"></i>`).join('')}</div></div></div>
+  <div style="display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px 16px;background:#FAFCFC;border-top:1px solid var(--line2)"><div class="small"><span class="muted">Next:</span> <b>${b.next}</b></div><div class="avs">${b.crew.map(c=>av(TEAM[c].n,26)).join('')}</div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line2)"><div style="padding:10px 16px"><div class="tiny muted">Paid</div><div class="bar" style="margin-top:5px"><i style="width:${b.paid*100}%;background:var(--green)"></i></div></div><div style="padding:10px 16px;border-left:1px solid var(--line2)"><div class="tiny muted">Margin</div><b class="num">${b.margin}%</b></div></div></div>`}).join('')}</div>`;
+A.build=i=>{const b=BUILDS[i],l=LEADS[b.lead];
+  openDr(`${img(b.img,'','width:44px;height:44px')}<div><div class="b" style="font-size:16px">${l.name}</div><div class="small muted">${l.town} · ${l.pool} pool</div></div>`,
+  `${b.flag?`<div class="card cp" style="background:var(--amberbg);border:0;margin-bottom:14px"><b style="color:#8A5A00">${ic('alert',15)} ${b.upd}</b><div class="small" style="color:#8A5A00;margin-top:4px">Variation VO-02 sent to the customer's portal · £2,140 · waiting 1 day. Reminder goes out at 4pm.</div><button class="btn s mt" style="background:#fff" onclick="toast('Reminder sent','William gets a WhatsApp with the approve button','send')">Send reminder now</button></div>`:''}
+  <div class="kv"><div><span>Contract</span><b class="num">${money(l.val)}</b></div><div><span>Paid so far</span><b class="num">${money(l.val*b.paid)}</b></div><div><span>Days on site</span><b>${b.day} of ${b.days}</b></div><div><span>Margin</span><b>${b.margin}%</b></div></div>
+  <div class="card cp mt"><div class="b" style="margin-bottom:10px">Build stages</div>${BSTG.map((s,j)=>`<div style="display:flex;align-items:center;gap:10px;padding:7px 0;${j?'border-top:1px solid var(--line2)':''}"><span style="width:22px;height:22px;border-radius:50%;display:grid;place-items:center;${j<b.stage?'background:var(--aqua2);color:#fff':j===b.stage?'border:2px solid var(--aqua2)':'border:2px solid var(--line)'}">${j<b.stage?ic('check',12,3):''}</span><span style="${j>b.stage?'color:var(--mute)':''};font-weight:${j===b.stage?700:500}">${s}</span>${j===b.stage?'<span class="pill t-aqua" style="margin-left:auto">Now</span>':''}</div>`).join('')}</div>
+  <div class="card cp mt"><div class="b" style="margin-bottom:10px">Photo log</div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">${[P.dig,P.dig2,P.rebar,P.mesh].map(s=>img(s,'','aspect-ratio:1')).join('')}</div></div>
+  <div class="card cp mt"><div class="b" style="margin-bottom:8px">Post an update to ${l.name.split(' ')[0]}'s portal</div><textarea id="upd" rows="3" style="width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 12px;outline:none;resize:none">${b.upd}. Next up: ${b.next.toLowerCase()}.</textarea><div style="display:flex;gap:8px;margin-top:8px"><button class="btn g s" onclick="toast('4 photos attached','From the crew app','cam')">${ic('cam',14)} Photos</button><button class="btn p s" style="margin-left:auto" onclick="toast('Update posted','${l.name.split(' ')[0]} gets a push notification','send')">${ic('send',14)} Post update</button></div></div>`,
+  `<button class="btn g" onclick="toast('Calling ${TEAM[b.crew[0]].n.split(' ')[0]}','On site at ${l.town}','phone')">${ic('phone',16)} Call site</button><button class="btn p" onclick="A.close();A.lead(${b.lead})">Customer record</button>`)};
+
+/* ================= CALENDAR ================= */
+VIEWS.cal=()=>{const D=[['Mon',23,'sun','12°'],['Tue',24,'cloud','11°'],['Wed',25,'cloud','10°'],['Thu',26,'rain','8° · heavy rain'],['Fri',27,'sun','9°'],['Sat',28,'cloud','9°'],['Sun',29,'sun','10°']];
+  const R=[['Surveys','ruler','violet',{3:[['James Porter','Weybridge · 10:00']],4:[['Laura Fenwick','Ascot · 14:00']]}],
+   ['Dig crew','hammer','orange',{0:[['William Ford','Camberley · dig day 1']],1:[['William Ford','Camberley · paused, drain']],2:[['William Ford','Drain reroute']],4:[['William Ford','Dig resumes']]}],
+   ['Steel & shell','layers','blue',{0:[['Alex Novak','Haslemere · steel']],1:[['Alex Novak','Steel inspection ✓']],3:[['Alex Novak','Shell pour 08:00','warn']]}],
+   ['Finishing','grid','aqua',{0:[['Priya Desai','Woking · coping']],1:[['Priya Desai','Coping & terrace']],2:[['Priya Desai','Liner fit']]}],
+   ['Plant & electrics','zap','amber',{2:[['Priya Desai','Heat pump install']],4:[['Priya Desai','Electrics & test']]}],
+   ['Service','wrench','pink',{1:[['Olivia Bennett','Weybridge · first service']],3:[['Sarah Collins','pH fix']],4:[['3 care visits','Cobham, Esher, Oxshott']]}]];
+  return `<div class="ttl"><div><h2>23 to 29 November</h2><p>Crews, surveys and service visits with the weather built in</p></div><div class="r"><div class="seg"><button>Day</button><button class="on">Week</button><button>Month</button></div></div></div>
+  <div class="card" style="background:var(--rosebg);border:0;padding:14px 16px;display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap"><span style="color:var(--rose)">${ic('rain',22)}</span><div style="flex:1;min-width:200px"><b style="color:#A3262B">Heavy rain Thursday at Haslemere</b><div class="small" style="color:#A3262B">Alex Novak's shell pour is booked for 08:00. Move it to Friday and tell Alex automatically?</div></div><button class="btn p s" id="mvb" onclick="A.mvPour()">Move to Friday</button></div>
+  <div class="card calw"><div class="cal"><div class="hc"></div>${D.map(([d,n],i)=>`<div class="hc ${i===1?'td':''}">${d}<br><b>${n}</b></div>`).join('')}
+  <div class="wx" style="justify-content:flex-start;padding-left:14px">Weather</div>${D.map(([,,w,t])=>`<div class="wx ${w==='rain'?'bad':''}">${ic(w,14)} ${t}</div>`).join('')}
+  ${R.map(([n,i,c,ev])=>`<div class="rh"><span style="width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:${COL[c]}1A;color:${COL[c]}">${ic(i,14)}</span>${n}</div>${D.map((_,j)=>`<div class="cell ${j===1?'td':''}" data-r="${n}" data-d="${j}">${(ev[j]||[]).map(([t,s,w])=>`<div class="ev" ${w?'id="pour"':''} style="background:${w?'#FDE8E9':COL[c]+'14'};border-color:${w?'#E5484D':COL[c]}" onclick="toast('${t}','${s}','cal')"><b>${t}</b>${s}</div>`).join('')}</div>`).join('')}`).join('')}</div></div>`};
+A.mvPour=()=>{const e=$('#pour');if(!e)return;const to=document.querySelector('.cell[data-r="Steel & shell"][data-d="4"]');e.style.background='#2E6BE014';e.style.borderColor='#2E6BE0';e.innerHTML='<b>Alex Novak</b>Shell pour 08:00 · moved';to.appendChild(e);$('#mvb').textContent='Moved ✓';$('#mvb').disabled=true;toast('Pour moved to Friday','Alex, the pump company and Ryan have been told','check')};
+
+/* ================= INBOX ================= */
+const CH={wa:['#25D366','msg','WhatsApp'],sms:['#2E6BE0','msg','SMS'],mail:['#EB7430','mail','Email'],portal:['#0F4C5C','drop','Portal'],missed:['#E5484D','missed','Missed call']};
+let TH=[
+ {n:'Hannah Clarke',ch:'missed',un:1,tm:'10m',m:[['sys','Missed call · 14:02 · 0:00'],['bot','Hi, it\'s Tidewell Pools 👋 Sorry we missed your call. Are you thinking about a pool for your garden? Reply here and Tom will get straight back to you.','14:02'],['them','Hi yes! We\'re in Oxshott and want a heated pool ready for next summer. What sort of budget are we looking at?','14:09']],sug:'Hi Hannah, Tom here. Lovely! Most of our heated pools in Oxshott land between £75k and £110k depending on size and finish. The best next step is a free garden survey, I have Thursday at 2pm or Saturday at 10am. Which suits?'},
+ {n:'William Ford',ch:'wa',un:1,tm:'38m',m:[['me','Hi William, Callum here. We found an old clay drain under the deep end. I\'ve put photos and a fixed price to reroute it in your portal (VO-02). Nothing goes ahead until you approve.','Yesterday'],['them','Thanks Callum. Is this definitely needed? Can it wait till after?','13:31']],sug:'Hi William, totally fair question. It does need doing first, the shell would sit right on top of it and it still carries rainwater from the house. Once you approve we can reroute it tomorrow and still pour on time. Happy to call you if easier?'},
+ {n:'Rachel Green',ch:'portal',un:1,tm:'1h',m:[['them','Hi Tom, quick question. Could the steps go on the left side instead? Closer to the patio doors.','12:58']],sug:'Hi Rachel, yes absolutely, no change to the price. I\'ll update the design and you\'ll see it in your portal by tomorrow morning.'},
+ {n:'Marcus Webb',ch:'sms',un:1,tm:'2h',m:[['bot','Hi Marcus, thanks for your enquiry about a pool in Cobham. When\'s a good time for a quick call with Tom?','11:46'],['them','After 5 today works','12:03'],['sys','Call booked · Today 17:00 with Tom']],sug:'Perfect, Tom will call you at 5. Speak then!'},
+ {n:'Poolstar Steel',ch:'mail',un:0,tm:'3h',m:[['them','Morning, confirming delivery of 12mm rebar to Haslemere is complete. Invoice INV-88213 attached. Thanks, Sam','09:12']],sug:'Thanks Sam, received. Payment goes out Friday.'},
+ {n:'Olivia Bennett',ch:'portal',un:0,tm:'Yesterday',m:[['them','The pool is lovely! The kids were in it every day this week even in November 😂 Booked my first service in the app.','Mon'],['me','That\'s brilliant to hear Olivia! Dan will see you Tuesday. Enjoy it 🏊','Mon']],sug:'Thanks again Olivia!'}];
+let TI=0;
+VIEWS.inbox=()=>`<div class="card inb" id="inb" style="overflow:hidden">
+  <div class="thl"><div style="padding:14px 16px;border-bottom:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap">${['All','Unread','WhatsApp','Portal'].map((x,i)=>`<button class="chip ${i?'':'on'}">${x}</button>`).join('')}</div>${TH.map((t,i)=>{const c=CH[t.ch];return `<div class="th ${i===TI?'on':''}" onclick="A.th(${i})">${av(t.n,38)}<div class="tx"><div class="n"><span class="chan" style="background:${c[0]}">${ic(c[1],10,2.6)}</span>${t.n}<span class="tm">${t.tm}</span></div><div class="p">${t.m[t.m.length-1][1]}</div></div>${t.un?'<i class="un"></i>':''}</div>`}).join('')}</div>
+  <div class="tv" id="tv"></div></div>`;
+function tv(){const t=TH[TI],c=CH[t.ch];$('#tv').innerHTML=`<div class="tvh"><button class="ib menu" style="display:${innerWidth<=860?'grid':'none'}" onclick="$('#inb').classList.remove('open')"><span style="transform:rotate(180deg);display:grid">${ic('chev',18)}</span></button>${av(t.n,36)}<div><b>${t.n}</b><div class="small muted" style="display:flex;align-items:center;gap:5px"><span class="chan" style="background:${c[0]}">${ic(c[1],10,2.6)}</span>${c[2]}</div></div><div style="margin-left:auto;display:flex;gap:6px"><button class="ib" onclick="toast('Calling ${t.n.split(' ')[0]}','Recorded and transcribed','phone')">${ic('phone',17)}</button></div></div>
+  <div class="msgs" id="msgs">${t.m.map(m).join('')}</div>
+  <div class="aisug" onclick="$('#cmp').value=TH[TI].sug;$('#cmp').focus()"><span>${ic('sparkle',16)}</span><div><b>Suggested reply</b> · tap to use<div style="margin-top:3px;opacity:.85">${t.sug}</div></div></div>
+  <div class="cmp"><input id="cmp" placeholder="Reply by ${t.ch==='missed'?'text':c[2]}…" onkeydown="if(event.key==='Enter')A.send()"><button class="btn p" onclick="A.send()">${ic('send',16)}</button></div>`;
+  const ms=$('#msgs');ms.scrollTop=ms.scrollHeight}
+const m=([w,t,tm])=>w==='sys'?`<div class="sysm">${ic('zap',12)}${t}</div>`:`<div class="mg ${w}">${w==='bot'?`<span style="font-size:10.5px;font-weight:700;opacity:.7;display:block">⚡ Automation</span>`:''}${t}${tm?`<span class="mt">${tm}</span>`:''}</div>`;
+A.th=i=>{TI=i;TH[i].un=0;render();$('#inb').classList.add('open')};
+A.send=()=>{const v=$('#cmp').value.trim();if(!v)return;TH[TI].m.push(['me',v,'Now']);$('#cmp').value='';$('#msgs').insertAdjacentHTML('beforeend',m(['me',v,'Now']));$('#msgs').scrollTop=1e6;toast('Sent',`By ${TH[TI].ch==='missed'?'text':CH[TH[TI].ch][2]} as Tidewell Pools`,'send')};
+AFTER.inbox=()=>tv();
+/* ================= COUNCIL ================= */
+VIEWS.council=()=>{const C=[[13,'2026/2391/LDC','Elmbridge','Applied 18 Nov','Decision due 16 Dec',.35,'In review','blue'],[12,'·','Epsom & Ewell','Applies when deposit lands','Est. 8 weeks',0,'Waiting on deposit','slate'],[17,'2026/2104/LDC','Surrey Heath','Applied 2 Oct','Granted 6 Nov',1,'Granted','green'],[15,'2026/1987/LDC','Waverley','Applied 14 Sep','Granted 20 Oct',1,'Granted','green'],[16,'2026/1902/LDC','Woking','Applied 1 Sep','Granted 9 Oct',1,'Granted','green']];
+  return `<div class="ttl"><div><h2>Council certificates</h2><p>Lawful Development Certificates, tracked from application to decision</p></div></div>
+  <div class="g3">${kpi('In review','1','Average decision 6.5 weeks','clock','blue')}${kpi('Granted this year','23','100% success rate','check','green')}${kpi('Days saved per job','11','Drawings and forms auto filled','zap','violet')}</div>
+  <div class="card rows mt"><div class="hd" style="grid-template-columns:1.4fr 1fr 1.2fr 1fr"><span>Customer</span><span class="hm">Council</span><span>Progress</span><span>Status</span></div>${C.map(([id,ref,c,a,d,p,st,t])=>{const l=LEADS[id];return `<div class="rw" style="grid-template-columns:1.4fr 1fr 1.2fr 1fr" onclick="A.lead(${id})"><div class="who">${av(l.name)}<div><div class="n">${l.name}</div><div class="s">${ref}</div></div></div><div class="hm small">${c}<div class="muted tiny">${a}</div></div><div><div class="bar"><i style="width:${p*100}%;background:${COL[t]}"></i></div><div class="tiny muted" style="margin-top:5px">${d}</div></div><span><span class="pill ${TONE[t]}">${st}</span></span></div>`}).join('')}</div>`};
+
+/* ================= MATERIALS ================= */
+VIEWS.mat=()=>{const M=[['12mm rebar · 2.4 tonnes','Poolstar Steel','Alex Novak','Delivered 20 Nov','green','Delivered'],['Concrete pump & 18m³ shotcrete','SprayCrete South','Alex Novak','Thu 26 Nov 07:30','blue','Booked'],['Porcelain mosaic · 64m²','Aqua Tile Co','Priya Desai','Delivered 16 Nov','green','Delivered'],['Heat pump 21kW × 2','ThermaPool','Desai, Ford','ETA Wed 2 Dec','amber','On order'],['Automatic slatted cover','CoverTech','William Ford','Made to measure · ETA 14 Dec','violet','In production'],['Sandstone coping · 46m','Stonecraft','Priya Desai','Delivered 18 Nov','green','Delivered'],['Filtration plant kit','ThermaPool','Alex Novak','ETA Mon 30 Nov','amber','On order'],['Grab lorry · 8 loads','Surrey Muck Away','William Ford','Daily from Fri 27 Nov','blue','Booked']];
+  return `<div class="ttl"><div><h2>Materials & deliveries</h2><p>Everything ordered, booked and on its way, linked to each build</p></div><div class="r"><button class="btn p" onclick="toast('Purchase order','Pick a supplier and a build','box')">${ic('plus',16)} New order</button></div></div>
+  <div class="card rows"><div class="hd" style="grid-template-columns:1.6fr 1fr 1fr 1fr"><span>Item</span><span class="hm">Supplier</span><span class="hm">For</span><span>Status</span></div>${M.map(([n,s,f,d,t,st])=>`<div class="rw" style="grid-template-columns:1.6fr 1fr 1fr 1fr" onclick="toast('${n}','${d}','truck')"><div class="who"><span style="width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:${COL[t]}1A;color:${COL[t]}">${ic(st==='Booked'?'truck':'box',16)}</span><div><div class="n">${n}</div><div class="s">${d}</div></div></div><span class="hm small">${s}</span><span class="hm small">${f}</span><span><span class="pill ${TONE[t]}">${st}</span></span></div>`).join('')}</div>`};
+
+/* ================= PAYMENTS ================= */
+const PAYS=[[13,'Deposit 20%',22400,'Paid','green','Apple Pay · 18 Nov'],[12,'Deposit 20%',17800,'Due Fri','amber','Chaser sends tomorrow 9am'],[15,'Shell payment 50%',47000,'Due on pour','blue','Request sends when shell is in'],[16,'Shell payment 50%',35500,'Paid','green','Bank transfer · 12 Nov'],[16,'Variation VO-01',3200,'Overdue 3 days','rose','2 reminders sent'],[14,'Final balance 30%',25884,'Paid','green','Pay in 3 · 16 Nov'],[17,'Deposit 20%',25600,'Paid','green','Card · 30 Sep'],[18,'Care+ plan',149,'Paid','green','Direct Debit · 1 Nov']];
+VIEWS.pay=()=>{const wk=[['30 Nov',47],['7 Dec',18],['14 Dec',62],['21 Dec',12],['28 Dec',4],['4 Jan',38],['11 Jan',71],['18 Jan',26]];
+  return `<div class="ttl"><div><h2>Payments</h2><p>Stage payments collected through the customer portal, chased automatically</p></div><div class="r"><button class="btn g" onclick="toast('Export ready','CSV for your accountant','file')">Export</button><button class="btn p" onclick="toast('Payment request','Pick a customer and an amount','pound')">${ic('plus',16)} Request payment</button></div></div>
+  <div class="g4">${kpi('Collected in November','£184,620','<span class="up">+18%</span> vs October','pound','green',[90,110,140,120,160,170,184])}${kpi('Due in 30 days','£130,550','6 stage payments','clock','blue')}${kpi('Overdue','£3,200','1 payment · auto chasing','alert','rose')}${kpi('Avg days to pay','1.8','Was 9 days by bank transfer','zap','violet')}</div>
+  <div class="g21 mt"><div class="card"><div class="ch"><h3>Cash coming in</h3><span class="muted small r" style="margin-left:auto">Next 8 weeks · £k</span></div><div class="cp">${bars(wk,{fmt:v=>Math.round(v),step:20,max:80,hl:0})}</div></div>
+  <div class="card cp"><div class="b">How customers pay</div>${[['Apple Pay & card','52%','green'],['Bank transfer','31%','blue'],['Pay in 3, interest-free','17%','violet']].map(([a,b,c])=>`<div style="margin-top:14px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span>${a}</span><b>${b}</b></div><div class="bar"><i style="width:${b};background:${COL[c]}"></i></div></div>`).join('')}<div class="small muted mt">Pay in 3 is offered on deposits and final balances. You're paid in full upfront.</div></div></div>
+  <div class="card rows mt"><div class="hd" style="grid-template-columns:1.4fr 1fr .8fr 1fr auto"><span>Customer</span><span class="hm">Stage</span><span>Amount</span><span>Status</span><span></span></div>${PAYS.map(([id,s,a,st,t,n],i)=>{const l=LEADS[id];return `<div class="rw" style="grid-template-columns:1.4fr 1fr .8fr 1fr auto" onclick="A.lead(${id})"><div class="who">${av(l.name)}<div><div class="n">${l.name}</div><div class="s">${n}</div></div></div><span class="hm small">${s}</span><b class="num">${money(a)}</b><span><span class="pill ${TONE[t]}">${st}</span></span><span>${t==='green'?'':`<button class="btn g s" onclick="event.stopPropagation();toast('Reminder sent to ${l.name.split(' ')[0]}','With a one tap pay link','send')">Chase</button>`}</span></div>`}).join('')}</div>`};
+
+/* ================= CONNECTED POOLS ================= */
+let POOLS=[['Olivia Bennett','Weybridge',28.4,7.4,1.5,'Open','Heating'],['Sarah Collins','Cobham',27.1,7.9,1.2,'Closed','Eco',1,'pH high · 7.9'],['Raj Patel','Esher',26.8,7.3,1.6,'Closed','Off',1,'Filter pressure high'],['Harriet Lowe','Oxshott',29.2,7.5,1.4,'Closed','Holding'],['Mark Jennings','Ascot',27.9,7.4,1.5,'Closed','Eco'],['The Coopers','Virginia Water',28.8,7.2,1.7,'Open','Heating'],['Fiona Grant','Guildford',26.5,7.4,1.3,'Closed','Off'],['Ed & Kate Bloom','Sunningdale',28.1,7.5,1.5,'Closed','Eco'],['Nina Hussain','Walton',27.4,7.3,1.6,'Closed','Holding']];
+VIEWS.pools=()=>`<div class="ttl"><div><h2>Connected pools</h2><p>Every pool you've built, reporting water and kit health in real time</p></div><div class="r"><span class="live"><i></i>38 online · updated live</span></div></div>
+  <div class="g4">${kpi('Pools online','38','All Tidewell builds since 2023','wave','aqua')}${kpi('Alerts','2','Both booked in with Dan','alert','rose')}${kpi('Avg water temp','27.8°C','Outside 9°C','thermo','orange')}${kpi('Call outs avoided','41','Fixed remotely this year','zap','violet')}</div>
+  <div class="g3 mt" id="pools">${POOLS.map(pcard).join('')}</div>`;
+function pcard(p,i){const[n,t,tp,ph,cl,cv,hp,al,msg]=p;return `<div class="card pl ${al?'alert':''}"><div class="wv" style="color:${al?'var(--rose)':'var(--aqua2)'}">${ic(al?'alert':'wave',20)}</div><div class="b">${n}</div><div class="small muted">${t} · cover ${cv.toLowerCase()} · heat ${hp.toLowerCase()}</div><div class="tmp num" style="margin-top:8px" data-pt="${i}">${tp.toFixed(1)}<small>°C</small></div><div class="mini"><div><b style="${ph>7.6?'color:var(--rose)':''}">${ph}</b>pH</div><div><b>${cl}</b>Chlorine</div><div><b>${al&&msg.includes('Filter')?'1.4':'0.8'}</b>Bar</div></div>${al?`<div style="display:flex;align-items:center;gap:8px;margin-top:10px"><span class="small" style="color:var(--rose);font-weight:650">${msg}</span><button class="btn p s" style="margin-left:auto" onclick="toast('Dan booked','${n.split(' ')[0]} notified in their app','wrench')">Book Dan</button></div>`:''}</div>`}
+AFTER.pools=()=>{};
+setInterval(()=>{$$('[data-pt]').forEach(el=>{const p=POOLS[+el.dataset.pt];if(p[6]==='Heating')p[2]=Math.min(29.5,p[2]+.1);else p[2]=+(p[2]+(Math.random()-.5)*.1).toFixed(2);el.innerHTML=p[2].toFixed(1)+'<small>°C</small>'})},3000);
+
+/* ================= CARE PLANS ================= */
+VIEWS.care=()=>{const MB=[['Olivia Bennett','Care+','£149','Tue 1 Dec','Nov 2026'],['Sarah Collins','Care+','£149','Thu 26 Nov','Oct 2026'],['Harriet Lowe','Care','£89','Fri 4 Dec','Jun 2026'],['Mark Jennings','Care+','£149','Mon 7 Dec','May 2026'],['The Coopers','Care','£89','Wed 9 Dec','Apr 2026'],['Ed & Kate Bloom','Care+','£149','Thu 10 Dec','Aug 2025']];
+  return `<div class="ttl"><div><h2>Care plans</h2><p>Monthly service income from pools you've already built</p></div></div>
+  <div class="hero">${LOOP}<div style="position:relative"><div class="small" style="color:var(--aqua);font-weight:650">Recurring income</div><h2 class="num">£4,862 a month</h2><p>£58,344 a year from 37 members, with 0 cancellations in 2026.</p></div><div class="hstats"><div><b>64%</b><span>Of new pools join</span></div><div><b>Day 30</b><span>Offer sent after handover</span></div><div><b>£149</b><span>Care+ most popular</span></div></div></div>
+  <div class="card rows mt"><div class="hd" style="grid-template-columns:1.4fr .8fr .8fr 1fr"><span>Member</span><span>Plan</span><span class="hm">Since</span><span>Next visit</span></div>${MB.map(([n,p,pr,v,s])=>`<div class="rw" style="grid-template-columns:1.4fr .8fr .8fr 1fr" onclick="toast('${n}','${p} · next visit ${v}','heart')"><div class="who">${av(n)}<div><div class="n">${n}</div><div class="s">${pr} a month · Direct Debit</div></div></div><span><span class="pill ${p==='Care+'?'t-pink':'t-aqua'}">${p}</span></span><span class="hm small muted">${s}</span><span class="small b">${v}</span></div>`).join('')}</div>`};
+
+/* ================= REVIEWS ================= */
+VIEWS.rev=()=>{const R=[['Sarah Collins','2 days ago','From the first survey to the day we swam, we always knew exactly what was happening. The app was brilliant.'],['Olivia Bennett','1 week ago','Tom and the team were incredible. Every photo, every payment and every document in one place. Pool is stunning.'],['Mark Jennings','3 weeks ago','Honest, tidy and on time. They found a drain problem and showed us before doing anything. Would recommend.'],['Harriet Lowe','1 month ago','Our pool is warm and crystal clear and we control it all from our phones. Five stars.']];
+  return `<div class="ttl"><div><h2>Reviews</h2><p>Requests go out automatically the day a customer signs off their pool</p></div><div class="r"><button class="btn p" onclick="toast('Review request sent','To 3 customers handed over this month','star')">${ic('send',15)} Send requests</button></div></div>
+  <div class="g4">${kpi('Google rating','4.9','127 reviews','star','amber')}${kpi('This month','11','<span class="up">+8</span> vs before automation','up','green')}${kpi('Request to review','79%','11 of 14 left one','check','blue')}${kpi('Avg reply time','2 hrs','AI drafts, Priya approves','sparkle','violet')}</div>
+  <div class="g2 mt">${R.map(([n,d,t])=>`<div class="card cp"><div style="display:flex;align-items:center;gap:10px">${av(n,36)}<div><b>${n}</b><div class="tiny muted">Google · ${d}</div></div><span class="stars" style="margin-left:auto">★★★★★</span></div><p style="margin-top:10px;color:var(--ink2);line-height:1.5">${t}</p><div class="small" style="margin-top:10px;color:var(--green);font-weight:650">${ic('check',13,3)} Replied by Priya</div></div>`).join('')}</div>`};
+
+/* ================= AUTOMATIONS ================= */
+const AUTO=[
+ ['missed','rose','Missed call text back','Text goes out within 5 seconds of any missed call',1,'31 calls saved','£2.4m enquiries',['Missed call on 01932 846 210','Wait 5 seconds','Send text with survey booking link','No reply in 2 hrs: text again','Notify Tom on his phone']],
+ ['zap','blue','Speed to lead','WhatsApp every new enquiry in under 60 seconds',1,'184 this month','48 sec average',['New enquiry from ads, website or Instagram','Create the lead in Pipeline','WhatsApp with survey booking link','No reply in 24 hrs: follow up','Day 3: call task for Priya']],
+ ['cal','violet','Survey reminder & prep','Reminders plus a 3 step prep checklist',1,'22 surveys','0 no shows',['Survey booked','Confirmation and portal invite','Day before: prep checklist','Morning of: Tom is on his way + live ETA']],
+ ['eye','amber','Proposal viewed nudge','When a proposal is opened 3+ times without signing',1,'9 nudges','4 signed',['Proposal opened 3 times','Wait until 9am next day','Personal WhatsApp from Tom','Task for Tom to call']],
+ ['pound','green','Deposit chaser','Friendly reminders with a one tap pay link',1,'6 chased','£112k collected',['Proposal signed','Send deposit request','Day 3: reminder','Day 5: Tom calls']],
+ ['cam','aqua','Live build updates','Posts crew photos and milestones to the customer portal',1,'412 updates','0 "what\'s happening?" calls',['Crew uploads photos on site','Matched to the right build','Customer gets a push notification','Photo log saved forever']],
+ ['star','amber','Review request at handover','Asks at the happiest moment, straight after sign-off',1,'14 sent','11 reviews',['Customer signs off in portal','Wait 2 days','Send Google review link','Thank you message after review']],
+ ['heart','pink','Care plan offer','Offers Tidewell Care 30 days after handover',1,'9 offers','6 joined',['Day 30 after handover','Send care plan offer','Day 37: Priya follows up']],
+ ['gift','pink','Referral ask','£500 thank you for every friend who builds',1,'5 referrals','£414k pipeline',['Review left','Invite to refer a friend','Friend books a survey','Send £500 when friend builds']],
+ ['users','slate','Old lead reactivation','Wakes up enquiries that went quiet',0,'Paused','Turns on 1 Feb',['Lead quiet 90+ days','New season message','Book a survey link']]];
+VIEWS.auto=()=>`<div class="ttl"><div><h2>Automations</h2><p>The follow up nobody has time to do, done for you every single time</p></div></div>
+  <div class="hero">${LOOP}<div style="position:relative"><div class="small" style="color:var(--aqua);font-weight:650">This month</div><h2>2,184 actions done for you</h2><p>That's about 61 hours of admin your team didn't do.</p></div><div class="hstats"><div><b>9 of 10</b><span>Running</span></div><div><b>48 sec</b><span>Reply to new leads</span></div><div><b>0</b><span>Leads forgotten</span></div></div></div>
+  <div class="card mt">${AUTO.map((a,i)=>`<div class="au" onclick="A.flow(${i})"><span class="ic ${TONE[a[1]]}">${ic(a[0],19)}</span><div class="tx"><b>${a[2]}</b><div class="small muted">${a[3]}</div></div><div class="st hm"><b>${a[5]}</b>${a[6]}</div><button class="tog ${a[4]?'on':''}" onclick="event.stopPropagation();AUTO[${i}][4]=!AUTO[${i}][4];this.classList.toggle('on');toast('${a[2]}',AUTO[${i}][4]?'Switched on':'Paused','zap')"></button></div>`).join('')}</div>`;
+A.flow=i=>{const a=AUTO[i];openDr(`<span class="ic ${TONE[a[1]]}" style="width:42px;height:42px;border-radius:13px;display:grid;place-items:center">${ic(a[0],20)}</span><div><div class="b" style="font-size:16px">${a[2]}</div><div class="small muted">${a[4]?'Running':'Paused'} · ${a[5]}</div></div>`,
+  `<div class="kv" style="margin-bottom:16px"><div><span>This month</span><b>${a[5]}</b></div><div><span>Result</span><b>${a[6]}</b></div></div><div class="flow">${a[7].map((s,j)=>`${j?`<div class="fl go" style="animation-delay:${j*.25}s"></div>`:''}<div class="fn fade" style="animation-delay:${j*.25}s"><span class="ic ${j?TONE[a[1]]:'t-slate'}">${ic(j?(j===a[7].length-1?'check':'zap'):'play',15)}</span><div><small>${j?'Step '+j:'When'}</small><b>${s}</b></div></div>`).join('')}</div>`,
+  `<button class="btn g" onclick="toast('Test sent','To Tom\\'s phone','send')">Send a test</button><button class="btn p" onclick="toast('Editor','Locked in this demo','lock')">${ic('pen',15)} Edit flow</button>`)};
+
+/* ================= LEAD SOURCES ================= */
+VIEWS.src=()=>{const S=[['google','£3,840',62,'£62',14,5,'£468k'],['meta','£2,610',71,'£37',11,3,'£226k'],['seo','£0',38,'£0',9,3,'£312k'],['ref','£2,500',12,'£208',9,5,'£514k'],['insta','£0',19,'£0',4,1,'£134k'],['show','£1,900',16,'£119',6,2,'£238k']];
+  return `<div class="ttl"><div><h2>Lead sources</h2><p>Where every pool came from in 2026, from first click to signed contract</p></div><div class="r"><div class="seg"><button>30 days</button><button>Quarter</button><button class="on">2026</button></div></div></div>
+  <div class="g4">${kpi('Ad spend','£10,850','Google & Meta','pound','blue')}${kpi('Leads','218','Avg £50 per lead','users','violet')}${kpi('Pools sold','19','From those leads','check','green')}${kpi('Return','173×','£1.89m from £10.9k','up','aqua')}</div>
+  <div class="card mt"><div class="ch"><h3>Revenue by source</h3></div><div class="cp">${S.map(([k,sp,l,cpl,sv,sold,rev])=>{const s=SRC[k];const v=parseInt(rev.replace(/\D/g,''));return `<div style="display:grid;grid-template-columns:120px 1fr 64px;gap:12px;align-items:center;margin-top:10px"><span class="small b">${s[0]}</span><div class="bar" style="height:22px;border-radius:7px"><i style="width:${v/5.4}%;background:${COL[s[1]]};border-radius:7px"></i></div><b class="num small" style="text-align:right">${rev}</b></div>`}).join('')}</div></div>
+  <div class="card rows mt"><div class="hd" style="grid-template-columns:1.2fr .8fr .6fr .8fr .6fr .6fr"><span>Source</span><span class="hm">Spend</span><span>Leads</span><span class="hm">Cost per lead</span><span class="hm">Surveys</span><span>Sold</span></div>${S.map(([k,sp,l,cpl,sv,sold])=>{const s=SRC[k];return `<div class="rw" style="grid-template-columns:1.2fr .8fr .6fr .8fr .6fr .6fr;cursor:default"><span><span class="pill ${TONE[s[1]]}">${s[0]}</span></span><span class="hm num">${sp}</span><b class="num">${l}</b><span class="hm num">${cpl}</span><span class="hm num">${sv}</span><b class="num">${sold}</b></div>`}).join('')}</div>`};
+
+/* ================= BOOT ================= */
+side();render();
+addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();A.search()}if(e.key==='Escape')A.close()});
+</script>
+</body></html>
