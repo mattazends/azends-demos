@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F5F4F0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>slatewell° · Roofing done properly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   CONFIG NOTES
+   - Owner intro videos: set VIDEOS in the script below
+     (one clip per service). Leave blank and the player
+     simulates playback over the poster.
+   - On your phone: double-tap the video in the email to
+     pick a clip from your camera roll for this run.
+   ========================================================= */
+:root{
+  --bg:#F5F4F0;
+  --card:#FFFFFF;
+  --ink:#121212;
+  --ink-2:#3A3A3A;
+  --muted:#76746F;
+  --line:#E7E5E0;
+  --accent:#1E4D3A;
+  --accent-soft:#E8F0EB;
+  --radius:20px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{overscroll-behavior:none;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-text-size-adjust:100%;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100dvh;display:flex;justify-content:center}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit;color:inherit;-webkit-user-select:text;user-select:text}
+body.lock{overflow:hidden}
+::-webkit-scrollbar{width:0;height:0}
+img{-webkit-user-drag:none}
+
+.app{width:100%;max-width:440px;min-height:100dvh;position:relative;overflow:hidden;background:var(--bg)}
+@media (min-width:520px){
+  body{padding:28px 0;background:#E9E7E2}
+  .app{min-height:880px;height:880px;border-radius:44px;box-shadow:0 30px 80px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.04);overflow-y:auto}
+}
+
+/* ---------- top bar ---------- */
+.bar{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top) + 18px) 22px 0}
+.logo{font-weight:600;font-size:19px;letter-spacing:-.03em;color:#fff;transition:color .5s var(--ease)}
+.logo sup{font-weight:400;font-size:13px;opacity:.8}
+.rating{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:#fff;background:rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25);padding:7px 11px;border-radius:99px;transition:all .5s var(--ease)}
+.rating svg{width:12px;height:12px}
+.app.solid .logo{color:var(--ink)}
+.app.solid .rating{color:var(--ink);background:#fff;border-color:var(--line)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:56dvh;min-height:380px;max-height:520px;overflow:hidden;transition:height .7s var(--ease),min-height .7s var(--ease)}
+@media (min-width:520px){.hero{height:470px}}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:drift 14s ease-in-out infinite alternate}
+.hero::before{content:"";position:absolute;inset:0;background:#3c4a44;z-index:-1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,.08) 35%,rgba(0,0,0,.2) 62%,var(--bg) 100%)}
+@keyframes drift{to{transform:scale(1.13) translate(-2%,1%)}}
+.app.solid .hero{height:0;min-height:0}
+
+/* ---------- panel ---------- */
+.panel{position:relative;margin-top:-118px;padding:0 22px 40px;z-index:2;transition:margin .7s var(--ease)}
+.app.solid .panel{margin-top:0;padding-top:calc(env(safe-area-inset-top) + 86px)}
+
+.step{display:none}
+.step.on{display:block;animation:rise .6s var(--ease) both}
+@media (max-width:380px){h1{font-size:30px}h2{font-size:24px}.opt{padding:14px 13px 13px}.opt .ic{margin-bottom:12px}.day{width:54px}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:6px 11px;border-radius:99px;margin-bottom:16px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(30,77,58,.5);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 7px rgba(30,77,58,0)}100%{box-shadow:0 0 0 0 rgba(30,77,58,0)}}
+
+h1{font-size:34px;line-height:1.06;font-weight:600;letter-spacing:-.035em}
+h1 span{font-weight:300}
+h2{font-size:27px;line-height:1.12;font-weight:600;letter-spacing:-.03em}
+h2 span{font-weight:300}
+.lede{margin-top:12px;font-size:15.5px;line-height:1.5;color:var(--muted);font-weight:400}
+
+.field{margin-top:22px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:7px 7px 7px 16px;box-shadow:0 10px 30px rgba(0,0,0,.05);transition:border-color .25s,box-shadow .25s}
+.field:focus-within{border-color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.field svg{width:18px;height:18px;flex:none;color:var(--muted)}
+.field input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:17px;font-weight:500;letter-spacing:.02em;text-transform:uppercase;padding:10px 0}
+.field input::placeholder{text-transform:none;letter-spacing:0;font-weight:400;color:#A9A7A2}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;font-size:15px;font-weight:500;padding:14px 20px;border-radius:14px;transition:transform .2s var(--ease),opacity .2s,background .3s}
+.btn:active{transform:scale(.97)}
+.btn svg{width:16px;height:16px}
+.btn.wide{width:100%;padding:17px;border-radius:16px;font-size:16px;margin-top:22px}
+.btn[disabled]{opacity:.25;pointer-events:none}
+
+.trust{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12.5px;color:var(--muted)}
+.trust div{display:flex;align-items:center;gap:6px}
+.trust svg{width:14px;height:14px;color:var(--accent)}
+
+.proof{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.faces{display:flex}
+.faces i{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;background-size:cover;background-position:center;display:block}
+.faces i:first-child{margin-left:0}
+.proof p{font-size:13px;line-height:1.4;color:var(--muted)}
+.proof b{color:var(--ink);font-weight:500}
+
+/* ---------- progress ---------- */
+.prog{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.back{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;flex:none}
+.back svg{width:16px;height:16px}
+.track{flex:1;height:4px;border-radius:9px;background:var(--line);overflow:hidden}
+.track b{display:block;height:100%;width:0;background:var(--ink);border-radius:9px;transition:width .7s var(--ease)}
+.count{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.where{font-size:13px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.where svg{width:13px;height:13px;color:var(--accent)}
+
+/* ---------- options ---------- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.opt{position:relative;text-align:left;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 15px 15px;transition:all .25s var(--ease);opacity:0;animation:rise .5s var(--ease) forwards}
+.opt:active{transform:scale(.97)}
+.opt .ic{width:36px;height:36px;border-radius:11px;background:var(--bg);display:grid;place-items:center;margin-bottom:16px;transition:background .25s}
+.opt .ic svg{width:19px;height:19px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.opt b{display:block;font-size:15px;font-weight:500;letter-spacing:-.01em}
+.opt small{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+.opt.sel{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.opt.sel .ic{background:var(--ink)}
+.opt.sel .ic svg{stroke:#fff}
+.list{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.list .opt{display:flex;align-items:center;gap:14px;padding:16px}
+.list .opt .ic{margin:0;flex:none}
+.list .opt .tick{margin-left:auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);flex:none;display:grid;place-items:center;transition:all .25s}
+.list .opt.sel .tick{background:var(--ink);border-color:var(--ink)}
+.tick svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;opacity:0}
+.opt.sel .tick svg{opacity:1}
+
+/* ---------- details ---------- */
+.inputs{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.inp{background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px 16px 12px;transition:border-color .25s}
+.inp:focus-within{border-color:var(--ink)}
+.inp label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:3px}
+.inp input{width:100%;border:0;outline:0;background:none;font-size:17px;font-weight:500}
+.tom{margin-top:22px;display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px}
+.tom .ph{width:54px;height:54px;border-radius:14px;background-size:cover;background-position:center;position:relative;flex:none}
+.tom .ph::after{content:"";position:absolute;right:-3px;bottom:-3px;width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid #fff}
+.tom p{font-size:13px;line-height:1.45;color:var(--muted)}
+.tom b{color:var(--ink);font-weight:500}
+.fine{margin-top:12px;text-align:center;font-size:12px;color:var(--muted)}
+
+/* ---------- sending ---------- */
+.sending{padding-top:30px}
+.checks{margin-top:26px;display:flex;flex-direction:column;gap:2px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 16px}
+.chk{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);opacity:.35;transition:opacity .4s}
+.chk:last-child{border-bottom:0}
+.chk.done{opacity:1}
+.chk .c{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;flex:none;position:relative;transition:all .35s var(--ease)}
+.chk .c svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.6;stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .4s .15s var(--ease)}
+.chk.busy .c{border-color:var(--ink);border-top-color:transparent;animation:spin .8s linear infinite}
+.chk.done .c{background:var(--accent);border-color:var(--accent);animation:none}
+.chk.done .c svg{stroke-dashoffset:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chk p{font-size:14.5px;font-weight:500}
+.chk small{display:block;font-size:12.5px;color:var(--muted);font-weight:400;margin-top:1px}
+
+.sent{text-align:left;padding-top:30px}
+@media (max-width:519px){.step.on{min-height:calc(100dvh - 140px)}.app.solid .panel{padding-bottom:calc(env(safe-area-inset-bottom) + 40px)}.mbody{padding-bottom:calc(env(safe-area-inset-bottom) + 60px)}}
+.env{width:64px;height:64px;border-radius:20px;background:var(--accent);display:grid;place-items:center;margin-bottom:22px;animation:pop .6s var(--ease) both}
+.env svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.6}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.peek{margin-top:26px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+
+/* ---------- notification ---------- */
+.notif{position:absolute;left:10px;right:10px;top:calc(env(safe-area-inset-top) + 10px);z-index:30;display:flex;gap:11px;align-items:flex-start;padding:12px 14px;border-radius:22px;background:rgba(250,250,248,.82);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);box-shadow:0 18px 50px rgba(0,0,0,.16),0 0 0 .5px rgba(0,0,0,.06);transform:translateY(-140%);transition:transform .7s var(--ease);text-align:left;width:auto}
+.notif.show{transform:none}
+.notif .mi{width:38px;height:38px;border-radius:10px;background:linear-gradient(180deg,#3a3a3a,#111);display:grid;place-items:center;flex:none}
+.notif .mi svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.7}
+.notif .nb{flex:1;min-width:0}
+.notif .nt{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600}
+.notif .nt span{font-weight:400;color:var(--muted);font-size:12.5px}
+.notif .ns{font-size:13.5px;font-weight:500;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notif .np{font-size:13px;color:var(--ink-2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- email view ---------- */
+.mail{position:absolute;inset:0;z-index:20;background:#fff;transform:translateX(100%);transition:transform .6s var(--ease);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.mail.open{transform:none}
+.mhead{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top) + 14px) 16px 12px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+.mhead.line{border-color:var(--line)}
+.mhead button{display:flex;align-items:center;gap:4px;font-size:15px;color:var(--ink)}
+.mhead svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.micons{display:flex;gap:18px;color:var(--muted)}
+.mbody{padding:8px 20px 60px}
+.subj{font-size:23px;line-height:1.2;font-weight:600;letter-spacing:-.025em}
+.from{display:flex;align-items:center;gap:11px;margin:18px 0 22px}
+.av{width:42px;height:42px;border-radius:50%;background-size:cover;background-position:center;flex:none}
+.from b{display:block;font-size:14.5px;font-weight:600}
+.from span{font-size:12.5px;color:var(--muted)}
+.from .when{margin-left:auto;font-size:12.5px;color:var(--muted);align-self:flex-start;margin-top:3px}
+.copy p{font-size:15.5px;line-height:1.6;color:var(--ink-2);margin-bottom:14px}
+.copy p b{color:var(--ink);font-weight:600}
+
+/* video */
+.vid{position:relative;margin:20px 0 22px;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:#2b3330;box-shadow:0 20px 50px rgba(0,0,0,.14);cursor:pointer}
+.vid img,.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid img{transition:transform 9s linear}
+.vid.playing img{transform:scale(1.12)}
+.vid video{display:none}
+.vid.has-video video{display:block}
+.vid.has-video img{display:none}
+.vid .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.6) 100%);pointer-events:none}
+.vid .tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:12px;font-weight:500;padding:6px 10px 6px 6px;border-radius:99px;pointer-events:none}
+.vid .tag i{width:22px;height:22px;border-radius:50%;background-size:cover;background-position:center;display:block}
+.vid .play{position:absolute;left:50%;top:50%;width:74px;height:74px;margin:-37px 0 0 -37px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:all .35s var(--ease)}
+.vid .play::before{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(255,255,255,.35);animation:ring 2.2s var(--ease) infinite}
+@keyframes ring{from{transform:scale(.85);opacity:1}to{transform:scale(1.35);opacity:0}}
+.vid .play svg{width:24px;height:24px;fill:#fff;margin-left:4px}
+.vid.playing .play{opacity:0;transform:scale(.8)}
+.vid .cap{position:absolute;left:18px;right:18px;bottom:18px;color:#fff;pointer-events:none}
+.vid .cap b{display:block;font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.vid .cap span{font-size:13px;opacity:.85}
+.vid .pbar{margin-top:12px;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden}
+.vid .pbar i{display:block;height:100%;width:0;background:#fff}
+.vid .sub{position:absolute;left:18px;right:18px;bottom:92px;text-align:center;color:#fff;font-size:16px;font-weight:500;line-height:1.35;text-shadow:0 2px 12px rgba(0,0,0,.4);opacity:0;transition:opacity .35s;pointer-events:none}
+.vid.playing .sub{opacity:1}
+
+/* booking */
+.book{margin:26px 0 24px;border:1px solid var(--line);border-radius:22px;padding:18px 16px 16px;background:#FBFAF8}
+.book h3{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.book .bs{font-size:13px;color:var(--muted);margin-top:3px}
+.bhead{display:flex;justify-content:space-between;align-items:flex-start}
+.bfree{font-size:11.5px;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:5px 9px;border-radius:99px;white-space:nowrap}
+.days{display:flex;gap:8px;margin-top:16px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.days::-webkit-scrollbar{display:none}
+.day{flex:none;width:58px;padding:10px 0 11px;border-radius:15px;border:1px solid var(--line);background:#fff;text-align:center;transition:all .25s var(--ease)}
+.day small{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.day b{display:block;font-size:19px;font-weight:600;margin-top:3px;letter-spacing:-.02em}
+.day em{display:block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin:5px auto 0}
+.day.off{opacity:.38;pointer-events:none}
+.day.off em{background:transparent}
+.day.near{border-color:var(--accent)}
+.day.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.day.sel small{color:rgba(255,255,255,.65)}
+.day.sel em{background:#fff}
+.near-note{font-size:12px;color:var(--accent);margin-top:10px;display:flex;align-items:center;gap:6px}
+.near-note i{width:5px;height:5px;border-radius:50%;background:var(--accent);display:block}
+.times{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;max-height:0;overflow:hidden;transition:max-height .5s var(--ease),margin .3s}
+.times.on{max-height:120px}
+.time{padding:12px 0;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:500;transition:all .2s}
+.time.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+.time.gone{opacity:.3;text-decoration:line-through;pointer-events:none}
+.book .btn.wide{margin-top:14px}
+.booked{display:none;text-align:center;padding:14px 6px 6px}
+.booked.on{display:block;animation:rise .6s var(--ease) both}
+.booked .bk{width:56px;height:56px;border-radius:50%;background:var(--accent);display:grid;place-items:center;margin:0 auto 14px;animation:pop .6s var(--ease) both}
+.booked .bk svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2.4}
+.booked h4{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.booked p{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.5}
+.booked .when2{display:inline-block;margin-top:14px;font-size:14px;font-weight:500;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:12px}
+
+.sig{margin-top:6px;display:flex;align-items:center;gap:12px}
+.sig b{display:block;font-size:15px;font-weight:600}
+.sig span{font-size:13px;color:var(--muted)}
+.mfoot{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:#A9A7A2;line-height:1.6}
+
+.toast{position:absolute;left:50%;bottom:24px;transform:translate(-50%,30px);opacity:0;background:var(--ink);color:#fff;font-size:13px;padding:10px 14px;border-radius:12px;z-index:40;transition:all .4s var(--ease);pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:519px){
+  .mail,.toast{position:fixed}
+  .notif{position:fixed}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <div class="bar">
+    <div class="logo">slatewell<sup>°</sup></div>
+    <div class="rating"><svg viewBox="0 0 24 24" fill="#F5B301"><path d="M12 2l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 18.1 5.6 21.6 7 14.5l-5.3-5 7.2-.9z"/></svg>4.9 · 312 reviews</div>
+  </div>
+
+  <div class="hero" id="hero">
+    <img src="https://images.pexels.com/photos/10971733/pexels-photo-10971733.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="" onerror="this.style.display='none'">
+  </div>
+
+  <div class="panel">
+
+    <!-- STEP 0 · hero / postcode -->
+    <section class="step on" data-step="0">
+      <div class="eyebrow"><span class="dot"></span>Taking jobs across Herts &amp; North London</div>
+      <h1>Roofing done properly, <span>the first time.</span></h1>
+      <p class="lede">Pop your postcode in and answer two quick questions. Tom, our founder, will send you a short video about your job.</p>
+      <form class="field" id="pcForm" autocomplete="off">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <input id="pc" placeholder="Your postcode" maxlength="8" autocapitalize="characters" spellcheck="false" inputmode="text">
+        <button class="btn" type="submit">Start <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <div class="trust">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Fully insured</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>10-year guarantee</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Free roof check</div>
+      </div>
+      <div class="proof">
+        <div class="faces">
+          <i style="background-image:url(https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100)"></i>
+          <i style="background-image:url(https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100)"></i>
+          <i style="background-image:url(https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100)"></i>
+        </div>
+        <p><b>1,400+ roofs</b> sorted since 2011.<br>Most quotes are back the same week.</p>
+      </div>
+    </section>
+
+    <!-- STEP 1 · service -->
+    <section class="step" data-step="1">
+      <div class="prog">
+        <button class="back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="track"><b id="tr1"></b></div><span class="count">1 of 3</span>
+      </div>
+      <div class="where"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7.5C5 14.9 12 21 12 21s7-6.1 7-11.5A7 7 0 0 0 12 2zm0 10a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg><span><span class="pcOut">HA6</span>, we cover you</span></div>
+      <h2>What do you need <span>help with?</span></h2>
+      <div class="grid" id="services"></div>
+    </section>
+
+    <!-- STEP 2 · timing -->
+    <section class="step" data-step="2">
+      <div class="prog">
+        <button class="back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="track"><b id="tr2"></b></div><span class="count">2 of 3</span>
+      </div>
+      <h2>When are you hoping <span>to get it done?</span></h2>
+      <div class="list" id="timings"></div>
+    </section>
+
+    <!-- STEP 3 · details -->
+    <section class="step" data-step="3">
+      <div class="prog">
+        <button class="back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="track"><b id="tr3"></b></div><span class="count">3 of 3</span>
+      </div>
+      <h2>Where should Tom <span>send your video?</span></h2>
+      <div class="tom">
+        <div class="ph" style="background-image:url(https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200)"></div>
+        <p><b>Tom Hale, founder.</b> He's recorded a short intro on <b class="svcName">roof repairs</b>, so you know who you're dealing with before anyone turns up.</p>
+      </div>
+      <form id="detForm" autocomplete="off">
+        <div class="inputs">
+          <div class="inp"><label for="nm">First name</label><input id="nm" placeholder="Matt" autocapitalize="words"></div>
+          <div class="inp"><label for="em">Email</label><input id="em" type="email" placeholder="you@email.com" inputmode="email" autocapitalize="off"></div>
+        </div>
+        <button class="btn wide" type="submit" id="sendBtn">Send my video <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <p class="fine">One email from Tom. No spam, no sales calls.</p>
+    </section>
+
+    <!-- STEP 4 · sending -->
+    <section class="step sending" data-step="4">
+      <h2>Getting your <span>video ready</span></h2>
+      <div class="checks">
+        <div class="chk" id="c1"><div class="c"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><p><span class="pcOut">HA6</span> is in our area<small>Our team works near you every week</small></p></div>
+        <div class="chk" id="c2"><div class="c"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><p>Tom's video on <span class="svcName">roof repairs</span><small>Picked for your job</small></p></div>
+        <div class="chk" id="c3"><div class="c"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><p>Free roof check slots<small>Held for you near <span class="pcOut">HA6</span></small></p></div>
+        <div class="chk" id="c4"><div class="c"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><p>Sent to your inbox<small class="emOut">you@email.com</small></p></div>
+      </div>
+    </section>
+
+    <!-- STEP 5 · sent -->
+    <section class="step sent" data-step="5">
+      <div class="env"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></div>
+      <h2>Check your inbox, <span class="nmOut">Matt.</span></h2>
+      <p class="lede">Tom's video is on its way. It's about a minute long and covers exactly what happens with <span class="svcName">roof repairs</span>.</p>
+      <p class="peek"><span class="dot"></span>Arriving now</p>
+    </section>
+  </div>
+
+  <!-- notification -->
+  <button class="notif" id="notif">
+    <div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></div>
+    <div class="nb">
+      <div class="nt">Tom at slatewell° <span>now</span></div>
+      <div class="ns" id="nSubj">A quick hello about your roof</div>
+      <div class="np">I've recorded a short video for you. Have a watch…</div>
+    </div>
+  </button>
+
+  <!-- email -->
+  <div class="mail" id="mail">
+    <div class="mhead" id="mhead">
+      <button id="closeMail"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Inbox</button>
+      <div class="micons">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 7h18M6 7v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M9 7V4h6v3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M9 14l-5-5 5-5"/><path d="M4 9h10a6 6 0 0 1 6 6v5"/></svg>
+      </div>
+    </div>
+    <div class="mbody">
+      <h3 class="subj" id="mSubj">Your roof repair in HA6, a quick hello from Tom</h3>
+      <div class="from">
+        <div class="av" style="background-image:url(https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200)"></div>
+        <div><b>Tom Hale</b><span>tom@slatewell.co.uk</span></div>
+        <div class="when">Now</div>
+      </div>
+
+      <div class="copy">
+        <p>Hi <b class="nmPlain">Matt</b>,</p>
+        <p id="mIntro"></p>
+      </div>
+
+      <div class="vid" id="vid">
+        <img src="https://images.pexels.com/photos/5259822/pexels-photo-5259822.jpeg?auto=compress&cs=tinysrgb&w=900" alt="" onerror="this.style.display='none'">
+        <video id="vEl" playsinline preload="metadata"></video>
+        <div class="shade"></div>
+        <div class="tag"><i style="background-image:url(https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=80)"></i>Tom · Founder</div>
+        <div class="play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></div>
+        <div class="sub" id="vSub"></div>
+        <div class="cap">
+          <b id="vTitle">What happens with a roof repair</b>
+          <span id="vLen">1:04 · recorded for you</span>
+          <div class="pbar"><i id="pb"></i></div>
+        </div>
+        <input type="file" id="vPick" accept="video/*" hidden>
+      </div>
+
+      <div class="copy">
+        <p id="mSlot"></p>
+      </div>
+
+      <div class="book" id="book">
+        <div id="bookForm">
+          <div class="bhead">
+            <div><h3>Book your free roof check</h3><p class="bs">30 mins · Tom or a senior roofer</p></div>
+            <span class="bfree">Free</span>
+          </div>
+          <div class="days" id="days"></div>
+          <div class="near-note"><i></i><span>Outlined days, we're already working near <span class="pcOut">HA6</span></span></div>
+          <div class="times" id="times"></div>
+          <button class="btn wide" id="bookBtn" disabled>Choose a day</button>
+        </div>
+        <div class="booked" id="booked">
+          <div class="bk"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <h4>You're booked in</h4>
+          <p>Tom will text you the evening before<br>with who's coming and a rough arrival time.</p>
+          <span class="when2" id="bookedWhen"></span>
+        </div>
+      </div>
+
+      <div class="copy">
+        <p>Any questions at all, just reply to this email and it comes straight to me.</p>
+      </div>
+      <div class="sig">
+        <div class="av" style="width:44px;height:44px;background-image:url(https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200)"></div>
+        <div><b>Tom Hale</b><span>Founder, slatewell°</span></div>
+      </div>
+      <div class="mfoot">slatewell° Roofing · Northwood, HA6<br>Fully insured · 10-year workmanship guarantee</div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+/* =========================================================
+   VIDEOS: drop your owner clips in here (path or URL).
+   Leave blank to use the simulated player.
+   ========================================================= */
+const VIDEOS = {
+  new:"", repair:"", flat:"", gutters:"", chimney:"", unsure:""
+};
+
+const SERVICES = [
+  {id:"repair",  t:"Leak or repair", s:"Slipped tiles, damp patches", name:"roof repairs", job:"your roof repair", vt:"What happens with a roof repair", len:"1:04",
+   intro:"Thanks for getting in touch about your roof. Leaks only get worse the longer they're left, so I've recorded a quick video walking you through how we find the actual cause (not just the wet patch) and what a repair with us looks like from start to finish.",
+   subs:["Hi, I'm Tom, I run slatewell°.","Most leaks don't start where the damp patch is.","We find the cause, fix it, and show you photos.","Every repair comes with a written guarantee."],
+   icon:'<path d="M12 3s-5 6-5 10a5 5 0 0 0 10 0c0-4-5-10-5-10z"/>'},
+  {id:"new",     t:"New roof", s:"Full re-roof or replacement", name:"new roofs", job:"your new roof", vt:"How a new roof works with us", len:"1:12",
+   intro:"Thanks for getting in touch about a new roof. It's a big job, so I've recorded a short video explaining exactly how we do it: the materials, how long you'll have scaffold up, and how we keep your house dry the whole way through.",
+   subs:["Hi, I'm Tom, I run slatewell°.","A new roof should last you 40+ years.","Here's how we do it, day by day.","Fixed price, agreed before we start."],
+   icon:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>'},
+  {id:"flat",    t:"Flat roof", s:"Extensions, garages, dormers", name:"flat roofs", job:"your flat roof", vt:"Flat roofs, explained in a minute", len:"0:58",
+   intro:"Thanks for getting in touch about your flat roof. I've recorded a quick video on the systems we use, why most flat roofs fail early, and what we do differently so yours doesn't.",
+   subs:["Hi, I'm Tom, I run slatewell°.","Most flat roofs fail at the edges, not the middle.","We use rubber and GRP systems built to last.","25-year manufacturer warranty on top of ours."],
+   icon:'<path d="M3 9h18"/><path d="M5 9v11h14V9"/><path d="M3 9l2-4h14l2 4"/>'},
+  {id:"gutters", t:"Gutters & fascias", s:"Leaking, sagging, replacing", name:"gutters and fascias", job:"your gutters and fascias", vt:"Gutters and fascias, done right", len:"0:52",
+   intro:"Thanks for getting in touch about your gutters and fascias. I've recorded a short video showing what we check, the colours and finishes you can pick from, and why we always look at the roof edge while we're up there.",
+   subs:["Hi, I'm Tom, I run slatewell°.","Blocked gutters cause more damp than you'd think.","We replace, seal and check the roof edge too.","Pick your colour, we'll do the rest."],
+   icon:'<path d="M3 7h18v3a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"/><path d="M17 13v6"/>'},
+  {id:"chimney", t:"Chimney", s:"Repointing, flashing, removal", name:"chimney work", job:"your chimney", vt:"What we do with chimneys", len:"1:01",
+   intro:"Thanks for getting in touch about your chimney. I've recorded a quick video on the common problems we see, from failed flashing to crumbling pointing, and how we sort them safely.",
+   subs:["Hi, I'm Tom, I run slatewell°.","Chimneys cause half the leaks we're called to.","Flashing, pointing, caps, or full removal.","We send you photos before and after."],
+   icon:'<path d="M4 21V11l8-6 8 6v10"/><path d="M15 7V3h3v6"/>'},
+  {id:"unsure",  t:"Not sure yet", s:"Something's not right", name:"roof checks", job:"your roof", vt:"Not sure what's wrong? Start here", len:"0:49",
+   intro:"Thanks for getting in touch. Not knowing what's wrong is completely normal, so I've recorded a quick video on what our free roof check covers and what you'll get back from us afterwards.",
+   subs:["Hi, I'm Tom, I run slatewell°.","Not sure what's wrong? That's what we're for.","A free check, with photos of everything we find.","Then a clear price, no pressure."],
+   icon:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/>'}
+];
+
+const TIMINGS = [
+  {id:"asap",  t:"As soon as possible", s:"It's causing a problem now", icon:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+   slot:"Since you'd like it sorted quickly, I've held our <b>earliest slots</b> for you. We're already working near {PC} next week, so if you pick one of the outlined days we can be with you quicker."},
+  {id:"month", t:"Within a month", s:"Soon, but not urgent", icon:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+   slot:"We're working around {PC} over the next couple of weeks, so it's a good time for a <b>free roof check</b>. Pick whatever suits you below and you'll have a fixed price within 48 hours."},
+  {id:"later", t:"In 1 to 3 months", s:"Planning ahead", icon:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+   slot:"No rush on your side, so have a watch and book in when it suits. A <b>free roof check</b> now means you'll have a proper price ready when you need it, and we're near {PC} most weeks."},
+  {id:"plan",  t:"Just getting prices", s:"Seeing what it'll cost", icon:'<path d="M4 19V5M4 19h16"/><path d="M8 15l4-4 3 3 5-6"/>',
+   slot:"Totally fine to just be getting prices. The quickest way to an accurate one is a <b>free 30-minute roof check</b>. No pressure and no hard sell, and we're near {PC} most weeks."}
+];
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const app = $('#app');
+const state = {pc:"HA6", svc:SERVICES[0], tm:TIMINGS[0], nm:"Matt", em:"you@email.com", day:null, time:null};
+
+function go(n){
+  $$('.step').forEach(s=>s.classList.toggle('on', +s.dataset.step===n));
+  app.classList.toggle('solid', n>0);
+  app.scrollTo?.({top:0,behavior:'smooth'}); window.scrollTo({top:0,behavior:'smooth'});
+  const w = {1:'33%',2:'66%',3:'100%'};
+  if(w[n]){
+    const b=$('#tr'+n);
+    b.style.transition='none'; b.style.width = n>current ? (w[n-1]||'0') : (w[n+1]||'100%');
+    void b.offsetWidth; b.style.transition='';
+    setTimeout(()=>{b.style.width=w[n]},60);
+  }
+  current=n;
+}
+let current=0;
+$$('[data-back]').forEach(b=>b.onclick=()=>go(Math.max(0,current-1)));
+
+function fill(){
+  $$('.pcOut').forEach(e=>e.textContent=state.pc);
+  $$('.svcName').forEach(e=>e.textContent=state.svc.name);
+  $$('.nmOut').forEach(e=>e.textContent=state.nm+'.');
+  $$('.nmPlain').forEach(e=>e.textContent=state.nm);
+  $$('.emOut').forEach(e=>e.textContent=state.em);
+}
+
+/* step 0 */
+$('#pcForm').onsubmit=e=>{
+  e.preventDefault();
+  const raw=$('#pc').value.trim().toUpperCase(); $('#pc').blur();
+  if(raw){ state.pc = raw.includes(' ') ? raw.split(' ')[0] : (raw.length>4 ? raw.slice(0,raw.length-3) : raw); }
+  fill(); go(1);
+};
+
+/* step 1 */
+const svWrap=$('#services');
+SERVICES.forEach((s,i)=>{
+  const b=document.createElement('button');
+  b.className='opt'; b.style.animationDelay=(i*55)+'ms';
+  b.innerHTML=`<div class="ic"><svg viewBox="0 0 24 24">${s.icon}</svg></div><b>${s.t}</b><small>${s.s}</small>`;
+  b.onclick=()=>{
+    svWrap.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+    b.classList.add('sel'); state.svc=s; fill();
+    setTimeout(()=>go(2),380);
+  };
+  svWrap.appendChild(b);
+});
+
+/* step 2 */
+const tmWrap=$('#timings');
+TIMINGS.forEach((t,i)=>{
+  const b=document.createElement('button');
+  b.className='opt'; b.style.animationDelay=(i*60)+'ms';
+  b.innerHTML=`<div class="ic"><svg viewBox="0 0 24 24">${t.icon}</svg></div><div><b>${t.t}</b><small>${t.s}</small></div><div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>`;
+  b.onclick=()=>{
+    tmWrap.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+    b.classList.add('sel'); state.tm=t;
+    setTimeout(()=>go(3),380);
+  };
+  tmWrap.appendChild(b);
+});
+
+/* step 3 */
+$('#detForm').onsubmit=e=>{
+  e.preventDefault();
+  const n=$('#nm').value.trim(), m=$('#em').value.trim(); document.activeElement&&document.activeElement.blur();
+  if(n) state.nm=n.charAt(0).toUpperCase()+n.slice(1);
+  if(m) state.em=m;
+  fill(); buildEmail(); go(4); runChecks();
+};
+
+/* step 4 */
+function runChecks(){
+  const ids=['c1','c2','c3','c4'];
+  ids.forEach(id=>$('#'+id).className='chk');
+  ids.forEach((id,i)=>{
+    setTimeout(()=>$('#'+id).classList.add('busy'), 250+i*700);
+    setTimeout(()=>{$('#'+id).classList.remove('busy');$('#'+id).classList.add('done')}, 850+i*700);
+  });
+  setTimeout(()=>{go(5); setTimeout(showNotif,1500)}, 250+ids.length*700+500);
+}
+
+/* notification */
+function showNotif(){
+  $('#nSubj').textContent = `${cap(state.svc.job)} in ${state.pc}, a quick hello`;
+  $('#notif').classList.add('show');
+  try{navigator.vibrate&&navigator.vibrate([18,60,18])}catch(e){}
+}
+$('#notif').onclick=()=>{$('#notif').classList.remove('show'); openMail();};
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+
+/* email */
+function buildEmail(){
+  const s=state.svc, t=state.tm;
+  $('#mSubj').textContent = `${cap(s.job)} in ${state.pc}, a quick hello from Tom`;
+  $('#mIntro').textContent = s.intro;
+  $('#vTitle').textContent = s.vt;
+  $('#vLen').textContent = `${s.len} · recorded for you`;
+  $('#mSlot').innerHTML = t.slot.replace('{PC}', `<b>${state.pc}</b>`);
+  const src = VIDEOS[s.id];
+  const v=$('#vEl');
+  if(src){ v.src=src; $('#vid').classList.add('has-video'); }
+  resetPlayer(); buildDays();
+}
+function openMail(){ document.body.classList.add('lock'); $('#mail').classList.add('open'); $('#mail').scrollTop=0; }
+$('#closeMail').onclick=()=>{ document.body.classList.remove('lock'); $('#mail').classList.remove('open'); pauseSim(); $('#vEl').pause(); };
+$('#mail').addEventListener('scroll',()=>$('#mhead').classList.toggle('line',$('#mail').scrollTop>8));
+
+/* video player */
+let simT=null, simP=0, playing=false;
+function resetPlayer(){ pauseSim(); simP=0; $('#pb').style.width='0'; $('#vid').classList.remove('playing'); $('#vSub').textContent=''; playing=false; }
+function pauseSim(){ clearInterval(simT); simT=null; }
+function lenSec(){ const [m,s]=state.svc.len.split(':').map(Number); return m*60+s; }
+let lastTap=0, tapTimer=null;
+$('#vid').addEventListener('click',()=>{
+  const now=Date.now();
+  if(now-lastTap<320){ clearTimeout(tapTimer); lastTap=0; $('#vPick').click(); return; }
+  lastTap=now;
+  tapTimer=setTimeout(togglePlay,330);
+});
+function togglePlay(){
+  const vid=$('#vid'), v=$('#vEl');
+  if(vid.classList.contains('has-video')){
+    if(v.paused){ v.play(); vid.classList.add('playing'); } else { v.pause(); vid.classList.remove('playing'); }
+    return;
+  }
+  if(playing){ playing=false; pauseSim(); vid.classList.remove('playing'); return; }
+  playing=true; vid.classList.add('playing');
+  const total=lenSec(), subs=state.svc.subs;
+  simT=setInterval(()=>{
+    simP+=0.1;
+    const pct=Math.min(simP/total,1);
+    $('#pb').style.width=(pct*100)+'%';
+    const idx=Math.min(Math.floor(simP/3.2),subs.length-1);
+    $('#vSub').textContent=subs[idx];
+    if(pct>=1){ resetPlayer(); }
+  },100);
+}
+$('#vEl').addEventListener('timeupdate',e=>{const v=e.target; if(v.duration) $('#pb').style.width=(v.currentTime/v.duration*100)+'%';});
+$('#vEl').addEventListener('ended',()=>$('#vid').classList.remove('playing'));
+$('#vPick').addEventListener('change',e=>{
+  const f=e.target.files[0]; if(!f) return;
+  resetPlayer();
+  const v=$('#vEl'); v.src=URL.createObjectURL(f);
+  $('#vid').classList.add('has-video');
+  toast('Clip loaded. Tap to play');
+});
+
+/* booking */
+const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function buildDays(){
+  const wrap=$('#days'); wrap.innerHTML='';
+  state.day=null; state.time=null;
+  $('#times').classList.remove('on'); $('#times').innerHTML='';
+  $('#bookBtn').disabled=true; $('#bookBtn').textContent='Choose a day';
+  $('#booked').classList.remove('on'); $('#bookForm').style.display='';
+  const d=new Date(); d.setHours(0,0,0,0);
+  let added=0, weekday=0;
+  const offIdx=[2,6], nearIdx=[4,5];
+  while(added<9){
+    d.setDate(d.getDate()+1);
+    if(d.getDay()===0||d.getDay()===6) continue;
+    const day=new Date(d);
+    const b=document.createElement('button');
+    b.className='day'+(offIdx.includes(weekday)?' off':'')+(nearIdx.includes(weekday)?' near':'');
+    b.innerHTML=`<small>${DOW[day.getDay()]}</small><b>${day.getDate()}</b><em></em>`;
+    b.onclick=()=>{
+      wrap.querySelectorAll('.day').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); state.day=day; state.time=null; buildTimes(weekday);
+      wrap.scrollTo({left:b.offsetLeft-wrap.clientWidth/2+b.clientWidth/2,behavior:'smooth'});
+    };
+    wrap.appendChild(b); added++; weekday++;
+  }
+}
+function buildTimes(seed){
+  const t=$('#times'); t.innerHTML='';
+  const slots=['8:30','10:00','12:30','15:00'];
+  slots.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.className='time'+((i+seed)%3===0?' gone':'');
+    b.textContent=s;
+    b.onclick=()=>{
+      t.querySelectorAll('.time').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); state.time=s;
+      $('#bookBtn').disabled=false;
+      $('#bookBtn').textContent=`Book ${DOW[state.day.getDay()]} ${state.day.getDate()} ${MON[state.day.getMonth()]} at ${s}`;
+    };
+    t.appendChild(b);
+  });
+  t.classList.add('on');
+  $('#bookBtn').disabled=true; $('#bookBtn').textContent='Choose a time';
+}
+$('#bookBtn').onclick=()=>{
+  if(!state.day||!state.time) return;
+  $('#bookForm').style.display='none';
+  $('#bookedWhen').textContent=`${DOW[state.day.getDay()]} ${state.day.getDate()} ${MON[state.day.getMonth()]} · ${state.time}`;
+  $('#booked').classList.add('on');
+  try{navigator.vibrate&&navigator.vibrate(25)}catch(e){}
+};
+
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on'); setTimeout(()=>t.classList.remove('on'),2200); }
+
+fill();
+</script>
+</body>
+</html>
