@@ -75,6 +75,7 @@ body.lightnav .nav .mid a:hover{background:rgba(11,11,10,.06);color:var(--ink)}
 @keyframes dn{from{transform:translateY(-50%)}to{transform:translateY(0)}}
 .tile{width:100%;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#1b1b19;flex:0 0 auto}
 .tile video{width:100%;height:100%;object-fit:cover}
+.tile video:not([data-ok]){opacity:0}
 .shade{position:absolute;inset:0}
 .hero .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(36px,7vh,80px);will-change:transform,opacity}
 .hero h1{font-size:clamp(52px,9.4vw,172px);max-width:11.5ch;text-shadow:0 6px 60px rgba(0,0,0,.35)}
@@ -446,11 +447,11 @@ for(let c=0;c<ncol;c++){
   const col=document.createElement('div');col.className='col'+(c%2?' dn':'');col.style.setProperty('--d',(48+((c*7)%5)*9)+'s');
   const set=[];for(let k=0;k<4;k++)set.push(order[(c*3+k*2)%order.length]);
   [...set,...set].forEach(id=>{const t=document.createElement('div');t.className='tile';
-    t.innerHTML=`<video muted loop playsinline autoplay preload="auto" src="media/w${id}.mp4" poster="media/r${id}.jpg"></video>`;col.appendChild(t);});
+    t.style.background=`#1b1b19 url(media/r${id}.jpg) center/cover`;t.innerHTML=`<video muted loop playsinline autoplay preload="auto" src="media/w${id}.mp4"></video>`;col.appendChild(t);});
   wall.appendChild(col);
 }
 const wallVids=[...wall.querySelectorAll('video')];
-wallVids.forEach((v,i)=>{v.muted=true;v.addEventListener('loadeddata',()=>{try{v.currentTime=(i*0.7)%6}catch(e){}},{once:true});});
+wallVids.forEach((v,i)=>{v.muted=true;v.addEventListener('playing',()=>v.setAttribute('data-ok',''),{once:true});v.addEventListener('loadeddata',()=>{try{v.currentTime=(i*0.7)%6}catch(e){}},{once:true});});
 const heroEl=document.querySelector('.hero'),heroContent=document.getElementById('heroContent'),shade=document.getElementById('shade');
 let heroOn=true;
 new IntersectionObserver(es=>es.forEach(e=>{heroOn=e.isIntersecting;wallVids.forEach(v=>heroOn?v.play().catch(()=>{}):v.pause());})).observe(heroEl);
