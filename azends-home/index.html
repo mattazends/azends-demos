@@ -44,18 +44,23 @@ body.scrolled .mark{font-size:30px}
 .lines .ln>span{display:block;transform:translateY(105%);transition:transform 1.2s var(--ease)}
 .lines.in .ln>span{transform:none}
 
-.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 0 60px;position:relative}
-.hero .tag{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--mute);padding:7px 12px;border-radius:7px;background:rgba(255,255,255,.6)}
-.hero .tag i{width:7px;height:7px;border-radius:50%;background:var(--y);box-shadow:0 0 8px rgba(255,200,0,.9)}
-.hero h1{font-weight:500;font-size:clamp(46px,7.2vw,118px);line-height:.98;letter-spacing:-.05em;max-width:13ch;margin:26px auto 0}
-.hero .sub{margin:26px auto 0;max-width:40ch;font-size:clamp(17px,1.35vw,20px);line-height:1.5;color:var(--mute)}
-.hero .ctas{display:flex;gap:10px;justify-content:center;margin-top:36px;flex-wrap:wrap}
-.hero .ctas .pill{font-size:17px;padding:15px 22px;border-radius:9px}
-.hero .proof{margin-top:44px;font-size:14px;color:var(--mute);display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
-.hero .proof b{color:var(--ink);font-weight:500}
-@media (max-width:640px){.hero{padding:110px 0 50px}.hero .ctas{flex-direction:column;align-items:stretch;width:100%}.hero .ctas .pill{justify-content:center}.hero .proof{gap:10px 18px}}
+.hero{position:relative;height:100vh;height:100svh;overflow:hidden;background:#111;color:#fff}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .poster{z-index:0}.hero video{z-index:1}
+.hero .fade{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.35) 35%,rgba(0,0,0,0) 60%),linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,.1) 42%,rgba(0,0,0,.78) 78%,rgba(0,0,0,.9) 100%)}
+.hero .inner{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:0 28px 34px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+.hero h1{font-weight:500;font-size:clamp(44px,6.2vw,104px);line-height:.98;letter-spacing:-.05em;max-width:12ch}
+.hero .side{display:flex;flex-direction:column;align-items:flex-end;gap:16px;max-width:340px;text-align:right}
+.hero .side p{font-size:17px;line-height:1.45;color:rgba(255,255,255,.78)}
+.hero .ctas{display:flex;gap:8px}
+.hero .ctas .pill{font-size:16px;padding:13px 18px;border-radius:8px}
+.hero .ctas .pill.y{background:var(--y);color:var(--ink)}.hero .ctas .pill.y:hover{background:#FFE15A}
+.hero .snd{border:0;font:inherit;cursor:pointer;background:rgba(255,255,255,.16);color:#fff}
+.hero .snd:hover{background:rgba(255,255,255,.26)}
+.hero .snd.on{background:#fff;color:var(--ink)}
+@media (max-width:760px){.hero video,.hero .poster{object-position:62% 50%}.hero .inner{flex-direction:column;align-items:flex-start;padding:0 18px 24px;gap:18px}.hero .side{align-items:flex-start;text-align:left}.hero .side p{font-size:16px}.hero .ctas{width:100%}.hero .ctas .pill.y{flex:1;justify-content:center}.hero h1{font-size:clamp(42px,12vw,60px)}}
 
-.intro{padding:20px 0 120px;text-align:center}
+.intro{padding:clamp(90px,11vw,150px) 0 120px;text-align:center}
 .intro h1{font-weight:500;font-size:clamp(40px,6vw,96px);line-height:1.02;letter-spacing:-.045em;max-width:15ch;margin:0 auto}
 .intro .sub{margin:28px auto 0;max-width:46ch;font-size:clamp(17px,1.3vw,20px);line-height:1.5;color:var(--mute)}
 .igwrap{margin:22px auto 0;max-width:1000px}
@@ -148,15 +153,18 @@ footer .bot{display:flex;justify-content:space-between;margin-top:60px;color:var
 </nav>
 
 <section class="hero" id="top">
-  <div class="wrap">
-    <div class="tag rv in"><i></i>Growth studio for service businesses</div>
+  <img class="poster" src="media/land.jpg" alt="">
+  <video id="heroVid" src="media/land.mp4" muted loop playsinline autoplay preload="auto"></video>
+  <div class="fade"></div>
+  <div class="inner">
     <h1 class="lines" data-lines>We build the systems that keep you booked.</h1>
-    <p class="sub rv">Ads, websites, CRMs and automations that turn clicks into booked jobs. Live in under a week.</p>
-    <div class="ctas rv">
-      <a class="pill ink" href="https://azendsmarketing.com/start">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="pill" href="#work">See the work</a>
+    <div class="side rv">
+      <p>Ads, websites, CRMs and automations for service businesses. Live in under a week.</p>
+      <div class="ctas">
+        <button class="pill snd" id="heroSnd" aria-label="Sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg><span>Sound</span></button>
+        <a class="pill y" href="https://azendsmarketing.com/start">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
     </div>
-    <div class="proof rv"><span><b>60+</b> companies</span><span><b>£1M+</b> generated</span><span><b>16k</b> on Instagram</span></div>
   </div>
 </section>
 
@@ -236,8 +244,11 @@ footer .bot{display:flex;justify-content:space-between;margin-top:60px;color:var
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),eio=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 const OFF='<svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>',ON='<svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>';
 
+const heroVid=document.getElementById('heroVid'),heroSnd=document.getElementById('heroSnd');
+function heroMute(){heroVid.muted=true;heroSnd.classList.remove('on');}
 function muteCards(){document.querySelectorAll('.card').forEach(c=>{c.querySelector('video').muted=true;c.classList.remove('unmuted');c.querySelector('.lbl').textContent='Tap for sound';});}
-function heroMute(){}
+heroSnd.addEventListener('click',()=>{if(heroVid.muted){muteCards();heroVid.muted=false;heroVid.play();heroSnd.classList.add('on');}else heroMute();});
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)heroVid.play().catch(()=>{});else{heroVid.pause();heroMute();}})).observe(heroVid);
 
 const WORK=[['r12','Plumbing website','Website'],['r01','Construction pipeline','Systems'],['r11','Garden design website','Website'],['r03','Kill the contact form','Conversion'],['r13','Roofing website','Website'],['r02','3 Meta ads fixes','Ads'],['r04','My SEO agent','AI'],['r07','The client portal','CRM'],['r10','Builder website','Website'],['r06','Reviews done right','Reviews'],['r08','Roofer system','Systems'],['r05','Home improvement','Strategy'],['r09','Ads that book jobs','Ads'],['r14','Data systems','AI']];
 const rail=document.getElementById('rail'),count=document.getElementById('count');
@@ -275,8 +286,9 @@ new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)growVid.play().c
 function growFrame(){const r=grow.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const t=eio(clamp(-r.top/(r.height-innerHeight),0,1));
   const m=innerWidth<760;frame.style.width=(m?(84+16*t):(60+40*t))+'%';frame.style.height=(m?(44+56*t):(62+38*t))+'%';frame.style.borderRadius=(16*(1-t))+'px';}
 
-function navFrame(){const sb=svc.getBoundingClientRect();
-  const dark=(sb.top<60&&sb.bottom>60);document.body.classList.toggle('lite',!dark);document.body.classList.toggle('scrolled',scrollY>80);}
+const hero=document.querySelector('.hero');
+function navFrame(){const hb=hero.getBoundingClientRect().bottom,sb=svc.getBoundingClientRect();
+  const dark=hb>60||(sb.top<60&&sb.bottom>60);document.body.classList.toggle('lite',!dark);document.body.classList.toggle('scrolled',scrollY>80);}
 
 function tick(){svcFrame();igFrame();growFrame();navFrame();requestAnimationFrame(tick);}requestAnimationFrame(tick);
 
