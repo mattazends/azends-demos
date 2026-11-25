@@ -141,6 +141,19 @@ footer a{display:block;padding:3px 0;font-size:16px}
 footer a:hover{opacity:.6}
 footer .bot{display:flex;justify-content:space-between;margin-top:60px;color:var(--mute);font-size:13px}
 @media (max-width:760px){footer .g{grid-template-columns:1fr 1fr}footer .g>div:first-child{grid-column:1/-1}}
+
+/* scroll animations */
+.rail .slide .card,.rail .slide .meta{transition:transform 1.1s var(--ease),opacity 1.1s var(--ease)}
+.rail:not(.in) .slide .card{transform:translateX(140px) translateY(30px);opacity:0}
+.rail:not(.in) .slide .meta{opacity:0}
+.svc{clip-path:inset(0 var(--ci,0px) round var(--cr,0px))}
+#whoP .sw{opacity:.14;transition:opacity .3s linear}#whoP .sw.on{opacity:1}
+.svc li{transform:translateY(var(--ly,0));transition:color .5s,transform .8s var(--ease)}
+.nums .g>div{transition-delay:calc(var(--i,0) * .1s)}
+.browser img{transform:scale(var(--is,1.08));transition:transform .1s linear}
+footer .big{display:inline-block;transform:translateY(var(--fy,60px));opacity:var(--fo,0)}
+.cnav,.work .label,.igrow{will-change:transform}
+.mq .row{animation:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -149,7 +162,7 @@ footer .bot{display:flex;justify-content:space-between;margin-top:60px;color:var
 <nav class="nav">
   <div class="l"><a class="pill" href="#work">Work</a><a class="pill" href="#services">Services</a></div>
   <a href="#top" class="mark">Azends<span class="dot"></span></a>
-  <div class="r"><a class="pill hide-m" href="https://www.instagram.com/mattxwebb" target="_blank" rel="noopener">Instagram</a><a class="pill ink" href="https://azendsmarketing.com/start">Book a call</a></div>
+  <div class="r"><a class="pill hide-m" href="https://www.instagram.com/mattxwebb" target="_blank" rel="noopener">Instagram</a><a class="pill ink" href="https://api.leadconnectorhq.com/widget/booking/RgMjBwLLqZ7qrmu3iiWG" target="_blank" rel="noopener">Book a call</a></div>
 </nav>
 
 <section class="hero" id="top">
@@ -158,8 +171,8 @@ footer .bot{display:flex;justify-content:space-between;margin-top:60px;color:var
     <h1 class="lines" data-lines>We build the systems that keep you booked.</h1>
     <p class="sub rv">Ads, websites, CRMs and automations that turn clicks into booked jobs. Live in under a week.</p>
     <div class="ctas rv">
-      <a class="pill ink" href="https://azendsmarketing.com/start">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="pill" href="#work">See the work</a>
+      <a class="pill ink" href="https://api.leadconnectorhq.com/widget/booking/RgMjBwLLqZ7qrmu3iiWG" target="_blank" rel="noopener">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="pill" href="https://www.instagram.com/mattxwebb" target="_blank" rel="noopener">See the work</a>
     </div>
   </div>
   <div class="reelrow" id="reelrow"></div>
@@ -182,7 +195,7 @@ footer .bot{display:flex;justify-content:space-between;margin-top:60px;color:var
 </section>
 
 <section class="work" id="work">
-  <div class="head wrap"><div class="label rv">Selected work</div><h2 class="rv" style="margin-top:14px">Real builds, playing here</h2></div>
+  <div class="head wrap"><div class="label rv">Selected work</div><h2 class="lines" data-lines style="margin-top:14px">Real builds, playing here</h2></div>
   <div class="rail" id="rail"></div>
   <div class="cnav"><button id="prev">Prev</button><span class="count" id="count">1 / 14</span><button id="next">Next</button></div>
 </section>
@@ -206,8 +219,8 @@ footer .bot{display:flex;justify-content:space-between;margin-top:60px;color:var
 <section class="who">
   <div class="wrap">
     <div class="label rv">Who we are</div>
-    <p class="big rv">A London growth studio for service businesses. One team building the ads, websites and automations that turn clicks into booked jobs.</p>
-    <a class="pill ink lg rv" href="https://azendsmarketing.com/start">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <p class="big" id="whoP">A London growth studio for service businesses. One team building the ads, websites and automations that turn clicks into booked jobs.</p>
+    <a class="pill ink lg rv" href="https://api.leadconnectorhq.com/widget/booking/RgMjBwLLqZ7qrmu3iiWG" target="_blank" rel="noopener">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
   <div class="grow" id="grow"><div class="stick"><div class="frame" id="frame">
     <video src="media/land.mp4" muted loop playsinline preload="none" poster="media/land.jpg" id="growVid"></video>
@@ -216,20 +229,20 @@ footer .bot{display:flex;justify-content:space-between;margin-top:60px;color:var
 
 <section class="nums">
   <div class="wrap g">
-    <div class="rv"><b><span data-count="60">0</span>+</b><span class="lb">companies partnered with</span></div>
-    <div class="rv"><b>£1M+</b><span class="lb">generated for clients</span></div>
-    <div class="rv"><b>&lt;7 days</b><span class="lb">from kickoff to live</span></div>
-    <div class="rv"><b><span data-count="16">0</span>k</b><span class="lb">following the build on Instagram</span></div>
+    <div class="rv" style="--i:0"><b><span data-count="60">0</span>+</b><span class="lb">companies partnered with</span></div>
+    <div class="rv" style="--i:1"><b>£1M+</b><span class="lb">generated for clients</span></div>
+    <div class="rv" style="--i:2"><b>&lt;7 days</b><span class="lb">from kickoff to live</span></div>
+    <div class="rv" style="--i:3"><b><span data-count="16">0</span>k</b><span class="lb">following the build on Instagram</span></div>
   </div>
 </section>
 
-<a class="mq" href="https://azendsmarketing.com/start"><div class="row" id="mqRow"></div></a>
+<a class="mq" href="https://api.leadconnectorhq.com/widget/booking/RgMjBwLLqZ7qrmu3iiWG" target="_blank" rel="noopener"><div class="row" id="mqRow"></div></a>
 
 <footer>
   <div class="wrap">
     <div class="g">
       <div><div class="big">Azends<span class="dot"></span></div></div>
-      <div><h4>Explore</h4><a href="#work">Work</a><a href="#services">Services</a><a href="https://azendsmarketing.com/start">Book a call</a></div>
+      <div><h4>Explore</h4><a href="#work">Work</a><a href="#services">Services</a><a href="https://api.leadconnectorhq.com/widget/booking/RgMjBwLLqZ7qrmu3iiWG" target="_blank" rel="noopener">Book a call</a></div>
       <div><h4>Follow</h4><a href="https://www.instagram.com/mattxwebb" target="_blank" rel="noopener">Instagram</a><p style="color:var(--mute);margin-top:18px;font-size:15px;line-height:1.5">London, UK<br>Working across the UK, Ireland and the US</p></div>
     </div>
     <div class="bot"><span>© 2026 Azends Studio</span><span>Made in London</span></div>
@@ -306,6 +319,33 @@ function countUp(el){if(el._d)return;el._d=1;const to=+el.dataset.count,t0=perfo
 const ro=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(countUp);ro.unobserve(e.target);}),{threshold:.2});
 document.querySelectorAll('.rv,[data-lines]').forEach(el=>ro.observe(el));
 
+
+/* ---- scroll animations ---- */
+const railEl=document.getElementById('rail');
+railEl.querySelectorAll('.slide').forEach((sl,i)=>{sl.querySelector('.card').style.transitionDelay=(i%6*.08)+'s';sl.querySelector('.meta').style.transitionDelay=(i%6*.08+.2)+'s';});
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){railEl.classList.add('in');o.disconnect();}}),{threshold:.2}).observe(railEl);
+const whoP=document.getElementById('whoP');
+whoP.innerHTML=whoP.textContent.trim().split(/\s+/).map(w=>`<span class="sw">${w}</span>`).join(' ');
+const whoW=[...whoP.querySelectorAll('.sw')];
+const svcEl=document.getElementById('services'),svcLis=[...document.querySelectorAll('#svcList li')];
+const igImg=document.querySelector('.browser img'),fbig=document.querySelector('footer .big'),mqRow=document.getElementById('mqRow');
+let mqX=0,lastY=scrollY,vel=0;
+function anim(){
+  const vh=innerHeight;
+  // who: words light up as you scroll
+  const wr=whoP.getBoundingClientRect();const wp=clamp((vh*.85-wr.top)/(wr.height+vh*.45),0,1);const wn=Math.round(wp*whoW.length);whoW.forEach((w,i)=>w.classList.toggle('on',i<wn));
+  // services panel opens from inset rounded card to full width
+  const sr=svcEl.getBoundingClientRect();const sp=clamp((vh-sr.top)/(vh*.8),0,1),se=eio(sp);
+  const ci=(1-se)*Math.min(innerWidth*.05,60);svcEl.style.setProperty('--ci',ci+'px');svcEl.style.setProperty('--cr',((1-se)*28)+'px');
+  svcLis.forEach((l,i)=>{const b=l.getBoundingClientRect();const d=(b.top+b.height/2-vh/2)/vh;l.style.setProperty('--ly',(d*-18)+'px');});
+  // ig screenshot zooms out as it comes in
+  const ir=igImg.getBoundingClientRect();if(ir.top<vh&&ir.bottom>0){igImg.style.setProperty('--is',(1+.08*clamp(ir.top/vh,0,1)).toFixed(4));}
+  // footer wordmark rises
+  const fr=fbig.getBoundingClientRect();const fp=eio(clamp((vh-fr.top)/(vh*.5),0,1));fbig.style.setProperty('--fy',((1-fp)*60)+'px');fbig.style.setProperty('--fo',fp);
+  // marquee speeds up with scroll
+  vel=vel*.9+(scrollY-lastY)*.1;lastY=scrollY;mqX-= .6+Math.abs(vel)*.35;const half=mqRow.scrollWidth/2;if(half&&-mqX>half)mqX+=half;mqRow.style.transform=`translate3d(${mqX}px,0,0)`;
+  requestAnimationFrame(anim);}
+requestAnimationFrame(anim);
 const unit=`<span>Get booked out<span class="dot"></span></span><span>Book a call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>`;
 document.getElementById('mqRow').innerHTML=unit.repeat(4)+unit.repeat(4);
 })();
