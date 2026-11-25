@@ -461,7 +461,10 @@ function heroFrame(){
   const r=heroEl.getBoundingClientRect();const p=clamp(-r.top/(r.height-innerHeight),0,1);
   wall.style.transform=`translate(-50%,-50%) rotate(${-9+p*4}deg) scale(${1+p*.35})`;
   heroContent.style.transform=`translate3d(0,${-p*120}px,0)`;heroContent.style.opacity=1-clamp((p-.25)*1.6,0,1);
-  shade.style.background=`linear-gradient(180deg,rgba(11,11,10,${.45+p*.4}) 0%,rgba(11,11,10,${.05+p*.6}) 22%,rgba(11,11,10,${.35+p*.5}) 50%,rgba(11,11,10,.86) 72%,rgba(11,11,10,.97) 100%),radial-gradient(ellipse 60% 50% at 25% 75%,rgba(11,11,10,.45),transparent 70%)`;
+  const k=p*.6;
+  shade.style.background=mob()
+    ?`linear-gradient(180deg,rgba(11,11,10,${.4+k}) 0%,rgba(11,11,10,${.12+k}) 16%,rgba(11,11,10,${.74+k*.4}) 34%,rgba(11,11,10,.86) 62%,rgba(11,11,10,.97) 100%)`
+    :`linear-gradient(90deg,rgba(11,11,10,${.84+k*.2}) 0%,rgba(11,11,10,${.72+k*.3}) 38%,rgba(11,11,10,${.22+k}) 68%,rgba(11,11,10,${.08+k}) 100%),linear-gradient(180deg,rgba(11,11,10,.45) 0%,rgba(11,11,10,0) 18%,rgba(11,11,10,0) 62%,rgba(11,11,10,.95) 100%)`;
 }
 
 /* cards + sound */
