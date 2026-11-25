@@ -63,6 +63,9 @@ function who(){if(!auS)return;var r=auS.getBoundingClientRect();if(r.bottom<0||r
  if(auB)auB.style.transform='scaleX('+cl(p/.86).toFixed(4)+')'}
 onScroll();
 
+
+/* inside the glass: load and play only when on screen */
+$$('.igv video').forEach(function(v){if(!('IntersectionObserver' in window))return;var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!v.src)v.src=v.dataset.src;var pp=v.play();pp&&pp.catch&&pp.catch(function(){})}else if(!v.paused)v.pause()})},{threshold:.25});o.observe(v)});
 /* qualifier */
 var qz=$('#qz');if(!qz)return;
 var PROD={slide:'Sliding or bifold doors',win:'Windows',roof:'Rooflights',front:'Front door',steel:'Steel-look doors'};
