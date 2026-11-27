@@ -205,6 +205,7 @@ section{position:relative}
 .sunb{width:60px;height:150px;margin:-75px 0 0 -30px;background:linear-gradient(180deg,rgba(190,215,255,.7),rgba(190,215,255,0));filter:blur(4px);opacity:0;transition:opacity 1s;pointer-events:none}
 .sunb.on{opacity:.8}
 .night .sunb{opacity:0}
+.night .wallc,.night .slope,.night .floor{filter:brightness(.72) saturate(1.1)}
 .lamp{width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;background:radial-gradient(circle,rgba(255,226,170,.85),rgba(255,226,170,0) 70%);opacity:0;transition:opacity 1.2s}
 .night .lamp{opacity:1}
 .qb{padding:20px 18px 22px}
@@ -567,7 +568,6 @@ footer .cp{margin-top:34px;font-size:11px;color:var(--dim)}
 <button class="mclose" id="mc" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 
 <script>
-window.addEventListener('error',e=>{document.title='ERR: '+e.message+' @'+e.lineno});
 (function(){
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const IMG=(id,w=900)=>`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
