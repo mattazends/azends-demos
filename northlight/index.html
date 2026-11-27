@@ -181,7 +181,7 @@ section{position:relative}
 
 /* ===== 3D FORM ===== */
 .qbox{margin:26px 12px 0;border-radius:32px;background:var(--card);box-shadow:0 1px 2px rgba(12,18,34,.04),0 30px 60px -30px rgba(12,18,34,.45);overflow:hidden}
-.stage{height:300px;position:relative;perspective:760px;perspective-origin:50% 30%;background:radial-gradient(120% 90% at 50% 0%,#f9fbff 0%,#e6ecf7 100%);overflow:hidden;touch-action:pan-y;cursor:grab;transition:background 1.2s}
+.stage{height:310px;position:relative;perspective:700px;perspective-origin:50% 52%;background:radial-gradient(120% 90% at 50% 0%,#f9fbff 0%,#e6ecf7 100%);overflow:hidden;touch-action:pan-y;cursor:grab;transition:background 1.2s}
 .stage.night{background:radial-gradient(120% 90% at 50% 0%,#1d2a52 0%,#0a1024 100%)}
 .stage .hint{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);transition:color 1s}
 .stage.night .hint{color:rgba(255,255,255,.4)}
@@ -190,13 +190,13 @@ section{position:relative}
 .stage .m2{position:absolute;top:12px;right:16px;font-size:20px;font-weight:300;letter-spacing:-.04em;color:var(--ink);transition:color 1s}
 .stage .m2 small{font-size:10px;color:var(--dim);margin-left:3px}
 .stage.night .m2{color:#fff}
-.world{position:absolute;left:50%;top:72%;width:0;height:0;transform-style:preserve-3d}
+.world{position:absolute;left:50%;top:76%;width:0;height:0;transform-style:preserve-3d}
 .f{position:absolute;left:0;top:0;transform-style:preserve-3d;backface-visibility:visible}
 .pc{opacity:0;transition:opacity .7s var(--ease)}
 .pc.on{opacity:1}
 .floor{width:220px;height:170px;margin:-85px 0 0 -110px;background:repeating-linear-gradient(90deg,#e8dcc6 0 21px,#dccdb3 21px 22px),#e8dcc6;transform:rotateX(90deg);box-shadow:0 0 60px rgba(12,18,34,.15)}
 .wallc{background:linear-gradient(180deg,#fdfdff,#eef1f7)}
-.slope{background:linear-gradient(90deg,#f4f6fb,#e9edf5)}
+.slope{background:linear-gradient(90deg,#dfe5f0,#f3f5fa);box-shadow:inset 0 0 0 1px rgba(12,18,34,.05)}
 .win{position:absolute;border-radius:3px;background:linear-gradient(160deg,#dbe8ff,#a8c3ff);border:3px solid #26324f;box-shadow:0 0 18px rgba(143,179,255,.7)}
 .night .win{background:linear-gradient(160deg,#1c2b5a,#0e1735);box-shadow:none}
 .furn .f,.furn{transition:transform .9s var(--ease),opacity .6s}
@@ -434,7 +434,7 @@ footer .cp{margin-top:34px;font-size:11px;color:var(--dim)}
         </g>
         <g fill="#2f5bff" font-family="Sora,sans-serif" font-size="10">
           <path d="M330 122V44" stroke="#2f5bff" stroke-width="1" stroke-opacity=".5"/><path d="M326 44h8M326 122h8" stroke="#2f5bff" stroke-width="1" stroke-opacity=".5"/>
-          <text x="314" y="88" text-anchor="end" id="hdim">2.4 m</text>
+          <text x="330" y="34" text-anchor="middle" id="hdim">2.4 m</text>
           <text x="180" y="240" text-anchor="middle" fill-opacity=".55" id="adim">+ 32 m² new floor space</text>
         </g>
       </svg>
@@ -567,6 +567,7 @@ footer .cp{margin-top:34px;font-size:11px;color:var(--dim)}
 <button class="mclose" id="mc" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 
 <script>
+window.addEventListener('error',e=>{document.title='ERR: '+e.message+' @'+e.lineno});
 (function(){
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const IMG=(id,w=900)=>`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
@@ -670,11 +671,11 @@ function box(p,x,z,w,d,h,col,top,y0=0){const Y=-h/2-y0;
   plane(p,w,h,`translate3d(${x}px,${Y}px,${z-d/2}px)`,'',`background:${col};filter:brightness(.8)`);
   plane(p,w,d,`translate3d(${x}px,${-h-y0}px,${z}px) rotateX(90deg)`,'',`background:${top||col}`)}
 const D=170;
-el('floor');
+el('floor');plane(world,220,6,`translate3d(0,3px,85px)`,'','background:#b9a684');
 // knee walls
 const kneeL=plane(world,D,30,`translate3d(-110px,-15px,0) rotateY(90deg)`,'wallc');
 const kneeR=grp('pc');plane(kneeR,D,30,`translate3d(110px,-15px,0) rotateY(90deg)`,'wallc');
-const gable=(pts,H)=>`clip-path:polygon(${pts});background:linear-gradient(180deg,#f9fafd,#e8ecf4)`;
+const gable=(pts,H)=>`clip-path:polygon(${pts});background:linear-gradient(180deg,#eaf0fa,#dde4f0)`;
 // A-frame (dormer uses left slope too)
 const S=Math.hypot(110,100);
 const slopeL=grp('pc');const sL=plane(slopeL,S,D,`translate3d(-55px,-80px,0) rotateZ(${-Math.atan2(100,110)*180/Math.PI}deg) rotateX(90deg)`,'slope');
@@ -714,10 +715,10 @@ function setRoom(type,use){if(type!==undefined&&type!==curType){curType=type;all
   sun.classList.toggle('on',!!curType)}
 // default: open A-frame shell
 [slopeL,slopeR,gA,kneeR].forEach(p=>p.classList.add('on'));
-let ang=-18,drag=null,tilt=-16,t0=performance.now();
+let ang=-18,drag=null,tilt=-7,t0=performance.now();
 (function sway(t){if(!drag)ang=-18+Math.sin((t-t0)/2600)*20;world.style.transform=`scale3d(1.22,1.22,1.22) rotateX(${tilt}deg) rotateY(${ang}deg)`;requestAnimationFrame(sway)})(t0);
 stage.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,a:ang,t:tilt};stage.setPointerCapture(e.pointerId)});
-stage.addEventListener('pointermove',e=>{if(!drag)return;ang=Math.max(-55,Math.min(40,drag.a+(e.clientX-drag.x)*.5));tilt=Math.max(-40,Math.min(-6,drag.t-(e.clientY-drag.y)*.2))});
+stage.addEventListener('pointermove',e=>{if(!drag)return;ang=Math.max(-55,Math.min(40,drag.a+(e.clientX-drag.x)*.5));tilt=Math.max(-30,Math.min(4,drag.t-(e.clientY-drag.y)*.2))});
 ['pointerup','pointercancel'].forEach(v=>stage.addEventListener(v,()=>{if(!drag)return;drag=null;t0=performance.now()-Math.asin(Math.max(-1,Math.min(1,(ang+18)/20)))*2600}));
 
 /* tiles */
@@ -742,8 +743,9 @@ Object.entries(TL).forEach(([k,arr])=>{$('#t_'+k).innerHTML=arr.map(([v,t,s])=>`
 /* form flow */
 const st={};let cur=1,busy=false;const bar=$$('#qbar i'),back=$('#back'),sno=$('#sno');
 function go(n){if(n===cur||busy)return;const a=$(`.qs[data-step="${cur}"]`),b=$(`.qs[data-step="${n}"]`),dir=n>cur?1:-1;busy=true;
-  a.animate([{transform:'none',opacity:1},{transform:`rotateX(${dir*-70}deg) translateZ(-40px)`,opacity:0}],{duration:280,easing:'cubic-bezier(.5,0,.75,0)'}).onfinish=()=>{a.classList.remove('on');b.classList.add('on');cur=n;
-    b.animate([{transform:`rotateX(${dir*70}deg) translateZ(-40px)`,opacity:0},{transform:'none',opacity:1}],{duration:620,easing:'cubic-bezier(.22,1,.36,1)'});busy=false;after()}}
+  try{a.animate([{transform:'none',opacity:1},{transform:`rotateX(${dir*-70}deg) translateZ(-40px)`,opacity:0}],{duration:280,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'})}catch(e){}
+  setTimeout(()=>{a.getAnimations&&a.getAnimations().forEach(x=>x.cancel());a.classList.remove('on');b.classList.add('on');cur=n;busy=false;
+    try{b.animate([{transform:`rotateX(${dir*70}deg) translateZ(-40px)`,opacity:0},{transform:'none',opacity:1}],{duration:620,easing:'cubic-bezier(.22,1,.36,1)'})}catch(e){}after()},290)}
 function after(){bar.forEach((b,i)=>b.classList.toggle('on',i<Math.min(cur,4)));back.classList.toggle('show',cur>1&&cur<5);sno.textContent=cur<5?`STEP ${cur} OF 4`:'BOOKED';
   if(cur===4)$('#sum').innerHTML=['type','use','when'].filter(k=>st[k]).map(k=>`<span>${st[k]}</span>`).join('');
   if(cur===5){stage.classList.add('night');setTimeout(()=>$('#done').classList.add('show'),60)}}
